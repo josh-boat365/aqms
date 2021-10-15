@@ -1,4 +1,8 @@
-const { AOS } = require("./aos");
+// const { AOS } = require("./aos");
+import ("./aos");
+const { AOS } = "./aos.js";
+
+
 
 AOS.init({
     disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function

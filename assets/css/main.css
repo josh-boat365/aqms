@@ -1,6 +1,6 @@
 @font-face {
   font-family: "capriola";
-  src: url(/assets/fonts/Capriola-Regular.ttf) format("ttf");
+  src: url("../fonts/Capriola-Regular.ttf");
 }
 * {
   margin: 0;
@@ -15,8 +15,71 @@ body {
   color: #333;
 }
 
-.card {
+.container {
+  margin: 10px;
+  width: 1440px;
+  height: 900px;
+}
+.container .atu-logo {
+  border: none;
+  height: 10rem;
+  width: 10rem;
+  margin: 10px;
+}
+.container .main-content {
+  background: none;
+  border: none;
+  width: fit-content;
+  margin-top: -211px;
+}
+.container .main-content .welcome-card {
   background-color: #1C4A7E;
   color: white;
-  padding: 2rem;
+  padding: 1rem;
+  border-radius: 15px;
+  width: 1011px;
+  height: 510px;
+  margin-left: 298px;
+  margin-top: -438px;
+  z-index: -1;
+}
+.container .main-content .welcome-text {
+  background: none;
+  border: none;
+  margin-left: 154px;
+}
+.container .main-content .blob {
+  background: none;
+  border: none;
+  position: relative;
+  left: -185px;
+  top: 345px;
+}
+.container .main-content .blob .blob-object {
+  width: 600px;
+  height: 581px;
+}
+.container .main-content .blob .blob-person {
+  position: absolute;
+  top: -190px;
+  left: 47px;
+}
+.container .btn-survey {
+  background-color: #E9E00A;
+  position: relative;
+  top: 90px;
+  left: 760px;
+  border: none;
+  color: #1C4A7E;
+  border-radius: 8px;
+  font-size: 1.5rem;
+  padding: 1rem;
+}
+.container .btn-survey:hover {
+  background-color: #1C4A7E;
+  transition: 0.2s;
+  border-radius: 8px;
+  color: white;
+  padding: 1rem;
+  font-size: 1.5rem;
 }/*# sourceMappingURL=main.css.map */
