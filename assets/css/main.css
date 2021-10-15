@@ -1,0 +1,22 @@
+@font-face {
+  font-family: "capriola";
+  src: url(/assets/fonts/Capriola-Regular.ttf) format("ttf");
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "capriola";
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.card {
+  background-color: #1C4A7E;
+  color: white;
+  padding: 2rem;
+}/*# sourceMappingURL=main.css.map */
