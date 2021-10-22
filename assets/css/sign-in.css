@@ -1,0 +1,91 @@
+@font-face {
+  font-family: "capriola";
+  src: url("../fonts/Capriola-Regular.ttf");
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "capriola";
+  font-size: 16px;
+  line-height: 1.5;
+  color: #1C4A7E;
+}
+
+p,
+i,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #1C4A7E;
+}
+
+a {
+  color: #A51111;
+  text-decoration: none;
+}
+
+.container {
+  margin: 10px;
+  width: 1440px;
+  height: 900px;
+}
+.container .atu-logo {
+  border: none;
+  height: 10rem;
+  width: 10rem;
+  margin: 10px;
+}
+.container .main-content {
+  background-color: #F5F5F5;
+  height: 751px;
+  margin: 0 auto;
+  width: 1245px;
+  border-radius: 15px;
+}
+.container .main-content .card-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+.container .main-content .card-body .form-layout {
+  margin: 5rem;
+  height: 580px;
+  width: 30rem;
+}
+.container .main-content .card-body .form-layout .form-control input {
+  width: 293px;
+  height: 40px;
+  padding: 0.3rem;
+  border-radius: 13px;
+  border: none;
+  color: #1C4A7E;
+  font-size: 1.3rem;
+  background-color: #F5F5F5;
+}
+.container .main-content .card-body .form-layout .form-control input::placeholder {
+  color: #1C4A7E !important;
+  padding: 10px;
+}
+.container .main-content .card-body .form-layout .form-footer {
+  position: relative;
+  top: 5rem;
+}
+.container .main-content .form-design {
+  background-color: #1C4A7E;
+  width: 600px;
+  height: 751px;
+  border-radius: 15px;
+}
+.container .main-content .form-design .blob-2 {
+  background: none;
+  border: none;
+}/*# sourceMappingURL=sign-in.css.map */
