@@ -18,50 +18,57 @@
 </head>
 
 <body>
-    <div class="container">
-        <!-- ATU - logo -->
-        <div class="card atu-logo">
-            <img src="../assets/images/atulogo.png" alt="atu-logo.png">
-        </div>
-        <!-- MAIN Content -->
-        <div class="card main-content">
-            <div class="card-body">
-                <div class="card form-layout">
-                    <form action="" method="post">
-                        <h2 class="card text-center form-title">Sign In</h2>
-
-                        <div class="form-control text-center">
-                            <input type="email" name="email" placeholder="Email">
-                            <i class="far fa-envelope"></i>
+    <section class="content">
+        <div class="container">
+            <div class=" row atu-logo">
+                <img src="../assets/images/atulogo.png" alt="ATU Logo">
+            </div>
+            <div class="row card main-card">
+                <div class="col-md-12 col-lg-10">
+                    <div class=" d-flex">
+                        <div class="row col-md-7 card signin-form">
+                            <div class="text-center signin-form-title">
+                                <h2>Sign In</h2>
+                            </div>
+                            <form action="#">
+                                <div class="form-group mb-3">
+                                    <label class="label" for="name">Username</label>
+                                    <input type="text" class="form-control" placeholder="Username" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="label" for="password">Password</label>
+                                    <input type="password" class="form-control" placeholder="Password" required>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="form-control btn btn-primary rounded submit px-3">Sign In</button>
+                                </div>
+                                <div class="form-group d-md-flex mt-3">
+                                    <div class="w-50 text-left">
+                                        <label class="checkbox-wrap checkbox-primary mb-0">Remember Me
+									  <input type="checkbox" checked>
+									  <span class="checkmark"></span>
+										</label>
+                                    </div>
+                                    <div class="w-50 text-md-right">
+                                        <a href="#">Forgot Password?</a>
+                                    </div>
+                                </div>
+                            </form>
+                            <p class="text-center mt-3 mb-0">Not a member? <a data-toggle="tab" href="#signup">Sign Up</a></p>
+                            <p class="text-center mb-0">Go Back <a data-toggle="tab" href="../index.html">Home</a></p>
                         </div>
-                        <div class="form-control text-center">
-                            <input type="password" name="password" placeholder="Passowrd">
-                            <i class="fas fa-lock"></i>
-                        </div>
 
-                        <a class="forgot-pass" href="#">Forgotten Password?</a>
+                        <div class="row card col-md-6 right-side"></div>
+                        <img class="blob-object-2" src="../assets/images/asst4.png" alt="blob-object">
+                        <img data-aos="fade-left" data-aos-offset="500" data-aos-duration="900" class="blob-img-2" src="../assets/images/asst3.png" alt="blob-object-img">
 
-                        <div class="form-control">
-                            <button type="submit" name="submit" class="btn ">Sign In</button>
-                        </div>
-
-                        <div class="form-control form-footer">
-                            <p class="text-center">Don't have an account? <a href="#">Sign Up</a></p>
-                            <p class="text-center"><a href="#">Home</a></p>
-                        </div>
-
-                    </form>
-                </div>
-
-                <div class="card form-design">
-                    <div class="card blob-2">
-                        <img class="blob-object-2" src="../assets/images/asst4.png" alt="asst4">
-                        <img class="blob-person-2" src="../assets/images/asst3.png" alt="asst3">
                     </div>
                 </div>
             </div>
+
         </div>
-    </div>
+    </section>
+
 
 
 
