@@ -89,16 +89,24 @@ body {
   font-size: 1.5rem;
 }
 
-@media all and (max-width: 520px) {
+@media screen and (max-width: 425px) {
+  .blob {
+    position: absolute;
+    left: -37% !important;
+    top: -37% !important;
+  }
+}
+@media screen and (max-width: 520px) {
   .container {
     width: 97%;
+    height: auto;
     padding: 0;
     margin: 0;
     overflow: hidden;
   }
   .container .atu-logo img {
-    width: 8rem;
-    margin-bottom: 3rem;
+    width: 10rem;
+    margin-bottom: 9rem;
   }
   .container .main-content {
     width: 100%;
@@ -132,8 +140,16 @@ body {
   .container .main-content .blob .mobile-blob-object {
     display: block;
   }
-  .container .btn-survey {
-    top: 2rem;
-    left: 6rem;
+  .container #btn {
+    border: 1px solid black;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+  }
+  .container #btn .btn-survey {
+    top: 0;
+    left: 0;
+    margin-bottom: 2.5rem;
   }
 }

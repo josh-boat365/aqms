@@ -94,22 +94,26 @@ body {
 }
 
 // Media Queries
-// @media (max-width: 425px){
-//     .blob{
-//         position: absolute;
-//         left: -50%;
-//         top: -33%;
-//     }
-// }
-@media all and (max-width: 520px) {
+@media screen and (max-width: 425px){
+    
+    .blob{
+        // display: none;
+        position: absolute;
+        left: -37% !important;
+        top: -37% !important;
+    }
+}
+
+@media screen and (max-width: 520px) {
     .container {
         width: 97%;
+        height: auto;
         padding: 0;
         margin: 0;
         overflow: hidden;
         .atu-logo img {
-            width: 8rem;
-            margin-bottom: 3rem;
+            width: 10rem;
+            margin-bottom: 9rem;
         }
         .main-content {
             width: 100%;
@@ -148,9 +152,19 @@ body {
                 }
             }
         }
-        .btn-survey {
-            top: 2rem;
-            left: 6rem;
+        #btn{
+            border: 1px solid black;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 2rem;
+
+            .btn-survey {
+                top: 0;
+                left: 0;
+                margin-bottom: 2.5rem;
+            }
         }
+        
     }
 }
