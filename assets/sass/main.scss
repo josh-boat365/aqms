@@ -91,6 +91,13 @@ body {
     }
 }
 // Media Queries
+// @media (max-width: 425px){
+//     .blob{
+//         position: absolute;
+//         left: -50%;
+//         top: -33%;
+//     }
+// }
 @media all and (max-width: 520px) {
     .container{
         width: 97%;
@@ -108,24 +115,29 @@ body {
             
             .welcome-card{
                 width: 100%;
+                height: auto;
                 margin: 0;
                 padding: 0;
 
-                h2{
-                    font-size: 1rem;
-                    margin-bottom: 3rem;
-                }
-                .welcome-text{
-                    font-size: small;
-                    // margin-left: 0;
-                    margin-left: 9px;
-                
+                .card-body{
+                    padding-top: 2rem;
+                    
+                    h2{
+                        font-size: 1rem;
+                        margin-bottom: 3rem;
+                    }
+                    .welcome-text{
+                        font-size: small;
+                        // margin-left: 0;
+                        margin-left: 9px;
+                    
+                    }
                 }
             }
             .blob{
                 position: absolute;
-                left: -36%;
-                top: -44%;
+                left: -31%;
+                top: -42%;
                 
                 :first-child, :last-child {
                     display: none;

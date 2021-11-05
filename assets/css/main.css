@@ -104,21 +104,25 @@ body {
   }
   .container .main-content .welcome-card {
     width: 100%;
+    height: auto;
     margin: 0;
     padding: 0;
   }
-  .container .main-content .welcome-card h2 {
+  .container .main-content .welcome-card .card-body {
+    padding-top: 2rem;
+  }
+  .container .main-content .welcome-card .card-body h2 {
     font-size: 1rem;
     margin-bottom: 3rem;
   }
-  .container .main-content .welcome-card .welcome-text {
+  .container .main-content .welcome-card .card-body .welcome-text {
     font-size: small;
     margin-left: 9px;
   }
   .container .main-content .blob {
     position: absolute;
-    left: -36%;
-    top: -44%;
+    left: -31%;
+    top: -42%;
   }
   .container .main-content .blob :first-child, .container .main-content .blob :last-child {
     display: none;
