@@ -94,13 +94,13 @@ body {
 }
 
 // Media Queries
-@media screen and (max-width: 425px) {
+@media all and (max-width: 520px) {
     .container {
-        width: 420px;
+        width: 97%;
         padding: 0;
         margin: 0;
         overflow: hidden;
-        .atu-logo {
+        .atu-logo img {
             width: 8rem;
             margin-bottom: 3rem;
         }

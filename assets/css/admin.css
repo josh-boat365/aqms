@@ -121,4 +121,11 @@ a {
     margin-top: 0;
   }
 }
+<<<<<<< HEAD
 /* ============ desktop view .end// ============ *//*# sourceMappingURL=admin.css.map */
+=======
+/* ============ desktop view .end// ============ */
+main .search-bar {
+  display: flex;
+}
+>>>>>>> 15485443546db83eb2ac61124c819ceb713e082d
