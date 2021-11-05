@@ -93,7 +93,7 @@ body {
 // Media Queries
 @media all and (max-width: 520px) {
     .container{
-        width: 420px;
+        width: 100%;
         padding:0 ;
         margin: 0;
         overflow: hidden;
@@ -141,5 +141,4 @@ body {
             left: 6rem;
         }
     }
-    
 }
