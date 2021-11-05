@@ -18,11 +18,11 @@ body {
 .container {
   margin: 10px;
   width: 1440px;
-  height: 900px;
+  height: 778px;
 }
-.container .atu-logo {
+.container .atu-logo img {
   border: none;
-  height: 10rem;
+  height: 4rem;
   width: 10rem;
   margin: 10px;
 }
@@ -40,7 +40,7 @@ body {
   width: 1011px;
   height: 510px;
   margin-left: 298px;
-  margin-top: -438px;
+  margin-top: -335px;
   z-index: -1;
 }
 .container .main-content .welcome-text {
@@ -56,21 +56,23 @@ body {
   top: 345px;
 }
 .container .main-content .blob .blob-object {
-  width: 600px;
-  height: 581px;
+  position: relative;
+  width: 635px;
+  top: 3rem;
+  height: 518px;
 }
 .container .main-content .blob .mobile-blob-object {
   display: none;
 }
 .container .main-content .blob .blob-person {
   position: absolute;
-  top: -190px;
+  top: -186px;
   left: 47px;
 }
 .container .btn-survey {
   background-color: #E9E00A;
   position: relative;
-  top: 90px;
+  top: 60px;
   left: 760px;
   border: none;
   color: #1C4A7E;
@@ -120,7 +122,8 @@ body {
     left: -36%;
     top: -44%;
   }
-  .container .main-content .blob :first-child, .container .main-content .blob :last-child {
+  .container .main-content .blob :first-child,
+.container .main-content .blob :last-child {
     display: none;
   }
   .container .main-content .blob .mobile-blob-object {

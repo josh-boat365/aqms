@@ -47,13 +47,39 @@ a {
   width: 5rem;
   margin: 1px 0px 0 17px;
 }
+@media all and (min-width: 992px) {
+  .super-nav .navbar-1 .notify .dropdown-menu {
+    display: none;
+  }
+  .super-nav .navbar-1 .notify:hover .dropdown-menu {
+    display: block;
+  }
+  .super-nav .navbar-1 .notify .dropdown-menu {
+    margin-top: 0;
+  }
+}
+.super-nav .navbar-1 .notify {
+  position: relative;
+  left: 32%;
+}
 .super-nav .navbar-1 .dropdown-right {
-  margin-right: 10%;
+  margin-right: 6.5%;
 }
 .super-nav .navbar-1 .dropdown .dropdown-toggle .profile-icon {
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
+}
+@media all and (min-width: 992px) {
+  .super-nav .navbar-1 .dropdown-right .dropdown-menu {
+    display: none;
+  }
+  .super-nav .navbar-1 .dropdown-right:hover .dropdown-menu {
+    display: block;
+  }
+  .super-nav .navbar-1 .dropdown-right .dropdown-menu {
+    margin-top: 0;
+  }
 }
 .super-nav .main-nav {
   margin-bottom: 0.8rem;
@@ -77,6 +103,9 @@ a {
   margin: 0;
   padding: 0;
 }
+.super-nav .main-nav .row .navbar-2 .nav-links:focus {
+  color: #1C4A7E;
+}
 
 /* ============ desktop view ============ */
 @media all and (min-width: 992px) {
@@ -92,7 +121,4 @@ a {
     margin-top: 0;
   }
 }
-/* ============ desktop view .end// ============ */
-main .search-bar {
-  display: flex;
-}/*# sourceMappingURL=admin.css.map */
+/* ============ desktop view .end// ============ *//*# sourceMappingURL=admin.css.map */
