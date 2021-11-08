@@ -89,16 +89,24 @@ body {
   font-size: 1.5rem;
 }
 
-@media all and (max-width: 520px) {
+@media screen and (max-width: 425px) {
+  .blob {
+    position: absolute;
+    left: -37% !important;
+    top: -37% !important;
+  }
+}
+@media screen and (max-width: 520px) {
   .container {
     width: 97%;
+    height: auto;
     padding: 0;
     margin: 0;
     overflow: hidden;
   }
   .container .atu-logo img {
-    width: 8rem;
-    margin-bottom: 3rem;
+    width: 10rem;
+    margin-bottom: 9rem;
   }
   .container .main-content {
     width: 100%;
@@ -106,31 +114,43 @@ body {
   }
   .container .main-content .welcome-card {
     width: 100%;
+    height: auto;
     margin: 0;
     padding: 0;
   }
-  .container .main-content .welcome-card h2 {
+  .container .main-content .welcome-card .card-body {
+    padding-top: 2rem;
+  }
+  .container .main-content .welcome-card .card-body h2 {
+    width: auto;
+    padding: 0 0rem 0 3rem;
     font-size: 1rem;
     margin-bottom: 3rem;
   }
-  .container .main-content .welcome-card .welcome-text {
+  .container .main-content .welcome-card .card-body .welcome-text {
     font-size: small;
     margin-left: 9px;
   }
   .container .main-content .blob {
     position: absolute;
-    left: -36%;
-    top: -44%;
+    left: -31%;
+    top: -42%;
   }
-  .container .main-content .blob :first-child,
-.container .main-content .blob :last-child {
+  .container .main-content .blob :first-child, .container .main-content .blob :last-child {
     display: none;
   }
   .container .main-content .blob .mobile-blob-object {
     display: block;
   }
-  .container .btn-survey {
-    top: 2rem;
-    left: 6rem;
+  .container #btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
   }
-}/*# sourceMappingURL=main.css.map */
+  .container #btn .btn-survey {
+    top: 0;
+    left: 0;
+    margin-bottom: 2.5rem;
+  }
+}
