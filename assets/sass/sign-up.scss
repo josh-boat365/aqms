@@ -1,55 +1,41 @@
-// @import url('./global.scss');
-@font-face {
-    font-family: 'capriola';
-    src: url('../fonts/Capriola-Regular.ttf');
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'capriola';
-    font-size: 16px;
-    line-height: 1.5;
-    color: #1C4A7E;
-}
-
-p,
-i,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    color: #1C4A7E;
-}
-
-a {
-    color: #A51111;
-    text-decoration: none;
-}
-
+@import 'global';
 .content {
     width: 100%;
-    height: 100%;
+    height: 47rem;
     .container {
         margin: 10px;
         width: 100%;
         height: 100%;
-        .atu-logo {
-            width: 10rem;
-            margin: 10px;
+        //Init Nav
+        nav {
+            .atu-logo img {
+                border: none;
+                height: 4rem;
+                width: 10rem;
+                margin: 10px;
+            }
+            .nav-links {
+                a {
+                    margin-right: 24px;
+                }
+                a:hover {
+                    color: $dark-blue1;
+                    cursor: pointer;
+                }
+                position: relative;
+                left: 68rem;
+                top: 0.3rem;
+            }
         }
         .main-card {
             background-color: #E4E4E3;
+            position: relative;
+            top: -2rem;
             width: 85%;
             height: 40rem;
             margin: 2.5% 16%;
             border-radius: 15px;
+            box-shadow: $box-shadow1;
             .signin-form {
                 position: relative;
                 top: 2rem;
@@ -57,6 +43,10 @@ a {
                 height: 36rem;
                 padding: 1rem;
                 border-radius: 15px;
+                box-shadow: $box-shadow2;
+                label {
+                    color: $dark-blue1;
+                }
                 .form-group input {
                     border-radius: 12px;
                     background-color: #E4E4E3;
@@ -66,7 +56,7 @@ a {
                 }
                 .btn-tab {
                     position: relative;
-                    top: 5.5rem;
+                    top: 3.5rem;
                 }
                 .form-group button {
                     border-radius: 12px !important;
@@ -74,9 +64,9 @@ a {
                     color: #fff;
                     font-size: 1.5rem;
                     padding: 0.5rem 1rem;
-                    // margin-top: 20.5rem;
                     border: none;
                     cursor: pointer;
+                    box-shadow: $box-shadow3;
                 }
                 .form-group button:hover {
                     background-color: #E9E00A;
@@ -95,12 +85,13 @@ a {
             .blob-object-3 {
                 position: absolute;
                 width: 28rem;
+                top: 3rem;
                 left: 42rem;
             }
             .blob-img-3 {
                 position: absolute;
                 width: 24rem;
-                top: 2rem;
+                top: 4rem;
                 left: 44rem;
             }
         }

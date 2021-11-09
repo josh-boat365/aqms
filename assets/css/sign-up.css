@@ -12,7 +12,7 @@ body {
   font-family: "capriola";
   font-size: 16px;
   line-height: 1.5;
-  color: #1C4A7E;
+  color: white;
 }
 
 p,
@@ -31,25 +31,50 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  color: #1C4A7E !important;
+}
+
+li {
+  list-style: none;
+}
+
 .content {
   width: 100%;
-  height: 100%;
+  height: 47rem;
 }
 .content .container {
   margin: 10px;
   width: 100%;
   height: 100%;
 }
-.content .container .atu-logo {
+.content .container nav .atu-logo img {
+  border: none;
+  height: 4rem;
   width: 10rem;
   margin: 10px;
 }
+.content .container nav .nav-links {
+  position: relative;
+  left: 68rem;
+  top: 0.3rem;
+}
+.content .container nav .nav-links a {
+  margin-right: 24px;
+}
+.content .container nav .nav-links a:hover {
+  color: #1C4A7E;
+  cursor: pointer;
+}
 .content .container .main-card {
   background-color: #E4E4E3;
+  position: relative;
+  top: -2rem;
   width: 85%;
   height: 40rem;
   margin: 2.5% 16%;
   border-radius: 15px;
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
 }
 .content .container .main-card .signin-form {
   position: relative;
@@ -58,6 +83,10 @@ a {
   height: 36rem;
   padding: 1rem;
   border-radius: 15px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+.content .container .main-card .signin-form label {
+  color: #1C4A7E;
 }
 .content .container .main-card .signin-form .form-group input {
   border-radius: 12px;
@@ -68,7 +97,7 @@ a {
 }
 .content .container .main-card .signin-form .btn-tab {
   position: relative;
-  top: 5.5rem;
+  top: 3.5rem;
 }
 .content .container .main-card .signin-form .form-group button {
   border-radius: 12px !important;
@@ -78,6 +107,7 @@ a {
   padding: 0.5rem 1rem;
   border: none;
   cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
 .content .container .main-card .signin-form .form-group button:hover {
   background-color: #E9E00A;
@@ -95,11 +125,12 @@ a {
 .content .container .main-card .blob-object-3 {
   position: absolute;
   width: 28rem;
+  top: 3rem;
   left: 42rem;
 }
 .content .container .main-card .blob-img-3 {
   position: absolute;
   width: 24rem;
-  top: 2rem;
+  top: 4rem;
   left: 44rem;
-}
+}/*# sourceMappingURL=sign-up.css.map */
