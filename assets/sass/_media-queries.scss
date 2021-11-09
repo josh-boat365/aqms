@@ -1,0 +1,72 @@
+//===========Landing Page++++++//
+// Media Queries
+@media screen and (max-width: 425px) {
+    .blob {
+        // display: none;
+        position: absolute;
+        left: -37% !important;
+        top: -37% !important;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .container {
+        width: 97%;
+        height: auto;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+        .atu-logo img {
+            width: 10rem;
+            margin-bottom: 9rem;
+        }
+        .main-content {
+            width: 100%;
+            margin: 0;
+            .welcome-card {
+                width: 100%;
+                height: auto;
+                margin: 0;
+                padding: 0;
+                .card-body {
+                    padding-top: 2rem;
+                    h2 {
+                        width: auto;
+                        padding: 0 0rem 0 3rem;
+                        font-size: 1rem;
+                        margin-bottom: 3rem;
+                    }
+                    .welcome-text {
+                        font-size: small;
+                        // margin-left: 0;
+                        margin-left: 9px;
+                    }
+                }
+            }
+            .blob {
+                position: absolute;
+                left: -31%;
+                top: -42%;
+                 :first-child,
+                 :last-child {
+                    display: none;
+                }
+                .mobile-blob-object {
+                    display: block;
+                }
+            }
+        }
+        #btn {
+            // border: 1px solid black;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 2rem;
+            .btn-survey {
+                top: 0;
+                left: 0;
+                margin-bottom: 2.5rem;
+            }
+        }
+    }
+}
