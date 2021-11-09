@@ -1,48 +1,31 @@
-// @import url('./global.scss');
-@font-face {
-    font-family: 'capriola';
-    src: url('../fonts/Capriola-Regular.ttf');
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'capriola';
-    font-size: 16px;
-    line-height: 1.5;
-    color: #1C4A7E;
-}
-
-p,
-i,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    color: #1C4A7E;
-}
-
-a {
-    color: #A51111;
-    text-decoration: none;
-}
-
+@import 'global';
 .content {
     width: 100%;
-    height: 100%;
+    height: 47rem;
     .container {
         margin: 10px;
         width: 100%;
         height: 100%;
-        .atu-logo {
-            width: 10rem;
-            margin: 10px;
+        //Init Nav
+        nav {
+            .atu-logo img {
+                border: none;
+                height: 4rem;
+                width: 10rem;
+                margin: 10px;
+            }
+            .nav-links {
+                a {
+                    margin-right: 24px;
+                }
+                a:hover {
+                    color: $dark-blue1;
+                    cursor: pointer;
+                }
+                position: relative;
+                left: 68rem;
+                top: 0.3rem;
+            }
         }
         .main-card {
             background-color: #E4E4E3;
@@ -56,6 +39,9 @@ a {
                 height: 30rem;
                 padding: 3rem;
                 border-radius: 15px;
+                label {
+                    color: $dark-blue1;
+                }
                 .form-group input {
                     border-radius: 12px;
                     background-color: #E4E4E3;
@@ -72,6 +58,7 @@ a {
                     margin-top: 1.5rem;
                     border: none;
                     cursor: pointer;
+                    box-shadow: $box-shadow3;
                 }
                 .form-group button:hover {
                     background-color: #E9E00A;
@@ -100,56 +87,4 @@ a {
             }
         }
     }
-}
-
-@media screen and (max-width: 520px) {
-   .content{
-       height: auto;
-    //    font-size: 5rem !important;
-
-       .container{
-           margin: 0 !important;
-
-        .atu-logo {
-            width: 10rem;
-            margin-bottom: 2.7rem;
-        }
-       }
-
-        .main-card{
-            // font-size: 1rem !important;
-            width: 75%;
-            padding: 0.5rem;
-            margin: 0 8% !important;
-
-                #right-side{
-                    display: none;
-                }
-                
-                .signin-form{
-                    padding: 0 !important;
-                    top: 0 !important;
-                    left: 0 !important;
-                    font-size: .8rem !important;
-                }
-
-                .form-bg{
-                    display: block !important;
-                }
-
-                h2{
-                    padding: .5rem 0;
-                }
-                .form-control::placeholder{
-                    font-size: .8rem;
-                }
-                .submit{
-                    font-size: 1rem !important;
-                }
-                .forgot-pass{
-                    display: flex;
-                    // font-size: .8rem;
-                }
-    }
-   }
 }
