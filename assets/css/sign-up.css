@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 @font-face {
   font-family: "capriola";
   src: url("../fonts/Capriola-Regular.ttf");
@@ -72,6 +71,9 @@ li {
 }
 .content .container nav .mobile-menu, .content .container nav .mobile-menu-close {
   font-size: 0rem;
+}
+.content .container nav .mobile-menu-close {
+  display: none;
 }
 .content .container .main-card {
   background-color: #E4E4E3;
@@ -156,9 +158,6 @@ li {
     justify-content: space-between;
     padding-right: 1rem;
   }
-  .content nav .atu-logo {
-    border: 1px solid red;
-  }
   .content nav .nav-links {
     display: none;
   }
@@ -220,12 +219,7 @@ li {
   .content .main-card .signin-form form {
     padding: 0rem;
   }
-  .content .main-card .signin-form form .btn-tab {
-    top: 0 !important;
-    margin-top: 0.5rem !important;
-  }
   .content .main-card .signin-form form div {
-    display: block !important;
     padding-top: 0.5rem;
     margin-top: 0rem !important;
   }
@@ -233,5 +227,3 @@ li {
     font-size: 0.8rem !important;
   }
 }
-=======
->>>>>>> 4d251d01d8d49a943a9118ae038bfe04b0f2e338

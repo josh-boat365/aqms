@@ -34,6 +34,9 @@
             .mobile-menu, .mobile-menu-close {
                 font-size: 0rem;
             }
+            .mobile-menu-close {
+                display: none;
+            }
         }
         .main-card {
             background-color: #E4E4E3;

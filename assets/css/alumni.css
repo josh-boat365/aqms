@@ -1,0 +1,289 @@
+@font-face {
+  font-family: "capriola";
+  src: url("../fonts/Capriola-Regular.ttf");
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f9fcff;
+  font-family: "capriola";
+  font-size: 16px;
+  line-height: 1.5;
+  color: #1C4A7E;
+  width: 100%;
+  height: 100%;
+}
+
+p,
+i,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #1C4A7E;
+}
+
+a {
+  color: #A51111;
+  text-decoration: none;
+}
+
+.super-nav {
+  background-color: white;
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+}
+.super-nav .navbar-1 {
+  display: flex;
+  padding: 0;
+  justify-content: space-between;
+}
+.super-nav .navbar-1 .atu-logo {
+  width: 5rem;
+  margin: 1px 0px 0 17px;
+}
+@media all and (min-width: 992px) {
+  .super-nav .navbar-1 .notify .dropdown-menu {
+    display: none;
+  }
+  .super-nav .navbar-1 .notify:hover .dropdown-menu {
+    display: block;
+  }
+  .super-nav .navbar-1 .notify .dropdown-menu {
+    margin-top: 0;
+  }
+}
+.super-nav .navbar-1 .notify {
+  position: relative;
+  left: 32%;
+}
+.super-nav .navbar-1 .dropdown-right {
+  margin-right: 6.5%;
+}
+.super-nav .navbar-1 .dropdown .dropdown-toggle .profile-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+}
+@media all and (min-width: 992px) {
+  .super-nav .navbar-1 .dropdown-right .dropdown-menu {
+    display: none;
+  }
+  .super-nav .navbar-1 .dropdown-right:hover .dropdown-menu {
+    display: block;
+  }
+  .super-nav .navbar-1 .dropdown-right .dropdown-menu {
+    margin-top: 0;
+  }
+}
+.super-nav .main-nav {
+  margin-bottom: 0.8rem;
+}
+.super-nav .main-nav .row {
+  text-align: center;
+  width: 50%;
+  margin: 0 auto;
+  justify-content: center;
+}
+.super-nav .main-nav .row .navbar-2 {
+  display: flex;
+  gap: 6%;
+  flex-wrap: nowrap;
+  padding: 0;
+  justify-content: center;
+}
+.super-nav .main-nav .row .navbar-2 .nav-links {
+  width: 100%;
+  color: #A51111;
+  margin: 0;
+  padding: 0;
+}
+.super-nav .main-nav .row .navbar-2 .nav-links:focus {
+  color: #1C4A7E;
+}
+
+/* ============ desktop view ============ */
+@media all and (min-width: 992px) {
+  .navbar .nav-item .dropdown-menu {
+    display: none;
+  }
+
+  .navbar .nav-item:hover .dropdown-menu {
+    display: block;
+  }
+
+  .navbar .nav-item .dropdown-menu {
+    margin-top: 0;
+  }
+}
+/* ============ desktop view .end// ============ */
+main {
+  margin-bottom: 10rem;
+}
+main .search-bg {
+  background: url(../images/abst-2.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 20vh;
+  margin-top: 5rem;
+}
+main .search-bg .search-bar {
+  display: flex;
+  position: relative;
+  top: 3.6rem;
+  margin: 0 auto;
+  width: fit-content;
+}
+main .search-bg .search-bar .search input {
+  width: 35rem;
+  padding: 0.6rem;
+  border-radius: 10px 0px 0px 10px;
+  border: none;
+  color: #1C4A7E;
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+}
+main .search-bg .search-bar .search input:focus {
+  border: #A51111 solid 0.5px;
+  outline: none;
+}
+main .search-bg .search-bar .search input::placeholder {
+  color: #1C4A7E;
+}
+main .search-bg .search-bar .search-btn input {
+  width: 6rem;
+  border: none;
+  border-radius: 0px 10px 10px 0px;
+  padding: 0.7rem;
+  background-color: #1C4A7E;
+  color: white;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+@media all and (min-width: 992px) {
+  main .search-bg .search-bar .filter-by .dropdown-menu {
+    display: none;
+  }
+  main .search-bg .search-bar .filter-by:hover .dropdown-menu {
+    display: block;
+  }
+  main .search-bg .search-bar .filter-by .dropdown-menu {
+    margin-top: 0;
+  }
+}
+main .search-bg .search-bar .filter-by {
+  position: relative;
+  top: 0.6rem;
+  left: 2rem;
+}
+main .table-responsive {
+  position: relative;
+  top: 6rem;
+  width: 90rem;
+  margin: 0 auto;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+main .table-responsive .table-wrapper {
+  min-width: 1000px;
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+main .table-responsive .table-title {
+  padding-bottom: 10px;
+  margin: 0 0 10px;
+  min-width: 100%;
+}
+main .table-responsive .table-title h2 {
+  margin: 8px 0 0;
+  font-size: 22px;
+}
+main .table-responsive .print-tab {
+  position: relative;
+  top: -0.5rem;
+  float: right;
+  width: fit-content;
+  padding: 0.3rem;
+  border-radius: 8px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+main .table-responsive .print-tab a img {
+  width: 2rem;
+  height: 2rem;
+}
+main .table-responsive table.table tr th,
+main .table-responsive table.table tr td {
+  border-color: #e9e9e9;
+}
+main .table-responsive table.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #fcfcfc;
+}
+main .table-responsive table.table-striped.table-hover tbody tr:hover {
+  background: #f5f5f5;
+}
+main .table-responsive table.table th i {
+  font-size: 13px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+main .table-responsive table.table td:last-child {
+  width: 130px;
+}
+main .table-responsive table.table td a {
+  color: #a0a5b1;
+  display: inline-block;
+  margin: 0 5px;
+}
+main .table-responsive table.table td a.view {
+  color: #03A9F4;
+}
+main .table-responsive table.table td a.edit {
+  color: #FFC107;
+}
+main .table-responsive table.table td a.delete {
+  color: #E34724;
+}
+main .table-responsive table.table td i {
+  font-size: 19px;
+}
+main .table-responsive .pagination {
+  float: right;
+  margin: 0 0 5px;
+}
+main .table-responsive .pagination li a {
+  border: none;
+  font-size: 95%;
+  width: 30px;
+  height: 30px;
+  color: #999;
+  margin: 0 2px;
+  line-height: 30px;
+  border-radius: 30px !important;
+  text-align: center;
+  padding: 0;
+}
+main .table-responsive .pagination li a:hover {
+  color: #666;
+}
+main .table-responsive .pagination li.active a {
+  background: #03A9F4;
+}
+main .table-responsive .pagination li.active a:hover {
+  background: #0397d6;
+}
+main .table-responsive .pagination li.disabled i {
+  color: #ccc;
+}
+main .table-responsive .pagination li i {
+  font-size: 16px;
+  padding-top: 6px;
+}
+main .table-responsive .hint-text {
+  float: left;
+  margin-top: 6px;
+  font-size: 95%;
+}
