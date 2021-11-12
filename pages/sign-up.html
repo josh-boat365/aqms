@@ -28,15 +28,36 @@
                         <img src="../assets/images/atulogo.png" alt="atu-logo.png">
                     </a>
                 </div>
+                <div class="mobile-menu" id="hamburger" onclick="openMenu()">
+                    
+                    <i class="fas fa-bars"></i>
+                
+                </div>
+                <div class="mobile-menu-close" id="close" onclick="closeMenu()">
+                    
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                    
+                </div>
                 <div class="nav-links">
                     <a href="../index.html">Home</a>
                     <a href="./sign-in.html">Sign In</a>
-                    <a href="./sign-up.html">Sign Up</a>
+                    <!-- <a href="./sign-up.html">Sign Up</a> -->
                 </div>
+                <!-- mobile-nav -->
+                <div class="mobile-nav-links" id="menu">
+                    <div>
+                        <a href="../index.html">Home</a>
+                        <!-- <a href="./sign-in.html">Sign In</a> -->
+                        <a href="./sign-up.html">Sign Up</a>
+                    </div>
+                </div>  
+                <!-- mobile-nav -->
+                
+                
             </nav>
             <div class="row card main-card">
-                <div class="col-md-12 col-lg-10">
-                    <div class=" d-flex">
+                <div class="col-md-12 col-lg-10" id="main">
+                    <div class=" d-flex d_block">
                         <div class="row col-md-8 card signin-form">
                             <div class="text-center signin-form-title m-3">
                                 <h2>Sign Up</h2>
@@ -109,6 +130,7 @@
 
 
     <!-- JavaScript -->
+    <script src="../assets/js/mobile-nav.js"></script>
     <!--  Bootstrap JS -->
     <script src="../app/bootstrap/js/bootstrap.min.js"></script>
     <!-- AOS Library -->

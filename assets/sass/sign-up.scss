@@ -26,6 +26,13 @@
                 left: 68rem;
                 top: 0.3rem;
             }
+            .mobile-nav-links{
+                // visibility: hidden;
+                display: none;
+            }
+            .mobile-menu, .mobile-menu-close {
+                font-size: 0rem;
+            }
         }
         .main-card {
             background-color: #E4E4E3;
@@ -95,5 +102,111 @@
                 left: 44rem;
             }
         }
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .content{
+        height: auto;
+
+        .container{
+            width: 100%;
+            margin: 0;
+            height: auto;
+        }
+
+        nav{
+            display: flex !important;
+            align-items: center;
+            justify-content: space-between;
+            padding-right: 1rem;
+
+            .nav-links{
+                display: none;
+            }
+
+            .mobile-nav-links{
+                width: 35%;
+                height: 35%;
+                position: absolute;
+                background-color: $dark-blue1; 
+                padding: 1rem .5rem;
+                top: 11%;
+                right: 3%;
+                z-index: 2;
+
+                div {
+                    width: 50% !important;
+                    height: auto; 
+                    display: flex ;
+                    flex-direction: column;
+                    line-height: 2rem;
+                }
+
+
+                
+
+                    a{
+                        color: #E4E4E3;          
+                    }
+            }
+
+            .mobile-menu, .mobile-menu-close{
+                font-size: 2rem !important;
+                cursor: pointer; 
+            }
+        }
+        .right-side, .blob-object-3, .blob-img-3{
+            display: none !important;
+        }
+
+        .main-card{
+            width: 100% !important;
+            height: auto !important;
+            padding: 0.4rem .7rem;
+            margin: 0 !important;
+            margin-top: 3rem !important;
+            box-shadow: none !important;
+
+                #main {
+                    padding: 0 !important;
+                }
+                .d_block {
+                    display: block !important;
+                }
+
+
+            .signin-form{
+                padding: .5rem !important;
+                top: 0 !important;
+                left: 0 !important;
+                font-size: .8rem;
+                border-width: thick;
+
+                    ::placeholder{
+                       font-size: .8rem; 
+                    }
+                    .signin-form-title{
+                        margin: 0 !important;
+                        padding: .5rem 0 !important;
+                    }
+
+                    form {
+                        padding: 0rem;
+
+                        div {
+                            padding-top: .5rem;
+                            margin-top: 0rem !important;
+                        }
+                        
+                    }
+            }
+
+            button {
+                font-size: .8rem !important;
+            }
+           
+        }
+        
     }
 }
