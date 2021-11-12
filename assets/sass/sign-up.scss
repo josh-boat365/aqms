@@ -199,10 +199,14 @@
                         padding: 0rem;
 
                         div {
+                            display: block !important;
                             padding-top: .5rem;
                             margin-top: 0rem !important;
                         }
-                        
+                        .btn-tab {
+                            top: 0 !important;
+                            margin-top: .5rem !important;
+                        }
                     }
             }
 

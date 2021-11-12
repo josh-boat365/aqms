@@ -220,8 +220,13 @@ li {
     padding: 0rem;
   }
   .content .main-card .signin-form form div {
+    display: block !important;
     padding-top: 0.5rem;
     margin-top: 0rem !important;
+  }
+  .content .main-card .signin-form form .btn-tab {
+    top: 0 !important;
+    margin-top: 0.5rem !important;
   }
   .content .main-card button {
     font-size: 0.8rem !important;
