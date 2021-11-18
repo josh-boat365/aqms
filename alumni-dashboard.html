@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- Mirrored from dore-jquery.coloredstrategies.com/Menu.Mainhidden.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 06 Nov 2021 22:42:17 GMT -->
+
 
 <head>
     <meta charset="UTF-8">
-    <title>Dore jQuery</title>
+    <title>Alumni Dashboard | ATU Tracer</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <link rel="stylesheet" href="font/iconsmind-s/css/iconsminds.css">
     <link rel="stylesheet" href="font/simple-line-icons/css/simple-line-icons.css">
@@ -12,16 +12,18 @@
     <link rel="stylesheet" href="css/vendor/bootstrap.rtl.only.min.css">
     <link rel="stylesheet" href="css/vendor/component-custom-switch.min.css">
     <link rel="stylesheet" href="css/vendor/perfect-scrollbar.css">
-    <link rel="stylesheet" href="css/dore.dark.bluenavy.min.css">
+    <link rel="stylesheet" href="css/dore.light.bluenavy.min.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
 
-<body id="app-container" class="menu-main-hidden show-spinner">
+<body id="app-container" class="menu-default show-spinner">
     <nav class="navbar fixed-top">
-        <div class="d-flex align-items-center navbar-left"><a href="#" class="menu-button d-none d-md-block"><svg class="sub" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 17"><rect x="0" y="0.5" width="26" height="1"/><rect x="0" y="7.5" width="26" height="1"/><rect x="0" y="15.5" width="26" height="1"/></svg> </a>
+        <div class="d-flex align-items-center navbar-left">
+            <a href="#" class="menu-button d-none d-md-block"><svg class="main" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 17"><rect x="0.48" y="0.5" width="7" height="1"/><rect x="0.48" y="7.5" width="7" height="1"/><rect x="0.48" y="15.5" width="7" height="1"/></svg> <svg class="sub" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 17"><rect x="1.56" y="0.5" width="16" height="1"/><rect x="1.56" y="7.5" width="16" height="1"/><rect x="1.56" y="15.5" width="16" height="1"/></svg> </a>
             <a href="#" class="menu-button-mobile d-xs-block d-sm-block d-md-none"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 17"><rect x="0.5" y="0.5" width="25" height="1"/><rect x="0.5" y="7.5" width="25" height="1"/><rect x="0.5" y="15.5" width="25" height="1"/></svg></a>
-            <div class="search" data-search-path="Pages.Search03d2.html?q="><input placeholder="Search..."> <span class="search-icon"><i class="simple-icon-magnifier"></i></span></div><a class="btn btn-sm btn-outline-primary ml-3 d-none d-md-inline-block" href="https://1.envato.market/5kAb">&nbsp;BUY&nbsp;</a></div>
-        <a class="navbar-logo" href="Dashboard.Default.html"><span class="logo d-none d-xs-block"></span> <span class="logo-mobile d-block d-xs-none"></span></a>
+            <div class="search" data-search-path="Pages.Search03d2.html?q="><input placeholder="Search..."> <span class="search-icon"><i class="simple-icon-magnifier"></i></span></div>
+        </div>
+        <a class="navbar-logo" href="alumni-dashboard.html"><span class="logo d-none d-xs-block"></span> <span class="logo-mobile d-block d-xs-none"></span></a>
         <div class="navbar-right">
             <div class="header-icons d-inline-block align-middle">
                 <div class="d-none d-md-inline-block align-text-bottom mr-3">
@@ -85,45 +87,46 @@
         <div class="main-menu">
             <div class="scroll">
                 <ul class="list-unstyled">
-                    <li class="active"><a href="#menu"><i class="iconsminds-three-arrow-fork"></i> Menu</a></li>
+                    <li class="active"><a href="#dashboard"><i class="iconsminds-shop-4"></i> <span>Dashboard</span></a></li>
+                    <li><a href="#layouts"><i class="iconsminds-notepad"></i>Surveys</a></li>
+
                 </ul>
             </div>
         </div>
         <div class="sub-menu">
             <div class="scroll">
-                <ul class="list-unstyled" data-link="menu" id="menuTypes">
-                    <li><a href="#" data-toggle="collapse" data-target="#collapseMenuTypes" aria-expanded="true" aria-controls="collapseMenuTypes" class="rotate-arrow-icon"><i class="simple-icon-arrow-down"></i> <span class="d-inline-block">Menu Types</span></a>
-                        <div id="collapseMenuTypes" class="collapse show" data-parent="#menuTypes">
+                <ul class="list-unstyled" data-link="dashboard">
+                    <li class="active"><a href="alumni-dashboard.html"><i class="simple-icon-rocket"></i> <span class="d-inline-block">Home</span></a></li>
+                    <li><a href="survey-analytics.html"><i class="simple-icon-pie-chart"></i> <span class="d-inline-block">Analytics</span></a></li>
+                </ul>
+                <ul class="list-unstyled" data-link="layouts" id="layouts">
+                    <li><a href="#" data-toggle="collapse" data-target="#collapseAuthorization" aria-expanded="true" aria-controls="collapseAuthorization" class="rotate-arrow-icon opacity-50"><i class="simple-icon-arrow-down"></i> <span class="d-inline-block">Pending Surveys</span></a>
+                        <div id="collapseAuthorization" class="collapse show">
                             <ul class="list-unstyled inner-level-menu">
-                                <li><a href="Menu.Default.html"><i class="simple-icon-control-pause"></i> <span class="d-inline-block">Default</span></a></li>
-                                <li><a href="Menu.Subhidden.html"><i class="simple-icon-arrow-left mi-subhidden"></i> <span class="d-inline-block">Subhidden</span></a></li>
-                                <li><a href="Menu.Hidden.html"><i class="simple-icon-control-start mi-hidden"></i> <span class="d-inline-block">Hidden</span></a></li>
-                                <li class="active"><a href="Menu.Mainhidden.html"><i class="simple-icon-control-rewind mi-hidden"></i> <span class="d-inline-block">Mainhidden</span></a></li>
+                                <li><a href="survey.html"><i class="iconsminds-check"></i> <span class="d-inline-block">Survey 1</span></a></li>
+                                <li><a href="survey.html"><i class="iconsminds-check"></i> <span class="d-inline-block">Survey 2</span></a></li>
+                                <li><a href="survey.html"><i class="iconsminds-check"></i> <span class="d-inline-block">Survey 3</span></a></li>
                             </ul>
                         </div>
                     </li>
-                    <li><a href="#" data-toggle="collapse" data-target="#collapseMenuLevel" aria-expanded="true" aria-controls="collapseMenuLevel" class="rotate-arrow-icon collapsed"><i class="simple-icon-arrow-down"></i> <span class="d-inline-block">Menu Levels</span></a>
-                        <div id="collapseMenuLevel" class="collapse" data-parent="#menuTypes">
+                    <li><a href="#" data-toggle="collapse" data-target="#collapseProduct" aria-expanded="true" aria-controls="collapseProduct" class="rotate-arrow-icon opacity-50"><i class="simple-icon-arrow-down"></i> <span class="d-inline-block">Completed Surveys</span></a>
+                        <div id="collapseProduct" class="collapse show">
                             <ul class="list-unstyled inner-level-menu">
-                                <li><a href="#"><i class="simple-icon-layers"></i> <span class="d-inline-block">Sub Level</span></a></li>
-                                <li><a href="#" data-toggle="collapse" data-target="#collapseMenuLevel2" aria-expanded="true" aria-controls="collapseMenuLevel2" class="rotate-arrow-icon collapsed"><i class="simple-icon-arrow-down"></i> <span class="d-inline-block">Another Level</span></a>
-                                    <div id="collapseMenuLevel2" class="collapse">
-                                        <ul class="list-unstyled inner-level-menu">
-                                            <li><a href="#"><i class="simple-icon-layers"></i> <span class="d-inline-block">Sub Level</span></a></li>
-                                        </ul>
-                                    </div>
-                                </li>
+                                <li><a href="#"><i class="iconsminds-check"></i> <span class="d-inline-block">Survey 2</span></a></li>
+                                <li><a href="#"><i class="iconsminds-check"></i> <span class="d-inline-block">Survey 1</span></a></li>
                             </ul>
                         </div>
                     </li>
-                    <li><a href="#" data-toggle="collapse" data-target="#collapseMenuDetached" aria-expanded="true" aria-controls="collapseMenuDetached" class="rotate-arrow-icon collapsed"><i class="simple-icon-arrow-down"></i> <span class="d-inline-block">Detached</span></a>
-                        <div id="collapseMenuDetached" class="collapse">
+                    <li><a href="#" data-toggle="collapse" data-target="#collapseProfile" aria-expanded="true" aria-controls="collapseProfile" class="rotate-arrow-icon opacity-50"><i class="simple-icon-arrow-down"></i> <span class="d-inline-block">Ended Surveys</span></a>
+                        <div id="collapseProfile" class="collapse show">
                             <ul class="list-unstyled inner-level-menu">
-                                <li><a href="#"><i class="simple-icon-layers"></i> <span class="d-inline-block">Sub Level</span></a></li>
+                                <li><a href="#"><i class="iconsminds-check"></i> <span class="d-inline-block">Survey 1</span></a></li>
+                                <li><a href="#"><i class="iconsminds-check"></i> <span class="d-inline-block">Survey 3</span></a></li>
                             </ul>
                         </div>
                     </li>
                 </ul>
+
             </div>
         </div>
     </div>
@@ -131,15 +134,55 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <h1>Menu Main Hidden</h1>
-                    <nav class="breadcrumb-container d-none d-sm-block d-lg-inline-block" aria-label="breadcrumb">
-                        <ol class="breadcrumb pt-0">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">Library</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Data</li>
-                        </ol>
-                    </nav>
+                    <h1>Surveys</h1>
                     <div class="separator mb-5"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card mb-4 progress-banner1">
+                            <div class="card-body justify-content-between d-flex flex-row align-items-center">
+                                <div><i class="iconsminds-file mr-2 text-white align-text-bottom d-inline-block"></i>
+                                    <div>
+                                        <p class="lead text-white">Alumni Tracer</p>
+                                        <p class="text-small text-white">This survey is about answering questions about your stay in ATU and your experience in the programmes you took whiles in ATU.</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div role="progressbar" class="progress-bar-circle progress-bar-banner position-relative" data-color="white" data-trail-color="rgba(255,255,255,0.2)" aria-valuenow="10" aria-valuemax="12" data-show-percent="true"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card mb-4 progress-banner2">
+                            <div class="card-body justify-content-between d-flex flex-row align-items-center">
+                                <div><i class="iconsminds-file mr-2 text-white align-text-bottom d-inline-block"></i>
+                                    <div>
+                                        <p class="lead text-white">Quality Assurance Check</p>
+                                        <p class="text-small text-white">This survey is about answering questions about your stay in ATU and your experience in the programmes you took whiles in ATU.</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div role="progressbar" class="progress-bar-circle progress-bar-banner position-relative" data-color="white" data-trail-color="rgba(223,155,155)" aria-valuenow="6" aria-valuemax="12" data-show-percent="true"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card mb-4 progress-banner3">
+                            <div class="card-body justify-content-between d-flex flex-row align-items-center">
+                                <div><i class="iconsminds-file mr-2 text-white align-text-bottom d-inline-block"></i>
+                                    <div>
+                                        <p class="lead text-white">LMS Tracer</p>
+                                        <p class="text-small text-white">This survey is about answering questions about your stay in ATU and your experience in the programmes you took whiles in ATU.</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div role="progressbar" class="progress-bar-circle progress-bar-banner position-relative" data-color="white" data-trail-color="rgba(255,255,255,0.2)" aria-valuenow="5" aria-valuemax="12" data-show-percent="true"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -149,13 +192,15 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12 col-sm-6">
-                        <p class="mb-0 text-muted">ColoredStrategies 2019</p>
+                        <p class="mb-0 text-muted">&copy; Accra Technical University
+                            <script type="text/JavaScript"> document.write( new Date().getFullYear())</script>
+                        </p>
                     </div>
                     <div class="col-sm-6 d-none d-sm-block">
                         <ul class="breadcrumb pt-0 pr-0 float-right">
-                            <li class="breadcrumb-item mb-0"><a href="#" class="btn-link">Review</a></li>
-                            <li class="breadcrumb-item mb-0"><a href="#" class="btn-link">Purchase</a></li>
-                            <li class="breadcrumb-item mb-0"><a href="#" class="btn-link">Docs</a></li>
+                            <li class="breadcrumb-item mb-0"><a href="#" class="btn-link">Joshua</a></li>
+                            <li class="breadcrumb-item mb-0"><a href="#" class="btn-link">Fuad</a></li>
+                            <li class="breadcrumb-item mb-0"><a href="#" class="btn-link">Emmanuel</a></li>
                         </ul>
                     </div>
                 </div>
@@ -165,10 +210,10 @@
     <script src="js/vendor/jquery-3.3.1.min.js"></script>
     <script src="js/vendor/bootstrap.bundle.min.js"></script>
     <script src="js/vendor/perfect-scrollbar.min.js"></script>
+    <script src="js/vendor/progressbar.min.js"></script>
     <script src="js/vendor/mousetrap.min.js"></script>
     <script src="js/dore.script.js"></script>
     <script src="js/scripts.js"></script>
 </body>
-<!-- Mirrored from dore-jquery.coloredstrategies.com/Menu.Mainhidden.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 06 Nov 2021 22:42:17 GMT -->
 
 </html>

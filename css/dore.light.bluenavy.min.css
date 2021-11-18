@@ -5634,7 +5634,46 @@ div.dataTables_wrapper div.dataTables_filter input {
     cursor: pointer
 }
 
+.progress-banner1 {
+    height: 200px;
+    background-image: linear-gradient(to right top, #00365a, #00538a, #015994);
+    transition: .5s;
+    background-size: 200% auto;
+    cursor: pointer
+}
+
+.progress-banner2 {
+    height: 200px;
+    background-image: linear-gradient(to right top, #FBA500, #EB9B00, #F0B646);
+    transition: .5s;
+    background-size: 200% auto;
+    cursor: pointer
+}
+
+.progress-banner3 {
+    height: 200px;
+    background-image: linear-gradient(to right top, #CB00FE, #A208C9, #CF44F2);
+    transition: .5s;
+    background-size: 200% auto;
+    cursor: pointer
+}
+
 .progress-banner .lead {
+    font-size: 1.5rem;
+    margin-bottom: .5rem
+}
+
+.progress-banner1 .lead {
+    font-size: 1.5rem;
+    margin-bottom: .5rem
+}
+
+.progress-banner2 .lead {
+    font-size: 1.5rem;
+    margin-bottom: .5rem
+}
+
+.progress-banner3 .lead {
     font-size: 1.5rem;
     margin-bottom: .5rem
 }
@@ -5646,7 +5685,43 @@ div.dataTables_wrapper div.dataTables_filter input {
     }
 }
 
+@media (max-width:1199px) {
+    .progress-banner1 .lead {
+        font-size: 1.2rem;
+        margin-bottom: .2rem
+    }
+}
+
+@media (max-width:1199px) {
+    .progress-banner2 .lead {
+        font-size: 1.2rem;
+        margin-bottom: .2rem
+    }
+}
+
+@media (max-width:1199px) {
+    .progress-banner3 .lead {
+        font-size: 1.2rem;
+        margin-bottom: .2rem
+    }
+}
+
 .progress-banner i {
+    font-size: 2.5rem;
+    margin-bottom: 1rem
+}
+
+.progress-banner1 i {
+    font-size: 2.5rem;
+    margin-bottom: 1rem
+}
+
+.progress-banner2 i {
+    font-size: 2.5rem;
+    margin-bottom: 1rem
+}
+
+.progress-banner3 i {
     font-size: 2.5rem;
     margin-bottom: 1rem
 }
@@ -5658,7 +5733,43 @@ div.dataTables_wrapper div.dataTables_filter input {
     }
 }
 
+@media (max-width:1199px) {
+    .progress-banner1 i {
+        font-size: 2rem;
+        margin-bottom: .2rem
+    }
+}
+
+@media (max-width:1199px) {
+    .progress-banner2 i {
+        font-size: 2rem;
+        margin-bottom: .2rem
+    }
+}
+
+@media (max-width:1199px) {
+    .progress-banner3 i {
+        font-size: 2rem;
+        margin-bottom: .2rem
+    }
+}
+
 .progress-banner .progress-bar-circle.progress-bar-banner {
+    width: 120px;
+    height: 120px
+}
+
+.progress-banner1 .progress-bar-circle.progress-bar-banner {
+    width: 120px;
+    height: 120px
+}
+
+.progress-banner2 .progress-bar-circle.progress-bar-banner {
+    width: 120px;
+    height: 120px
+}
+
+.progress-banner3 .progress-bar-circle.progress-bar-banner {
     width: 120px;
     height: 120px
 }
@@ -5670,7 +5781,56 @@ div.dataTables_wrapper div.dataTables_filter input {
     }
 }
 
+@media (max-width:1199px) {
+    .progress-banner .progress-bar-circle.progress-bar-banner {
+        width: 80px;
+        height: 80px
+    }
+}
+
+@media (max-width:1199px) {
+    .progress-banner1 .progress-bar-circle.progress-bar-banner {
+        width: 80px;
+        height: 80px
+    }
+}
+
+@media (max-width:1199px) {
+    .progress-banner2 .progress-bar-circle.progress-bar-banner {
+        width: 80px;
+        height: 80px
+    }
+}
+
+@media (max-width:1199px) {
+    .progress-banner3 .progress-bar-circle.progress-bar-banner {
+        width: 80px;
+        height: 80px
+    }
+}
+
 .progress-banner .progress-bar-banner .progressbar-text {
+    color: #fff!important;
+    font-size: 1.7rem;
+    width: 110px;
+    font-weight: 300
+}
+
+.progress-banner1 .progress-bar-banner .progressbar-text {
+    color: #fff!important;
+    font-size: 1.7rem;
+    width: 110px;
+    font-weight: 300
+}
+
+.progress-banner2 .progress-bar-banner .progressbar-text {
+    color: #fff!important;
+    font-size: 1.7rem;
+    width: 110px;
+    font-weight: 300
+}
+
+.progress-banner3 .progress-bar-banner .progressbar-text {
     color: #fff!important;
     font-size: 1.7rem;
     width: 110px;
@@ -5684,7 +5844,40 @@ div.dataTables_wrapper div.dataTables_filter input {
     }
 }
 
+@media (max-width:1199px) {
+    .progress-banner1 .progress-bar-banner .progressbar-text {
+        font-size: 1.2rem;
+        margin-bottom: .2rem
+    }
+}
+
+@media (max-width:1199px) {
+    .progress-banner2 .progress-bar-banner .progressbar-text {
+        font-size: 1.2rem;
+        margin-bottom: .2rem
+    }
+}
+
+@media (max-width:1199px) {
+    .progress-banner3 .progress-bar-banner .progressbar-text {
+        font-size: 1.2rem;
+        margin-bottom: .2rem
+    }
+}
+
 .progress-banner:hover {
+    background-position: right top
+}
+
+.progress-banner1:hover {
+    background-position: right top
+}
+
+.progress-banner2:hover {
+    background-position: right top
+}
+
+.progress-banner3:hover {
     background-position: right top
 }
 
