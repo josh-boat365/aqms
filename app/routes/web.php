@@ -30,6 +30,9 @@ Route::post('/register', 'App\Http\Controllers\AuthController@register')->name('
 Route::post('/dashboard', '\App\Http\Controllers\SurveyController@store')->name('survey.store');
 
 
+Route::get('/dashboard/surveys/{i}', '\App\Http\Controllers\SurveyController@show')->name('survey.show');
+
+
 Route::post('/logout', '\App\Http\Controllers\AuthController@logout')->name('logout');
 
 

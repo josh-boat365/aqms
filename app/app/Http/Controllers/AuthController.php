@@ -58,8 +58,9 @@ class AuthController extends Controller
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->save();
+        
 
-        return redirect()->back()->with('error', 'user not created');
+        return redirect()->route('dashboard.index');
     }
 
     public function logout(Request $request)

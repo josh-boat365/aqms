@@ -1,19 +1,23 @@
 @extends('layouts.dashboard')
 
 @section('style')
-    
+
 @endsection
 
 @section('body-id') id="app-container" @endsection
 
 @section('body-class') class="menu-sub-hidden show-spinner right-menu" @endsection
 
-@section('nav')
+{{-- @section('nav')
     @include('inc.dashboard.navbar')
-@endsection
+@endsection --}}
 
-@section('side-bar')
+{{-- @section('side-bar')
     @include('inc.dashboard.sidebar')
+@endsection --}}
+
+@section('main')
+    @extends('inc.dashboard.survey-list')
 @endsection
 
 @section('survey-form')

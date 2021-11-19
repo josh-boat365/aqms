@@ -19,4 +19,8 @@ class SurveyController extends Controller
 
         return redirect()->route('dashboard.index');
     }
+
+    public function show(int $index){
+        return view('dashboard.surveys.show');
+    }
 }
