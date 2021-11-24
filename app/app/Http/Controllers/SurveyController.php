@@ -21,6 +21,19 @@ class SurveyController extends Controller
     }
 
     public function show(int $index){
-        return view('dashboard.surveys.show');
+        return view('dashboard.surveys.show')->with('survey',Survey::find($index));
+    }
+
+    public function addQuestion(Request $request){
+        $this->validate($request, [
+            'question' => 'required'
+        ]);
+
+        Survey::find($request->survey_id)->questions()->create([
+            'question' => $request->question,
+            'option_type_id' => '1'
+        ]);
+
+        return redirect()->route('survey.show', ['i' => $request->survey_id]);
     }
 }

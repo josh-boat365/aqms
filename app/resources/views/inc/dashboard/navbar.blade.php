@@ -61,7 +61,7 @@
                 <div class="dropdown-menu dropdown-menu-right mt-3 position-absolute" id="notificationDropdown">
                     <div class="scroll">
                         <div class="d-flex flex-row mb-3 pb-3 border-bottom">
-                            <a href="#"><img src="img/profiles/l-2.jpg" alt="Notification Image"
+                            <a href="#"><img src="{{asset('img/profiles/l-2.jpg')}}" alt="Notification Image"
                                     class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle"></a>
                             <div class="pl-3">
                                 <a href="#">
@@ -71,7 +71,7 @@
                             </div>
                         </div>
                         <div class="d-flex flex-row mb-3 pb-3 border-bottom">
-                            <a href="#"><img src="img/notifications/1.jpg" alt="Notification Image"
+                            <a href="#"><img src="{{asset('img/notifications/1.jpg')}}" alt="Notification Image"
                                     class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle"></a>
                             <div class="pl-3">
                                 <a href="#">
@@ -81,7 +81,7 @@
                             </div>
                         </div>
                         <div class="d-flex flex-row mb-3 pb-3 border-bottom">
-                            <a href="#"><img src="img/notifications/2.jpg" alt="Notification Image"
+                            <a href="#"><img src="{{asset('img/notifications/2.jpg')}}" alt="Notification Image"
                                     class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle"></a>
                             <div class="pl-3">
                                 <a href="#">
@@ -91,7 +91,7 @@
                             </div>
                         </div>
                         <div class="d-flex flex-row mb-3 pb-3">
-                            <a href="#"><img src="img/notifications/3.jpg" alt="Notification Image"
+                            <a href="#"><img src="{{asset('img/notifications/3.jpg')}}" alt="Notification Image')}}"
                                     class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle"></a>
                             <div class="pl-3">
                                 <a href="#">
@@ -109,7 +109,7 @@
         <div class="user d-inline-block"><button class="btn btn-empty p-0" type="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false"><span
                     class="name">{{ auth()->user()->firstName }}</span> <span><img alt="Profile Picture"
-                        src="img/profiles/l-1.jpg"></span></button>
+                        src="{{asset('img/profiles/l-1.jpg')}}"></span></button>
             <div class="dropdown-menu dropdown-menu-right mt-3"><a class="dropdown-item" href="#">Account</a> <a
                     class="dropdown-item" href="#">Features</a> <a class="dropdown-item" href="#">History</a> <a
                     class="dropdown-item" href="#">Support</a>

@@ -1,13 +1,12 @@
 @extends('layouts.app')
 
 @section('style')
+    <link rel="stylesheet" href="{{ asset('font/iconsmind-s/css/iconsminds.css') }}">
+    <link rel="stylesheet" href="{{ asset('font/simple-line-icons/css/simple-line-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendor/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendor/bootstrap.rtl.only.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor/bootstrap-float-label.min.css') }}">
-    <style>
-        .theme-button {
-            display: none;
-        }
-
-    </style>
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 @endsection
 
 @section('body-class') class="background show-spinner no-footer" @endsection
@@ -15,7 +14,7 @@
 @section('body')
     <div class="fixed-background"></div>
     <div class="container col-12 position-absolute" style="z-index: 200">
-        <a href="{{route('register')}}" class="ml-auto float-right px-3 py-1 m-3 text-white">Register</a>
+        <a href="{{ route('register') }}" class="ml-auto float-right px-3 py-1 m-3 text-white">Register</a>
     </div>
     <main>
         <div class="container">
@@ -67,10 +66,8 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset('js/vendor/jquery-3.3.1.min.js') }}"></script>
-    <script src="{{ asset('js/vendor/bootstrap.bundle.min.js') }}"></script>
-    {{-- <script src="{{ asset('js/vendor/jquery.validate/jquery.validate.min.js') }}"></script> --}}
-    {{-- <script src="{{ asset('js/vendor/jquery.validate/additional-methods.min.js') }}"></script> --}}
-    <script src="{{ asset('js/dore.script.js') }}"></script>
-    <script src="{{ asset('js/scripts.js') }}"></script>
+    <script src="{{asset('js/vendor/jquery-3.3.1.min.js')}}"></script>
+    <script src="{{asset('js/vendor/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('js/dore.script.js')}}"></script>
+    <script src="{{asset('js/scripts.js')}}"></script>
 @endsection

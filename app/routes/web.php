@@ -27,13 +27,24 @@ Route::get('/register', '\App\Http\Controllers\AuthController@showRegister')->na
 Route::post('/register', 'App\Http\Controllers\AuthController@register')->name('register');
 
 
-Route::post('/dashboard', '\App\Http\Controllers\SurveyController@store')->name('survey.store');
+Route::post('/dashboard', '\App\Http\Controllers\DashboardController@storeSurvey')->name('survey.store');
 
 
-Route::get('/dashboard/surveys/{i}', '\App\Http\Controllers\SurveyController@show')->name('survey.show');
+Route::get('/dashboard/surveys/{i}', '\App\Http\Controllers\DashboardController@showsurvey')->name('survey.show');
+
+
+Route::post('/dashboard/surveys', '\App\Http\Controllers\SurveyController@addQuestion')->name('survey.addQuestion');
+
+
+// Route::get('/dashboard', '\App\Http\Controllers\DashboardController@testsurvey')->name('survey.show');
 
 
 Route::post('/logout', '\App\Http\Controllers\AuthController@logout')->name('logout');
 
 
 Route::get('/dashboard', '\App\Http\Controllers\DashboardController@index')->name('dashboard.index');
+
+
+// Route::get('/dashboard/test', function(){
+//     return view('dashboard.surveys.test');
+// })->name('dashboard.index');

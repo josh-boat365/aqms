@@ -6,16 +6,16 @@
     <meta charset="UTF-8">
     <title>Dore jQuery</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-    <link rel="stylesheet" href="font/iconsmind-s/css/iconsminds.css">
-    <link rel="stylesheet" href="font/simple-line-icons/css/simple-line-icons.css">
-    <link rel="stylesheet" href="css/vendor/bootstrap.min.css">
-    <link rel="stylesheet" href="css/vendor/bootstrap.rtl.only.min.css">
-    <link rel="stylesheet" href="css/vendor/perfect-scrollbar.css">
-    <link rel="stylesheet" href="css/vendor/select2.min.css">
-    <link rel="stylesheet" href="css/vendor/select2-bootstrap.min.css">
-    <link rel="stylesheet" href="css/vendor/component-custom-switch.min.css">
-    <link rel="stylesheet" href="css/dore.dark.bluenavy.min.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="{{ asset('font/iconsmind-s/css/iconsminds.css') }}">
+    <link rel="stylesheet" href="{{ asset('font/simple-line-icons/css/simple-line-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendor/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendor/bootstrap.rtl.only.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendor/perfect-scrollbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendor/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendor/select2-bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendor/component-custom-switch.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/dore.light.bluenavy.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 </head>
 
 <body id="app-container" class="menu-sub-hidden  right-menu">
@@ -73,7 +73,7 @@
                     <div class="dropdown-menu dropdown-menu-right mt-3 position-absolute" id="notificationDropdown">
                         <div class="scroll">
                             <div class="d-flex flex-row mb-3 pb-3 border-bottom">
-                                <a href="#"><img src="img/profiles/l-2.jpg" alt="Notification Image"
+                                <a href="#"><img src="{{ asset('img/profiles/l-2.jpg') }}" alt="Notification Image"
                                         class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle"></a>
                                 <div class="pl-3">
                                     <a href="#">
@@ -83,7 +83,8 @@
                                 </div>
                             </div>
                             <div class="d-flex flex-row mb-3 pb-3 border-bottom">
-                                <a href="#"><img src="img/notifications/1.jpg" alt="Notification Image"
+                                <a href="#"><img src="{{ asset('img/notifications/1.jpg') }}"
+                                        alt="Notification Image"
                                         class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle"></a>
                                 <div class="pl-3">
                                     <a href="#">
@@ -93,7 +94,8 @@
                                 </div>
                             </div>
                             <div class="d-flex flex-row mb-3 pb-3 border-bottom">
-                                <a href="#"><img src="img/notifications/2.jpg" alt="Notification Image"
+                                <a href="#"><img src="{{ asset('img/notifications/2.jpg') }}"
+                                        alt="Notification Image"
                                         class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle"></a>
                                 <div class="pl-3">
                                     <a href="#">
@@ -103,7 +105,8 @@
                                 </div>
                             </div>
                             <div class="d-flex flex-row mb-3 pb-3">
-                                <a href="#"><img src="img/notifications/3.jpg" alt="Notification Image"
+                                <a href="#"><img src="{{ asset('img/notifications/3.jpg') }}"
+                                        alt="Notification Image"
                                         class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle"></a>
                                 <div class="pl-3">
                                     <a href="#">
@@ -120,11 +123,12 @@
                         class="simple-icon-size-actual"></i></button>
             </div>
             <div class="user d-inline-block"><button class="btn btn-empty p-0" type="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false"><span class="name">Sarah Kortney</span> <span><img
-                            alt="Profile Picture" src="img/profiles/l-1.jpg"></span></button>
+                    aria-haspopup="true" aria-expanded="false"><span class="name">Sarah Kortney</span>
+                    <span><img alt="Profile Picture" src="{{asset('img/profiles/l-1.jpg')}}"></span></button>
                 <div class="dropdown-menu dropdown-menu-right mt-3"><a class="dropdown-item" href="#">Account</a> <a
                         class="dropdown-item" href="#">Features</a> <a class="dropdown-item" href="#">History</a> <a
-                        class="dropdown-item" href="#">Support</a> <a class="dropdown-item" href="#">Sign out</a></div>
+                        class="dropdown-item" href="#">Support</a> <a class="dropdown-item" href="#">Sign out</a>
+                </div>
             </div>
         </div>
     </nav>
@@ -134,8 +138,8 @@
                 <ul class="list-unstyled">
                     <li><a href="#dashboard"><i class="iconsminds-shop-4"></i> <span>Dashboards</span></a></li>
                     <li><a href="#layouts"><i class="iconsminds-digital-drawing"></i> Pages</a></li>
-                    <li class="active"><a href="#applications"><i class="iconsminds-air-balloon-1"></i> Applications</a>
-                    </li>
+                    <li class="active"><a href="#applications"><i class="iconsminds-air-balloon-1"></i>
+                            Applications</a></li>
                     <li><a href="#ui"><i class="iconsminds-pantone"></i> UI</a></li>
                     <li><a href="#menu"><i class="iconsminds-three-arrow-fork"></i> Menu</a></li>
                     <li><a href="Blank.Page.html"><i class="iconsminds-bucket"></i> Blank Page</a></li>
@@ -245,8 +249,8 @@
                                 class="d-inline-block">Library</span></a></li>
                     <li><a href="Apps.Todo.List.html"><i class="simple-icon-check"></i> <span
                                 class="d-inline-block">Todo</span></a></li>
-                    <li class="active"><a href="Apps.Survey.List.html"><i class="simple-icon-calculator"></i> <span
-                                class="d-inline-block">Survey</span></a></li>
+                    <li class="active"><a href="Apps.Survey.List.html"><i class="simple-icon-calculator"></i>
+                            <span class="d-inline-block">Survey</span></a></li>
                     <li><a href="Apps.Chat.html"><i class="simple-icon-bubbles"></i> <span
                                 class="d-inline-block">Chat</span></a></li>
                 </ul>
@@ -316,8 +320,8 @@
                                             class="d-inline-block">Modal</span></a></li>
                                 <li><a href="Ui.Components.Navigation.html"><i class="simple-icon-cursor"></i> <span
                                             class="d-inline-block">Navigation</span></a></li>
-                                <li><a href="Ui.Components.PopoverandTooltip.html"><i class="simple-icon-pin"></i> <span
-                                            class="d-inline-block">Popover & Tooltip</span></a></li>
+                                <li><a href="Ui.Components.PopoverandTooltip.html"><i class="simple-icon-pin"></i>
+                                        <span class="d-inline-block">Popover & Tooltip</span></a></li>
                                 <li><a href="Ui.Components.Sortable.html"><i class="simple-icon-shuffle"></i> <span
                                             class="d-inline-block">Sortable</span></a></li>
                                 <li><a href="Ui.Components.Tables.html"><i class="simple-icon-grid"></i> <span
@@ -336,8 +340,8 @@
                                             class="d-inline-block">Default</span></a></li>
                                 <li><a href="Menu.Subhidden.html"><i class="simple-icon-arrow-left mi-subhidden"></i>
                                         <span class="d-inline-block">Subhidden</span></a></li>
-                                <li><a href="Menu.Hidden.html"><i class="simple-icon-control-start mi-hidden"></i> <span
-                                            class="d-inline-block">Hidden</span></a></li>
+                                <li><a href="Menu.Hidden.html"><i class="simple-icon-control-start mi-hidden"></i>
+                                        <span class="d-inline-block">Hidden</span></a></li>
                                 <li><a href="Menu.Mainhidden.html"><i class="simple-icon-control-rewind mi-hidden"></i>
                                         <span class="d-inline-block">Mainhidden</span></a></li>
                             </ul>
@@ -345,15 +349,16 @@
                     </li>
                     <li><a href="#" data-toggle="collapse" data-target="#collapseMenuLevel" aria-expanded="true"
                             aria-controls="collapseMenuLevel" class="rotate-arrow-icon collapsed"><i
-                                class="simple-icon-arrow-down"></i> <span class="d-inline-block">Menu Levels</span></a>
+                                class="simple-icon-arrow-down"></i> <span class="d-inline-block">Menu
+                                Levels</span></a>
                         <div id="collapseMenuLevel" class="collapse" data-parent="#menuTypes">
                             <ul class="list-unstyled inner-level-menu">
                                 <li><a href="#"><i class="simple-icon-layers"></i> <span class="d-inline-block">Sub
                                             Level</span></a></li>
                                 <li><a href="#" data-toggle="collapse" data-target="#collapseMenuLevel2"
                                         aria-expanded="true" aria-controls="collapseMenuLevel2"
-                                        class="rotate-arrow-icon collapsed"><i class="simple-icon-arrow-down"></i> <span
-                                            class="d-inline-block">Another Level</span></a>
+                                        class="rotate-arrow-icon collapsed"><i class="simple-icon-arrow-down"></i>
+                                        <span class="d-inline-block">Another Level</span></a>
                                     <div id="collapseMenuLevel2" class="collapse">
                                         <ul class="list-unstyled inner-level-menu">
                                             <li><a href="#"><i class="simple-icon-layers"></i> <span
@@ -387,16 +392,15 @@
                         <div class="text-zero top-right-button-container"><button type="button"
                                 class="btn btn-lg btn-outline-primary dropdown-toggle dropdown-toggle-split top-right-button top-right-button-single"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ACTIONS</button>
-                            <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                            </div>
+                            <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item"
+                                    href="#">Action</a> <a class="dropdown-item" href="#">Another action</a></div>
                         </div>
                     </div>
                     <ul class="nav nav-tabs separator-tabs ml-0 mb-5" role="tablist">
-                        <li class="nav-item"><a class="nav-link active" id="first-tab" data-toggle="tab" href="#first"
-                                role="tab" aria-controls="first" aria-selected="true">DETAILS</a></li>
-                        <li class="nav-item"><a class="nav-link" id="third-tab" data-toggle="tab" href="#third"
-                                role="tab" aria-controls="third" aria-selected="false">RESULTS</a></li>
+                        <li class="nav-item"><a class="nav-link active" id="first-tab" data-toggle="tab"
+                                href="#first" role="tab" aria-controls="first" aria-selected="true">DETAILS</a></li>
+                        <li class="nav-item"><a class="nav-link" id="third-tab" data-toggle="tab"
+                                href="#third" role="tab" aria-controls="third" aria-selected="false">RESULTS</a></li>
                     </ul>
                     <div class="tab-content mb-4">
                         <div class="tab-pane show active" id="first" role="tabpanel" aria-labelledby="first-tab">
@@ -411,10 +415,10 @@
                                             <p class="text-muted text-small mb-2">Name</p>
                                             <p class="mb-3">Developer Survey</p>
                                             <p class="text-muted text-small mb-2">Welcome Message</p>
-                                            <p class="mb-3">As a software professional, you are an innovator, problem
-                                                solver, researcher, and a creative. Your job is to take big ideas and
-                                                make them a reality. With the right support, the possibilities are
-                                                endless.<br><br>When
+                                            <p class="mb-3">As a software professional, you are an innovator,
+                                                problem solver, researcher, and a creative. Your job is to take big
+                                                ideas and make them a reality. With the right support, the possibilities
+                                                are endless.<br><br>When
                                                 roadblocks are removed and you’re allowed do your best work, you change
                                                 the world.</p>
                                             <p class="text-muted text-small mb-2">Date</p>
@@ -459,13 +463,14 @@
                                                     <div class="card-body pt-0">
                                                         <div class="edit-mode">
                                                             <div class="form-group mb-3"><label>Title</label> <input
-                                                                    class="form-control" type="text" value="Age"></div>
+                                                                    class="form-control" type="text" value="Age">
+                                                            </div>
                                                             <div class="form-group mb-5"><label>Question</label> <input
                                                                     class="form-control" type="text"
                                                                     value="How old are you?"></div>
                                                             <div class="separator mb-4"></div>
-                                                            <div class="form-group"><label class="d-block">Answer
-                                                                    Type</label> <select
+                                                            <div class="form-group"><label
+                                                                    class="d-block">Answer Type</label> <select
                                                                     class="form-control select2-single"
                                                                     data-width="100%">
                                                                     <option label="&nbsp;">&nbsp;</option>
@@ -475,7 +480,25 @@
                                                                     <option value="2">Multiple Select</option>
                                                                     <option value="3">Checkbox</option>
                                                                     <option value="4">Radiobutton</option>
-                                                                </select></div>
+                                                                </select>
+                                                                <span
+                                                                    class="select2 select2-container select2-container--bootstrap"
+                                                                    dir="ltr" style="width: 100%;"><span
+                                                                        class="selection"><span
+                                                                            class="select2-selection select2-selection--single form-control"
+                                                                            role="combobox" aria-haspopup="true"
+                                                                            aria-expanded="false" tabindex="0"
+                                                                            aria-labelledby="select2-gq0y-container"><span
+                                                                                class="select2-selection__rendered"
+                                                                                id="select2-gq0y-container"
+                                                                                title="Single Select">Single
+                                                                                Select</span><span
+                                                                                class="select2-selection__arrow"
+                                                                                role="presentation"><b
+                                                                                    role="presentation"></b></span></span></span><span
+                                                                        class="dropdown-wrapper"
+                                                                        aria-hidden="true"></span></span>
+                                                            </div>
                                                             <div class="form-group"><label
                                                                     class="d-block">Answers</label>
                                                                 <div class="answers mb-3 sortable">
@@ -536,15 +559,17 @@
                                                                         Add Answer</button></div>
                                                             </div>
                                                         </div>
-                                                        <div class="view-mode"><label>How old are you?</label> <select
-                                                                class="form-control select2-single" data-width="100%">
+                                                        <div class="view-mode"><label>How old are you?</label>
+                                                            <select class="form-control select2-single"
+                                                                data-width="100%">
                                                                 <option label="&nbsp;">&nbsp;</option>
                                                                 <option value="0">18-24</option>
                                                                 <option value="1">24-30</option>
                                                                 <option value="2">30-40</option>
                                                                 <option value="3">40-50</option>
                                                                 <option value="4">50+</option>
-                                                            </select></div>
+                                                            </select>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -581,8 +606,8 @@
                                                                     class="form-control" type="text"
                                                                     value="What is your gender?"></div>
                                                             <div class="separator mb-4"></div>
-                                                            <div class="form-group"><label class="d-block">Answer
-                                                                    Type</label> <select
+                                                            <div class="form-group"><label
+                                                                    class="d-block">Answer Type</label> <select
                                                                     class="form-control select2-single"
                                                                     data-width="100%">
                                                                     <option label="&nbsp;">&nbsp;</option>
@@ -637,22 +662,22 @@
                                                             <div class="mb-4">
                                                                 <div class="custom-control custom-radio"><input
                                                                         type="radio" id="customRadio1"
-                                                                        name="customRadio" class="custom-control-input">
-                                                                    <label class="custom-control-label"
-                                                                        for="customRadio1">Male</label>
-                                                                </div>
+                                                                        name="customRadio"
+                                                                        class="custom-control-input"> <label
+                                                                        class="custom-control-label"
+                                                                        for="customRadio1">Male</label></div>
                                                                 <div class="custom-control custom-radio"><input
                                                                         type="radio" id="customRadio2"
-                                                                        name="customRadio" class="custom-control-input">
-                                                                    <label class="custom-control-label"
-                                                                        for="customRadio2">Female</label>
-                                                                </div>
+                                                                        name="customRadio"
+                                                                        class="custom-control-input"> <label
+                                                                        class="custom-control-label"
+                                                                        for="customRadio2">Female</label></div>
                                                                 <div class="custom-control custom-radio"><input
                                                                         type="radio" id="customRadio3"
-                                                                        name="customRadio" class="custom-control-input">
-                                                                    <label class="custom-control-label"
-                                                                        for="customRadio3">Other</label>
-                                                                </div>
+                                                                        name="customRadio"
+                                                                        class="custom-control-input"> <label
+                                                                        class="custom-control-label"
+                                                                        for="customRadio3">Other</label></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -685,13 +710,14 @@
                                                     <div class="card-body pt-0">
                                                         <div class="edit-mode">
                                                             <div class="form-group mb-3"><label>Title</label> <input
-                                                                    class="form-control" type="text" value="Work"></div>
+                                                                    class="form-control" type="text" value="Work">
+                                                            </div>
                                                             <div class="form-group mb-5"><label>Question</label> <input
                                                                     class="form-control" type="text"
                                                                     value="What is your employment status?"></div>
                                                             <div class="separator mb-4"></div>
-                                                            <div class="form-group"><label class="d-block">Answer
-                                                                    Type</label> <select
+                                                            <div class="form-group"><label
+                                                                    class="d-block">Answer Type</label> <select
                                                                     class="form-control select2-single"
                                                                     data-width="100%">
                                                                     <option label="&nbsp;">&nbsp;</option>
@@ -800,8 +826,8 @@
                                                                     value="What programming languages do you use?">
                                                             </div>
                                                             <div class="separator mb-4"></div>
-                                                            <div class="form-group"><label class="d-block">Answer
-                                                                    Type</label> <select
+                                                            <div class="form-group"><label
+                                                                    class="d-block">Answer Type</label> <select
                                                                     class="form-control select2-single"
                                                                     data-width="100%">
                                                                     <option label="&nbsp;">&nbsp;</option>
@@ -856,7 +882,8 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="mb-1 position-relative"><input
-                                                                            class="form-control" type="text" value="C#">
+                                                                            class="form-control" type="text"
+                                                                            value="C#">
                                                                         <div class="input-icons"><span
                                                                                 class="badge badge-pill handle pr-0 mr-0"><i
                                                                                     class="simple-icon-cursor-move"></i>
@@ -871,8 +898,8 @@
                                                                         Add Answer</button></div>
                                                             </div>
                                                         </div>
-                                                        <div class="view-mode"><label>What programming languages do you
-                                                                use?</label>
+                                                        <div class="view-mode"><label>What programming languages
+                                                                do you use?</label>
                                                             <div class="mb-4">
                                                                 <div class="custom-control custom-checkbox"><input
                                                                         type="checkbox" class="custom-control-input"
@@ -903,7 +930,8 @@
                                     </div>
                                     <div class="text-center"><button type="button"
                                             class="btn btn-outline-primary btn-sm mb-2"><i
-                                                class="simple-icon-plus btn-group-icon"></i> Add Question</button></div>
+                                                class="simple-icon-plus btn-group-icon"></i> Add Question</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1054,8 +1082,8 @@
                 <div class="scroll">
                     <p class="text-muted text-small">Status</p>
                     <ul class="list-unstyled mb-5">
-                        <li class="active"><a href="#"><i class="simple-icon-refresh"></i> Active Surveys <span
-                                    class="float-right">12</span></a></li>
+                        <li class="active"><a href="#"><i class="simple-icon-refresh"></i> Active Surveys
+                                <span class="float-right">12</span></a></li>
                         <li><a href="#"><i class="simple-icon-check"></i> Completed Surveys <span
                                     class="float-right">24</span></a></li>
                     </ul>
@@ -1108,15 +1136,15 @@
             </div>
         </div>
     </footer>
-    <script src="js/vendor/jquery-3.3.1.min.js"></script>
-    <script src="js/vendor/bootstrap.bundle.min.js"></script>
-    <script src="js/vendor/perfect-scrollbar.min.js"></script>
-    <script src="js/vendor/Chart.bundle.min.js"></script>
-    <script src="js/vendor/Sortable.js"></script>
-    <script src="js/vendor/select2.full.js"></script>
-    <script src="js/vendor/mousetrap.min.js"></script>
-    <script src="js/dore.script.js"></script>
-    <script src="js/scripts.js"></script>
+    <script src="{{ asset('js/vendor/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('js/vendor/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('js/vendor/perfect-scrollbar.min.js') }}"></script>
+    <script src="{{ asset('js/vendor/Chart.bundle.min.js') }}"></script>
+    <script src="{{ asset('js/vendor/Sortable.js') }}"></script>
+    <script src="{{ asset('js/vendor/select2.full.js') }}"></script>
+    <script src="{{ asset('js/vendor/mousetrap.min.js') }}"></script>
+    <script src="{{ asset('js/dore.script.js') }}"></script>
+    <script src="{{ asset('js/scripts.js') }}"></script>
 </body>
 <!-- Mirrored from dore-jquery.coloredstrategies.com/Apps.Survey.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 06 Nov 2021 22:42:24 GMT -->
 

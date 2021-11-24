@@ -2,7 +2,8 @@
     <div class="d-flex flex-grow-1 min-width-zero">
         <div
             class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center">
-            <a class="list-item-heading mb-0 truncate w-40 w-xs-100 mt-0" href="Apps.Survey.html"><i
+            <a class="list-item-heading mb-0 truncate w-40 w-xs-100 mt-0"
+                href="{{ url('/dashboard/surveys/' . $survey->id) }}"><i
                     class="
                 @if ($status->status == 'draft')
                 simple-icon-refresh heading-icon

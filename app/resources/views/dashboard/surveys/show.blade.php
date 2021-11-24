@@ -1,5 +1,700 @@
-@extends('layouts.dashboard')
+{{-- @extends('layouts.dashboard')
+
+@section('style')
+    <link rel="stylesheet" href="{{asset('font/iconsmind-s/css/iconsminds.css')}}">
+    <link rel="stylesheet" href="{{asset('font/simple-line-icons/css/simple-line-icons.css')}}">
+    <link rel="stylesheet" href="{{asset('css/vendor/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/vendor/bootstrap.rtl.only.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/vendor/perfect-scrollbar.css')}}">
+    <link rel="stylesheet" href="{{asset('css/vendor/select2.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/vendor/select2-bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/vendor/component-custom-switch.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/dore.dark.bluenavy.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/main.css')}}">
+@endsection
+
+@section('body-id') id="app-container" @endsection
+
+@section('body-class') class="menu-sub-hidden right-menu" @endsection
+
 
 @section('main')
-    @extends('inc.dashboard.question-list')
+    @extends('inc.dashboard.question.question-content')
 @endsection
+
+@section('question-summary')
+    @include('inc.dashboard.question.question-summary',['survey', $survey])
+@endsection
+
+@section('question-list')
+    @include('inc.dashboard.question.question-list', ['survey', $survey])
+@endsection
+
+@section('script')
+    @error('title')
+        <script>
+            $(document).ready(function() {
+                $("#add-new-btn").trigger("click");
+            });
+        </script>
+    @enderror
+
+    <script src="{{asset('js/vendor/jquery-3.3.1.min.js')}}"></script>
+    <script src="{{asset('js/vendor/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('js/vendor/perfect-scrollbar.min.js')}}"></script>
+    <script src="{{asset('js/vendor/Chart.bundle.min.js')}}"></script>
+    <script src="{{asset('js/vendor/Sortable.js')}}"></script>
+    <script src="{{asset('js/vendor/select2.full.js')}}"></script>
+    <script src="{{asset('js/vendor/mousetrap.min.js')}}"></script>
+    <script src="{{asset('js/dore.script.js')}}"></script>
+    <script src="{{asset('js/scripts.js')}}"></script>
+@endsection --}}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<!-- m dore-jquery.coloredstrategies.com/Apps.Survey.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 06 Nov 2021 22:42:24 GMT -->
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dore jQuery</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <link rel="stylesheet" href="{{ asset('font/iconsmind-s/css/iconsminds.css') }}">
+    <link rel="stylesheet" href="{{ asset('font/simple-line-icons/css/simple-line-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendor/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendor/bootstrap.rtl.only.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendor/perfect-scrollbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendor/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendor/select2-bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendor/component-custom-switch.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/dore.dark.bluenavy.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+</head>
+
+<body id="app-container" class="menu-sub-hidden  right-menu show-spinner">
+
+    @include('inc.dashboard.navbar')
+
+
+    @include('inc.dashboard.side-bar')
+
+
+    @extends('inc.dashboard.question.question-content')
+
+    @section('question-summary')
+        @include('inc.dashboard.question.question-summary')
+    @endsection
+
+    @section('question-list')
+        @include('inc.dashboard.question.question-list')
+    @endsection
+
+
+
+    <script src="{{ asset('js/vendor/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('js/vendor/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('js/vendor/perfect-scrollbar.min.js') }}"></script>
+    <script src="{{ asset('js/vendor/Chart.bundle.min.js') }}"></script>
+    <script src="{{ asset('js/vendor/Sortable.js') }}"></script>
+    <script src="{{ asset('js/vendor/mousetrap.min.js') }}"></script>
+    <script src="{{ asset('js/vendor/select2.full.js') }}"></script>
+    <script src="{{ asset('js/dore.script.js') }}"></script>
+
+    {{-- script --}}
+    <script>
+        function loadStyle(e, t) {
+            for (var o = 0; o < document.styleSheets.length; o++)
+                if (document.styleSheets[o].href == e) return;
+            var a = document.getElementsByTagName("head")[0],
+                r = document.createElement("link");
+            (r.rel = "stylesheet"),
+            (r.type = "text/css"),
+            (r.href = '{{ asset('') }}' + e),
+            t &&
+                (r.onload = function() {
+                    t();
+                });
+            var l = $(a).find('[href$="main.css"]');
+            0 !== l.length ? l[0].before(r) : a.appendChild(r);
+        }!(function(e) {
+            e().dropzone && (Dropzone.autoDiscover = !1);
+            try {
+                localStorage.setItem("dore-is-private-tab", !1);
+                e("body").append(
+                    '\n  <div class="theme-colors">\n    <div class="p-4">\n    <p class="text-muted mb-2">Light Theme</p>\n    <div class="d-flex flex-row justify-content-between mb-3">\n      <a href="#" data-theme="dore.light.bluenavy.min.css" class="theme-color theme-color-bluenavy"></a>\n      <a href="#" data-theme="dore.light.blueyale.min.css" class="theme-color theme-color-blueyale"></a>\n      <a href="#" data-theme="dore.light.blueolympic.min.css" class="theme-color theme-color-blueolympic"></a>\n      <a href="#" data-theme="dore.light.greenmoss.min.css" class="theme-color theme-color-greenmoss"></a>\n      <a href="#" data-theme="dore.light.greenlime.min.css" class="theme-color theme-color-greenlime"></a>\n    </div>\n    <div class="d-flex flex-row justify-content-between mb-4">\n      <a href="#" data-theme="dore.light.purplemonster.min.css" class="theme-color theme-color-purplemonster"></a>\n      <a href="#" data-theme="dore.light.orangecarrot.min.css" class="theme-color theme-color-orangecarrot"></a>\n      <a href="#" data-theme="dore.light.redruby.min.css" class="theme-color theme-color-redruby"></a>\n      <a href="#" data-theme="dore.light.yellowgranola.min.css" class="theme-color theme-color-yellowgranola"></a>\n      <a href="#" data-theme="dore.light.greysteel.min.css" class="theme-color theme-color-greysteel"></a>\n    </div>\n    <p class="text-muted mb-2">Dark Theme</p>\n    <div class="d-flex flex-row justify-content-between mb-3">\n      <a href="#" data-theme="dore.dark.bluenavy.min.css" class="theme-color theme-color-bluenavy"></a>\n      <a href="#" data-theme="dore.dark.blueyale.min.css" class="theme-color theme-color-blueyale"></a>\n      <a href="#" data-theme="dore.dark.blueolympic.min.css" class="theme-color theme-color-blueolympic"></a>\n      <a href="#" data-theme="dore.dark.greenmoss.min.css" class="theme-color theme-color-greenmoss"></a>\n      <a href="#" data-theme="dore.dark.greenlime.min.css" class="theme-color theme-color-greenlime"></a>\n    </div>\n    <div class="d-flex flex-row justify-content-between">\n    <a href="#" data-theme="dore.dark.purplemonster.min.css" class="theme-color theme-color-purplemonster"></a>\n    <a href="#" data-theme="dore.dark.orangecarrot.min.css" class="theme-color theme-color-orangecarrot"></a>\n    <a href="#" data-theme="dore.dark.redruby.min.css" class="theme-color theme-color-redruby"></a>\n    <a href="#" data-theme="dore.dark.yellowgranola.min.css" class="theme-color theme-color-yellowgranola"></a>\n    <a href="#" data-theme="dore.dark.greysteel.min.css" class="theme-color theme-color-greysteel"></a>\n  </div>\n  </div>\n  <div class="p-4">\n    <p class="text-muted mb-2">Border Radius</p>\n    <div class="custom-control custom-radio custom-control-inline">\n      <input type="radio" id="roundedRadio" name="radiusRadio" class="custom-control-input radius-radio" data-radius="rounded">\n      <label class="custom-control-label" for="roundedRadio">Rounded</label>\n    </div>\n    <div class="custom-control custom-radio custom-control-inline">\n      <input type="radio" id="flatRadio" name="radiusRadio" class="custom-control-input radius-radio" data-radius="flat">\n      <label class="custom-control-label" for="flatRadio">Flat</label>\n    </div>\n  </div>\n  <div class="p-4">\n    <p class="text-muted mb-2">Direction</p>\n    <div class="custom-control custom-radio custom-control-inline">\n    <input type="radio" id="ltrRadio" name="directionRadio" class="custom-control-input direction-radio" data-direction="ltr">\n    <label class="custom-control-label" for="ltrRadio">Ltr</label>\n  </div>\n  <div class="custom-control custom-radio custom-control-inline">\n    <input type="radio" id="rtlRadio" name="directionRadio" class="custom-control-input direction-radio" data-direction="rtl">\n    <label class="custom-control-label" for="rtlRadio">Rtl</label>\n  </div>\n</div>\n<a href="#" class="theme-button"> <i class="simple-icon-magic-wand"></i> </a>\n</div>\n'
+                );
+            } catch (e) {}
+            var t = "dore.light.bluenavy.min.css",
+                o = "ltr",
+                a = "rounded";
+            try {
+                localStorage.getItem("dore-theme-color") ? (t = localStorage.getItem("dore-theme-color")) : localStorage
+                    .setItem("dore-theme-color", t),
+                    localStorage.getItem("dore-direction") ? (o = localStorage.getItem("dore-direction")) : localStorage
+                    .setItem("dore-direction", o),
+                    localStorage.getItem("dore-radius") ? (a = localStorage.getItem("dore-radius")) : localStorage
+                    .setItem("dore-radius", a);
+            } catch (e) {
+                (t = "dore.light.bluenavy.min.css"), (o = "ltr"), (a = "rounded");
+            }
+
+            function r() {
+                e("body").addClass(o), e("html").attr("dir", o), e("body").addClass(a), e("body").dore();
+            }
+            e(".theme-color[data-theme='" + t + "']").addClass("active"),
+                e(".direction-radio[data-direction='" + o + "']").attr("checked", !0),
+                e(".radius-radio[data-radius='" + a + "']").attr("checked", !0),
+                e("#switchDark").attr("checked", t.indexOf("dark") > 0),
+                loadStyle("css/" + t, function() {
+                    setTimeout(r, 300);
+                }),
+                e("body").on("click", ".theme-color", function(t) {
+                    t.preventDefault();
+                    var o = e(this).data("theme");
+                    try {
+                        localStorage.setItem("dore-theme-color", o), window.location.reload();
+                    } catch (e) {}
+                }),
+                e("input[name='directionRadio']").on("change", function(t) {
+                    var o = e(t.currentTarget).data("direction");
+                    try {
+                        localStorage.setItem("dore-direction", o), window.location.reload();
+                    } catch (e) {}
+                }),
+                e("input[name='radiusRadio']").on("change", function(t) {
+                    var o = e(t.currentTarget).data("radius");
+                    try {
+                        localStorage.setItem("dore-radius", o), window.location.reload();
+                    } catch (e) {}
+                }),
+                e("#switchDark").on("change", function(o) {
+                    var a = e(o.currentTarget)[0].checked ? "dark" : "light";
+                    "dark" == a ? (t = t.replace("light", "dark")) : "light" == a && (t = t.replace("dark",
+                        "light"));
+                    try {
+                        localStorage.setItem("dore-theme-color", t), window.location.reload();
+                    } catch (e) {}
+                }),
+                e(".theme-button").on("click", function(t) {
+                    t.preventDefault(), e(this).parents(".theme-colors").toggleClass("shown");
+                }),
+                e(document).on("click", function(t) {
+                    e(t.target).parents().hasClass("theme-colors") ||
+                        e(t.target).parents().hasClass("theme-button") ||
+                        e(t.target).hasClass("theme-button") ||
+                        e(t.target).hasClass("theme-colors") ||
+                        (e(".theme-colors").hasClass("shown") && e(".theme-colors").removeClass("shown"));
+                });
+        })(jQuery);
+    </script>
+
+    {{-- new que add --}}
+    <script>
+        $(function () {
+            $('.add-que').click(function () {
+                $que_box = $('<div/>').append(
+                    $('<div/>').attr({
+                        'class': 'card p-4 mb-4',
+                        'style': 'border-radius: .75rem'
+                    }).append(
+                        $('<div/>').text('Question').addClass('mb-1'),
+                        $('<form> @csrf </form>').attr({
+                            'method': 'post',
+                            'action': '{{route("survey.addQuestion")}}',
+                        }).append(
+                            $('<input/>').attr({
+                                'type': 'hidden',
+                                'value': '{{$survey->id}}',
+                                'name': 'survey_id',
+                            }),
+                            $('<input/>').attr({
+                                'class': 'form-control',
+                                'type': 'text',
+                                'name': 'question',
+                                'id': 'question',
+                            })
+                        )
+                    )
+                );
+
+            $('.sortable-survey').append($que_box);
+
+            $(this).hide();
+
+            })
+        })
+        // <div>
+        //     <div class="card p-4 mb-4" style="border-radius: .75rem">
+        //         <div class="mb-1">Question</div>
+        //         <form action="" method="post">
+        //             @csrf
+        //             <input class="form-control" type="text" name="question" id="question">
+        //         </form>
+        //     </div>
+        // </div>
+    </script>
+
+    {{-- auto add que --}}
+    {{-- <script>
+        $(function() {
+            $question_card = $('<div/>')
+                .append(
+                    $('<div/>').addClass('card question d-flex mb-4 edit-quesiton')
+                    .append(
+                        $('<div/>').addClass('d-flex flex-grow-1 min-width-zero')
+                        .append(
+                            $('<div/>').addClass(
+                                'card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center'
+                            )
+                            .append(
+                                $('<div/>').addClass(
+                                    'list-item-heading mb-0 truncate w-80 mb-1 mt-1'
+                                ) //append question as text value
+                                .append(
+                                    $('<span/>').addClass('heading-number d-inline-block'),
+
+                                )
+                            ),
+                            $('<div/>').addClass(
+                                'custom-control custom-checkbox pl-1 align-self-center pr-4')
+                            .append(
+                                $('<button/>').addClass(
+                                    'btn btn-outline-theme-3 icon-button edit-button')
+                                .append(
+                                    $('<i/>').addClass('simple-icon-pencil')
+                                ),
+
+                                $('<button/>').addClass(
+                                    'btn btn-outline-theme-3 icon-button view-button')
+                                .append(
+                                    $('<i/>').addClass('simple-icon-eye')
+                                ),
+
+                                $('<button/>').attr({
+                                    'class': 'btn btn-outline-theme-3 icon-button rotate-icon-click rotate',
+                                    'type': 'button',
+                                    'data-toggle': 'collapse',
+                                    'data-target': '#34', //question id
+                                    'aria-expanded': 'true',
+                                    'aria-controls': '34' //question id
+                                })
+                                .append(
+                                    $('<i/>').addClass('simple-icon-arrow-down with-rotate-icon')
+                                )
+
+                            )
+                        ),
+                        $('<div/>').attr({
+                            'class': 'question-collapse collapse show',
+                            'id': '34' //question id
+                        }).append(
+                            $('<div/>').addClass('card-body pt-0')
+                            .append(
+                                $('<div/>').addClass('edit-mode')
+                                .append(
+                                    $('<div/>').addClass('form-group mb-5')
+                                    .append(
+                                        $('<label> Question </label>'),
+                                        $('<input/>').attr({
+                                            'class': 'form-control',
+                                            'text': 'text',
+                                            'placeholder': 'enter new question here'
+                                        })
+                                    ),
+                                    $('<div/>').addClass('separator mb-4'),
+                                    $('<div/>').addClass('form-group')
+                                    .append(
+                                        $('<label/>').text('Answer Type').addClass('d-block'),
+                                        $('<select/>').attr({
+                                            'class': 'form-control select2-single',
+                                            'data-width': '100%'
+                                        }).append(
+                                            $('<option/>').text('').attr({
+                                                // 'label': '&nbsp;'
+                                            }),
+                                            $('<option/>').text('Text Input').attr({
+                                                'value': '0'
+                                            }),
+                                            $('<option/>').text('Single Select').attr({
+                                                'value': '1'
+                                            }),
+                                            $('<option/>').text('Multiple Select').attr({
+                                                'value': '2'
+                                            }),
+                                            $('<option/>').text('Checkbox').attr({
+                                                'value': '3'
+                                            }),
+                                            $('<option/>').text('Radiobutton').attr({
+                                                'value': '4'
+                                            }),
+                                        )
+                                    ),
+                                    $('<div/>').addClass('form-group')
+                                    .append(
+                                        $('<label/>').text('Answers').addClass('d-block'),
+                                        $('<div/>').addClass('answers mb-3 sortable'),
+                                        $('<div/>').addClass('text-center')
+                                        .append(
+                                            $('<button/>').addClass(
+                                                'btn btn-outline-primary btn-sm mb-2 ans-btn')
+                                            .append(
+                                                $('<i/>').text('Add Answer').attr({
+                                                    'class': 'simple-icon-plus btn-group-icon',
+                                                    'type': 'button'
+                                                })
+                                            )
+                                        )
+                                    )
+                                ),
+                                $('<div/>').addClass('view-mode')
+                                .append(
+                                    $('<label class"d-block"> Answer </label>'),
+                                    $('<div/>').addClass('answers mb-3 sortable'),
+                                    $('<div/>').addClass('text-center')
+                                    .append(
+                                        $('<button/>').text('Add Answer').attr({
+                                            'type': 'button',
+                                            'class': 'btn btn-outline-primary btn-sm mb-2 ans-btn'
+                                        }).append(
+                                            $('<i/>').addClass('simple-icon-plus btn-group-icon')
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    )
+                );
+
+            $('.sortable-survey').append($question_card);
+
+
+
+        })
+    </script> --}}
+
+    {{-- add que --}}
+    {{-- <script>
+        $(function() {
+            $('.add-que').click(function() {
+
+                $question_card = $('<div/>')
+                    .append(
+                        $('<div/>').addClass('card question d-flex mb-4 edit-quesiton')
+                        .append(
+                            $('<div/>').addClass('d-flex flex-grow-1 min-width-zero')
+                            .append(
+                                $('<div/>').addClass(
+                                    'card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center'
+                                )
+                                .append(
+                                    $('<div/>').addClass(
+                                        'list-item-heading mb-0 truncate w-80 mb-1 mt-1'
+                                    ) //append question as text value
+                                    .append(
+                                        $('<span/>').addClass('heading-number d-inline-block'),
+
+                                    )
+                                ),
+                                $('<div/>').addClass(
+                                    'custom-control custom-checkbox pl-1 align-self-center pr-4')
+                                .append(
+                                    $('<button/>').addClass(
+                                        'btn btn-outline-theme-3 icon-button edit-button')
+                                    .append(
+                                        $('<i/>').addClass('simple-icon-pencil')
+                                    ),
+
+                                    $('<button/>').addClass(
+                                        'btn btn-outline-theme-3 icon-button view-button')
+                                    .append(
+                                        $('<i/>').addClass('simple-icon-eye')
+                                    ),
+
+                                    $('<button/>').attr({
+                                        'class': 'btn btn-outline-theme-3 icon-button rotate-icon-click rotate',
+                                        'type': 'button',
+                                        'data-toggle': 'collapse',
+                                        'data-target': '#34', //question id
+                                        'aria-expanded': 'true',
+                                        'aria-controls': '34' //question id
+                                    })
+                                    .append(
+                                        $('<i/>').addClass('simple-icon-arrow-down with-rotate-icon')
+                                    )
+
+                                )
+                            ),
+                            $('<div/>').attr({
+                                'class': 'question-collapse collapse show',
+                                'id': '34' //question id
+                            }).append(
+                                $('<div/>').addClass('card-body pt-0')
+                                .append(
+                                    $('<div/>').addClass('edit-mode')
+                                    .append(
+                                        $('<div/>').addClass('form-group mb-5')
+                                        .append(
+                                            $('<label> Question </label>'),
+                                            $('<input/>').attr({
+                                                'class': 'form-control',
+                                                'text': 'text',
+                                                'placeholder': 'enter new question here'
+                                            })
+                                        ),
+                                        $('<div/>').addClass('separator mb-4'),
+                                        $('<div/>').addClass('form-group')
+                                        .append(
+                                            $('<label/>').text('Answer Type').addClass('d-block'),
+                                            $('<select/>').attr({
+                                                'class': 'form-control select2-single',
+                                                'data-width': '100%'
+                                            }).append(
+                                                $('<option/>').text('').attr({
+                                                    // 'label': '&nbsp;'
+                                                }),
+                                                $('<option/>').text('Text Input').attr({
+                                                    'value': '0'
+                                                }),
+                                                $('<option/>').text('Single Select').attr({
+                                                    'value': '1'
+                                                }),
+                                                $('<option/>').text('Multiple Select').attr({
+                                                    'value': '2'
+                                                }),
+                                                $('<option/>').text('Checkbox').attr({
+                                                    'value': '3'
+                                                }),
+                                                $('<option/>').text('Radiobutton').attr({
+                                                    'value': '4'
+                                                }),
+                                            )
+                                        ),
+                                        $('<div/>').addClass('form-group')
+                                        .append(
+                                            $('<label/>').text('Answers').addClass('d-block'),
+                                            $('<div/>').addClass('answers mb-3 sortable'),
+                                            $('<div/>').addClass('text-center')
+                                            .append(
+                                                $('<button/>').addClass(
+                                                    'btn btn-outline-primary btn-sm mb-2 ans-btn')
+                                                .append(
+                                                    $('<i/>').text('Add Answer').attr({
+                                                        'class': 'simple-icon-plus btn-group-icon',
+                                                        'type': 'button'
+                                                    })
+                                                )
+                                            )
+                                        )
+                                    ),
+                                    $('<div/>').addClass('view-mode')
+                                    .append(
+                                        $('<label class"d-block"> Answer </label>'),
+                                        $('<div/>').addClass('answers mb-3 sortable'),
+                                        $('<div/>').addClass('text-center')
+                                        .append(
+                                            $('<button/>').text('Add Answer').attr({
+                                                'type': 'button',
+                                                'class': 'btn btn-outline-primary btn-sm mb-2 ans-btn'
+                                            }).append(
+                                                $('<i/>').addClass('simple-icon-plus btn-group-icon')
+                                            )
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    );
+
+                    $('.sortable-survey').append($question_card);
+
+
+            })
+
+
+            // $('.add-que').click(function() {
+            //     $question_card = $('<div/>')
+            //         .append(
+            //             $('<div/>').addClass('card question d-flex mb-4 edit-quesiton')
+            //             .append(
+            //                 $('<div/>').addClass('d-flex flex-grow-1 min-width-zero')
+            //                 .append(
+            //                     $('<div/>').addClass(
+            //                         'card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center'
+            //                     )
+            //                     .append(
+            //                         $('<div/>').addClass(
+            //                             'list-item-heading mb-0 truncate w-80 mb-1 mt-1'
+            //                         ) //append question as text value
+            //                         .append(
+            //                             $('<span/>').addClass('heading-number d-inline-block'),
+
+            //                         )
+            //                     ),
+            //                     $('<div/>').addClass(
+            //                         'custom-control custom-checkbox pl-1 align-self-center pr-4')
+            //                     .append(
+            //                         $('<button/>').addClass(
+            //                             'btn btn-outline-theme-3 icon-button edit-button')
+            //                         .append(
+            //                             $('<i/>').addClass('simple-icon-pencil')
+            //                         ),
+
+            //                         $('<button/>').addClass(
+            //                             'btn btn-outline-theme-3 icon-button view-button')
+            //                         .append(
+            //                             $('<i/>').addClass('simple-icon-eye')
+            //                         ),
+
+            //                         $('<button/>').attr({
+            //                             'class': 'btn btn-outline-theme-3 icon-button rotate-icon-click rotate',
+            //                             'type': 'button',
+            //                             'data-toggle': 'collapse',
+            //                             'data-target': '#34', //question id
+            //                             'aria-expanded': 'true',
+            //                             'aria-controls': '34' //question id
+            //                         })
+            //                         .append(
+            //                             $('<i/>').addClass('simple-icon-arrow-down with-rotate-icon')
+            //                         )
+
+            //                     )
+            //                 ),
+            //                 $('<div/>').attr({
+            //                     'class': 'question-collapse collapse show',
+            //                     'id': '34' //question id
+            //                 }).append(
+            //                     $('<div/>').addClass('card-body pt-0')
+            //                     .append(
+            //                         $('<div/>').addClass('edit-mode')
+            //                         .append(
+            //                             $('<div/>').addClass('form-group mb-5')
+            //                             .append(
+            //                                 $('<label> Question </label>'),
+            //                                 $('<input/>').attr({
+            //                                     'class': 'form-control',
+            //                                     'text': 'text',
+            //                                     'placeholder': 'enter new question here'
+            //                                 })
+            //                             ),
+            //                             $('<div/>').addClass('separator mb-4'),
+            //                             $('<div/>').addClass('form-group')
+            //                             .append(
+            //                                 $('<label/>').text('Answer Type').addClass('d-block'),
+            //                                 $('<select/>').attr({
+            //                                     'class': 'form-control select2-single',
+            //                                     'data-width': '100%'
+            //                                 }).append(
+            //                                     $('<option/>').text('').attr({
+            //                                         // 'label': '&nbsp;'
+            //                                     }),
+            //                                     $('<option/>').text('Text Input').attr({
+            //                                         'value': '0'
+            //                                     }),
+            //                                     $('<option/>').text('Single Select').attr({
+            //                                         'value': '1'
+            //                                     }),
+            //                                     $('<option/>').text('Multiple Select').attr({
+            //                                         'value': '2'
+            //                                     }),
+            //                                     $('<option/>').text('Checkbox').attr({
+            //                                         'value': '3'
+            //                                     }),
+            //                                     $('<option/>').text('Radiobutton').attr({
+            //                                         'value': '4'
+            //                                     }),
+            //                                 )
+            //                             ),
+            //                             $('<div/>').addClass('form-group')
+            //                             .append(
+            //                                 $('<label/>').text('Answers').addClass('d-block'),
+            //                                 $('<div/>').addClass('answers mb-3 sortable'),
+            //                                 $('<div/>').addClass('text-center')
+            //                                 .append(
+            //                                     $('<button/>').addClass(
+            //                                         'btn btn-outline-primary btn-sm mb-2 ans-btn')
+            //                                     .append(
+            //                                         $('<i/>').text('Add Answer').attr({
+            //                                             'class': 'simple-icon-plus btn-group-icon',
+            //                                             'type': 'button'
+            //                                         })
+            //                                     )
+            //                                 )
+            //                             )
+            //                         ),
+            //                         $('<div/>').addClass('view-mode')
+            //                         .append(
+            //                             $('<label class"d-block"> Answer </label>'),
+            //                             $('<div/>').addClass('answers mb-3 sortable'),
+            //                             $('<div/>').addClass('text-center')
+            //                             .append(
+            //                                 $('<button/>').text('Add Answer').attr({
+            //                                     'type': 'button',
+            //                                     'class': 'btn btn-outline-primary btn-sm mb-2 ans-btn'
+            //                                 }).append(
+            //                                     $('<i/>').addClass('simple-icon-plus btn-group-icon')
+            //                                 )
+            //                             )
+            //                         )
+            //                     )
+            //                 )
+            //             )
+
+
+
+
+            //         )
+
+            //     $(this).parent().parent().children('.sortable-survey').append($question_card)
+
+            // })
+        })
+    </script> --}}
+
+    {{-- add answer --}}
+    <script>
+        $(function() {
+            $('.question').on('click', '.ans-btn', function(e) {
+
+                var ansBox = $('<div/>').addClass('mb-1 position-relative')
+                    .append(
+                        $('<input>').attr({
+                            'class': 'form-control',
+                            'type': 'text',
+                        }),
+
+                        $('<div/>').addClass('input-icons')
+                        .append(
+                            $('<span/>').addClass('badge badge-pill handle pr-0 mr-0')
+                            .append(
+                                $('<i/>').addClass('simple-icon-cursor-move')
+                            ),
+
+                            $('<span/>').addClass('badge badge-pill del-ans btn')
+                            .append(
+                                $('<i/>').addClass('simple-icon-ban')
+                            )
+                        )
+                    )
+
+
+                $(this).parent().parent().children('.answers').append(ansBox)
+            })
+        });
+    </script>
+
+
+    {{-- del ans --}}
+    <script>
+        $(function() {
+            $('.question').on('click', '.del-ans', function() {
+                $(this).parent().parent().slideUp('', function() {
+                    $(this).hide();
+                });
+            })
+        })
+    </script>
+
+</body>
+<!-- Mirrored from dore-jquery.coloredstrategies.com/Apps.Survey.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 06 Nov 2021 22:42:24 GMT -->
+
+</html>
