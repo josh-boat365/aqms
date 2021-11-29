@@ -8,16 +8,21 @@ use Illuminate\Http\Request;
 class SurveyController extends Controller
 {
     public function store(Request $request){
-        $this->validate($request,[
-            'title' => 'required|unique:App\Models\Survey,name',
-        ]);
+        // $this->validate($request,[
+        //     'title' => 'required|unique:App\Models\Survey,name',
+        // ]);
         
-        $survey = new Survey();
-        $survey->name = $request->title;
-        $survey->status_id = 2;
-        $survey->save();
+        dd($request);
 
-        return redirect()->route('dashboard.index');
+        // $survey = new Survey();
+        // $survey->name = $request->title;
+        // $survey->description = $request->details;
+        // $survey->status_id = 2;
+        // $survey->save();
+
+        // TODO: check description field
+
+        // return redirect()->route('dashboard.index');
     }
 
     public function show(int $index){

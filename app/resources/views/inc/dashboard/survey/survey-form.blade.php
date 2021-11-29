@@ -5,6 +5,7 @@
                 data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         </div>
         <div class="modal-body">
+            {{-- update style --}}
             <form class="tooltip-right-bottom" method="POST" novalidate action="{{ route('survey.store') }}">
                 @csrf
                 {{-- {{ $errors }} --}}

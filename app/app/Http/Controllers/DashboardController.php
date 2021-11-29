@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\OptionType;
 use App\Models\Survey;
 use Illuminate\Http\Request;
 
@@ -25,6 +26,7 @@ class DashboardController extends Controller
         
         $survey = new Survey();
         $survey->name = $request->title;
+        $survey->description = $request->details;
         $survey->status_id = 2;
         $survey->save();
 
@@ -32,7 +34,7 @@ class DashboardController extends Controller
     }
 
     public function showSurvey(int $index){
-        return view('dashboard.surveys.show')->with('survey', Survey::find($index));
+        return view('dashboard.surveys.show')->with(['survey'=> Survey::find($index), 'optionTypes' => OptionType::all()]);
     }
 
     public function testSurvey(){

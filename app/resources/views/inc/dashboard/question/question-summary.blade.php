@@ -1,13 +1,16 @@
+{{-- make description editable --}}
+{{-- swap colors --}}
 <div class="col-lg-4 col-12 mb-4">
     <div class="card mb-4">
-        <div class="position-absolute card-top-buttons"><button class="btn btn-header-light icon-button"><i class="simple-icon-pencil"></i></button></div>
+        <div class="position-absolute card-top-buttons"><button class="btn btn-header-light icon-button desc-edit"><i
+                    class="simple-icon-pencil"></i></button></div>
         <div class="card-body">
             <p class="list-item-heading mb-4">Summary</p>
             <p class="text-muted text-small mb-2">Name</p>
             <p class="mb-3">{{ $survey->name }}</p>
             <p class="text-muted text-small mb-2">Description</p>
-            <p class="mb-3">{{ $survey->description }}</p>
-            <p class="text-muted text-small mb-2">Create Date</p>
+            <p class="desc mb-3">{{ $survey->description }}</p>
+            <p class="text-muted text-small mb-2">Date Created</p>
             <p class="mb-3">{{ $survey->created_at->format('Y-m-d') }} </p>
             {{-- <p class="text-muted text-small mb-2">Labels</p>
             <div>

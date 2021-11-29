@@ -26,8 +26,8 @@ html {
 body {
     font-family: Nunito, sans-serif;
     font-size: .8rem;
-    font-weight: 400;
-    color: #3a3a3a;
+    font-weight: 700;
+    color: #00365a;
     background: #f8f8f8
 }
 
@@ -208,7 +208,8 @@ h6 {
 }
 
 .list-item-heading {
-    font-size: 1rem
+    font-size: 1rem;
+    font-weight: 700;
 }
 
 .truncate {
@@ -2738,7 +2739,8 @@ button {
     width: 34px;
     height: 34px;
     text-align: center;
-    color: #00365a
+    color: white;
+    background-color: #00365a;
 }
 
 main {
