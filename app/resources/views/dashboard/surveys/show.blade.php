@@ -99,8 +99,10 @@
     @endsection
 
     @section('stat')
-        <li class="active"><a href="#"> Questions <span
-                    class="float-right mt-4">{{ $survey->questions->count() }}</span></a></li>
+        <li class="active"><a href="#"> All Surveys <span
+                    class="float-right">{{ $survey->questions->count() }}</span></a></li>
+
+                    
         <div class="text-center mt-4"><button type="button" class="btn btn-outline-primary btn-sm mb-2 add-que"><i
                     class="simple-icon-plus btn-group-icon"></i> Add Question</button></div>
     @endsection
@@ -393,35 +395,40 @@
         $(function() {
             $('.add-que').click(function() {
                 $que_box = $('<div/>').append(
-                    $('<div/>').attr({
-                        'class': 'card p-4 mb-4',
-                        'style': 'border-radius: .75rem'
+                    $('<div/>').text('New Question').addClass('mb-1'),
+                    $('<form> @csrf </form>').attr({
+                        'method': 'post',
+                        'action': '{{ route('survey.addQuestion') }}',
                     }).append(
-                        $('<div/>').text('Question').addClass('mb-1'),
-                        $('<form> @csrf </form>').attr({
-                            'method': 'post',
-                            'action': '{{ route('survey.addQuestion') }}',
-                        }).append(
-                            $('<input/>').attr({
-                                'type': 'hidden',
-                                'value': '{{ $survey->id }}',
-                                'name': 'survey_id',
-                            }),
-                            $('<input/>').attr({
-                                'class': 'form-control',
-                                'type': 'text',
-                                'name': 'question',
-                                'id': 'question',
-                                'autocomplete': 'off',
-                            })
-                        )
+                        $('<input/>').attr({
+                            'type': 'hidden',
+                            'value': '{{ $survey->id }}',
+                            'name': 'survey_id',
+                        }),
+                        $('<textarea/>').attr({
+                            'class': 'form-control',
+                            'name': 'question',
+                            'id': 'question',
+                            'autocomplete': 'off',
+                        })
+                    ),
+                    $('<div/>').addClass('text-center').append(
+
+                        $('<button/>').addClass('btn btn-danger mt-3 cancel-add-que').text('cancel')
                     )
+
                 );
 
-                $('.sortable-survey').append($que_box);
+                // $('.sortable-survey').append($que_box);
+                $(this).parent().parent().append($que_box);
 
                 $(this).hide();
 
+            })
+
+            $('.cancel-add-que').click(function() {
+                $(this).parent().parent('.add-que').show()
+                $(this).parent().remove()
             })
         })
         // <div>
