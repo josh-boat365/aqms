@@ -49,7 +49,7 @@
         }
         
         .fixed-background {
-            background: url(../images/Cover2.png) no-repeat center center fixed;
+            background: url(../images/Cover4.png) no-repeat center center fixed;
             background-size: cover;
             width: 100%;
             height: 100%;
@@ -7587,7 +7587,8 @@
         
         .rounded .auth-card .image-side {
             border-top-left-radius: .75rem;
-            border-bottom-left-radius: .75rem
+            border-bottom-left-radius: .75rem;
+            width: 52rem;
         }
         
         @media (max-width:991px) {
@@ -7595,7 +7596,8 @@
                 border-bottom-right-radius: initial;
                 border-bottom-left-radius: initial;
                 border-top-left-radius: .75rem;
-                border-top-right-radius: .75rem
+                border-top-right-radius: .75rem;
+                width: 100%;
             }
         }
         
