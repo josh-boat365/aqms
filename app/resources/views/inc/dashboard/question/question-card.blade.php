@@ -23,16 +23,18 @@
             <div class="question-collapse collapse show" id="q{{ $survey->questions[$i]->id }}">
                 <div class="card-body pt-0">
                     <div class="edit-mode">
+                        {{-- <input type="hidden" name="ques[]" value="{{$i+1}}"> --}}
                         <div class="form-group mb-5"><label>Question</label>
-                            <input class="form-control writtenQuestion" type="text" value="{{ $survey->questions[$i]->question }}">
+                            {{-- question --}}
+                            <input class="form-control writtenQuestion" type="text" name="ques['{{$i+1}}']['que']" value="{{ $survey->questions[$i]->question }}">
                         </div>
 
                         <div class="separator mb-4"></div>
 
                         {{-- answer types select --}}
-                        {{-- Todo: get options from database --}}
                         <div class="form-group opt-type"><label class="d-block">Answer Type</label>
-                            <select class="form-control select2-single option-type" data-width="100%">
+                            {{-- answer-type --}}
+                            <select class="form-control select2-single option-type" data-width="100%" name="ques['{{$i+1}}']['opt_type']">
                                 <option label="&nbsp;">&nbsp;</option>
                                 @foreach ($optionTypes as $optionType)
                                     <option value="{{ $optionType->id }}" 
@@ -48,7 +50,7 @@
                             <div class="answers mb-3 sortable">
 
                                 @foreach ($survey->options->where('question_id', $survey->questions[$i]->id) as $option)
-                                    <div class="mb-1 position-relative ans"><input class="form-control" type="text"
+                                    <div class="mb-1 position-relative ans"><input class="form-control" type="text" name="ques['{{$i+1}}']['ans'][]"
                                             value="{{ $option->option }}">
                                         <div class="input-icons"><span class="badge badge-pill handle pr-0 mr-0"><i
                                                     class="simple-icon-cursor-move"></i> </span><span class="badge badge-pill btn del-ans"><i

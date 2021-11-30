@@ -102,7 +102,7 @@
         <li class="active"><a href="#"> All Surveys <span
                     class="float-right">{{ $survey->questions->count() }}</span></a></li>
 
-                    
+
         <div class="text-center mt-4"><button type="button" class="btn btn-outline-primary btn-sm mb-2 add-que"><i
                     class="simple-icon-plus btn-group-icon"></i> Add Question</button></div>
     @endsection
@@ -410,12 +410,20 @@
                             'name': 'question',
                             'id': 'question',
                             'autocomplete': 'off',
-                        })
-                    ),
-                    $('<div/>').addClass('text-center').append(
+                        }),
+                        $('<div/>').addClass('text-center mt-3').append(
 
-                        $('<button/>').addClass('btn btn-danger mt-3 cancel-add-que').text('cancel')
-                    )
+                            $('<button/>').addClass('btn btn-danger cancel-add-que mr-2').text(
+                            'cancel'),
+
+                            $('<input>').attr({
+                                'type': 'submit',
+                                'class': 'btn btn-primary',
+                                'value': 'add'
+                            })
+                        )
+                    ),
+
 
                 );
 
@@ -426,9 +434,9 @@
 
             })
 
-            $('.cancel-add-que').click(function() {
-                $(this).parent().parent('.add-que').show()
-                $(this).parent().remove()
+            $('.app-menu').on('click', '.cancel-add-que', function() {
+                $(this).parent().parent().parent().remove();
+                $('.add-que').show()
             })
         })
         // <div>

@@ -42,4 +42,9 @@ class DashboardController extends Controller
     }
 
 
+    public function testData(Request $request){
+        dd($request);
+    }
+
+
 }
