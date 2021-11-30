@@ -7,7 +7,7 @@
         <div class="card-body">
             <p class="list-item-heading mb-4">Summary</p>
             <p class="text-muted text-small mb-2">Name</p>
-            <p class="mb-3">{{ $survey->name }}</p>
+            <p class="mb-3 name">{{ $survey->name }}</p>
             <p class="text-muted text-small mb-2">Description</p>
             <p class="desc mb-3">{{ $survey->description }}</p>
             <p class="text-muted text-small mb-2">Date Created</p>

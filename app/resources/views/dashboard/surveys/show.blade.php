@@ -98,6 +98,13 @@
         @include('inc.dashboard.question.question-list')
     @endsection
 
+    @section('stat')
+        <li class="active"><a href="#"> Questions <span
+                    class="float-right mt-4">{{ $survey->questions->count() }}</span></a></li>
+        <div class="text-center mt-4"><button type="button" class="btn btn-outline-primary btn-sm mb-2 add-que"><i
+                    class="simple-icon-plus btn-group-icon"></i> Add Question</button></div>
+    @endsection
+
 
 
     <script src="{{ asset('js/vendor/jquery-3.3.1.min.js') }}"></script>
@@ -516,7 +523,7 @@
                             'type': 'text',
                             'name': 'ans',
                             'id': 'ans',
-                            'placeholder': 'Enter Answe Here...'
+                            'placeholder': 'Enter Answer Here...'
                         });
 
                         //place text box in view mode
@@ -524,6 +531,25 @@
                         break;
 
                     case '2':
+                        //clear view options
+                        $viewMode.children('.mb-4').html(' ');
+
+                        $textArea = $('<textarea/>').attr({
+                            'class': 'form-control',
+                            'name': '',
+                            'id': '',
+                            'cols': '30',
+                            'rows': '2',
+                        })
+
+                        $viewMode.children('.mb-4').append($textArea);
+
+
+
+                        break;
+
+                    case '3':
+
                         //clear view options
                         $viewMode.children('.mb-4').html(' ');
 
@@ -541,18 +567,17 @@
                                     $(`<label/>`).attr({
                                         'for': 'ans' + index,
                                         'class': 'custom-control-label'
-                                    }).text($(this).children('form-control').val())
+                                    }).text($(this).children('.form-control').val())
                                 )
 
-                                console.log($(this))
-
-                            // $viewMode.children('.mb-4').append($optionBox);
+                            $viewMode.children('.mb-4').append($optionBox);
                         })
+
+                        // console.log(3)
 
                         break;
 
-                    case '3':
-                        // console.log(3)
+                    case '4':
                         //clear view options
                         $viewMode.children('.mb-4').html(' ');
 
@@ -578,22 +603,6 @@
                             $viewMode.children('.mb-4').append($optionBox);
                         })
                         break;
-
-                    case '4':
-                        //clear view options
-                        $viewMode.children('.mb-4').html(' ');
-
-                        $textArea = $('<textarea/>').attr({
-                            'class': 'form-control',
-                            'name': '',
-                            'id': '',
-                            'cols': '30',
-                            'rows': '2',
-                        })
-
-                        $viewMode.children('.mb-4').append($textArea);
-
-                        break;
                     default:
                         //clear view options
                         $viewMode.children('.mb-4').html(' ');
@@ -602,7 +611,7 @@
                 }
 
 
-                console.log($options)
+                // console.log($options)
 
             })
             // $('.option-type').on('change', function () {
@@ -615,21 +624,36 @@
     <script>
         $(function() {
             $('.desc-edit').on('click', function() {
-                
+
                 if ($(this).hasClass('desc-edit')) {
-                    $description = $(this).parent().parent().children('.card-body').children('.desc').text();
+                    $description = $(this).parent().parent().children('.card-body').children('.desc')
+                        .text();
+                    $name = $(this).parent().parent().children('.card-body').children('.name').text();
                     $(this).parent().parent().children('.card-body').children('.desc').html($('<textarea/>')
-                    .attr({
+                        .attr({
                             'class': 'form-control',
                             'rows': '10'
                         }).text($description))
+
+                    $(this).parent().parent().children('.card-body').children('.name').html(
+                        $('<input/>').attr({
+                            'type': 'text',
+                            'class': 'form-control',
+                            'value': $name
+                        })
+                    )
+
                 } else {
-                    $description = $(this).parent().parent().children('.card-body').children('.desc').children('.form-control').val();
+                    $description = $(this).parent().parent().children('.card-body').children('.desc')
+                        .children('.form-control').val();
+                    $name = $(this).parent().parent().children('.card-body').children('.name').children(
+                        '.form-control').val();
                     $(this).parent().parent().children('.card-body').children('.desc').html($description)
+                    $(this).parent().parent().children('.card-body').children('.name').html($name)
                 }
 
                 // change icon
-                $(this).children('i').toggleClass('iconsminds-yes')
+                $(this).children('i').toggleClass('simple-icon-eye')
                 $(this).children('i').toggleClass('simple-icon-pencil')
                 $(this).toggleClass('btn-outline-theme-3')
                 $(this).toggleClass('btn-header-light')

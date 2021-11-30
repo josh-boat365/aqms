@@ -5,7 +5,7 @@
             <a class="list-item-heading mb-0 truncate w-40 w-xs-100 mt-0"
                 href="{{ url('/dashboard/surveys/' . $survey->id) }}"><i
                     class="
-                @if ($status->status == 'draft')
+                @if ($status->id == '1')
                 simple-icon-refresh heading-icon
                 @else
                 simple-icon-check heading-icon

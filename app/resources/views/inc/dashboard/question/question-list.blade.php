@@ -175,6 +175,6 @@
             </div>
         </div> --}}
     </div>
-    <div class="text-center"><button type="button" class="btn btn-outline-primary btn-sm mb-2 add-que"><i
-                class="simple-icon-plus btn-group-icon"></i> Add Question</button></div>
+    {{-- <div class="text-center"><button type="button" class="btn btn-outline-primary btn-sm mb-2 add-que"><i
+                class="simple-icon-plus btn-group-icon"></i> Add Question</button></div> --}}
 </div>

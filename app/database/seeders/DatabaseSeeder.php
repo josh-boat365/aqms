@@ -15,14 +15,15 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         
-        \App\Models\Status::factory()->create(['status' => 'draft']);
-        \App\Models\Status::factory()->create(['status' => 'deployed']);
+        \App\Models\Status::factory()->create(['status' => 'Draft']);
+        \App\Models\Status::factory()->create(['status' => 'Deployed']);
+        \App\Models\Status::factory()->create(['status' => 'Archived']);
 
-        \App\Models\OptionType::factory()->create(['type' => 'Text Input']);
-        \App\Models\OptionType::factory()->create(['type' => 'Single Select']);
-        \App\Models\OptionType::factory()->create(['type' => 'Multiple Select']);
-        \App\Models\OptionType::factory()->create(['type' => 'Checkbox']);
-        \App\Models\OptionType::factory()->create(['type' => 'Radiobutton']);
+        \App\Models\OptionType::factory()->create(['type' => 'Text (Single Line)']);
+        \App\Models\OptionType::factory()->create(['type' => 'Text (Multiple Line)']);
+        \App\Models\OptionType::factory()->create(['type' => 'Single Select (Radio Button)']);
+        \App\Models\OptionType::factory()->create(['type' => 'Multiple Select (Check Box)']);
+        \App\Models\OptionType::factory()->create(['type' => 'Grid']);
         
         \App\Models\Survey::factory(3)->create();
 

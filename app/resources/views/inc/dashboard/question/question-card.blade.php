@@ -68,33 +68,34 @@
                             {{-- {{ $survey->questions[$i]->question }} --}}
                         </label>
                         {{-- 1 - text (single line)
+                            4 - text (multi-line)
                                                 2 - radio
                                                 3 - check
-                                                4 - text (multi-line)
                                                 5 - grid --}}
                         <div class="mb-4">
                             {{-- @if ($survey->questions[$i]->option_type_id == 1)
                                 <input class="form-control" type="text" name="{{ $survey->questions[$i]->id }}"
                                     id="{{ $survey->questions[$i]->id }}">
                             @elseif ($survey->questions[$i]->option_type_id == 2)
-                                @foreach ($survey->options->where('question_id', $survey->questions[$i]->id) as $option)
+                            <textarea class="form-control" name="q{{$survey->questions[$i]->id}}" id="q{{$survey->questions[$i]->id}}" cols="30" rows="2"></textarea>
+
+                            @elseif ($survey->questions[$i]->option_type_id == 3)
+                            @foreach ($survey->options->where('question_id', $survey->questions[$i]->id) as $option)
                                     <div class="custom-control custom-radio"><input type="radio" id="o{{ $option->id }}"
                                             name="q{{ $survey->questions[$i]->id }}" class="custom-control-input">
                                         <label class="custom-control-label" for="o{{ $option->id }}">{{ $option->option }}</label>
                                     </div>
                                 @endforeach
+                                
 
-                            @elseif ($survey->questions[$i]->option_type_id == 3)
-                                @foreach ($survey->options->where('question_id', $survey->questions[$i]->id) as $option)
+                            @elseif ($survey->questions[$i]->option_type_id == 4)
+                            @foreach ($survey->options->where('question_id', $survey->questions[$i]->id) as $option)
                                     <div class="custom-control custom-checkbox">
                                         <input class="custom-control-input" type="checkbox" name="" id="o{{ $option->id }}">
                                         <label for="o{{ $option->id }}" class="custom-control-label">{{ $option->option }}</label>
                                     </div>
 
                                 @endforeach
-
-                            @elseif ($survey->questions[$i]->option_type_id == 4)
-                                <textarea class="form-control" name="q{{$survey->questions[$i]->id}}" id="q{{$survey->questions[$i]->id}}" cols="30" rows="2"></textarea>
 
 
                             @else
