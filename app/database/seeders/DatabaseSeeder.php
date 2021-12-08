@@ -30,5 +30,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\Question::factory(15)->create();
 
         \App\Models\Option::factory(30)->create();
+
+        \App\Models\Subquestion::factory(20)->create();
     }
 }

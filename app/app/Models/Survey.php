@@ -20,4 +20,8 @@ class Survey extends Model
     public function options(){
         return $this->hasManyThrough(option::class, Question::class);
     }
+
+    public function columns(){
+        return $this->hasManyThrough(Subquestion::class, Question::class);
+    }
 }

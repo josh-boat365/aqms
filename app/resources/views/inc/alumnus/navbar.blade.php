@@ -26,7 +26,7 @@
     {{-- <a class="navbar-logo" href="Dashboard.Default.html"><span class="logo d-none d-xs-block"></span> <span
             class="logo-mobile d-block d-xs-none"></span>
     </a> --}}
-    
+    <h1>{{$survey->name}}</h1>
     <div class="navbar-right">
         <div class="header-icons d-inline-block align-middle">
             <div class="d-none d-md-inline-block align-text-bottom mr-3">

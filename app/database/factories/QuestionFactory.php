@@ -23,6 +23,6 @@ class QuestionFactory extends Factory
             'survey_id' => $this->faker->randomElement($survey_ids),
             // 'survey_id' => '1',
             'option_type_id' => $this->faker->randomElement($option_type_ids),
-        ];;
+        ];
     }
 }

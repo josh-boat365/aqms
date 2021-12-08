@@ -5,11 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Option extends Model
+class Response extends Model
 {
     use HasFactory;
-
-    protected $fillable=[
-        'option'
-    ];
 }

@@ -90,13 +90,14 @@
 
     @extends('inc.dashboard.question.question-content')
 
-    @section('question-summary')
-        @include('inc.dashboard.question.question-summary')
-    @endsection
+    
+        @section('question-summary')
+            @include('inc.dashboard.question.question-summary')
+        @endsection
 
-    @section('question-list')
-        @include('inc.dashboard.question.question-list')
-    @endsection
+        @section('question-list')
+            @include('inc.dashboard.question.question-list')
+        @endsection
 
     @section('stat')
         <li class="active"><a href="#"> All Surveys <span
@@ -105,6 +106,8 @@
 
         <div class="text-center mt-4"><button type="button" class="btn btn-outline-primary btn-sm mb-2 add-que"><i
                     class="simple-icon-plus btn-group-icon"></i> Add Question</button></div>
+        <div class="text-center mt-4"><button type="button" class="btn btn-outline-success btn-sm mb-2 upd-que"><i
+                    class="simple-icon-plus btn-group-icon"></i> Update</button></div>
     @endsection
 
 
@@ -414,7 +417,7 @@
                         $('<div/>').addClass('text-center mt-3').append(
 
                             $('<button/>').addClass('btn btn-danger cancel-add-que mr-2').text(
-                            'cancel'),
+                                'cancel'),
 
                             $('<input>').attr({
                                 'type': 'submit',
@@ -431,12 +434,14 @@
                 $(this).parent().parent().append($que_box);
 
                 $(this).hide();
+                $('.upd-que').hide();
 
             })
 
             $('.app-menu').on('click', '.cancel-add-que', function() {
                 $(this).parent().parent().parent().remove();
                 $('.add-que').show()
+                $('.upd-que').show()
             })
         })
         // <div>
@@ -455,11 +460,17 @@
         $(function() {
             $('.question').on('click', '.ans-btn', function(e) {
 
+                var $que_num = $(this).parent().parent().parent().children('.que-section').children(
+                    '.que-num').val()
+
+
+
                 var ansBox = $('<div/>').addClass('mb-1 position-relative ans')
                     .append(
                         $('<input>').attr({
                             'class': 'form-control',
                             'type': 'text',
+                            'name': "ques[" + $que_num + "][ans][]"
                         }),
 
                         $('<div/>').addClass('input-icons')
@@ -488,7 +499,7 @@
         $(function() {
             $('.question').on('click', '.del-ans', function() {
                 $(this).parent().parent().slideUp('', function() {
-                    $(this).hide();
+                    $(this).remove();
                 });
             })
         })
@@ -644,27 +655,50 @@
                     $description = $(this).parent().parent().children('.card-body').children('.desc')
                         .text();
                     $name = $(this).parent().parent().children('.card-body').children('.name').text();
-                    $(this).parent().parent().children('.card-body').children('.desc').html($('<textarea/>')
-                        .attr({
-                            'class': 'form-control',
-                            'rows': '10'
-                        }).text($description))
 
-                    $(this).parent().parent().children('.card-body').children('.name').html(
-                        $('<input/>').attr({
-                            'type': 'text',
-                            'class': 'form-control',
-                            'value': $name
-                        })
-                    )
+                    // $(this).parent().parent().children('.card-body').children('.desc').html($('<textarea/>')
+                    //     .attr({
+                    //         'class': 'form-control',
+                    //         'rows': '10'
+                    //     }).text($description))
+
+                    $(this).parent().parent().children('.card-body').children('.desc').hide()
+                    $(this).parent().parent().children('.card-body').children('.name').hide()
+
+                    $('#survey-name').val($name)
+                    $('#survey-name').show()
+
+                    $('#survey-description').text($description)
+                    $('#survey-description').show()
+
+                    // $(this).parent().parent().children('.card-body').children('.name').html(
+                    //     $('<input/>').attr({
+                    //         'type': 'text',
+                    //         'class': 'form-control',
+                    //         'value': $name
+                    //     })
+                    // )
+                    console.log($description)
 
                 } else {
-                    $description = $(this).parent().parent().children('.card-body').children('.desc')
-                        .children('.form-control').val();
-                    $name = $(this).parent().parent().children('.card-body').children('.name').children(
-                        '.form-control').val();
-                    $(this).parent().parent().children('.card-body').children('.desc').html($description)
-                    $(this).parent().parent().children('.card-body').children('.name').html($name)
+                    // $description = $(this).parent().parent().children('.card-body').children('.desc')
+                    //     .children('.form-control').val();
+                    // $name = $(this).parent().parent().children('.card-body').children('.name').children(
+                    //     '.form-control').val();
+                    // $(this).parent().parent().children('.card-body').children('.desc').html($description)
+                    // $(this).parent().parent().children('.card-body').children('.name').html($name)
+
+                    $description = $('#survey-description').val()
+                    $name = $('#survey-name').val()
+
+                    $('#survey-name').hide()
+                    $('#survey-description').hide()
+
+                    $(this).parent().parent().children('.card-body').children('.desc').text($description)
+                        .show()
+                    $(this).parent().parent().children('.card-body').children('.name').text($name).show()
+
+                    console.log($description)
                 }
 
                 // change icon
@@ -677,6 +711,14 @@
 
 
 
+            })
+        })
+    </script>
+
+    <script>
+        $(function() {
+            $('.upd-que').click(function() {
+                $('#update-form').submit()
             })
         })
     </script>

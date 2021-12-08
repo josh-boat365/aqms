@@ -9,24 +9,25 @@
                             class="heading-number d-inline-block">{{ $i + 1 }}
                         </span><span class="preview-question">{{ $survey->questions[$i]->question }}</span></div>
                 </div>
-                <div class="custom-control custom-checkbox pl-1 align-self-center pr-4"><button
+                <div class="custom-control custom-checkbox pl-1 align-self-center pr-4"><div
                         class="btn btn-outline-theme-3 icon-button edit-button"><i
-                            class="simple-icon-pencil"></i></button>
-                    <button class="btn btn-outline-theme-3 icon-button view-button"><i
-                            class="simple-icon-eye"></i></button>
-                    <button class="btn btn-outline-theme-3 icon-button rotate-icon-click rotate" type="button"
+                            class="simple-icon-pencil"></i></div>
+                    <div class="btn btn-outline-theme-3 icon-button view-button"><i
+                            class="simple-icon-eye"></i></div>
+                    <div class="btn btn-outline-theme-3 icon-button rotate-icon-click rotate" type="button"
                         data-toggle="collapse" data-target="#q{{ $survey->questions[$i]->id }}" aria-expanded="true"
                         aria-controls="q{{ $survey->questions[$i]->id }}"><i
-                            class="simple-icon-arrow-down with-rotate-icon"></i></button>
+                            class="simple-icon-arrow-down with-rotate-icon"></i></div>
                 </div>
             </div>
             <div class="question-collapse collapse show" id="q{{ $survey->questions[$i]->id }}">
                 <div class="card-body pt-0">
                     <div class="edit-mode">
-                        {{-- <input type="hidden" name="ques[]" value="{{$i+1}}"> --}}
-                        <div class="form-group mb-5"><label>Question</label>
+                        {{-- <input type="hidden"  ="ques[]" value="{{$i+1}}"> --}}
+                        <div class="form-group mb-5 que-section"><label>Question</label>
                             {{-- question --}}
-                            <input class="form-control writtenQuestion" type="text" name="ques['{{$i+1}}']['que']" value="{{ $survey->questions[$i]->question }}">
+                            <input type="hidden" class="que-num" value="{{ $survey->questions[$i]->id }}">
+                            <input class="form-control writtenQuestion" type="text" name="ques[{{ $survey->questions[$i]->id }}][que]" value="{{ $survey->questions[$i]->question }}">
                         </div>
 
                         <div class="separator mb-4"></div>
@@ -34,7 +35,7 @@
                         {{-- answer types select --}}
                         <div class="form-group opt-type"><label class="d-block">Answer Type</label>
                             {{-- answer-type --}}
-                            <select class="form-control select2-single option-type" data-width="100%" name="ques['{{$i+1}}']['opt_type']">
+                            <select class="form-control select2-single option-type" data-width="100%" name="ques[{{ $survey->questions[$i]->id }}][opt_type]">
                                 <option label="&nbsp;">&nbsp;</option>
                                 @foreach ($optionTypes as $optionType)
                                     <option value="{{ $optionType->id }}" 
@@ -50,7 +51,7 @@
                             <div class="answers mb-3 sortable">
 
                                 @foreach ($survey->options->where('question_id', $survey->questions[$i]->id) as $option)
-                                    <div class="mb-1 position-relative ans"><input class="form-control" type="text" name="ques['{{$i+1}}']['ans'][]"
+                                    <div class="mb-1 position-relative ans"><input class="form-control" type="text" name="ques[{{ $survey->questions[$i]->id }}][ans][]"
                                             value="{{ $option->option }}">
                                         <div class="input-icons"><span class="badge badge-pill handle pr-0 mr-0"><i
                                                     class="simple-icon-cursor-move"></i> </span><span class="badge badge-pill btn del-ans"><i
@@ -59,8 +60,8 @@
                                 @endforeach
 
                             </div>
-                            <div class="text-center"><button type="button" class="btn btn-outline-primary btn-sm mb-2 ans-btn"><i
-                                        class="simple-icon-plus btn-group-icon"></i> Add Answer</button></div>
+                            <div class="text-center"><div class="btn btn-outline-primary btn-sm mb-2 ans-btn"><i
+                                        class="simple-icon-plus btn-group-icon"></i> Add Answer</div></div>
                         </div>
                     </div>
 
