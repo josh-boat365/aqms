@@ -114,6 +114,5 @@
 </div>
 </div>
 </div>
-</div>
 
 @endfor

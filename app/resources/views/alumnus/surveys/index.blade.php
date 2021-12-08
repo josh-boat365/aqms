@@ -76,7 +76,7 @@
 <body id="app-container" class="menu-sub-hidden show-spinner right-menu">
 
 
-    @include('inc.navbar')
+    @include('inc.alumnus.navbar')
 
 
     @include('inc.alumnus.side-bar')

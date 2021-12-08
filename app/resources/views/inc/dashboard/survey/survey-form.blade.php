@@ -1,7 +1,7 @@
 <div class="modal-dialog" role="document">
     <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title">Add New Survey</h5><button type="button" class="close"
+            <h5 class="modal-title font-weight-bold h5">Add New Survey</h5><button type="button" class="close"
                 data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         </div>
         <div class="modal-body">
@@ -9,14 +9,14 @@
             <form class="tooltip-right-bottom" method="POST" novalidate action="{{ route('survey.store') }}">
                 @csrf
                 {{-- {{ $errors }} --}}
-                <div class="form-group has-float-label position-relative"><label>Title</label>
-                    <input type="text" class="form-control" value="{{old('title')}}" name="title">
+                <div class="form-group has-float-label position-relative"><label class="font-weight-bold">Title</label>
+                    <input type="text" class="form-control rounded" value="{{old('title')}}" name="title">
                     @error('title')
                         <div class="invalid-tooltip d-block">{{ $message }}</div>
                     @enderror
                 </div>
-                <div class="form-group"><label>Details</label>
-                    <textarea placeholder="" class="form-control" rows="2" name="details">{{old('details')}}</textarea>
+                <div class="form-group"><label class="font-weight-bold">Details</label>
+                    <textarea placeholder="" class="form-control rounded" rows="2" name="details">{{old('details')}}</textarea>
                 </div>
                 {{-- <div class="form-group"><label>Category</label> <select
                         class="form-control">

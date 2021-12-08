@@ -1,4 +1,4 @@
-/* @import url(https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700); */
+@import url(https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700);
 html {
     width: 100%;
     height: 100%;
@@ -96,7 +96,7 @@ body.background main .container {
 .logo-single {
     width: 110px;
     height: 35px;
-    background: url(../logos/black.svg) no-repeat;
+    background: url(../img/custom/atulogo.png) no-repeat;
     background-position: center center;
     display: inline-block;
     margin-bottom: 60px
@@ -2732,15 +2732,21 @@ button {
 
 .heading-number {
     border: 1px solid #00365a;
+    background-color: #00365a;
     padding: 4px;
     vertical-align: middle;
     margin-right: 10px;
     border-radius: 20px;
-    width: 34px;
-    height: 34px;
+    width: 35px;
+    height: 35px;
     text-align: center;
     color: white;
-    background-color: #00365a;
+}
+
+.ques-header {
+    flex-basis: fit-content;
+    font-weight: 800;
+    color: #00365a;
 }
 
 main {
@@ -7371,7 +7377,8 @@ i.large-icon {
 
 .rounded .auth-card .image-side {
     border-top-left-radius: .75rem;
-    border-bottom-left-radius: .75rem
+    border-bottom-left-radius: .75rem;
+    width: 55rem;
 }
 
 @media (max-width:991px) {
@@ -7379,7 +7386,12 @@ i.large-icon {
         border-bottom-right-radius: initial;
         border-bottom-left-radius: initial;
         border-top-left-radius: .75rem;
-        border-top-right-radius: .75rem
+        border-top-right-radius: .75rem;
+        width: 100%;
+    }
+    .rounded .auth-card .mob-view {
+        position: relative !important;
+        top: 0rem !important;
     }
 }
 
