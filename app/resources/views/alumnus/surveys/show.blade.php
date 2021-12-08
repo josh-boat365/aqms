@@ -1,56 +1,3 @@
-{{-- @extends('layouts.dashboard')
-
-@section('style')
-    <link rel="stylesheet" href="{{asset('font/iconsmind-s/css/iconsminds.css')}}">
-    <link rel="stylesheet" href="{{asset('font/simple-line-icons/css/simple-line-icons.css')}}">
-    <link rel="stylesheet" href="{{asset('css/vendor/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/vendor/bootstrap.rtl.only.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/vendor/perfect-scrollbar.css')}}">
-    <link rel="stylesheet" href="{{asset('css/vendor/select2.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/vendor/select2-bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/vendor/component-custom-switch.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/dore.dark.bluenavy.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/main.css')}}">
-@endsection
-
-@section('body-id') id="app-container" @endsection
-
-@section('body-class') class="menu-sub-hidden right-menu" @endsection
-
-
-@section('main')
-    @extends('inc.dashboard.question.question-content')
-@endsection
-
-@section('question-summary')
-    @include('inc.dashboard.question.question-summary',['survey', $survey])
-@endsection
-
-@section('question-list')
-    @include('inc.dashboard.question.question-list', ['survey', $survey])
-@endsection
-
-@section('script')
-    @error('title')
-        <script>
-            $(document).ready(function() {
-                $("#add-new-btn").trigger("click");
-            });
-        </script>
-    @enderror
-
-    <script src="{{asset('js/vendor/jquery-3.3.1.min.js')}}"></script>
-    <script src="{{asset('js/vendor/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{asset('js/vendor/perfect-scrollbar.min.js')}}"></script>
-    <script src="{{asset('js/vendor/Chart.bundle.min.js')}}"></script>
-    <script src="{{asset('js/vendor/Sortable.js')}}"></script>
-    <script src="{{asset('js/vendor/select2.full.js')}}"></script>
-    <script src="{{asset('js/vendor/mousetrap.min.js')}}"></script>
-    <script src="{{asset('js/dore.script.js')}}"></script>
-    <script src="{{asset('js/scripts.js')}}"></script>
-@endsection --}}
-
-
 <!DOCTYPE html>
 <html lang="en">
 <!-- m dore-jquery.coloredstrategies.com/Apps.Survey.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 06 Nov 2021 22:42:24 GMT -->
@@ -74,7 +21,6 @@
         .theme-colors {
             display: none;
         }
-
     </style>
 
 
@@ -96,7 +42,7 @@
         @endsection --}}
 
     @section('question-list')
-        @include('inc.alumnus.question.question-list')
+        @include('inc.alumnus.question.question-list', ['responses', $responses])
     @endsection
 
     @section('stat')
