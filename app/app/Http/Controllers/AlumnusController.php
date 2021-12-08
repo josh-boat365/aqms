@@ -24,29 +24,50 @@ class AlumnusController extends Controller
 
     public function showSurvey(int $index)
     {
-        return view('alumnus.surveys.show')->with(['surveys' => Survey::all()->where('status_id', 2), 'survey' => Survey::find($index), 'optionTypes' => OptionType::all(), 'responses' => Response::where('user_id', auth()->user()->id)]);
+        // dd(Response::where('user_id', auth()->user()->id)->get());
+        return view('alumnus.surveys.show')->with(['surveys' => Survey::all()->where('status_id', 2), 'survey' => Survey::find($index), 'optionTypes' => OptionType::all(), 'responses' => Response::all()->where('user_id', auth()->user()->id)]);
     }
 
     public function saveSurvey(Request $request)
     {
-        dd($request);
+        // dd($request);
         foreach ($request['ans'] as $que_id => $ans) {
-            if (is_array($ans)) {
-                foreach ($ans as $opt_id => $value) {
+
+            if ($ans != null) {
+                if (is_array($ans)) {
+                    // find all present records
+                    $response = Response::all()->where('question_id', $que_id)->where('user_id', auth()->user()->id);
                     
-                }
-            } else {
-                $response = Response::all()->where(['question_id' => $que_id, 'user_id' => auth()->user()->id]);
-                // if ($ans != null) {
-                # code...
-                if ($response->count() == 0) {
+                    //delete previous records
+                    foreach ($response as $record) {
+                        Response::find($record->id)->delete();
+                    }
+                    // $response = Response::all()->where('question_id', $que_id)->where('user_id', auth()->user()->id);
+                    // dd($response);
+                    // add new records
+                    foreach ($ans as $option_id => $value) {
+                        $record = new Response();
+                        $record->question_id = $que_id;
+                        $record->user_id = auth()->user()->id;
+                        $record->response = $value;
+                        $record->option_id = $option_id;
+                        $record->save();
+                    }
+                } else {
+                    // find all present records
+                    $response = Response::all()->where('question_id', $que_id)->where('user_id', auth()->user()->id);
+                    // $response = Response::all()->where('question_id', $que_id)->where('user_id', auth()->user()->id);
+                    // dd($response);
+                    //delete previous records
+                    foreach ($response as $record) {
+                        Response::find($record->id)->delete();
+                    }
+                    // $response = Response::all()->where('question_id', $que_id)->where('user_id', auth()->user()->id);
+                    // dd($response);
+                    // add new records
                     $record = new Response();
                     $record->question_id = $que_id;
                     $record->user_id = auth()->user()->id;
-                    $record->response = $ans;
-                    $record->save();
-                } else {
-                    $record = $response;
                     $record->response = $ans;
                     $record->save();
                 }

@@ -14,6 +14,14 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+        // \App\Models\User::factory()->create([
+        //     'firstName' => 'Fuad',
+        //     'lastName' => 'Muhammed',
+        //     'otherName' => 'Senpai',
+        //     'email' => 'tchnvirus@gmail.com',
+        //     'user_type' => 'Alumnus',
+        //     'password' => '123',
+        // ]);
         
         \App\Models\Status::factory()->create(['status' => 'Draft']);
         \App\Models\Status::factory()->create(['status' => 'Deployed']);
