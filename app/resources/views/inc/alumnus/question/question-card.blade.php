@@ -1,7 +1,16 @@
+{{-- style for question cards  --}}
+
+<style type="text/css">
+    .card-style{
+        width: 65% !important;
+        margin: 0 auto;
+        }
+</style>
+
 @for ($i = 0; $i < count($survey->questions); $i++)
 
-    <div class="@if ($survey->questions[$i]->option_type_id == 5) col @else col-8 @endif">
-        <div class="card question d-flex mb-4 edit-quesiton">
+    <div class="@if ($survey->questions[$i]->option_type_id == 5) col-12 @else col-lg-12 @endif">
+        <div class="card question d-flex mb-4 card-style">
             <div class="d-flex flex-grow-1 min-width-zero">
                 <div
                     class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center">

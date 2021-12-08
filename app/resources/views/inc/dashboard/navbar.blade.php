@@ -1,3 +1,26 @@
+<style type="text/css">
+    @media (min-width: 320px)and (max-width: 639px){
+        .navbar{
+            width: 100%;
+            justify-content: space-between;
+        }
+        
+        nav .navbar-right{
+            position: relative;
+            right: -58%;
+            bottom: 1.7rem;
+        }
+        nav .atu-icon{
+            position: relative;
+            right: 5rem;
+        }
+        nav .atu-icon a img{
+            width: 45%;
+        }
+    }
+
+</style>
+
 <nav class="navbar fixed-top">
     <div class="d-flex align-items-center navbar-left"><a href="#" class="menu-button d-none d-md-block"><svg
                 class="main" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 17">
@@ -18,40 +41,17 @@
         <div class="search" data-search-path="Pages.Search03d2.html?q="><input placeholder="Search..."> <span
                 class="search-icon"><i class="simple-icon-magnifier"></i></span>
         </div>
-        {{-- buy btn --}}
-        {{-- <a class="btn btn-sm btn-outline-primary ml-3 d-none d-md-inline-block"
-            href="https://1.envato.market/5kAb">&nbsp;BUY&nbsp;</a> --}}
+       
     </div>
-    {{-- logo --}}
-    {{-- <a class="navbar-logo" href="Dashboard.Default.html"><span class="logo d-none d-xs-block"></span> <span
-            class="logo-mobile d-block d-xs-none"></span>
-    </a> --}}
+    <div class="atu-icon" style=" width:8rem">
+        <a href="">
+            <img src="/img/custom/atulogo.png" height="100%" width="90%" alt="">
+        </a>
+    </div>
     <div class="navbar-right">
         <div class="header-icons d-inline-block align-middle">
-            <div class="d-none d-md-inline-block align-text-bottom mr-3">
-                <div class="custom-switch custom-switch-primary-inverse custom-switch-small pl-1" data-toggle="tooltip"
-                    data-placement="left" title="Dark Mode"><input class="custom-switch-input" id="switchDark"
-                        type="checkbox" checked="checked"> <label class="custom-switch-btn" for="switchDark"></label>
-                </div>
-            </div>
-            {{-- grid icon --}}
-            {{-- <div class="position-relative d-none d-sm-inline-block">
-                <button class="header-icon btn btn-empty" type="button" id="iconMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">
-                    <i class="simple-icon-grid"></i>
-                </button>
-                <div class="dropdown-menu dropdown-menu-right mt-3 position-absolute" id="iconMenuDropdown"><a href="#"
-                        class="icon-menu-item"><i class="iconsminds-equalizer d-block"></i> <span>Settings</span> </a><a
-                        href="#" class="icon-menu-item"><i class="iconsminds-male-female d-block"></i>
-                        <span>Users</span> </a>
-                    <a href="#" class="icon-menu-item"><i class="iconsminds-puzzle d-block"></i> <span>Components</span>
-                    </a><a href="#" class="icon-menu-item"><i class="iconsminds-bar-chart-4 d-block"></i>
-                        <span>Profits</span> </a>
-                    <a href="#" class="icon-menu-item"><i class="iconsminds-file d-block"></i> <span>Surveys</span> </a>
-                    <a href="#" class="icon-menu-item"><i class="iconsminds-suitcase d-block"></i>
-                        <span>Tasks</span></a>
-                </div>
-            </div> --}}
+           
+          
             <div class="position-relative d-inline-block">
                 <button class="header-icon btn btn-empty" type="button" id="notificationButton" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
@@ -102,17 +102,14 @@
                         </div>
                     </div>
                 </div>
-            </div><button class="header-icon btn btn-empty d-none d-sm-inline-block" type="button"
-                id="fullScreenButton"><i class="simple-icon-size-fullscreen"></i> <i
-                    class="simple-icon-size-actual"></i></button>
+            </div>
+
         </div>
         <div class="user d-inline-block"><button class="btn btn-empty p-0" type="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false"><span
                     class="name">{{ auth()->user()->firstName }}</span> <span><img alt="Profile Picture"
                         src="{{asset('img/profiles/l-1.jpg')}}"></span></button>
-            <div class="dropdown-menu dropdown-menu-right mt-3"><a class="dropdown-item" href="#">Account</a> <a
-                    class="dropdown-item" href="#">Features</a> <a class="dropdown-item" href="#">History</a> <a
-                    class="dropdown-item" href="#">Support</a>
+            <div class="dropdown-menu dropdown-menu-right mt-3">
                 <form action="{{ route('logout') }}" method="post">
                     @csrf
                     <input class="dropdown-item" type="submit" value="Log out">
