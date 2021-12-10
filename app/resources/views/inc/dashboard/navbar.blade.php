@@ -110,6 +110,7 @@
                     class="name">{{ auth()->user()->firstName }}</span> <span><img alt="Profile Picture"
                         src="{{asset('img/profiles/l-1.jpg')}}"></span></button>
             <div class="dropdown-menu dropdown-menu-right mt-3">
+                <a class="dropdown-item" href="#">Profile</a>
                 <form action="{{ route('logout') }}" method="post">
                     @csrf
                     <input class="dropdown-item" type="submit" value="Log out">

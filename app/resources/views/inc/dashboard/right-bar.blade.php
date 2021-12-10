@@ -1,7 +1,7 @@
 <div class="app-menu">
     <div class="p-4 h-100">
         <div class="scroll">
-            <p class="text-muted text-small">Status</p>
+            <p class="text-small h4">Status</p>
             <ul class="list-unstyled mb-5">
                 @yield('stat')
             </ul>
