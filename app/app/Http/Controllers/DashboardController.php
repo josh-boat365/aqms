@@ -23,6 +23,13 @@ class DashboardController extends Controller
         // return view('dashboard.surveys.show');
     }
 
+    public function responses()
+    {
+
+        return view('inc.dashboard.responses.response-index')->with('allSurveys', Survey::all());
+
+    }
+
     public function storeSurvey(Request $request)
     {
         $this->validate($request, [

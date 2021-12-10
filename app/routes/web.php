@@ -42,6 +42,7 @@ Route::post('/logout', '\App\Http\Controllers\AuthController@logout')->name('log
 
 
 Route::get('/dashboard', '\App\Http\Controllers\DashboardController@index')->name('dashboard.index');
+Route::get('/inc/dashboard/responses', '\App\Http\Controllers\DashboardController@responses')->name('response.index');
 
 Route::post('/dashboard/survey/test', '\App\Http\Controllers\DashboardController@testData')->name('dashboard.test');
 
