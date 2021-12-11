@@ -223,8 +223,9 @@
         $(function() {
             $('.question').on('click', '.ans-btn', function(e) {
 
-                var $que_num = $(this).parent().parent().parent().parent().children('.que-section').children(
-                    '.que-num').val();
+                var $que_num = $(this).parent().parent().parent().parent().children('.que-section')
+                    .children(
+                        '.que-num').val();
 
 
                 var ansBox = $('<div/>').addClass('mb-1 position-relative ans')
@@ -370,7 +371,7 @@
                                     $('<input>').attr({
                                         'class': 'custom-control-input',
                                         'type': 'radio',
-                                        'name': 'ans' + index,
+                                        'name': 'ans',
                                         'id': 'ans' + index
                                     }),
 
@@ -433,7 +434,7 @@
                         )
 
                         $.each($grid_rows, function() {
-                            $grid.children('.d-flex').append($('<div/>').addClass('text-center')
+                            $grid.children('.d-flex').append($('<div/>').addClass('text-center mb-2')
                                 .text($(this).children('.form-control').val()))
                         })
 
@@ -452,7 +453,7 @@
                         $row_index = 1;
                         $.each($grid_rows, function() {
                             $grid.children('.row').children('.d-flex').append(
-                                $('<div/>').addClass('d-flex justify-content-center').append(
+                                $('<div/>').addClass('d-flex justify-content-center mb-2').append(
                                     $('<input>').attr({
                                         'type': 'radio',
                                         'name': 'row' + $row_index,
@@ -460,6 +461,7 @@
                                     })
                                 )
                             )
+                            $row_index++;
                         })
 
                         $viewMode.children('.mb-4').append($grid)
@@ -576,6 +578,36 @@
         })
     </script>
 
+    {{-- initial display --}}
+    <script>
+        $(function() {
+            $('.option-type').each(function() {
+
+                // get rows
+                // $rows = [];
+                // $i = 0;
+                // $(this).parent().parent().children('.ans-form').children('.answers').children('.ans').each(
+                //     function() {
+                //         $rows[$i] = $(this).children('.form-control').val();
+                //         $i++;
+                //     });
+                // console.log($rows);
+
+                // check for grid
+                if ($(this).val() == 5) {
+                    $(this).parent().parent().children('.ans-form').children('.grid').show()
+                    $(this).parent().parent().children('.ans-form').children('.non-grid').hide()
+                } else if ($(this).val() == 1 || $(this).val() == 2) {
+                    $(this).parent().parent().children('.ans-form').children('.grid').hide()
+                    $(this).parent().parent().children('.ans-form').children('.non-grid').hide()
+                } else if ($(this).val() == 3 || $(this).val() == 4) {
+                    $(this).parent().parent().children('.ans-form').children('.grid').hide()
+                    $(this).parent().parent().children('.ans-form').children('.non-grid').show()
+                }
+            })
+        })
+    </script>
+
     {{-- grid row and columns addition --}}
     <script>
         $(function() {
@@ -596,7 +628,7 @@
                             'type': 'text',
                             'name': "ques[" + $que_num + "][ans][rows][new][]"
                         }),
-                        
+
                         $('<div/>').addClass('input-icons')
                         .append(
                             $('<span/>').addClass('badge badge-pill handle pr-0 mr-0')
@@ -610,7 +642,7 @@
                             )
                         )
                     )
-                    $index ++;
+                $index++;
                 $(this).parent().parent().parent().children('.answers').children('.rows').children(
                     '.sortable').append(ansBox)
             })
@@ -622,7 +654,7 @@
                     $(this).remove()
                 }
             })
-            
+
             $('.question').on('click', '.grid-column', function() {
 
                 $que_num = $(this).parent().parent().parent().parent().parent().children('.que-section')
@@ -637,7 +669,7 @@
                             'type': 'text',
                             'name': "ques[" + $que_num + "][ans][columns][new][]"
                         }),
-                        
+
                         $('<div/>').addClass('input-icons')
                         .append(
                             $('<span/>').addClass('badge badge-pill handle pr-0 mr-0')
@@ -651,7 +683,7 @@
                             )
                         )
                     )
-                    $index++;
+                $index++;
                 $(this).parent().parent().parent().children('.answers').children('.columns').children(
                     '.sortable').append(ansBox)
 
