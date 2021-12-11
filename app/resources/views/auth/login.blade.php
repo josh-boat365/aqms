@@ -62,7 +62,7 @@
                             {{-- <a href="{{route('login')}}"><span class="logo-single"></span></a> --}}
                             <form class="tooltip-right-bottom" novalidate method="POST" action="{{ route('login') }}">
                                 @csrf
-                                <div class="form-group has-float-label"><input value="{{ old('email') }}"
+                                <div class="form-group has-float-label"><input class="" value="{{ old('email') }}"
                                         class="form-control" name="email" required>
                                     <span>E-mail</span>
                                     @error('email')
@@ -70,7 +70,7 @@
                                     @enderror
                                 </div>
 
-                                <div class="form-group has-float-label"><input name="password" class="form-control"
+                                <div class="form-group has-float-label"><input class="" name="password" class="form-control"
                                         type="password" required>
                                     <span>Password</span>
                                     @error('password')

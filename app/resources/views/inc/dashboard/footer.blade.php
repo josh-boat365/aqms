@@ -3,13 +3,13 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 col-sm-6">
-                    <p class="mb-0 text-muted">ColoredStrategies 2019</p>
+                    <p class="mb-0 text-muted">&copy; Copyright 2021 - <script type="text/JavaScript"> document.write(Date.now().getFullYear()) </script> Accra  Technical University</p>
                 </div>
                 <div class="col-sm-6 d-none d-sm-block">
                     <ul class="breadcrumb pt-0 pr-0 float-right">
-                        <li class="breadcrumb-item mb-0"><a href="#" class="btn-link">Review</a></li>
-                        <li class="breadcrumb-item mb-0"><a href="#" class="btn-link">Purchase</a></li>
-                        <li class="breadcrumb-item mb-0"><a href="#" class="btn-link">Docs</a></li>
+                        <li class="breadcrumb-item mb-0"><a href="#" class="btn-link">Joshua</a></li>
+                        <li class="breadcrumb-item mb-0"><a href="#" class="btn-link">Fuad</a></li>
+                        <li class="breadcrumb-item mb-0"><a href="#" class="btn-link">Emmanuel</a></li>
                     </ul>
                 </div>
             </div>
