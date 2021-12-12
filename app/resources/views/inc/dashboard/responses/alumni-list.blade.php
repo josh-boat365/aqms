@@ -1,4 +1,4 @@
-<div class="card mb-4 sticky-top" style="top: 115px;">
+<div class="card mb-4 sticky-top" style="top: 115px; z-index: 0">
                                     <div class="card-body">
                                         <div class="d-flex">
                                             <i class="iconsminds-business-man-woman h4"></i> &nbsp;
