@@ -57,6 +57,7 @@
                    
                 </div>
                 <div class="separator mb-5"></div>
+                @include('welcome')
                   {{-- Survey Tile Header  --}}
                   <div class="card mb-5 tile-header">
                     <div class=" card-body row">

@@ -91,6 +91,8 @@
 
     {{-- should be included in survey content --}}
     @extends('inc.dashboard.survey.survey-content')
+    
+
 
     @section('survey-tiles')
         @foreach ($allSurveys as $survey)
