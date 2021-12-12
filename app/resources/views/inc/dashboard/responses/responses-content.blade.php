@@ -22,57 +22,8 @@
                     <div class="tab-pane show active" id="third" role="tabpanel" aria-labelledby="third-tab">
                         <div class="row">
                             <div class="col-lg-4 col-12 mb-4">
-                                <div class="card mb-4">
-                                    <div class="card-body">
-                                        <div class="d-flex">
-                                            <i class="iconsminds-business-man-woman h4"></i> &nbsp;
-                                            <p class="list-item-heading" style="position: relative; top:0.66rem">ALUMNI</p></div>
-                                        <div class="separator mb-3"></div>
-                                        <div class="scroll">
-                                            <div class="mb-3">
-                                                <a href="#">
-                                                <p class="">Aaron Kwame Koranteng Odoom</p>
-                                                </a>
-                                            </div>
-                                            <div class="mb-3">
-                                                <a href="#">
-                                                <p class="">Aaron Kwame Koranteng Odoom</p>
-                                                </a>
-                                            </div>
-                                            <div class="mb-3">
-                                                <a href="#">
-                                                <p class="">Aaron Kwame Koranteng Odoom</p>
-                                                </a>
-                                            </div>
-                                            <div class="mb-3">
-                                                <a href="#">
-                                                <p class="">Aaron Kwame Koranteng Odoom</p>
-                                                </a>
-                                            </div>
-                                            <div class="mb-3">
-                                                <a href="#">
-                                                <p class="">Aaron Kwame Koranteng Odoom</p>
-                                                </a>
-                                            </div>
-                                            <div class="mb-3">
-                                                <a href="#">
-                                                <p class="">Aaron Kwame Koranteng Odoom</p>
-                                                </a>
-                                            </div>
-                                            <div class="mb-3">
-                                                <a href="#">
-                                                <p class="">Aaron Kwame Koranteng Odoom</p>
-                                                </a>
-                                            </div>
-                                            <div class="mb-3">
-                                                <a href="#">
-                                                <p class="">Aaron Kwame Koranteng Odoom</p>
-                                                </a>
-                                            </div>
-                                        </div>
-                                       
-                                    </div>
-                                </div>
+                                
+                                @include('inc.dashboard.responses.alumni-list')
                             </div>
                             <div class="col-12 col-lg-8">
                                 <div class="card mb-4">

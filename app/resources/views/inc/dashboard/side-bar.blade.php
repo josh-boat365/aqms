@@ -1,3 +1,4 @@
+{{-- //TODO: side bar not opening when clicked from different section --}}
 <div class="menu">
     <div class="main-menu">
         <div class="scroll">

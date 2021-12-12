@@ -7,6 +7,7 @@ use App\Models\Survey;
 use App\Models\Question;
 use App\Models\OptionType;
 use App\Models\Subquestion;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -27,7 +28,7 @@ class DashboardController extends Controller
     public function responses()
     {
 
-        return view('dashboard.responses.index')->with('allSurveys', Survey::all());
+        return view('dashboard.responses.index')->with(['allSurveys' => Survey::all(), 'users' => User::all()]);
 
     }
 

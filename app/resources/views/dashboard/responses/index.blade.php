@@ -71,6 +71,15 @@
     <link rel="stylesheet" href="{{ asset('css/vendor/component-custom-switch.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dore.dark.bluenavy.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+
+    <style>
+        /* .alumnus-hover:hover a{
+            color: white;
+        } */
+        .alumnus-hover:hover{
+            background: whitesmoke;
+        }
+    </style>
 </head>
 
 <body id="app-container" class="menu-sub-hidden show-spinner right-menu">
