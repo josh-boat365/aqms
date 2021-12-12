@@ -58,7 +58,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Admin Dashboard | ATU Tracer</title>
+    <title>Admin Dashboard - Responses | ATU Tracer</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <link rel="stylesheet" href="{{ asset('font/iconsmind-s/css/iconsminds.css') }}">
     <link rel="stylesheet" href="{{ asset('font/simple-line-icons/css/simple-line-icons.css') }}">
@@ -71,32 +71,25 @@
     <link rel="stylesheet" href="{{ asset('css/vendor/component-custom-switch.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dore.dark.bluenavy.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-
-    <style>
-        .theme-colors {
-            display: none;
-        }
-
-    </style>
 </head>
 
 <body id="app-container" class="menu-sub-hidden show-spinner right-menu">
 
 
-    @include('inc.dashboard.navbar')
+    @include('inc.dashboard.responses.navbar')
 
 
-    @include('inc.dashboard.side-bar', ['surveys' => $allSurveys])
+    @include('inc.dashboard.responses.side-bar')
 
 
     {{-- should be included in survey content --}}
-    @extends('inc.dashboard.survey.survey-content')
+    @extends('inc.dashboard.responses.responses-content')
 
-    @section('survey-tiles')
+    {{-- @section('survey-tiles')
         @foreach ($allSurveys as $survey)
             @include('inc.dashboard.survey.survey-tile', ['survey' => $survey, 'status' => $survey->status])
         @endforeach
-    @endsection
+    @endsection --}}
 
     @section('stat')
         <li class="active"><a href="#"> All Surveys <span
@@ -108,7 +101,7 @@
         <li><a href="#"> Archived Surveys <span
                     class="float-right">{{ $allSurveys->where('status_id', '3')->count() }}</span></a></li>
         <li><a href="#"> Submitted Surveys <span
-                    class="float-right">null</span></a></li>
+                    class="float-right">{{ $allSurveys->where('status_id', '3')->count() }}</span></a></li>
     @endsection
 
     @section('survey-form')

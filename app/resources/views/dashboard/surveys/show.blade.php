@@ -32,7 +32,7 @@
     @include('inc.dashboard.navbar')
 
 
-    @include('inc.dashboard.side-bar')
+    @include('inc.dashboard.side-bar', ['surveys' => $allSurveys])
 
 
     @extends('inc.dashboard.question.question-content')
@@ -47,7 +47,7 @@
     @endsection
 
     @section('stat')
-        <li class="active"><a href="#"> All Surveys <span
+        <li class="active"><a href="#"> Questions <span
                     class="float-right">{{ $survey->questions->count() }}</span></a></li>
 
 

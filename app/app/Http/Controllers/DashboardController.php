@@ -27,7 +27,7 @@ class DashboardController extends Controller
     public function responses()
     {
 
-        return view('inc.dashboard.responses.response-index')->with('allSurveys', Survey::all());
+        return view('dashboard.responses.index')->with('allSurveys', Survey::all());
 
     }
 
@@ -48,20 +48,8 @@ class DashboardController extends Controller
 
     public function showSurvey(int $index)
     {
-        return view('dashboard.surveys.show')->with(['survey' => Survey::find($index), 'optionTypes' => OptionType::all()]);
+        return view('dashboard.surveys.show')->with(['survey' => Survey::find($index), 'optionTypes' => OptionType::all(), 'allSurveys' => Survey::all()]);
     }
-
-    public function testSurvey()
-    {
-        return view('dashboard.surveys.show')->with('survey', Survey::find(1));
-    }
-
-
-    public function testData(Request $request)
-    {
-        dd($request);
-    }
-
 
     public function addQuestion(Request $request)
     {
