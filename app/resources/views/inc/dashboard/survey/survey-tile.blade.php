@@ -28,7 +28,7 @@
                 <div class="col-3 tile-info">
                     <span class="list-item-heading mb-0 truncate w-40 w-xs-100 mt-0"><i
                         class="
-                    @if ($status->id == '1')
+                    @if ($survey->status_id == '1')
                     simple-icon-refresh heading-icon
                     @else
                     simple-icon-check heading-icon
