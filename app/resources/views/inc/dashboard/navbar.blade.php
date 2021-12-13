@@ -108,7 +108,7 @@
         <div class="user d-inline-block"><button class="btn btn-empty p-0" type="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false"><span
                     class="name">{{ auth()->user()->firstName }}</span> <span><img alt="Profile Picture"
-                        src="{{asset('img/profiles/l-1.jpg')}}"></span></button>
+                        src="{{asset('img/profiles/p-a1.png')}}"></span></button>
             <div class="dropdown-menu dropdown-menu-right mt-3">
                 <a class="dropdown-item" href="#">Profile</a>
                 <form action="{{ route('logout') }}" method="post">

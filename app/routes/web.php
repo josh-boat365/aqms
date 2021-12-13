@@ -42,6 +42,7 @@ Route::post('/dashboard/surveys', '\App\Http\Controllers\DashboardController@add
 Route::get('/home', '\App\Http\Controllers\AlumnusController@index')->name('home');
 Route::get('/home/surveys/{i}', '\App\Http\Controllers\AlumnusController@showsurvey')->name('alumnus.survey.show');
 Route::post('/home/surveys/save', '\App\Http\Controllers\AlumnusController@saveSurvey')->name('alumnus.survey.save');
+Route::get('inc/alumnus/profile/', '\App\Http\Controllers\AlumnusController@profile')->name('alumnus.profile');
 
 
 
