@@ -35,6 +35,7 @@ Route::post('/dashboard/survey/store', '\App\Http\Controllers\DashboardControlle
 Route::get('/dashboard/surveys/{i}', '\App\Http\Controllers\DashboardController@showsurvey')->name('survey.show');
 Route::post('/dashboard/surveys/update', '\App\Http\Controllers\DashboardController@updateSurvey')->name('survey.update');
 Route::post('/dashboard/surveys', '\App\Http\Controllers\DashboardController@addQuestion')->name('survey.addQuestion');
+Route::get('inc/dashboard/profile/', '\App\Http\Controllers\DashboardController@profile')->name('dashboard.profile');
 
 
 // Alumus

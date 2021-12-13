@@ -26,6 +26,12 @@ class DashboardController extends Controller
         // return view('dashboard.surveys.show');
     }
 
+    public function profile()
+    {
+
+        return view('inc.dashboard.profile.profile-index', ['surveys' => Survey::all()->where('status_id', 2)]);
+    }
+
     public function submissions()
     {
         return view('dashboard.submissions.index')->with(['allSurveys' => Survey::all(), 'users' => User::all(), 'submissions' => Submission::all()]);
