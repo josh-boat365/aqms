@@ -1,3 +1,13 @@
+<style>
+    .orderby-btn{
+        width: 15%;
+        height: 2.2rem;
+    }
+    .orderby-search{
+        height: 2.2rem !important;
+        width: 30rem;
+    }
+</style>
 <main>
     <div class="container-fluid">
         <div class="row app-row">
@@ -77,16 +87,16 @@
                         href="#displayOptions" role="button" aria-expanded="true" aria-controls="displayOptions">Display
                         Options <i class="simple-icon-arrow-down align-middle"></i></a>
                     <div class="collapse d-md-block" id="displayOptions">
-                        <div class="d-block d-md-inline-block">
-                            <div class="btn-group float-md-left mr-1 mb-1"><button
-                                    class="btn btn-outline-dark btn-xs dropdown-toggle" type="button"
+                        <div class="d-flex">
+                            <div class="btn-group orderby-btn float-md-left mr-1 mb-1">
+                                <button class="btn btn-outline-dark btn-xs dropdown-toggle" type="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Order
                                     By</button>
                                 <div class="dropdown-menu"><a class="dropdown-item" href="#">Action</a> <a
                                         class="dropdown-item" href="#">Another action</a></div>
                             </div>
-                            <div class="search-sm d-inline-block float-md-left mr-1 mb-1 align-top"><input
-                                    placeholder="Search..."></div>
+                            <div class="search-sm d-inline-block float-md-left mr-1 mb-1 align-top">
+                                <input class="orderby-search" placeholder="Search..."></div>
                         </div>
                     </div>
                 </div>
@@ -123,3 +133,4 @@
     </div>
 
 </main>
+@include('footer')

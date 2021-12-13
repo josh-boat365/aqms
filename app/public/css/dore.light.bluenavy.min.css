@@ -5582,10 +5582,10 @@ select.form-control {
     font-size: 14px;
     color: #8f8f8f;
     position: absolute;
-    right: 10px;
+    right: 13px;
     text-align: center;
     cursor: pointer;
-    top: 2px
+    top: 8px;
 }
 
 div.dataTables_wrapper div.dataTables_filter input {
