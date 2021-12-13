@@ -9,7 +9,7 @@
 
 @for ($i = 0; $i < count($survey->questions); $i++)
 
-    <div class="@if ($survey->questions[$i]->option_type_id == 5) col-12 @else col-lg-12 @endif">
+    <div class="col-12">
         <div class="card question d-flex mb-4 card-style">
             <div class="d-flex flex-grow-1 min-width-zero">
                 <div
@@ -29,7 +29,7 @@
                         <div class="mb-4">
                             @if ($survey->questions[$i]->option_type_id == 1)
                                 <input class="form-control" type="text"
-                                    name="ans[{{ $survey->questions[$i]->id }}]" value="@foreach ($responses as $response)@if ($response->question_id == $survey->questions[$i]->id){{$response->response}}@endif @endforeach">
+                                    name="ans[{{ $survey->questions[$i]->id }}]" value="@foreach ($allResponses as $response)@if ($response->question_id == $survey->questions[$i]->id){{$response->response}}@endif @endforeach">
                             @elseif ($survey->questions[$i]->option_type_id == 2)
                                 <textarea class="form-control" name="ans[{{ $survey->questions[$i]->id }}]"
                                     cols="30" rows="2">@foreach ($responses as $response)@if ($response->question_id == $survey->questions[$i]->id){{$response->response}}@endif @endforeach</textarea>
