@@ -6,7 +6,7 @@
                 <li><a href="#dashboard"><i class="iconsminds-shop-4"></i> <span>Dashboards</span></a></li>
                 <li class="active"><a href="#surveys"><i class="iconsminds-check"></i> Surveys</a></li>
                 <li class=""><a href="#"><i class="simple-icon-people"></i>Users</a></li>
-                <li class=""><a href="{{route('response.index')}}"><i class="iconsminds-bar-chart-4"></i>Responses</a></li>
+                <li class=""><a href="{{route('submissions.index')}}"><i class="iconsminds-bar-chart-4"></i>Responses</a></li>
             </ul>
         </div>
     </div>

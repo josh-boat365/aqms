@@ -120,7 +120,7 @@
                     <a href="#"><i class="simple-icon-eye"></i><span class="d-inline-block font-weight-bold h6">Submited Responses</span></a>
                 </li>
                 <li>
-                    <a href="{{ route('response.index') }}"><i class="iconsminds-yes"></i><span class="d-inline-block">Survey One Explained</span></a>
+                    <a href="{{ route('submissions.index') }}"><i class="iconsminds-yes"></i><span class="d-inline-block">Survey One Explained</span></a>
                 </li>
                 <li>
                     <a href="#"><i class="iconsminds-yes"></i><span class="d-inline-block">Survey Two</span></a>

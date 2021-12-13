@@ -9,10 +9,14 @@
                                             @foreach ($users as $user)
                                             <div class="col alumnus-hover py-2 rounded">
                                                 <a href="#">
-                                                <div class="">{{$user->firstName . " " . $user->lastName}}</div>
-                                                </a>
-                                            </div>
-                                            @endforeach
+                                                <div class="">
+                                                        {{ $user->firstName }}
+                                                        
+                                                    </a>
+                                                </div>
+                                                @endforeach
+                                            @endif
+                                            @endforeach --}}
                                             {{-- <div class="col alumnus-hover py-2 rounded">
                                                 <a href="#">
                                                 <div class="">Aaron Kwame Koranteng Odoom</div>

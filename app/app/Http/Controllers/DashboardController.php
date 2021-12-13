@@ -6,6 +6,7 @@ use App\Models\Option;
 use App\Models\Survey;
 use App\Models\Question;
 use App\Models\OptionType;
+use App\Models\Submission;
 use App\Models\Subquestion;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -25,11 +26,14 @@ class DashboardController extends Controller
         // return view('dashboard.surveys.show');
     }
 
-    public function responses()
+    public function submissions()
     {
+        return view('dashboard.submissions.index')->with(['allSurveys' => Survey::all(), 'users' => User::all(), 'submissions' => Submission::all()]);
+    }
 
-        return view('dashboard.responses.index')->with(['allSurveys' => Survey::all(), 'users' => User::all()]);
-
+    public function showSubmissions($index)
+    {
+        return view('dashboard.submissions.show')->with(['allSurveys' => Survey::all(), 'users' => User::all(), 'submissions' => Submission::all()]);
     }
 
     public function storeSurvey(Request $request)
