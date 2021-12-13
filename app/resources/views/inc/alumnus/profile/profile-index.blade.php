@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{ asset('css/vendor/select2-bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor/jquery.contextMenu.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor/component-custom-switch.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendor/baguetteBox.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dore.light.bluenavy.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 
@@ -32,7 +33,7 @@
     @include('inc.alumnus.navbar')
 
 
-    @include('inc.alumnus.side-bar')
+    @include('inc.alumnus.profile.side-bar')
 
     @include('inc.alumnus.profile.profile-content')
 
@@ -45,7 +46,9 @@
     <script src="{{ asset('js/vendor/select2.full.js') }}"></script>
     <script src="{{ asset('js/vendor/mousetrap.min.js') }}"></script>
     <script src="{{ asset('js/vendor/jquery.contextMenu.min.js') }}"></script>
+    <script src="{{ asset('js/vendor/baguetteBox.min.js') }}"></script>
     <script src="{{ asset('js/dore.script.js') }}"></script>
+    <script src="{{ asset('js/scripts.js') }}"></script>
 
     <script>
         function loadStyle(e, t) {

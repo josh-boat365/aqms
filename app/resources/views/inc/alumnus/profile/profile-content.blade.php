@@ -16,37 +16,47 @@
                                     <div class="text-center pt-4">
                                         <p class="list-item-heading pt-2">{{ auth()->user()->firstName }}  {{ auth()->user()->lastName }}</p>
                                     </div>
-                                    <p class="mb-3">I’m a web developer. I spend my whole day, practically every day, experimenting with HTML, CSS, and JavaScript; dabbling with Python and Ruby; and inhaling a wide variety of potentially useless information through
-                                        a few hundred RSS feeds. I build websites that delight and inform. I do it well.</p>
-                                    <p class="text-muted text-small mb-2">Location</p>
-                                    <p class="mb-3">Nairobi, Kenya</p>
-                                    <p class="text-muted text-small mb-2">Responsibilities</p>
-                                    <p class="mb-3"><a href="#"><span class="badge badge-pill badge-outline-theme-2 mb-1">FRONTEND</span> </a><a href="#"><span class="badge badge-pill badge-outline-theme-2 mb-1">JAVASCRIPT</span> </a><a href="#"><span class="badge badge-pill badge-outline-theme-2 mb-1">SECURITY</span> </a>
-                                        <a
-                                            href="#"><span class="badge badge-pill badge-outline-theme-2 mb-1">DESIGN</span></a>
-                                    </p>
-                                    <p class="text-muted text-small mb-2">Contact</p>
-                                    <div class="social-icons">
-                                        <ul class="list-unstyled list-inline">
-                                            <li class="list-inline-item"><a href="#"><i class="simple-icon-social-facebook"></i></a></li>
-                                            <li class="list-inline-item"><a href="#"><i class="simple-icon-social-twitter"></i></a></li>
-                                            <li class="list-inline-item"><a href="#"><i class="simple-icon-social-instagram"></i></a></li>
-                                        </ul>
+                                    <div class="d-flex">
+                                        <p class="mb-3">Name: &nbsp;</p>
+                                        <p class="mb-3">{{ auth()->user()->firstName }}  {{ auth()->user()->lastName }} {{ auth()->user()->otherName }} </p>
                                     </div>
+                                    <div class="d-flex">
+                                        <p class="mb-3">Email: &nbsp;</p>
+                                        <p class="mb-3">{{ auth()->user()->email }}</p>
+                                    </div>
+                                    <div class="d-flex">
+                                        <p class="mb-3">Gender: &nbsp;</p>
+                                        <p class="mb-3">Male</p>
+                                    </div>
+                                    <div class="d-flex">
+                                        <p class="mb-3">Phone number: &nbsp;</p>
+                                        <p class="mb-3">+233 0550746180</p>
+                                    </div>
+                                    <div class="d-flex">
+                                        <p class="mb-3">Program of study: &nbsp;</p>
+                                        <p class="mb-3">Computer Science</p>
+                                    </div>
+                                    <div class="d-flex">
+                                        <p class="mb-3">Department of study: &nbsp;</p>
+                                        <p class="mb-3">Computer Science</p>
+                                    </div>
+                                    <div class="d-flex">
+                                        <p class="mb-3">Year of completion: &nbsp;</p>
+                                        <p class="mb-3">2022</p>
+                                    </div>
+     
                                 </div>
                             </div>
                         </div>
                         <div class="col-12 col-lg-7 col-xl-8 col-right">
                             <div class="card mb-4">
                                 <div class="card-body">
-                                   {{-- <p>Update Your Profile</p>
-                                   <div class="separator mb-5"></div> --}}
-
+                    
                                    <ul class="nav nav-tabs separator-tabs ml-0 mb-5" role="tablist">
-                                    <li class="nav-item"><a class="nav-link active" id="first-tab" data-toggle="tab" href="#first" role="tab" aria-controls="first" aria-selected="true">UPDATE PROFILE</a></li>
-                                    <li class="nav-item"><a class="nav-link" id="second-tab" data-toggle="tab" href="#second" role="tab" aria-controls="second" aria-selected="false">CHANGE PASSWORD</a></li>
+                                        <li class="nav-item"><a class="nav-link active" id="first-tab" data-toggle="tab" href="#first" role="tab" aria-controls="first" aria-selected="true">UPDATE PROFILE</a></li>
+                                        <li class="nav-item"><a class="nav-link" id="second-tab" data-toggle="tab" href="#second" role="tab" aria-controls="second" aria-selected="true">CHANGE PASSWORD</a></li>
                                 
-                                </ul>
+                                    </ul>
 
                                 <div class="tab-content">
                                     <div class="tab-pane show active" id="first" role="tabpanel" aria-labelledby="first-tab">
@@ -84,7 +94,7 @@
                                                 </div>
                                                 <div class="form-group has-float-label">
                                                     <input value="" type="tel" class="form-control" name="otherName" required>
-                                                    <span>Contact</span>
+                                                    <span>Phone number</span>
                                                 </div>
                                             {{-- Program Studied --}}
                                                 <div class="form-group has-float-label">
@@ -183,7 +193,7 @@
                                                 <button type="submit" class="btn btn-primary float-right">Update</button>
                                         </form>
                                     </div>
-                                    <div class="tab-pane fade" id="second" role="tabpanel" aria-labelledby="second-tab">
+                                    <div class="tab-pane fade" id="second" role="tabpane1" aria-labelledby="second-tab">
                                         <form class="tooltip-right-bottom mob-view" novalidate method="POST" action="#">
                                             <div class="form-group has-float-label">
                                                 <input name="password" class="@error('password') border-danger @enderror form-control" type="password" required>
