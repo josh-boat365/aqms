@@ -24,4 +24,8 @@ class Survey extends Model
     public function columns(){
         return $this->hasManyThrough(Subquestion::class, Question::class);
     }
+
+    public function submissions(){
+        return $this->hasMany(Submission::class);
+    }
 }

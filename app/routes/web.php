@@ -45,6 +45,7 @@ Route::post('/home/surveys/save', '\App\Http\Controllers\AlumnusController@saveS
 
 
 
-// Responses
+// Submissions
 
-Route::get('/dashboard/responses', '\App\Http\Controllers\DashboardController@responses')->name('response.index');
+Route::get('/dashboard/responses', '\App\Http\Controllers\DashboardController@submissions')->name('submissions.index');
+Route::get('/dashboard/responses/{i}', '\App\Http\Controllers\DashboardController@showSubmissions')->name('submissions.show');
