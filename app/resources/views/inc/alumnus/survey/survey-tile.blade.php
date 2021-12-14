@@ -41,13 +41,13 @@
                 
                 <div class="col-3 tile-info">
                     <div class="w-8 w-xs-100">
-                        <p class="mb-0 text-muted font-weight-bold text-medium">{{$survey->created_at->format('Y-m-d') }}</p>
+                        <p class="mb-0 tile-x text-muted font-weight-bold text-medium">{{$survey->created_at->format('Y-m-d') }}</p>
                     </div>
                 </div>
     
                 <div class="col-3 tile-info">
                     <div class="w-8 w-xs-100">
-                        <p class="mb-0 tile-x text-muted font-weight-bold text-medium">{{$survey->created_at->format('Y-m-d') }}</p>
+                        <p class="mb-0 font-weight-bold text-medium badge badge-pill badge-primary mb-1">Not submited</p>
                     </div>
                 </div>
     

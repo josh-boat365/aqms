@@ -77,7 +77,15 @@ body.background main .container {
 
 /* Input Fields - across all pages */
 
-.form-group input,
+.form-group input {
+    padding: 1rem;
+    height: 2.3rem;
+    border-radius: 20px;
+    outline: none;
+    width: 100%;
+    border: 1px solid #245794;
+}
+
 select {
     padding: 1rem;
     height: 2.3rem;
