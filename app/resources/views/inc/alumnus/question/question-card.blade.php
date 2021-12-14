@@ -9,7 +9,7 @@
 
 @for ($i = 0; $i < count($survey->questions); $i++)
 
-    <div class="@if ($survey->questions[$i]->option_type_id == 5) col-12 @else col-lg-12 @endif">
+    <div class="col-12">
         <div class="card question d-flex mb-4 card-style">
             <div class="d-flex flex-grow-1 min-width-zero">
                 <div
