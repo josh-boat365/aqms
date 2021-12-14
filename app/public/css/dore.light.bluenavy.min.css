@@ -83,6 +83,8 @@ select {
     height: 2.3rem;
     border-radius: 20px;
     outline: none;
+    width: 100%;
+    border: 1px solid #c8d2dc;
 }
 
 .scroll {
@@ -93,15 +95,15 @@ select {
 }
 
 ::selection {
-    background: #c8d2dc
+    background: #c8d2dc;
 }
 
 ::-moz-selection {
-    background: #c8d2dc
+    background: #c8d2dc;
 }
 
 .ps__thumb-y {
-    background-color: #d7d7d7
+    background-color: #d7d7d7;
 }
 
 .logo-single {
@@ -110,7 +112,7 @@ select {
     background: url(../img/custom/atulogo.png) no-repeat;
     background-position: center center;
     display: inline-block;
-    margin-bottom: 60px
+    margin-bottom: 60px;
 }
 
 .h1,
