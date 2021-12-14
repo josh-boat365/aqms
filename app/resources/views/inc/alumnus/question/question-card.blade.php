@@ -28,7 +28,7 @@
                         </label>
                         <div class="mb-4">
                             @if ($survey->questions[$i]->option_type_id == 1)
-                                <input class="form-control" type="text"
+                                <input class="form-control trim" type="text"
                                     name="ans[{{ $survey->questions[$i]->id }}]" value="@foreach ($responses as $response)@if ($response->question_id == $survey->questions[$i]->id){{$response->response}}@endif @endforeach">
                             @elseif ($survey->questions[$i]->option_type_id == 2)
                                 <textarea class="form-control" name="ans[{{ $survey->questions[$i]->id }}]"
@@ -76,7 +76,7 @@
                                                     {{ $column->question }}
                                                 </div>
                                                 @foreach ($survey->options->where('question_id', $survey->questions[$i]->id) as $option)
-                                                    <div class="d-flex justify-content-center"><input type="radio"
+                                                    <div class="d-flex justify-content-center check-box"><input type="radio"
                                                             name="ans[{{ $survey->questions[$i]->id }}][{{ $option->id }}]"
                                                             id="" value="{{ $column->question }}"
                                                             @foreach ($responses as $response)@if ($response->response ==  $column->question) @if ($response->option_id == $option->id) checked @endif @endif @endforeach

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Survey;
 use App\Models\OptionType;
+use App\Models\Progress;
 use App\Models\Response;
+use App\Models\Submission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,7 +21,7 @@ class AlumnusController extends Controller
     public function index()
     {
 
-        return view('alumnus.surveys.index', ['surveys' => Survey::all()->where('status_id', 2)]);
+        return view('alumnus.surveys.index', ['surveys' => Survey::all()->where('status_id', 2), 'progresses' => Progress::all()]);
     }
 
     public function profile()
@@ -36,14 +38,13 @@ class AlumnusController extends Controller
 
     public function saveSurvey(Request $request)
     {
-        // dd($request);
         foreach ($request['ans'] as $que_id => $ans) {
 
             if ($ans != null) {
                 if (is_array($ans)) {
                     // find all present records
                     $response = Response::all()->where('question_id', $que_id)->where('user_id', auth()->user()->id);
-                    
+
                     //delete previous records
                     foreach ($response as $record) {
                         Response::find($record->id)->delete();
@@ -79,7 +80,26 @@ class AlumnusController extends Controller
                 }
             }
 
+            // save progress
+            Progress::where('user_id', auth()->user()->id)->where('survey_id', $request->survey_id)->delete();
+
+            $progress = new Progress();
+            $progress->user_id = auth()->user()->id;
+            $progress->survey_id = $request->survey_id;
+            $progress->progress = $request->progress;
+            $progress->save();
+
             // }
+        }
+
+        if ($request->isSubmit == 'yes') {
+            $record = new Submission();
+            $record->user_id = auth()->user()->id;
+            $record->survey_id = $request->survey_id;
+            $record->state = 'submitted';
+            $record->save();
+
+            return redirect('/home');
         }
 
         return redirect('/home/surveys/' . $request->survey_id);

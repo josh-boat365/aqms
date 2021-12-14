@@ -114,7 +114,7 @@
                                                                                     </div>
                                                                                     @foreach ($survey->options->where('question_id', $survey->questions[$i]->id) as $option)
                                                                                         <div class="d-flex justify-content-center">
-                                                                                            <input type="radio"  id="" @foreach ($allResponses->where('user_id', $submission->user_id) as $response)@if ($response->response == $column->question) @if ($response->option_id == $option->id) checked @endif @endif @endforeach>
+                                                                                            <input  type="radio"  id="" @foreach ($allResponses->where('user_id', $submission->user_id) as $response)@if ($response->response == $column->question) @if ($response->option_id == $option->id) checked @endif @endif @endforeach disabled>
                                                                                         </div>
                                                                                     @endforeach
                                                                                 </div>

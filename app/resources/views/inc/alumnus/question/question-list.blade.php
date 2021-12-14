@@ -3,6 +3,8 @@
         <form action="{{route('alumnus.survey.save')}}" method="post" id="save-form" class="d-flex flex-column align-items-center">
             @csrf
             <input type="hidden" name="survey_id" value="{{$survey->id}}">
+            <input type="hidden" name="isSubmit"  id="isSubmit">
+            <input type="hidden" name="progress" id="progress">
             @include('inc.alumnus.question.question-card', ['survey'=> $survey, 'responses' => $responses])
             
         </form>
