@@ -17,7 +17,7 @@
             <div class="modal-body">
                 <h1>Hi! &nbsp;<span class="name">{{ auth()->user()->firstName }}</span></h1>
                 <h2>Please Kindly Update Your Profile Before You Start Managing Surveys.</h2>
-                <h4>Click on the profile icon on the navigation bar to access profile tab.</h4>
+                <h4>Click on this <a href="{{ route('dashboard.profile') }}" style="color: red">Link</a> to access profile tab.</h4>
                 <h4>Thanks.</h4>
             </div>
             <div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div>

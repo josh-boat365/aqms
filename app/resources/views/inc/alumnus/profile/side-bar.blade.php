@@ -3,8 +3,8 @@
         <div class="scroll">
             <ul class="list-unstyled">
                 <li><a href="#dashboard"><i class="iconsminds-shop-4"></i> <span>Dashboards</span></a></li>
-                <li class="active"><a href="#survey"><i class="iconsminds-check"></i> Surveys</a></li>
-                <li class=""><a href="{{ route('alumnus.profile') }}"><i class="simple-icon-people"></i>Profile</a></li>
+                <li class="#"><a href="{{ route('home') }}"><i class="iconsminds-check"></i> Surveys</a></li>
+                <li class="active"><a href="#"><i class="simple-icon-people"></i>Profile</a></li>
                 {{-- <li><a href="#ui"><i class="iconsminds-pantone"></i> UI</a></li>
                 <li><a href="#menu"><i class="iconsminds-three-arrow-fork"></i> Menu</a></li>
                 <li><a href="Blank.Page.html"><i class="iconsminds-bucket"></i> Blank Page</a></li>

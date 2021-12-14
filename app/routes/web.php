@@ -35,6 +35,7 @@ Route::post('/dashboard/survey/store', '\App\Http\Controllers\DashboardControlle
 Route::get('/dashboard/surveys/{i}', '\App\Http\Controllers\DashboardController@showsurvey')->name('survey.show');
 Route::post('/dashboard/surveys/update', '\App\Http\Controllers\DashboardController@updateSurvey')->name('survey.update');
 Route::post('/dashboard/surveys', '\App\Http\Controllers\DashboardController@addQuestion')->name('survey.addQuestion');
+Route::get('inc/dashboard/profile/', '\App\Http\Controllers\DashboardController@profile')->name('dashboard.profile');
 
 
 // Alumus
@@ -42,6 +43,7 @@ Route::post('/dashboard/surveys', '\App\Http\Controllers\DashboardController@add
 Route::get('/home', '\App\Http\Controllers\AlumnusController@index')->name('home');
 Route::get('/home/surveys/{i}', '\App\Http\Controllers\AlumnusController@showsurvey')->name('alumnus.survey.show');
 Route::post('/home/surveys/save', '\App\Http\Controllers\AlumnusController@saveSurvey')->name('alumnus.survey.save');
+Route::get('inc/alumnus/profile/', '\App\Http\Controllers\AlumnusController@profile')->name('alumnus.profile');
 
 
 

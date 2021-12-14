@@ -113,7 +113,7 @@
                     class="name">{{ auth()->user()->firstName }} {{ auth()->user()->lastName }}</span> <span><img alt="Profile Picture"
                         src="{{asset('img/profiles/p-a1.png')}}"></span></button>
             <div class="dropdown-menu dropdown-menu-right mt-3">
-                <a class="dropdown-item" href="{{ route('alumnus.profile') }}">Profile</a>
+                <a class="dropdown-item" href="#">Profile</a>
                 <form action="{{ route('logout') }}" method="post">
                     @csrf
                     <input class="dropdown-item" type="submit" value="Log out">

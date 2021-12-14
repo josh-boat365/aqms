@@ -22,6 +22,12 @@ class AlumnusController extends Controller
         return view('alumnus.surveys.index', ['surveys' => Survey::all()->where('status_id', 2)]);
     }
 
+    public function profile()
+    {
+
+        return view('inc.alumnus.profile.profile-index', ['surveys' => Survey::all()->where('status_id', 2)]);
+    }
+
     public function showSurvey(int $index)
     {
         // dd(Response::where('user_id', auth()->user()->id)->get());

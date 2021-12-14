@@ -262,21 +262,22 @@ textarea {
     margin: 0;
     font-family: inherit;
     font-size: inherit;
-    line-height: inherit
+    line-height: inherit;
 }
 
 button,
 input {
-    overflow: visible
+    overflow: visible;
 }
 
 button,
 select {
-    text-transform: none
+    text-transform: none;
 }
 
 select {
-    word-wrap: normal
+    word-wrap: normal;
+    border-radius: 20px !important;
 }
 
 [type=button],
