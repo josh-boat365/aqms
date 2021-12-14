@@ -29,7 +29,7 @@
                         <div class="mb-4">
                             @if ($survey->questions[$i]->option_type_id == 1)
                                 <input class="form-control" type="text"
-                                    name="ans[{{ $survey->questions[$i]->id }}]" value="@foreach ($allResponses as $response)@if ($response->question_id == $survey->questions[$i]->id){{$response->response}}@endif @endforeach">
+                                    name="ans[{{ $survey->questions[$i]->id }}]" value="@foreach ($responses as $response)@if ($response->question_id == $survey->questions[$i]->id){{$response->response}}@endif @endforeach">
                             @elseif ($survey->questions[$i]->option_type_id == 2)
                                 <textarea class="form-control" name="ans[{{ $survey->questions[$i]->id }}]"
                                     cols="30" rows="2">@foreach ($responses as $response)@if ($response->question_id == $survey->questions[$i]->id){{$response->response}}@endif @endforeach</textarea>

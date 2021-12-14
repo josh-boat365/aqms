@@ -76,14 +76,30 @@
             display: none;
         }
 
+        .dot-active:after {
+            content: " ";
+            background: #00365a;
+            border-radius: 10px;
+            position: absolute;
+            width: 7px;
+            height: 7px;
+            top: 50%;
+            transform: translateY(-50%);
+            left: -5px;
+            /* 
+            box-sizing: border-box; */
+        }
+
     </style>
     <style>
         /* .alumnus-hover:hover a{
             color: white;
         } */
-        .alumnus-hover:hover{
+        .alumnus-hover:hover {
             background: whitesmoke;
+            cursor: pointer;
         }
+
     </style>
 </head>
 
@@ -216,6 +232,44 @@
                         (e(".theme-colors").hasClass("shown") && e(".theme-colors").removeClass("shown"));
                 });
         })(jQuery);
+    </script>
+
+    {{-- auto select and show questions of first user in alumni list --}}
+    <script>
+        $(function () {
+            console.log('hi');
+            $('.alumni').first().addClass('dot-active')
+            $('.ques').first().show()
+        })
+        
+    </script>
+
+    {{-- trim input --}}
+    <script>
+        $(function () {
+            $('.trim').each(function () {
+                $(this).val($(this).val().trim())
+            })
+            $('textarea').each(function () {
+                $(this).text($(this).text().trim())
+            })
+        })
+    </script>
+
+    <script>
+        $(function () {
+            $('.alumni').click(function () {
+                $user_id = $(this).children('input').val()
+                console.log($user_id)
+                $('.ques').hide()
+                $('.dot-active').removeClass('dot-active')
+                
+                $(this).addClass('dot-active')
+                $('.' + $user_id).show()
+            })
+
+            
+        })
     </script>
     {{-- <script src="{{asset('js/scripts.js')}}"></script> --}}
 </body>

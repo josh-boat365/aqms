@@ -5,17 +5,16 @@
             <p class="list-item-heading" style="position: relative; top:0.66rem">ALUMNI</p>
         </div>
         <div class="separator mb-3"></div>
-        <div class="scroll h-100 col text-center mt-2" style="max-height: 500px">
+        <div class="scroll h-100 col mt-2" style="max-height: 500px">
             @foreach ($submissions as $submission)
-                <div class="col alumnus-hover py-2 rounded">
-                    <a href="#">
-                        <div class="">
+                    {{-- <a href="#"> --}}
+                        <div class="alumni col alumnus-hover py-2 rounded">
                             @foreach ($users->where('id', $submission->user_id) as $user)
+                            <input type="hidden" name="user_id" value="{{$user->id}}">
                                 {{ $user->firstName }}
                             @endforeach
                         </div>
-                    </a>
-                </div>
+                    {{-- </a> --}}
             @endforeach
             {{-- <div class="col alumnus-hover py-2 rounded">
                                                 <a href="#">
