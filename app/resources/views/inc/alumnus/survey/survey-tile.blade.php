@@ -26,7 +26,6 @@
         <div class="d-flex flex-grow-1 min-width-zero">
             <div class="dash-survey-tile card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center">
                <div class="col-3 tile-info">
-                <h5 class="font-weight-bold h5">Title</h5>
                 <span class="list-item-heading mb-0 truncate w-40 w-xs-100 mt-0">
         
                     <div class="align-middle d-inline-block">{{$survey->name}}</div>
