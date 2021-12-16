@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,7 +38,7 @@
 
     {{-- should be included in survey content --}}
     @extends('inc.dashboard.survey.survey-content')
-    
+
 
 
     @section('survey-tiles')
@@ -58,8 +56,11 @@
                     class="float-right">{{ $allSurveys->where('status_id', '1')->count() }}</span></a></li>
         <li><a href="#"> Archived Surveys <span
                     class="float-right">{{ $allSurveys->where('status_id', '3')->count() }}</span></a></li>
-        <li><a href="#"> Submitted Surveys <span
-                    class="float-right">null</span></a></li>
+        <li><a href="#"> Submitted Surveys <span class="float-right">null</span></a></li>
+
+        <div class="something">
+            Right-click here
+        </div>
     @endsection
 
     @section('survey-form')
@@ -162,6 +163,38 @@
                 });
         })(jQuery);
     </script>
+
+    {{-- <script>
+        $(function() {
+
+
+            $().contextMenu &&
+                $.contextMenu({
+                    selector: ".list .card",
+                    callback: function(e, t) {},
+                    events: {
+                        show: function(e) {
+                            var t = e.$trigger.parents(".list");
+                            t && t.length > 0 && t.data("shiftSelectable").rightClick(e.$trigger);
+                        },
+                    },
+                    items: {
+                        copy: {
+                            name: "Deploy",
+                            className: "simple-icon-docs"
+                        },
+                        archive: {
+                            name: "Move to archive",
+                            className: "simple-icon-drawer"
+                        },
+                        delete: {
+                            name: "Delete",
+                            className: "simple-icon-trash"
+                        }
+                    },
+                }),
+        })
+    </script> --}}
     {{-- <script src="{{asset('js/scripts.js')}}"></script> --}}
 </body>
 <!-- Mirrored from dore-jquery.coloredstrategies.com/Apps.Survey.List.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 06 Nov 2021 22:42:02 GMT -->
