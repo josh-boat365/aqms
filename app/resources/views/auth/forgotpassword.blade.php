@@ -64,12 +64,19 @@
                                 @csrf
                                 <div class="form-group has-float-label"><input value="{{ old('email') }}"
                                         class="form-control" name="email" required>
+                                    <span>E-mail</span>
+                                    @error('email')
+                                        <div class="invalid-tooltip d-block">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group has-float-label"><input name="password" class="form-control"
+                                        type="password" required>
                                     <span>New Password</span>
                                     @error('password')
                                         <div class="invalid-tooltip d-block">{{ $message }}</div>
                                     @enderror
                                 </div>
-
                                 <div class="form-group has-float-label"><input name="password" class="form-control"
                                         type="password" required>
                                     <span>Confirm Password</span>
