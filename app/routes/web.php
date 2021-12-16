@@ -23,6 +23,7 @@ Route::get('/', function () {
 Route::get('/login', 'App\Http\Controllers\AuthController@showLogin')->name('login');
 Route::post('/login', 'App\Http\Controllers\AuthController@logIn')->name('login');
 Route::get('/register', '\App\Http\Controllers\AuthController@showRegister')->name('register');
+Route::get('/forgotpassword', '\App\Http\Controllers\AuthController@showForgetPassword')->name('forgot-password');
 Route::post('/register', 'App\Http\Controllers\AuthController@register')->name('register');
 Route::post('/logout', '\App\Http\Controllers\AuthController@logout')->name('logout');
 
