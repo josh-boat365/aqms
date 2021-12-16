@@ -695,6 +695,20 @@
         })
     </script>
 
+    {{-- notification --}}
+    <script>
+        $(function () {
+            setTimeout(() => {
+                $('#notification').fadeIn('slow')
+            }, 1500);
+        })
+        $(function () {
+            setTimeout(() => {
+                $('#notification').fadeTo('slow', 0)
+            }, 3000);
+        })
+    </script>
+
     <script>
         $(function() {
             $('.upd-que').click(function() {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Notification;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -56,8 +57,15 @@ class AuthController extends Controller
         $user->lastName = $request->lastName;
         $user->otherName = $request->otherName;
         $user->email = $request->email;
+        $user->user_type = 'Alumnus';
         $user->password = Hash::make($request->password);
         $user->save();
+
+        //notify admin
+        $notification = new Notification();
+        $notification->user_id = $user->id;
+        $notification->notification_type_id = 1;
+        $notification->save();
         
 
         return redirect()->route('dashboard.index');

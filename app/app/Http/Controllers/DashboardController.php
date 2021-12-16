@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Notification;
 use App\Models\Option;
 use App\Models\Survey;
 use App\Models\Question;
@@ -23,24 +24,24 @@ class DashboardController extends Controller
     public function index()
     {
 
-        return view('dashboard.surveys.index')->with('allSurveys', Survey::all());
+        return view('dashboard.surveys.index', ['notifications' => Notification::all(), 'users' => User::all()])->with('allSurveys', Survey::all());
         // return view('dashboard.surveys.show');
     }
 
     public function profile()
     {
 
-        return view('inc.dashboard.profile.profile-index', ['surveys' => Survey::all()->where('status_id', 2)]);
+        return view('inc.dashboard.profile.profile-index', ['allSurveys', Survey::all(), 'surveys' => Survey::all()->where('status_id', 2),'notifications' => Notification::all(), 'users' => User::all()]);
     }
 
     public function submissions()
     {
-        return view('dashboard.submissions.index')->with(['allSurveys' => Survey::all(), 'users' => User::all(), 'submissions' => Submission::all()]);
+        return view('dashboard.submissions.index')->with(['notifications' => Notification::all(), 'allSurveys' => Survey::all(), 'users' => User::all(), 'submissions' => Submission::all(), 'notifications' => Notification::all(),]);
     }
 
     public function showSubmissions(int $index)
     {
-        return view('dashboard.submissions.show')->with(['allSurveys' => Survey::all(), 'users' => User::all(), 'submissions' => Submission::all()->where('survey_id', $index), 'survey' => Survey::find($index), 'allResponses' => Response::all()]);
+        return view('dashboard.submissions.show')->with(['notifications' => Notification::all(), 'allSurveys' => Survey::all(), 'users' => User::all(), 'submissions' => Submission::all()->where('survey_id', $index), 'survey' => Survey::find($index), 'allResponses' => Response::all(),'notifications' => Notification::all(),]);
     }
 
     public function storeSurvey(Request $request)
@@ -60,7 +61,7 @@ class DashboardController extends Controller
 
     public function showSurvey(int $index)
     {
-        return view('dashboard.surveys.show')->with(['survey' => Survey::find($index), 'optionTypes' => OptionType::all(), 'allSurveys' => Survey::all()]);
+        return view('dashboard.surveys.show')->with(['users' => User::all(), 'notifications' => Notification::all(), 'survey' => Survey::find($index), 'optionTypes' => OptionType::all(), 'allSurveys' => Survey::all()]);
     }
 
     public function addQuestion(Request $request)
@@ -74,7 +75,7 @@ class DashboardController extends Controller
             'option_type_id' => '1'
         ]);
 
-        return redirect()->route('survey.show', ['i' => $request->survey_id]);
+        return redirect()->route('survey.show', ['i' => $request->survey_id])->with('success', 'new question added successfully');
     }
 
     public function updateSurvey(Request $request)
@@ -307,6 +308,6 @@ class DashboardController extends Controller
                 }
             }
         }
-        return redirect('/dashboard/surveys/' . $request->survey_id);
+        return redirect('/dashboard/surveys/' . $request->survey_id)->with('success', 'survey updated successfully');
     }
 }

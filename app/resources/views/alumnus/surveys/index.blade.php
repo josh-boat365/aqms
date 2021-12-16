@@ -209,6 +209,20 @@
                 });
         })(jQuery);
     </script>
+
+    {{-- notification --}}
+    <script>
+        $(function () {
+            setTimeout(() => {
+                $('#notification').fadeIn('slow')
+            }, 1500);
+        })
+        $(function () {
+            setTimeout(() => {
+                $('#notification').fadeTo('slow', 0)
+            }, 3000);
+        })
+    </script>
     {{-- <script src="{{asset('js/scripts.js')}}"></script> --}}
 </body>
 <!-- Mirrored from dore-jquery.coloredstrategies.com/Apps.Survey.List.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 06 Nov 2021 22:42:02 GMT -->

@@ -11,7 +11,7 @@
                                 class="dropdown-item" href="#">Another action</a></div>
                     </div> --}}
                 </div>
-                @include('inc.alumnus.question.survey-description')
+                {{-- @include('inc.alumnus.question.survey-description') --}}
                 {{-- <ul class="nav nav-tabs separator-tabs ml-0 mb-5" role="tablist">
                     <li class="nav-item"><a class="nav-link active" id="first-tab" data-toggle="tab" href="#first"
                             role="tab" aria-controls="first" aria-selected="true">DETAILS</a></li>
@@ -21,6 +21,7 @@
                 <div class="mt-4"></div>
                 <div class="tab-content mb-4">
                     <div class="tab-pane show active" id="first" role="tabpanel" aria-labelledby="first-tab">
+                        
                         <div class="row">
                             @yield('question-summary')
                             @yield('question-list')

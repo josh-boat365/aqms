@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Survey;
-use App\Models\OptionType;
 use App\Models\Progress;
 use App\Models\Response;
+use App\Models\OptionType;
 use App\Models\Submission;
+use App\Models\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -92,6 +93,7 @@ class AlumnusController extends Controller
             // }
         }
 
+        //submission
         if ($request->isSubmit == 'yes') {
             $record = new Submission();
             $record->user_id = auth()->user()->id;
@@ -99,9 +101,15 @@ class AlumnusController extends Controller
             $record->state = 'submitted';
             $record->save();
 
-            return redirect('/home');
+            //notification
+            $notification = new Notification();
+            $notification->survey_id = $request->survey_id;
+            $notification->notification_type_id = 2;
+            $notification->save();
+
+            return redirect('/home')->with('success', 'survey summited successfully');
         }
 
-        return redirect('/home/surveys/' . $request->survey_id);
+        return redirect('/home/surveys/' . $request->survey_id)->with('success', 'survey saved successfully');
     }
 }

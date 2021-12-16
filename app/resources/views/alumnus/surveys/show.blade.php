@@ -32,6 +32,13 @@
 
     @include('inc.alumnus.navbar')
 
+    {{-- <div class="tab-pane show active" id="first" role="tabpanel" aria-labelledby="first-tab">
+        <div class="py-4 px-3 bg-success container col-5 text-white text-center d-absolute"> Saved Successfully </div>
+        <div class="row">
+            @yield('question-summary')
+            @yield('question-list')
+        </div>
+    </div> --}}
 
     @include('inc.alumnus.side-bar')
 
@@ -59,11 +66,12 @@
                 Save</div>
         </div>
         <div class="text-center mt-4">
-            <form action="{{route('alumnus.survey.submit')}}" method="post" id="submit-form">
-            @csrf
-            <input type="hidden" name="survey_id" value="{{$survey->id}}">
-        </form>
-            <div style="display: none" class="btn btn-success btn-sm mb-2" id="submit-btn"><i class="simple-icon-plus btn-group-icon"></i>
+            <form action="{{ route('alumnus.survey.submit') }}" method="post" id="submit-form">
+                @csrf
+                <input type="hidden" name="survey_id" value="{{ $survey->id }}">
+            </form>
+            <div style="display: none" class="btn btn-success btn-sm mb-2" id="submit-btn"><i
+                    class="simple-icon-plus btn-group-icon"></i>
                 Sumbit</div>
         </div>
         {{-- <div class="text-center mt-4"><button type="button" class="btn btn-outline-success btn-sm mb-2 upd-que"><i
@@ -174,7 +182,7 @@
         $(function() {
             $('#save-btn').click(function() {
                 console.log('dsv');
-                console.log( $('#save-form'));
+                console.log($('#save-form'));
                 $('#save-form').submit();
             })
         })
@@ -182,8 +190,8 @@
 
     {{-- submit --}}
     <script>
-        $(function () {
-            $('#submit-btn').click(function () {
+        $(function() {
+            $('#submit-btn').click(function() {
                 $('#isSubmit').val('yes')
                 $('#save-form').submit();
             })
@@ -210,7 +218,7 @@
                 $('.progress-tracker').text($('.answered').length + '/' + $('.question').length);
                 if ($('.answered').length == $('.question').length) {
                     $('#submit-btn').show()
-                }else{
+                } else {
                     $('#submit-btn').hide()
                 }
             }
@@ -409,7 +417,7 @@
                 $('.progress-tracker').text($('.answered').length + '/' + $('.question').length);
                 if ($('.answered').length == $('.question').length) {
                     $('#submit-btn').show()
-                }else{
+                } else {
                     $('#submit-btn').hide()
                 }
             })
@@ -426,10 +434,24 @@
                 $('.progress-tracker').text($('.answered').length + '/' + $('.question').length);
                 if ($('.answered').length == $('.question').length) {
                     $('#submit-btn').show()
-                }else{
+                } else {
                     $('#submit-btn').hide()
                 }
             })
+        })
+    </script>
+
+    {{-- notification --}}
+    <script>
+        $(function () {
+            setTimeout(() => {
+                $('#notification').fadeIn('slow')
+            }, 1500);
+        })
+        $(function () {
+            setTimeout(() => {
+                $('#notification').fadeTo('slow', 0)
+            }, 3000);
         })
     </script>
 

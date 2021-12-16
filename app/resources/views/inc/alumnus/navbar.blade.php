@@ -1,20 +1,22 @@
 <style type="text/css">
-    @media (min-width: 320px)and (max-width: 639px){
-        .navbar{
+    @media (min-width: 320px)and (max-width: 639px) {
+        .navbar {
             width: 100%;
             justify-content: space-between;
         }
-        
-        nav .navbar-right{
+
+        nav .navbar-right {
             position: relative;
             right: -58%;
             bottom: 1.7rem;
         }
-        nav .atu-icon{
+
+        nav .atu-icon {
             position: relative;
             right: 5rem;
         }
-        nav .atu-icon a img{
+
+        nav .atu-icon a img {
             width: 45%;
         }
     }
@@ -55,7 +57,7 @@
     {{-- <h1>{{$survey->name}}</h1> --}}
     <div class="navbar-right">
         <div class="header-icons d-inline-block align-middle">
-           
+
             <div class="position-relative d-inline-block">
                 <button class="header-icon btn btn-empty" type="button" id="notificationButton" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
@@ -65,7 +67,7 @@
                 <div class="dropdown-menu dropdown-menu-right mt-3 position-absolute" id="notificationDropdown">
                     <div class="scroll">
                         <div class="d-flex flex-row mb-3 pb-3 border-bottom">
-                            <a href="#"><img src="{{asset('img/profiles/l-2.jpg')}}" alt="Notification Image"
+                            <a href="#"><img src="{{ asset('img/profiles/l-2.jpg') }}" alt="Notification Image"
                                     class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle"></a>
                             <div class="pl-3">
                                 <a href="#">
@@ -75,7 +77,7 @@
                             </div>
                         </div>
                         <div class="d-flex flex-row mb-3 pb-3 border-bottom">
-                            <a href="#"><img src="{{asset('img/notifications/1.jpg')}}" alt="Notification Image"
+                            <a href="#"><img src="{{ asset('img/notifications/1.jpg') }}" alt="Notification Image"
                                     class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle"></a>
                             <div class="pl-3">
                                 <a href="#">
@@ -85,7 +87,7 @@
                             </div>
                         </div>
                         <div class="d-flex flex-row mb-3 pb-3 border-bottom">
-                            <a href="#"><img src="{{asset('img/notifications/2.jpg')}}" alt="Notification Image"
+                            <a href="#"><img src="{{ asset('img/notifications/2.jpg') }}" alt="Notification Image"
                                     class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle"></a>
                             <div class="pl-3">
                                 <a href="#">
@@ -95,7 +97,7 @@
                             </div>
                         </div>
                         <div class="d-flex flex-row mb-3 pb-3">
-                            <a href="#"><img src="{{asset('img/notifications/3.jpg')}}" alt="Notification Image')}}"
+                            <a href="#"><img src="{{ asset('img/notifications/3.jpg') }}" alt="Notification Image')}}"
                                     class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle"></a>
                             <div class="pl-3">
                                 <a href="#">
@@ -110,15 +112,25 @@
         </div>
         <div class="user d-inline-block"><button class="btn btn-empty p-0" type="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false"><span
-                    class="name">{{ auth()->user()->firstName }} {{ auth()->user()->lastName }}</span> <span><img alt="Profile Picture"
-                        src="{{asset('img/profiles/p-a1.png')}}"></span></button>
+                    class="name">{{ auth()->user()->firstName }} {{ auth()->user()->lastName }}</span>
+                <span><img alt="Profile Picture" src="{{ asset('img/profiles/p-a1.png') }}"></span></button>
             <div class="dropdown-menu dropdown-menu-right mt-3">
                 <a class="dropdown-item" href="{{ route('alumnus.profile') }}">Profile</a>
                 <form action="{{ route('logout') }}" method="post">
                     @csrf
                     <input class="dropdown-item" type="submit" value="Log out">
                 </form>
-                {{-- <a class="dropdown-item" href="#">Sign out</a></div> --}}
+                {{-- <a class="dropdown-item" href="#">Sign out</a> --}}
             </div>
         </div>
+    </div>
+    @if (session()->has('success'))
+        <div style="left: 50%; transform: translate(-50%); top: 110%; display:none; z-index: 99999" id="notification"
+            class="position-absolute py-4 px-3 bg-success container col-5 text-white text-center justify-content-center rounded">
+            <h3 class="m-0">
+                {{ session('success') }}
+            </h3>
+        </div>
+    @endif
+
 </nav>
