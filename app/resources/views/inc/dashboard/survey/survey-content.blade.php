@@ -147,12 +147,15 @@
                             <div class="d-flex">
                                 <div class="btn-group orderby-btn float-md-left mr-1 mb-1">
                                     <button class="btn btn-outline-dark btn-xs dropdown-toggle" type="button"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Order
-                                        By</button>
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">view all</button>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#">Archive</a>
+                                        {{-- <a class="dropdown-item" href="#">Archive</a>
                                         <a class="dropdown-item" href="#">Draft</a>
-                                        <a class="dropdown-item" data-toggle="modal" href="#archiveWarning">Deployed</a>
+                                        <a class="dropdown-item" data-toggle="modal" href="#archiveWarning">Deployed</a> --}}
+                                        <div class="dropdown-item survey-filter all">View All</div>
+                                        <div class="dropdown-item survey-filter archive">Archived</div>
+                                        <div class="dropdown-item survey-filter draft">Drafted</div>
+                                        <div class="dropdown-item survey-filter deployed">Deployed</div>
                                     </div>
 
                                 </div>
@@ -185,7 +188,7 @@
 
                         </div>
                     </div>
-                    <div class="list disable-text-selection" data-check-all="checkAll">
+                    <div class="list disable-text-selection survey-list" data-check-all="checkAll">
                         @yield('survey-tiles')
 
                     </div>

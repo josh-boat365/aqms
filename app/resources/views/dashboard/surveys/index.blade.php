@@ -24,6 +24,10 @@
             display: none;
         }
 
+        .survey-filter:hover {
+            cursor: pointer;
+        }
+
     </style>
 </head>
 
@@ -166,15 +170,52 @@
 
     {{-- notification --}}
     <script>
-        $(function () {
+        $(function() {
             setTimeout(() => {
                 $('#notification').fadeIn('slow')
             }, 1500);
         })
-        $(function () {
+        $(function() {
             setTimeout(() => {
                 $('#notification').fadeTo('slow', 0)
             }, 3000);
+        })
+    </script>
+
+    <script>
+        $(function() {
+            $('.survey-filter').on('click', function() {
+                $(this).parent().parent().children('.dropdown-toggle').text($(this).text())
+                // $('.survey-list').children('a').each()
+
+                switch ($(this).text()) {
+                    case 'View All':
+                        $('.survey-list').children('a').children('.archive').parent().show()
+                        $('.survey-list').children('a').children('.deploy').parent().show()
+                        $('.survey-list').children('a').children('.draft').parent().show()
+
+                        break;
+                    case 'Archived':
+                        console.log('archived');
+                        $('.survey-list').children('a').children('.archive').parent().show()
+                        $('.survey-list').children('a').children('.deploy').parent().hide()
+                        $('.survey-list').children('a').children('.draft').parent().hide()
+                        break;
+                    case 'Deployed':
+                        console.log('deployed');
+                        $('.survey-list').children('a').children('.archive').parent().hide()
+                        $('.survey-list').children('a').children('.deploy').parent().show()
+                        $('.survey-list').children('a').children('.draft').parent().hide()
+                        break;
+                    case 'Drafted':
+                        console.log('drafted');
+                        $('.survey-list').children('a').children('.archive').parent().hide()
+                        $('.survey-list').children('a').children('.deploy').parent().hide()
+                        $('.survey-list').children('a').children('.draft').parent().show()
+                        break;
+
+                }
+            })
         })
     </script>
 
