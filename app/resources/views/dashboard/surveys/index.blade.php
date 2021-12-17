@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,6 +24,10 @@
             display: none;
         }
 
+        .survey-filter:hover {
+            cursor: pointer;
+        }
+
     </style>
 </head>
 
@@ -40,7 +42,7 @@
 
     {{-- should be included in survey content --}}
     @extends('inc.dashboard.survey.survey-content')
-    
+
 
 
     @section('survey-tiles')
@@ -58,8 +60,11 @@
                     class="float-right">{{ $allSurveys->where('status_id', '1')->count() }}</span></a></li>
         <li><a href="#"> Archived Surveys <span
                     class="float-right">{{ $allSurveys->where('status_id', '3')->count() }}</span></a></li>
-        <li><a href="#"> Submitted Surveys <span
-                    class="float-right">null</span></a></li>
+        <li><a href="#"> Submitted Surveys <span class="float-right">null</span></a></li>
+
+        <a class="archive-warning" style="display: none" data-toggle="modal" href="#archiveWarning">test dialog</a>
+        <a class="deploy-warning" style="display: none" data-toggle="modal" href="#deployWarning">test dialog</a>
+        <a class="delete-warning" style="display: none" data-toggle="modal" href="#deleteWarning">test dialog</a>
     @endsection
 
     @section('survey-form')
@@ -162,6 +167,89 @@
                 });
         })(jQuery);
     </script>
+
+    {{-- notification --}}
+    <script>
+        $(function() {
+            setTimeout(() => {
+                $('#notification').fadeIn('slow')
+            }, 1500);
+        })
+        $(function() {
+            setTimeout(() => {
+                $('#notification').fadeTo('slow', 0)
+            }, 3000);
+        })
+    </script>
+
+    <script>
+        $(function() {
+            $('.survey-filter').on('click', function() {
+                $(this).parent().parent().children('.dropdown-toggle').text($(this).text())
+                // $('.survey-list').children('a').each()
+
+                switch ($(this).text()) {
+                    case 'View All':
+                        $('.survey-list').children('a').children('.archive').parent().show()
+                        $('.survey-list').children('a').children('.deploy').parent().show()
+                        $('.survey-list').children('a').children('.draft').parent().show()
+
+                        break;
+                    case 'Archived':
+                        console.log('archived');
+                        $('.survey-list').children('a').children('.archive').parent().show()
+                        $('.survey-list').children('a').children('.deploy').parent().hide()
+                        $('.survey-list').children('a').children('.draft').parent().hide()
+                        break;
+                    case 'Deployed':
+                        console.log('deployed');
+                        $('.survey-list').children('a').children('.archive').parent().hide()
+                        $('.survey-list').children('a').children('.deploy').parent().show()
+                        $('.survey-list').children('a').children('.draft').parent().hide()
+                        break;
+                    case 'Drafted':
+                        console.log('drafted');
+                        $('.survey-list').children('a').children('.archive').parent().hide()
+                        $('.survey-list').children('a').children('.deploy').parent().hide()
+                        $('.survey-list').children('a').children('.draft').parent().show()
+                        break;
+
+                }
+            })
+        })
+    </script>
+
+    {{-- <script>
+        $(function() {
+
+
+            $().contextMenu &&
+                $.contextMenu({
+                    selector: ".list .card",
+                    callback: function(e, t) {},
+                    events: {
+                        show: function(e) {
+                            var t = e.$trigger.parents(".list");
+                            t && t.length > 0 && t.data("shiftSelectable").rightClick(e.$trigger);
+                        },
+                    },
+                    items: {
+                        copy: {
+                            name: "Deploy",
+                            className: "simple-icon-docs"
+                        },
+                        archive: {
+                            name: "Move to archive",
+                            className: "simple-icon-drawer"
+                        },
+                        delete: {
+                            name: "Delete",
+                            className: "simple-icon-trash"
+                        }
+                    },
+                }),
+        })
+    </script> --}}
     {{-- <script src="{{asset('js/scripts.js')}}"></script> --}}
 </body>
 <!-- Mirrored from dore-jquery.coloredstrategies.com/Apps.Survey.List.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 06 Nov 2021 22:42:02 GMT -->
