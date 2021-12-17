@@ -2,7 +2,7 @@
 
 <style type="text/css">
     .card-style{
-        width: 65% !important;
+        width: 80% !important;
         margin: 0 auto;
         }
 </style>
