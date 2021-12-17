@@ -53,7 +53,7 @@ class DashboardController extends Controller
         $survey = new Survey();
         $survey->name = $request->title;
         $survey->description = $request->details;
-        $survey->status_id = 2;
+        $survey->status_id = 1;
         $survey->save();
 
         return redirect()->route('dashboard.index');
