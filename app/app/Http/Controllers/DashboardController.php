@@ -310,4 +310,30 @@ class DashboardController extends Controller
         }
         return redirect('/dashboard/surveys/' . $request->survey_id)->with('success', 'survey updated successfully');
     }
+
+    public function deploySurvey(Request $request){
+        $record = Survey::find($request->survey_id);
+        $record->expiration_date = date('Y-m-d',strtotime($request->date));
+        $record->status_id = 2;
+        $record->save();
+
+        return redirect()->back()->with('success', 'survey successfully deployed');
+    }
+
+    public function archiveSurvey(Request $request){
+        // dd($request);
+        $record = Survey::find($request->survey_id);
+        $record->status_id = 3;
+        $record->save();
+
+        return redirect()->back()->with('success', 'survey successfully archived');
+    }
+
+    public function deleteSurvey(Request $request){
+        // dd($request);
+        $record = Survey::find($request->survey_id);
+        $record->delete();
+
+        return redirect()->back()->with('success', 'survey successfully deleted');
+    }
 }

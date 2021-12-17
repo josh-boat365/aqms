@@ -58,9 +58,9 @@
                     class="float-right">{{ $allSurveys->where('status_id', '3')->count() }}</span></a></li>
         <li><a href="#"> Submitted Surveys <span class="float-right">null</span></a></li>
 
-        <div class="something">
-            Right-click here
-        </div>
+        <a class="archive-warning" style="display: none" data-toggle="modal" href="#archiveWarning">test dialog</a>
+        <a class="deploy-warning" style="display: none" data-toggle="modal" href="#deployWarning">test dialog</a>
+        <a class="delete-warning" style="display: none" data-toggle="modal" href="#deleteWarning">test dialog</a>
     @endsection
 
     @section('survey-form')
@@ -162,6 +162,20 @@
                         (e(".theme-colors").hasClass("shown") && e(".theme-colors").removeClass("shown"));
                 });
         })(jQuery);
+    </script>
+
+    {{-- notification --}}
+    <script>
+        $(function () {
+            setTimeout(() => {
+                $('#notification').fadeIn('slow')
+            }, 1500);
+        })
+        $(function () {
+            setTimeout(() => {
+                $('#notification').fadeTo('slow', 0)
+            }, 3000);
+        })
     </script>
 
     {{-- <script>

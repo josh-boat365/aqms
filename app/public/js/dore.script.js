@@ -1937,7 +1937,26 @@
                     $.contextMenu({
                         selector: ".draft",
                         callback: function (key, option) {
-                            // code
+                            // console.log(key);
+                            // console.log(option);
+                            // console.log($(this).children('.survey_id').val());
+                            if (key == 'deploy') {
+                                $('.deploy-warning').trigger('click')
+                                $('#deploy-form').children('.survey_id').val($(this).children('.survey_id').val())
+                                $('.exp-date').on('change', function () {
+                                    if ($(this).val() == "") {
+                                        $('.deploy-btn').hide()
+                                    } else {
+                                        $('#deploy-form').children('.date').val($(this).val())
+                                        $('.deploy-btn').show()
+                                    }
+                                })
+                            } else if (key == 'delete') {
+                                console.log('delete');
+                                $('.delete-warning').trigger('click')
+                                $('#delete-form').children('.survey_id').val($(this).children('.survey_id').val())
+                                
+                            }
                         },
                         events: {
                             show: function (e) {
@@ -1945,14 +1964,16 @@
                                 t && t.length > 0 && t.data("shiftSelectable").rightClick(e.$trigger);
                             },
                         },
-                        items: { deploy: { name: "deploy", className: "simple-icon-arrow-up-circle" }, delete: { name: "delete", className: "simple-icon-trash" } },
+                        items: { deploy: { name: "deploye", className: "simple-icon-arrow-up-circle" }, delete: { name: "delete", className: "simple-icon-trash" } },
                     }),
                     $().contextMenu &&
                     $.contextMenu({
                         selector: ".deploy",
                         callback: function (key, option) {
-                            if(key == 'archive')
-                                alert ('do you really wish to archive???')
+                            if (key == 'archive') {
+                                $('#archive-form').children('.survey_id').val($(this).children('.survey_id').val())
+                                $('.archive-warning').trigger('click')
+                            }
                         },
                         events: {
                             show: function (e) {

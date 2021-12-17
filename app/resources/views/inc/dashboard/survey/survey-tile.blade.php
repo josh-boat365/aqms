@@ -23,6 +23,7 @@
 </style>
 <a href="{{ url('/dashboard/surveys/' . $survey->id) }}">
     <div class=" card d-flex flex-row mb-3 @if($survey->status_id == 1) draft @elseif($survey->status_id == 2) deploy @elseif($survey->status_id == 3) archive @endif">
+        <input type="hidden" class="survey_id" value="{{$survey->id}}">
         <div class="d-flex flex-grow-1 min-width-zero">
             <div class="dash-survey-tile card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center">
                 <div class="col-3 tile-info">
@@ -42,7 +43,7 @@
                 </div>
     
                 <div class="col-3 tile-info ">
-                    <p class="mb-0 tile-x text-muted text-center text-small w-8 w-xs-100"> @if($survey->status_id == 2) {{ $survey->created_at->format('Y-m-d') }} @else --- @endif</p>
+                    <p class="mb-0 tile-x text-muted text-center text-small w-8 w-xs-100"> @if($survey->status_id == 2) {{ $survey->expiration_date }} @else --- @endif</p>
                 </div>
                 
                <div class="col-3 title-info">
