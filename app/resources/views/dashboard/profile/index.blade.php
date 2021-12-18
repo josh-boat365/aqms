@@ -33,9 +33,9 @@
     @include('inc.dashboard.navbar')
 
 
-    @include('inc.dashboard.profile.side-bar')
+    @include('inc.dashboard.side-bar')
 
-    @include('inc.dashboard.profile.profile-content')
+    @include('inc.dashboard.profile.content')
 
 
 

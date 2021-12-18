@@ -33,7 +33,7 @@
     @include('inc.alumnus.navbar')
 
 
-    @include('inc.alumnus.profile.side-bar')
+    @include('inc.alumnus.side-bar')
 
     @include('inc.alumnus.profile.profile-content')
 

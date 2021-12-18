@@ -29,8 +29,9 @@ Route::post('/logout', '\App\Http\Controllers\AuthController@logout')->name('log
 
 
 // Dashboard
-
+    // index
 Route::get('/dashboard', '\App\Http\Controllers\DashboardController@index')->name('dashboard.index');
+    // survey
 Route::post('/dashboard/survey/test', '\App\Http\Controllers\DashboardController@testData')->name('dashboard.test');
 Route::post('/dashboard/survey/store', '\App\Http\Controllers\DashboardController@storeSurvey')->name('survey.store');
 Route::get('/dashboard/surveys/{i}', '\App\Http\Controllers\DashboardController@showsurvey')->name('survey.show');
@@ -40,19 +41,20 @@ Route::put('/dashboard/surveys/archive', '\App\Http\Controllers\DashboardControl
 Route::delete('/dashboard/surveys/delete', '\App\Http\Controllers\DashboardController@deleteSurvey')->name('survey.delete');
 Route::post('/dashboard/surveys/view-response', '\App\Http\Controllers\DashboardController@viewResponse')->name('survey.view-response');
 Route::post('/dashboard/surveys', '\App\Http\Controllers\DashboardController@addQuestion')->name('survey.addQuestion');
-Route::get('inc/dashboard/profile/', '\App\Http\Controllers\DashboardController@profile')->name('dashboard.profile');
+    // profile
+Route::get('/dashboard/profile/', '\App\Http\Controllers\DashboardController@profile')->name('dashboard.profile');
+    // submission
 Route::get('/dashboard/submissions', '\App\Http\Controllers\DashboardController@submissions')->name('submissions.index');
 Route::get('/dashboard/submissions/{i}', '\App\Http\Controllers\DashboardController@showSubmissions')->name('submissions.show');
 
-// Alumus
 
+
+// Alumus
+    // index
 Route::get('/home', '\App\Http\Controllers\AlumnusController@index')->name('home');
+    // surveys
 Route::get('/home/surveys/{i}', '\App\Http\Controllers\AlumnusController@showsurvey')->name('alumnus.survey.show');
 Route::post('/home/surveys/save', '\App\Http\Controllers\AlumnusController@saveSurvey')->name('alumnus.survey.save');
 Route::post('/home/surveys/submit', '\App\Http\Controllers\AlumnusController@submitSurvey')->name('alumnus.survey.submit');
-Route::get('inc/alumnus/profile/', '\App\Http\Controllers\AlumnusController@profile')->name('alumnus.profile');
-
-
-
-// Submissions
-
+    // profile
+Route::get('home/profile/', '\App\Http\Controllers\AlumnusController@profile')->name('alumnus.profile');

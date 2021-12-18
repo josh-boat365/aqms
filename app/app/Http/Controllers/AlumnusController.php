@@ -28,7 +28,7 @@ class AlumnusController extends Controller
     public function profile()
     {
 
-        return view('inc.alumnus.profile.profile-index', ['allSurveys' => Survey::all(), 'notifications' => Notification::all(), 'surveys' => Survey::all()->where('status_id', 2)]);
+        return view('alumnus.profile.index', ['allSurveys' => Survey::all(), 'notifications' => Notification::all(), 'surveys' => Survey::all()->where('status_id', 2)]);
     }
 
     public function showSurvey(int $index)
