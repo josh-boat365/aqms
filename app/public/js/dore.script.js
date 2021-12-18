@@ -1964,7 +1964,7 @@
                                 t && t.length > 0 && t.data("shiftSelectable").rightClick(e.$trigger);
                             },
                         },
-                        items: { deploy: { name: "deploye", className: "simple-icon-arrow-up-circle" }, delete: { name: "delete", className: "simple-icon-trash" } },
+                        items: { deploy: { name: "deploy", className: "simple-icon-arrow-up-circle" }, delete: { name: "delete", className: "simple-icon-trash" } },
                     }),
                     $().contextMenu &&
                     $.contextMenu({
@@ -1987,7 +1987,10 @@
                     $.contextMenu({
                         selector: ".archive",
                         callback: function (key, option) {
-                            //code
+                            if (key == 'response') {
+                                $('#view-response').children('.survey_id').val($(this).children('.survey_id').val())
+                                $('#view-response').children('.submit').trigger('click')
+                            }
                         },
                         events: {
                             show: function (e) {
@@ -1995,7 +1998,7 @@
                                 t && t.length > 0 && t.data("shiftSelectable").rightClick(e.$trigger);
                             },
                         },
-                        items: { results: { name: "view responses", className: "simple-icon-drawer" } },
+                        items: { response: { name: "view responses", className: "simple-icon-drawer" } },
                     }),
                     $().selectFromLibrary && ($(".sfl-multiple").selectFromLibrary(), $(".sfl-single").selectFromLibrary()),
                     $(".feedback-container").on("click", "a", function e(t) {

@@ -106,14 +106,14 @@
 <body id="app-container" class="menu-sub-hidden show-spinner right-menu">
 
 
-    @include('inc.dashboard.responses.navbar')
+    @include('inc.dashboard.navbar')
 
 
-    @include('inc.dashboard.responses.side-bar')
+    @include('inc.dashboard.side-bar', ['surveys' => $allSurveys])
 
 
     {{-- should be included in survey content --}}
-    @extends('inc.dashboard.responses.responses-content')
+    @extends('inc.dashboard.submissions.content')
 
     {{-- @section('survey-tiles')
         @foreach ($allSurveys as $survey)

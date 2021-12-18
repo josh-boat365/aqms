@@ -90,7 +90,7 @@
 
 
     
-    @extends('inc.dashboard.submissions.submission-content')
+    @extends('inc.dashboard.responses.responses-content')
     
 
 

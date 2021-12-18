@@ -58,11 +58,12 @@
                 <button class="header-icon btn btn-empty" type="button" id="notificationButton" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     <i class="simple-icon-bell"></i>
-                    <span class="count">3</span>
+                    <span class="count">{{ $notifications->count() }}</span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right mt-3 position-absolute" id="notificationDropdown">
                     <div class="scroll">
-                        @foreach ($notifications as $notification)
+
+                        @foreach ($notifications->get() as $notification)
                             <div class="d-flex flex-row mb-3 pb-3 border-bottom">
                                 <a href="#">
                                     <img src="{{ asset('img/profiles/l-2.jpg') }}" alt="Notification Image"
@@ -70,25 +71,31 @@
 
                                 </a>
                                 <div class="pl-3">
-                                    <a href="#">
-                                        <p class="font-weight-medium mb-1">
-                                            @if ($notification->notification_type_id == 1)
-                                                new registered user
-                                            @elseif($notification->notification_type_id == 2)
-                                                new survey submitted
-                                            @endif
-                                        </p>
+                                    @if ($notification->notification_type_id == 2)
+                                        
+                                        <a href="{{url('/dashboard/submissions/' . $notification->survey_id )}}">
+                                        @else
+                                            <a href="">
+                                    @endif
+                                    <p class="font-weight-medium mb-1">
                                         @if ($notification->notification_type_id == 1)
-                                            <p class="font-weight-medium mb-1"> - @foreach ($users->where('id', $notification->user_id) as $user)
-                                                    {{ $user->firstName }}
-                                                @endforeach</p>
-                                            @elseif($notification->notification_type_id == 2)
-                                            <p class="font-weight-medium mb-1"> - @foreach ($allSurveys->where('id', $notification->survey_id) as $survey)
+                                            new registered user
+                                        @elseif($notification->notification_type_id == 2)
+                                            new survey submitted
+                                        @endif
+                                    </p>
+                                    @if ($notification->notification_type_id == 1)
+                                        <p class="font-weight-medium mb-1"> - @foreach ($users->where('id', $notification->user_id) as $user)
+                                                {{ $user->firstName }}
+                                            @endforeach</p>
+                                    @elseif($notification->notification_type_id == 2)
+                                        <p class="font-weight-medium mb-1"> - @foreach ($allSurveys->where('id', $notification->survey_id) as $survey)
                                                 {{ $survey->name }}
                                             @endforeach</p>
-                                        @endif
-                                        <p class="text-muted mb-0 text-small">
-                                            {{ $notification->created_at->format('d/m/y')}}   ({{ $notification->created_at->format(' h : s ') }})</p>
+                                    @endif
+                                    <p class="text-muted mb-0 text-small">
+                                        {{ $notification->created_at->format('d/m/y') }}
+                                        ({{ $notification->created_at->format(' h : s ') }})</p>
                                     </a>
                                 </div>
                             </div>
