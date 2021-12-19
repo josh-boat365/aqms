@@ -136,5 +136,11 @@
                 });
         })(jQuery);
     </script>
+
+    <script>
+        $(function () {
+            $('#profile-section').addClass('active');
+        })
+    </script>
 </body>
 </html>
