@@ -37,13 +37,13 @@
                             {{-- answer-type --}}
                             <select class="form-control select2-single option-type" data-width="100%"
                                 name="ques[{{ $survey->questions[$i]->id }}][opt_type]">
-                                <option label="&nbsp;">&nbsp;</option>
+                                {{-- <option label="&nbsp;">&nbsp;</option> --}}
                                 @foreach ($optionTypes as $optionType)
                                     <option value="{{ $optionType->id }}" @if ($survey->questions[$i]->option_type_id == $optionType->id)
                                         selected
-                                @endif>{{ $optionType->type }}</option>
-@endforeach
-</select>
+                                    @endif>{{ $optionType->type }}</option>
+                                @endforeach
+                            </select>
 </div>
 
 {{-- possible answers --}}
@@ -56,7 +56,7 @@
                 <div class="sortable">
                     @foreach ($survey->options->where('question_id', $survey->questions[$i]->id) as $option)
                         <div class="mb-1 position-relative ans"><input class="form-control" type="text"
-                                name="ques[{{ $survey->questions[$i]->id }}][ans][rows][old][{{$option->id}}]"
+                                name="ques[{{ $survey->questions[$i]->id }}][ans][rows][old][{{ $option->id }}]"
                                 value="{{ $option->option }}">
                             <div class="input-icons"><span class="badge badge-pill handle pr-0 mr-0"><i
                                         class="simple-icon-cursor-move"></i> </span><span
@@ -70,7 +70,7 @@
                 <div class="sortable">
                     @foreach ($survey->columns->where('question_id', $survey->questions[$i]->id) as $option)
                         <div class="mb-1 position-relative ans"><input class="form-control" type="text"
-                                name="ques[{{ $survey->questions[$i]->id }}][ans][columns][old][{{$option->id}}]"
+                                name="ques[{{ $survey->questions[$i]->id }}][ans][columns][old][{{ $option->id }}]"
                                 value="{{ $option->question }}">
                             <div class="input-icons"><span class="badge badge-pill handle pr-0 mr-0"><i
                                         class="simple-icon-cursor-move"></i> </span><span
@@ -102,7 +102,8 @@
 
             @foreach ($survey->options->where('question_id', $survey->questions[$i]->id) as $option)
                 <div class="mb-1 position-relative ans"><input class="form-control" type="text"
-                        name="ques[{{ $survey->questions[$i]->id }}][ans][old][{{$option->id}}]" value="{{ $option->option }}">
+                        name="ques[{{ $survey->questions[$i]->id }}][ans][old][{{ $option->id }}]"
+                        value="{{ $option->option }}">
                     <div class="input-icons"><span class="badge badge-pill handle pr-0 mr-0"><i
                                 class="simple-icon-cursor-move"></i> </span><span
                             class="badge badge-pill btn del-ans"><i class="simple-icon-trash"></i></span></div>
