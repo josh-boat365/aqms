@@ -1,57 +1,3 @@
-{{-- @extends('layouts.dashboard')
-
-@section('style')
-    <link rel="stylesheet" href="{{asset('font/iconsmind-s/css/iconsminds.css')}}">
-    <link rel="stylesheet" href="{{asset('font/simple-line-icons/css/simple-line-icons.css')}}">
-    <link rel="stylesheet" href="{{asset('css/vendor/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/vendor/bootstrap.rtl.only.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/vendor/perfect-scrollbar.css')}}">
-    <link rel="stylesheet" href="{{asset('css/vendor/select2.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/vendor/select2-bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/vendor/jquery.contextMenu.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/vendor/component-custom-switch.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/dore.dark.bluenavy.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/main.css')}}">
-@endsection
-
-@section('body-id') id="app-container" @endsection
-
-@section('body-class') class="menu-sub-hidden right-menu" @endsection
-
-
-@section('main')
-    @extends('inc.dashboard.survey.survey-list')
-@endsection
-
-@section('survey-form')
-    @include('inc.dashboard.survey.survey-form')
-@endsection
-
-@section('survey-tiles')
-    @foreach ($allSurveys as $survey)
-        @include('inc.dashboard.survey.survey-tile', ['survey' => $survey, 'status' => $survey->status])
-    @endforeach
-@endsection
-
-@section('script')
-    @error('title')
-        <script>
-            $(document).ready(function() {
-                $("#add-new-btn").trigger("click");
-            });
-        </script>
-    @enderror
-
-    <script src="{{ asset('js/vendor/jquery-3.3.1.min.js') }}"></script>
-    <script src="{{ asset('js/vendor/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('js/vendor/perfect-scrollbar.min.js') }}"></script>
-    <script src="{{ asset('js/vendor/select2.full.js') }}"></script>
-    <script src="{{ asset('js/vendor/mousetrap.min.js') }}"></script>
-    <script src="{{ asset('js/vendor/jquery.contextMenu.min.js') }}"></script>
-    <script src="{{ asset('js/dore.script.js') }}"></script>
-    <script src="{{ asset('js/scripts.js') }}"></script>
-@endsection --}}
-
 <!DOCTYPE html>
 <html lang="en">
 <!-- Mirrored from dore-jquery.coloredstrategies.com/Apps.Survey.List.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 06 Nov 2021 22:42:02 GMT -->
@@ -106,20 +52,22 @@
 <body id="app-container" class="menu-sub-hidden show-spinner right-menu">
 
 
-    @include('inc.dashboard.responses.navbar')
+    @include('inc.dashboard.navbar')
 
 
-    @include('inc.dashboard.responses.side-bar')
+    @include('inc.dashboard.side-bar', ['surveys' => $allSurveys])
 
 
     {{-- should be included in survey content --}}
-    @extends('inc.dashboard.responses.responses-content')
+    @extends('inc.dashboard.responses.content')
 
-    {{-- @section('survey-tiles')
-        @foreach ($allSurveys as $survey)
-            @include('inc.dashboard.survey.survey-tile', ['survey' => $survey, 'status' => $survey->status])
-        @endforeach
-    @endsection --}}
+    @section('alumni-list')
+        @include('inc.dashboard.responses.alumni-list')
+    @endsection
+
+    @section('question-list')
+        @include('inc.dashboard.responses.question-list')
+    @endsection
 
     @section('stat')
         <li class="active"><a href="#"> All Surveys <span
@@ -130,8 +78,7 @@
                     class="float-right">{{ $allSurveys->where('status_id', '1')->count() }}</span></a></li>
         <li><a href="#"> Archived Surveys <span
                     class="float-right">{{ $allSurveys->where('status_id', '3')->count() }}</span></a></li>
-        <li><a href="#"> Submitted Surveys <span
-                    class="float-right">{{ $allSurveys->where('status_id', '3')->count() }}</span></a></li>
+        <li><a href="#"> Submitted Surveys <span class="float-right">null</span></a></li>
     @endsection
 
     @section('survey-form')
@@ -234,41 +181,46 @@
         })(jQuery);
     </script>
 
+    <script>
+        $(function() {
+            $('#submission-section').addClass('active');
+        })
+    </script>
+
     {{-- auto select and show questions of first user in alumni list --}}
     <script>
-        $(function () {
+        $(function() {
             console.log('hi');
             $('.alumni').first().addClass('dot-active')
             $('.ques').first().show()
         })
-        
     </script>
 
     {{-- trim input --}}
     <script>
-        $(function () {
-            $('.trim').each(function () {
+        $(function() {
+            $('.trim').each(function() {
                 $(this).val($(this).val().trim())
             })
-            $('textarea').each(function () {
+            $('textarea').each(function() {
                 $(this).text($(this).text().trim())
             })
         })
     </script>
 
     <script>
-        $(function () {
-            $('.alumni').click(function () {
+        $(function() {
+            $('.alumni').click(function() {
                 $user_id = $(this).children('input').val()
                 console.log($user_id)
                 $('.ques').hide()
                 $('.dot-active').removeClass('dot-active')
-                
+
                 $(this).addClass('dot-active')
                 $('.' + $user_id).show()
             })
 
-            
+
         })
     </script>
     {{-- <script src="{{asset('js/scripts.js')}}"></script> --}}

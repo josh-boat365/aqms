@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Alumnus Profile | ATU Tracer</title>
+    <title>Admin Profile | ATU Tracer</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <link rel="stylesheet" href="{{ asset('font/iconsmind-s/css/iconsminds.css') }}">
     <link rel="stylesheet" href="{{ asset('font/simple-line-icons/css/simple-line-icons.css') }}">
@@ -30,12 +30,12 @@
 <body id="app-container" class="menu-sub-hidden show-spinner right-menu">
 
 
-    @include('inc.alumnus.navbar')
+    @include('inc.dashboard.navbar')
 
 
-    @include('inc.alumnus.profile.side-bar')
+    @include('inc.dashboard.side-bar')
 
-    @include('inc.alumnus.profile.profile-content')
+    @include('inc.dashboard.profile.content')
 
 
 
@@ -135,6 +135,12 @@
                         (e(".theme-colors").hasClass("shown") && e(".theme-colors").removeClass("shown"));
                 });
         })(jQuery);
+    </script>
+
+    <script>
+        $(function () {
+            $('#profile-section').addClass('active');
+        })
     </script>
 </body>
 </html>

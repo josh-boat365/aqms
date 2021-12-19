@@ -3,11 +3,11 @@
     <div class="main-menu">
         <div class="scroll">
             <ul class="list-unstyled">
-                <li><a href="#dashboard"><i class="iconsminds-shop-4"></i> <span>Dashboards</span></a></li>
-                <li class="active"><a href="#surveys"><i class="iconsminds-check"></i> Surveys</a></li>
-                <li class=""><a href="#"><i class="simple-icon-people"></i>Users</a></li>
-                <li class=""><a href="{{route('submissions.index')}}"><i class="iconsminds-bar-chart-4"></i>Responses</a></li>
-                <li class=""><a href="{{route('dashboard.profile')}}"><i class="simple-icon-people"></i>Profile</a></li>
+                <li id="dashboard-section"><a href="#dashboard"><i class="iconsminds-shop-4"></i> <span>Dashboards</span></a></li>
+                <li id="survey-section"><a href="#surveys"><i class="iconsminds-check"></i> Surveys</a></li>
+                <li id="user-section"><a href="#"><i class="simple-icon-people"></i>Users</a></li>
+                <li id="submission-section"><a href="{{route('submissions.index')}}"><i class="iconsminds-bar-chart-4"></i>Submissions</a></li>
+                <li id="profile-section"><a href="{{route('dashboard.profile')}}"><i class="simple-icon-people"></i>Profile</a></li>
             </ul>
         </div>
     </div>

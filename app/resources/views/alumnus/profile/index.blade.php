@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Admin Profile | ATU Tracer</title>
+    <title>Alumnus Profile | ATU Tracer</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <link rel="stylesheet" href="{{ asset('font/iconsmind-s/css/iconsminds.css') }}">
     <link rel="stylesheet" href="{{ asset('font/simple-line-icons/css/simple-line-icons.css') }}">
@@ -30,12 +30,12 @@
 <body id="app-container" class="menu-sub-hidden show-spinner right-menu">
 
 
-    @include('inc.dashboard.navbar')
+    @include('inc.alumnus.navbar')
 
 
-    @include('inc.dashboard.profile.side-bar')
+    @include('inc.alumnus.side-bar')
 
-    @include('inc.dashboard.profile.profile-content')
+    @include('inc.alumnus.profile.profile-content')
 
 
 

@@ -26,7 +26,7 @@
     }
 
 </style>
-<a href=" {{url('/dashboard/responses/' . $survey->id)}} ">
+<a href=" {{url('/dashboard/submissions/' . $survey->id)}} ">
     <div class=" card d-flex flex-row mb-3">
         <div class="d-flex flex-grow-1 min-width-zero">
             <div

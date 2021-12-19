@@ -65,6 +65,12 @@
         <a class="archive-warning" style="display: none" data-toggle="modal" href="#archiveWarning">test dialog</a>
         <a class="deploy-warning" style="display: none" data-toggle="modal" href="#deployWarning">test dialog</a>
         <a class="delete-warning" style="display: none" data-toggle="modal" href="#deleteWarning">test dialog</a>
+
+        <form action="{{ route('survey.view-response') }}" method="post" id="view-response" style="display: none">
+            @csrf
+            <input type="hidden" name="survey_id" class="survey_id">
+            <input type="submit" class="submit">
+        </form>
     @endsection
 
     @section('survey-form')
@@ -166,6 +172,12 @@
                         (e(".theme-colors").hasClass("shown") && e(".theme-colors").removeClass("shown"));
                 });
         })(jQuery);
+    </script>
+
+    <script>
+        $(function() {
+            $('#survey-section').addClass('active');
+        })
     </script>
 
     {{-- notification --}}

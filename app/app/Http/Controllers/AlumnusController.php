@@ -22,19 +22,19 @@ class AlumnusController extends Controller
     public function index()
     {
 
-        return view('alumnus.surveys.index', ['surveys' => Survey::all()->where('status_id', 2), 'progresses' => Progress::all(), 'submissions' => Submission::all()]);
+        return view('alumnus.surveys.index', ['allSurveys' => Survey::all(), 'notifications' => Notification::all(), 'surveys' => Survey::all()->where('status_id', 2), 'progresses' => Progress::all(), 'submissions' => Submission::all()]);
     }
 
     public function profile()
     {
 
-        return view('inc.alumnus.profile.profile-index', ['surveys' => Survey::all()->where('status_id', 2)]);
+        return view('alumnus.profile.index', ['allSurveys' => Survey::all(), 'notifications' => Notification::all(), 'surveys' => Survey::all()->where('status_id', 2)]);
     }
 
     public function showSurvey(int $index)
     {
         // dd(Response::where('user_id', auth()->user()->id)->get());
-        return view('alumnus.surveys.show')->with(['surveys' => Survey::all()->where('status_id', 2), 'survey' => Survey::find($index), 'optionTypes' => OptionType::all(), 'responses' => Response::all()->where('user_id', auth()->user()->id)]);
+        return view('alumnus.surveys.show')->with(['allSurveys' => Survey::all(), 'notifications' => Notification::all(), 'surveys' => Survey::all()->where('status_id', 2), 'survey' => Survey::find($index), 'optionTypes' => OptionType::all(), 'responses' => Response::all()->where('user_id', auth()->user()->id)]);
     }
 
     public function saveSurvey(Request $request)

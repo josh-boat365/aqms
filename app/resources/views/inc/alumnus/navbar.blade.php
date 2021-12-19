@@ -62,11 +62,35 @@
                 <button class="header-icon btn btn-empty" type="button" id="notificationButton" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     <i class="simple-icon-bell"></i>
-                    <span class="count">3</span>
+                    <span class="count">{{$notifications->where('notification_type_id', 3)->count()}}</span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right mt-3 position-absolute" id="notificationDropdown">
                     <div class="scroll">
-                        <div class="d-flex flex-row mb-3 pb-3 border-bottom">
+                        @foreach ($notifications->where('notification_type_id', 3) as $notification)
+                            <div class="d-flex flex-row mb-3 pb-3 border-bottom">
+                                {{-- <a href="#">
+                                    <img src="{{ asset('img/profiles/l-2.jpg') }}" alt="Notification Image"
+                                        class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle">
+
+                                </a> --}}
+                                <div class="pl-3">
+                                    <a href="{{ url('/home/surveys/' . $notification->survey_id) }}">
+                                        <p class="font-weight-medium mb-1">
+                                            new survey deploymnet
+                                        </p>
+                                        
+                                        <p class="font-weight-medium mb-1"> - @foreach ($allSurveys->where('id', $notification->survey_id) as $survey)
+                                                {{ $survey->name }}
+                                            @endforeach</p>
+
+                                        <p class="text-muted mb-0 text-small">
+                                            {{ $notification->created_at->format('d/m/y') }}
+                                            ({{ $notification->created_at->format(' h : s ') }})</p>
+                                    </a>
+                                </div>
+                            </div>
+                        @endforeach
+                        {{-- <div class="d-flex flex-row mb-3 pb-3 border-bottom">
                             <a href="#"><img src="{{ asset('img/profiles/l-2.jpg') }}" alt="Notification Image"
                                     class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle"></a>
                             <div class="pl-3">
@@ -105,7 +129,7 @@
                                     <p class="text-muted mb-0 text-small">09.04.2018 - 12:45</p>
                                 </a>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

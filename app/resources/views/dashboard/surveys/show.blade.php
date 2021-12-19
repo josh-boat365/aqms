@@ -156,6 +156,12 @@
         })(jQuery);
     </script>
 
+    <script>
+        $(function() {
+            $('#survey-section').addClass('active');
+        })
+    </script>
+
     {{-- new que add --}}
     <script>
         $(function() {
@@ -434,7 +440,8 @@
                         )
 
                         $.each($grid_rows, function() {
-                            $grid.children('.d-flex').append($('<div/>').addClass('text-center mb-2')
+                            $grid.children('.d-flex').append($('<div/>').addClass(
+                                    'text-center mb-2')
                                 .text($(this).children('.form-control').val()))
                         })
 
@@ -453,7 +460,8 @@
                         $row_index = 1;
                         $.each($grid_rows, function() {
                             $grid.children('.row').children('.d-flex').append(
-                                $('<div/>').addClass('d-flex justify-content-center mb-2').append(
+                                $('<div/>').addClass('d-flex justify-content-center mb-2')
+                                .append(
                                     $('<input>').attr({
                                         'type': 'radio',
                                         'name': 'row' + $row_index,
@@ -697,12 +705,12 @@
 
     {{-- notification --}}
     <script>
-        $(function () {
+        $(function() {
             setTimeout(() => {
                 $('#notification').fadeIn('slow')
             }, 1500);
         })
-        $(function () {
+        $(function() {
             setTimeout(() => {
                 $('#notification').fadeTo('slow', 0)
             }, 3000);

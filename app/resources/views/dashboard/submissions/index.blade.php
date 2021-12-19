@@ -1,57 +1,3 @@
-{{-- @extends('layouts.dashboard')
-
-@section('style')
-    <link rel="stylesheet" href="{{asset('font/iconsmind-s/css/iconsminds.css')}}">
-    <link rel="stylesheet" href="{{asset('font/simple-line-icons/css/simple-line-icons.css')}}">
-    <link rel="stylesheet" href="{{asset('css/vendor/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/vendor/bootstrap.rtl.only.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/vendor/perfect-scrollbar.css')}}">
-    <link rel="stylesheet" href="{{asset('css/vendor/select2.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/vendor/select2-bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/vendor/jquery.contextMenu.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/vendor/component-custom-switch.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/dore.dark.bluenavy.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/main.css')}}">
-@endsection
-
-@section('body-id') id="app-container" @endsection
-
-@section('body-class') class="menu-sub-hidden right-menu" @endsection
-
-
-@section('main')
-    @extends('inc.dashboard.survey.survey-list')
-@endsection
-
-@section('survey-form')
-    @include('inc.dashboard.survey.survey-form')
-@endsection
-
-@section('survey-tiles')
-    @foreach ($allSurveys as $survey)
-        @include('inc.dashboard.survey.survey-tile', ['survey' => $survey, 'status' => $survey->status])
-    @endforeach
-@endsection
-
-@section('script')
-    @error('title')
-        <script>
-            $(document).ready(function() {
-                $("#add-new-btn").trigger("click");
-            });
-        </script>
-    @enderror
-
-    <script src="{{ asset('js/vendor/jquery-3.3.1.min.js') }}"></script>
-    <script src="{{ asset('js/vendor/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('js/vendor/perfect-scrollbar.min.js') }}"></script>
-    <script src="{{ asset('js/vendor/select2.full.js') }}"></script>
-    <script src="{{ asset('js/vendor/mousetrap.min.js') }}"></script>
-    <script src="{{ asset('js/vendor/jquery.contextMenu.min.js') }}"></script>
-    <script src="{{ asset('js/dore.script.js') }}"></script>
-    <script src="{{ asset('js/scripts.js') }}"></script>
-@endsection --}}
-
 <!DOCTYPE html>
 <html lang="en">
 <!-- Mirrored from dore-jquery.coloredstrategies.com/Apps.Survey.List.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 06 Nov 2021 22:42:02 GMT -->
@@ -90,7 +36,7 @@
 
 
     
-    @extends('inc.dashboard.submissions.submission-content')
+    @extends('inc.dashboard.submissions.content')
     
 
 
@@ -211,6 +157,12 @@
                         (e(".theme-colors").hasClass("shown") && e(".theme-colors").removeClass("shown"));
                 });
         })(jQuery);
+    </script>
+
+    <script>
+        $(function () {
+            $('#submission-section').addClass('active');
+        })
     </script>
     {{-- <script src="{{asset('js/scripts.js')}}"></script> --}}
 </body>
