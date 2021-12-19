@@ -83,23 +83,7 @@
                         </div>
                     </div> --}}
                 </div>
-                <div class="mb-2"><a class="btn pt-0 pl-0 d-inline-block d-md-none" data-toggle="collapse"
-                        href="#displayOptions" role="button" aria-expanded="true" aria-controls="displayOptions">Display
-                        Options <i class="simple-icon-arrow-down align-middle"></i></a>
-                    <div class="collapse d-md-block" id="displayOptions">
-                        <div class="d-flex">
-                            <div class="btn-group orderby-btn float-md-left mr-1 mb-1">
-                                <button class="btn btn-outline-dark btn-xs dropdown-toggle" type="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Order
-                                    By</button>
-                                <div class="dropdown-menu"><a class="dropdown-item" href="#">Action</a> <a
-                                        class="dropdown-item" href="#">Another action</a></div>
-                            </div>
-                            <div class="search-sm d-inline-block float-md-left mr-1 mb-1 align-top">
-                                <input class="orderby-search" placeholder="Search..."></div>
-                        </div>
-                    </div>
-                </div>
+                
                 <div class="separator mb-5"></div>
                 @include('inc.dashboard.dashboard-welcome')
                 {{-- Survey Tile Header --}}
