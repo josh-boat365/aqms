@@ -73,7 +73,7 @@
             <div class="col-3 tile-info">
                 <div class="w-8 w-xs-100">
                     <p class="mb-0 tile-x tile-text text-muted font-weight-bold text-medium">
-                        {{ $survey->created_at->format('Y-m-d') }}</p>
+                        {{ $survey->expiration_date}}</p> 
                 </div>
             </div>
 

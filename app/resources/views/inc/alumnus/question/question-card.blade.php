@@ -5,6 +5,11 @@
         width: 80% !important;
         margin: 0 auto;
         }
+        @media (min-width: 320px) and (max-width: 652px){
+            .card-style{
+                width: 100%;
+            }
+        }
 </style>
 
 @for ($i = 0; $i < count($survey->questions); $i++)
