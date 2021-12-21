@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Notification;
 use App\Models\Option;
 use App\Models\Survey;
 use App\Models\Question;
 use App\Models\OptionType;
+use App\Models\Response;
+use App\Models\Submission;
 use App\Models\Subquestion;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -20,15 +24,29 @@ class DashboardController extends Controller
     public function index()
     {
 
-        return view('dashboard.surveys.index')->with('allSurveys', Survey::all());
-        // return view('dashboard.surveys.show');
+        return view('dashboard.surveys.index', ['notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2), 'users' => User::all()])->with('allSurveys', Survey::all());
+        
     }
 
-    public function responses()
+    public function profile()
     {
 
-        return view('dashboard.responses.index')->with('allSurveys', Survey::all());
+        return view('dashboard.profile.index', ['allSurveys', Survey::all(), 'surveys' => Survey::all(),'notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2), 'users' => User::all()]);
+    }
 
+    public function submissions()
+    {
+        return view('dashboard.submissions.index')->with(['notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2), 'allSurveys' => Survey::all(), 'users' => User::all(), 'submissions' => Submission::all(), 'notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2),]);
+    }
+
+    public function users()
+    {
+        return view('dashboard.users.index')->with(['notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2), 'allSurveys' => Survey::all(), 'users' => User::all(), 'submissions' => Submission::all(), 'notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2),]);
+    }
+
+    public function showSubmissions(int $index)
+    {
+        return view('dashboard.submissions.show')->with(['allSurveys', Survey::all(), 'notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2), 'allSurveys' => Survey::all(), 'users' => User::all(), 'submissions' => Submission::all()->where('survey_id', $index), 'survey' => Survey::find($index), 'allResponses' => Response::all(),'notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2),]);
     }
 
     public function storeSurvey(Request $request)
@@ -40,7 +58,7 @@ class DashboardController extends Controller
         $survey = new Survey();
         $survey->name = $request->title;
         $survey->description = $request->details;
-        $survey->status_id = 2;
+        $survey->status_id = 1;
         $survey->save();
 
         return redirect()->route('dashboard.index');
@@ -48,7 +66,7 @@ class DashboardController extends Controller
 
     public function showSurvey(int $index)
     {
-        return view('dashboard.surveys.show')->with(['survey' => Survey::find($index), 'optionTypes' => OptionType::all(), 'allSurveys' => Survey::all()]);
+        return view('dashboard.surveys.show')->with(['users' => User::all(), 'notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2), 'survey' => Survey::find($index), 'optionTypes' => OptionType::all(), 'allSurveys' => Survey::all()]);
     }
 
     public function addQuestion(Request $request)
@@ -62,7 +80,7 @@ class DashboardController extends Controller
             'option_type_id' => '1'
         ]);
 
-        return redirect()->route('survey.show', ['i' => $request->survey_id]);
+        return redirect()->route('survey.show', ['i' => $request->survey_id])->with('success', 'new question added successfully');
     }
 
     public function updateSurvey(Request $request)
@@ -295,6 +313,42 @@ class DashboardController extends Controller
                 }
             }
         }
-        return redirect('/dashboard/surveys/' . $request->survey_id);
+        return redirect('/dashboard/surveys/' . $request->survey_id)->with('success', 'survey updated successfully');
+    }
+
+    public function deploySurvey(Request $request){
+        $record = Survey::find($request->survey_id);
+        $record->expiration_date = date('Y-m-d',strtotime($request->date));
+        $record->status_id = 2;
+        $record->save();
+
+        $record = new Notification();
+        $record->survey_id = $request->survey_id;
+        $record->notification_type_id = 3;
+        $record->save();
+
+        return redirect()->back()->with('success', 'survey successfully deployed');
+    }
+
+    public function archiveSurvey(Request $request){
+        // dd($request);
+        $record = Survey::find($request->survey_id);
+        $record->status_id = 3;
+        $record->save();
+
+        return redirect()->back()->with('success', 'survey successfully archived');
+    }
+
+    public function deleteSurvey(Request $request){
+        // dd($request);
+        $record = Survey::find($request->survey_id);
+        $record->delete();
+
+        return redirect()->back()->with('success', 'survey successfully deleted');
+    }
+
+    public function viewResponse(Request $request){
+        // dd($request);
+        return redirect('/dashboard/responses/' . $request->survey_id);
     }
 }

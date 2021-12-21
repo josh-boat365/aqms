@@ -14,15 +14,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        // \App\Models\User::factory()->create([
-        //     'firstName' => 'Fuad',
-        //     'lastName' => 'Muhammed',
-        //     'otherName' => 'Senpai',
-        //     'email' => 'tchnvirus@gmail.com',
-        //     'user_type' => 'Alumnus',
-        //     'password' => '123',
-        // ]);
-        
+
         \App\Models\Status::factory()->create(['status' => 'Draft']);
         \App\Models\Status::factory()->create(['status' => 'Deployed']);
         \App\Models\Status::factory()->create(['status' => 'Archived']);
@@ -40,5 +32,24 @@ class DatabaseSeeder extends Seeder
         \App\Models\Option::factory(30)->create();
 
         \App\Models\Subquestion::factory(20)->create();
+
+        // \App\Models\Submission::factory(20)->create();
+
+        \App\Models\NotificationType::factory()->create(['type' => 'registration']);
+        \App\Models\NotificationType::factory()->create(['type' => 'submission']);
+        \App\Models\NotificationType::factory()->create(['type' => 'deployment']);
+
+        // \App\Models\Notification::factory()->create([
+        //     'notification' => 'new alumnus registered',
+        //     'user_id' => 1,
+        //     'notification_type_id' => 1,
+        // ]);
+
+        // \App\Models\Notification::factory()->create([
+        //     'notification' => 'new survey submitted',
+        //     'user_id' => 1,
+        //     'survey_id' => 1,
+        //     'notification_type_id' => 2,
+        // ]);
     }
 }

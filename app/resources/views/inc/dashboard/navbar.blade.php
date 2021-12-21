@@ -1,20 +1,22 @@
 <style type="text/css">
-    @media (min-width: 320px)and (max-width: 639px){
-        .navbar{
+    @media (min-width: 320px)and (max-width: 639px) {
+        .navbar {
             width: 100%;
             justify-content: space-between;
         }
-        
-        nav .navbar-right{
+
+        nav .navbar-right {
             position: relative;
             right: -58%;
             bottom: 1.7rem;
         }
-        nav .atu-icon{
+
+        nav .atu-icon {
             position: relative;
             right: 5rem;
         }
-        nav .atu-icon a img{
+
+        nav .atu-icon a img {
             width: 45%;
         }
     }
@@ -41,7 +43,7 @@
         <div class="search" data-search-path="Pages.Search03d2.html?q="><input placeholder="Search..."> <span
                 class="search-icon"><i class="simple-icon-magnifier"></i></span>
         </div>
-       
+
     </div>
     <div class="atu-icon" style=" width:8rem">
         <a href="">
@@ -50,17 +52,55 @@
     </div>
     <div class="navbar-right">
         <div class="header-icons d-inline-block align-middle">
-           
-          
+
+
             <div class="position-relative d-inline-block">
                 <button class="header-icon btn btn-empty" type="button" id="notificationButton" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     <i class="simple-icon-bell"></i>
-                    <span class="count">3</span>
+                    <span class="count">{{ $notifications->count() }}</span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right mt-3 position-absolute" id="notificationDropdown">
                     <div class="scroll">
-                        <div class="d-flex flex-row mb-3 pb-3 border-bottom">
+
+                        @foreach ($notifications->get() as $notification)
+                            <div class="d-flex flex-row mb-3 pb-3 border-bottom">
+                                <a href="#">
+                                    <img src="{{ asset('img/profiles/l-2.jpg') }}" alt="Notification Image"
+                                        class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle">
+
+                                </a>
+                                <div class="pl-3">
+                                    @if ($notification->notification_type_id == 2)
+                                        
+                                        <a href="{{url('/dashboard/submissions/' . $notification->survey_id )}}">
+                                        @else
+                                            <a href="">
+                                    @endif
+                                    <p class="font-weight-medium mb-1">
+                                        @if ($notification->notification_type_id == 1)
+                                            new registered user
+                                        @elseif($notification->notification_type_id == 2)
+                                            new survey submitted
+                                        @endif
+                                    </p>
+                                    @if ($notification->notification_type_id == 1)
+                                        <p class="font-weight-medium mb-1"> - @foreach ($users->where('id', $notification->user_id) as $user)
+                                                {{ $user->firstName }}
+                                            @endforeach</p>
+                                    @elseif($notification->notification_type_id == 2)
+                                        <p class="font-weight-medium mb-1"> - @foreach ($allSurveys->where('id', $notification->survey_id) as $survey)
+                                                {{ $survey->name }}
+                                            @endforeach</p>
+                                    @endif
+                                    <p class="text-muted mb-0 text-small">
+                                        {{ $notification->created_at->format('d/m/y') }}
+                                        ({{ $notification->created_at->format(' h : s ') }})</p>
+                                    </a>
+                                </div>
+                            </div>
+                        @endforeach
+                        {{-- <div class="d-flex flex-row mb-3 pb-3 border-bottom">
                             <a href="#"><img src="{{asset('img/profiles/l-2.jpg')}}" alt="Notification Image"
                                     class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle"></a>
                             <div class="pl-3">
@@ -89,8 +129,8 @@
                                     <p class="text-muted mb-0 text-small">09.04.2018 - 12:45</p>
                                 </a>
                             </div>
-                        </div>
-                        <div class="d-flex flex-row mb-3 pb-3">
+                        </div> --}}
+                        {{-- <div class="d-flex flex-row mb-3 pb-3">
                             <a href="#"><img src="{{asset('img/notifications/3.jpg')}}" alt="Notification Image')}}"
                                     class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle"></a>
                             <div class="pl-3">
@@ -99,7 +139,7 @@
                                     <p class="text-muted mb-0 text-small">09.04.2018 - 12:45</p>
                                 </a>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -108,9 +148,9 @@
         <div class="user d-inline-block"><button class="btn btn-empty p-0" type="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false"><span
                     class="name">{{ auth()->user()->firstName }}</span> <span><img alt="Profile Picture"
-                        src="{{asset('img/profiles/l-1.jpg')}}"></span></button>
+                        src="{{ asset('img/profiles/p-a1.png') }}"></span></button>
             <div class="dropdown-menu dropdown-menu-right mt-3">
-                <a class="dropdown-item" href="#">Profile</a>
+                <a class="dropdown-item" href="{{ route('dashboard.profile') }}">Profile</a>
                 <form action="{{ route('logout') }}" method="post">
                     @csrf
                     <input class="dropdown-item" type="submit" value="Log out">
@@ -118,4 +158,13 @@
                 {{-- <a class="dropdown-item" href="#">Sign out</a></div> --}}
             </div>
         </div>
+    </div>
+    @if (session()->has('success'))
+        <div style="left: 50%; transform: translate(-50%); top: 110%; display:none; z-index: 99999" id="notification"
+            class="position-absolute py-4 px-3 bg-success container col-5 text-white text-center justify-content-center rounded">
+            <h3 class="m-0">
+                {{ session('success') }}
+            </h3>
+        </div>
+    @endif
 </nav>

@@ -1,60 +1,5 @@
-{{-- @extends('layouts.dashboard')
-
-@section('style')
-    <link rel="stylesheet" href="{{asset('font/iconsmind-s/css/iconsminds.css')}}">
-    <link rel="stylesheet" href="{{asset('font/simple-line-icons/css/simple-line-icons.css')}}">
-    <link rel="stylesheet" href="{{asset('css/vendor/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/vendor/bootstrap.rtl.only.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/vendor/perfect-scrollbar.css')}}">
-    <link rel="stylesheet" href="{{asset('css/vendor/select2.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/vendor/select2-bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/vendor/jquery.contextMenu.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/vendor/component-custom-switch.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/dore.dark.bluenavy.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/main.css')}}">
-@endsection
-
-@section('body-id') id="app-container" @endsection
-
-@section('body-class') class="menu-sub-hidden right-menu" @endsection
-
-
-@section('main')
-    @extends('inc.dashboard.survey.survey-list')
-@endsection
-
-@section('survey-form')
-    @include('inc.dashboard.survey.survey-form')
-@endsection
-
-@section('survey-tiles')
-    @foreach ($allSurveys as $survey)
-        @include('inc.dashboard.survey.survey-tile', ['survey' => $survey, 'status' => $survey->status])
-    @endforeach
-@endsection
-
-@section('script')
-    @error('title')
-        <script>
-            $(document).ready(function() {
-                $("#add-new-btn").trigger("click");
-            });
-        </script>
-    @enderror
-
-    <script src="{{ asset('js/vendor/jquery-3.3.1.min.js') }}"></script>
-    <script src="{{ asset('js/vendor/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('js/vendor/perfect-scrollbar.min.js') }}"></script>
-    <script src="{{ asset('js/vendor/select2.full.js') }}"></script>
-    <script src="{{ asset('js/vendor/mousetrap.min.js') }}"></script>
-    <script src="{{ asset('js/vendor/jquery.contextMenu.min.js') }}"></script>
-    <script src="{{ asset('js/dore.script.js') }}"></script>
-    <script src="{{ asset('js/scripts.js') }}"></script>
-@endsection --}}
-
 <!DOCTYPE html>
 <html lang="en">
-<!-- Mirrored from dore-jquery.coloredstrategies.com/Apps.Survey.List.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 06 Nov 2021 22:42:02 GMT -->
 
 <head>
     <meta charset="UTF-8">
@@ -64,17 +9,23 @@
     <link rel="stylesheet" href="{{ asset('font/simple-line-icons/css/simple-line-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor/bootstrap.rtl.only.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendor/bootstrap-float-label.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor/perfect-scrollbar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor/select2-bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendor/bootstrap-datepicker3.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor/jquery.contextMenu.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor/component-custom-switch.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/dore.dark.bluenavy.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/dore.light.bluenavy.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 
     <style>
         .theme-colors {
             display: none;
+        }
+
+        .survey-filter:hover {
+            cursor: pointer;
         }
 
     </style>
@@ -92,6 +43,8 @@
     {{-- should be included in survey content --}}
     @extends('inc.dashboard.survey.survey-content')
 
+
+
     @section('survey-tiles')
         @foreach ($allSurveys as $survey)
             @include('inc.dashboard.survey.survey-tile', ['survey' => $survey, 'status' => $survey->status])
@@ -107,8 +60,17 @@
                     class="float-right">{{ $allSurveys->where('status_id', '1')->count() }}</span></a></li>
         <li><a href="#"> Archived Surveys <span
                     class="float-right">{{ $allSurveys->where('status_id', '3')->count() }}</span></a></li>
-        <li><a href="#"> Submitted Surveys <span
-                    class="float-right">null</span></a></li>
+        <li><a href="#"> Submitted Surveys <span class="float-right">null</span></a></li>
+
+        <a class="archive-warning" style="display: none" data-toggle="modal" href="#archiveWarning">test dialog</a>
+        <a class="deploy-warning" style="display: none" data-toggle="modal" href="#deployWarning">test dialog</a>
+        <a class="delete-warning" style="display: none" data-toggle="modal" href="#deleteWarning">test dialog</a>
+
+        <form action="{{ route('survey.view-response') }}" method="post" id="view-response" style="display: none">
+            @csrf
+            <input type="hidden" name="survey_id" class="survey_id">
+            <input type="submit" class="submit">
+        </form>
     @endsection
 
     @section('survey-form')
@@ -121,6 +83,7 @@
     <script src="{{ asset('js/vendor/perfect-scrollbar.min.js') }}"></script>
     <script src="{{ asset('js/vendor/select2.full.js') }}"></script>
     <script src="{{ asset('js/vendor/mousetrap.min.js') }}"></script>
+    <script src="{{ asset('js/vendor/bootstrap-datepicker.js') }}"></script>
     <script src="{{ asset('js/vendor/jquery.contextMenu.min.js') }}"></script>
     <script src="{{ asset('js/dore.script.js') }}"></script>
 
@@ -210,6 +173,95 @@
                 });
         })(jQuery);
     </script>
+
+    <script>
+        $(function() {
+            $('#survey-section').addClass('active');
+        })
+    </script>
+
+    {{-- notification --}}
+    <script>
+        $(function() {
+            setTimeout(() => {
+                $('#notification').fadeIn('slow')
+            }, 1500);
+        })
+        $(function() {
+            setTimeout(() => {
+                $('#notification').fadeTo('slow', 0)
+            }, 3000);
+        })
+    </script>
+
+    <script>
+        $(function() {
+            $('.survey-filter').on('click', function() {
+                $(this).parent().parent().children('.dropdown-toggle').text($(this).text())
+                // $('.survey-list').children('a').each()
+
+                switch ($(this).text()) {
+                    case 'View All':
+                        $('.survey-list').children('a').children('.archive').parent().show()
+                        $('.survey-list').children('a').children('.deploy').parent().show()
+                        $('.survey-list').children('a').children('.draft').parent().show()
+
+                        break;
+                    case 'Archived':
+                        console.log('archived');
+                        $('.survey-list').children('a').children('.archive').parent().show()
+                        $('.survey-list').children('a').children('.deploy').parent().hide()
+                        $('.survey-list').children('a').children('.draft').parent().hide()
+                        break;
+                    case 'Deployed':
+                        console.log('deployed');
+                        $('.survey-list').children('a').children('.archive').parent().hide()
+                        $('.survey-list').children('a').children('.deploy').parent().show()
+                        $('.survey-list').children('a').children('.draft').parent().hide()
+                        break;
+                    case 'Drafted':
+                        console.log('drafted');
+                        $('.survey-list').children('a').children('.archive').parent().hide()
+                        $('.survey-list').children('a').children('.deploy').parent().hide()
+                        $('.survey-list').children('a').children('.draft').parent().show()
+                        break;
+
+                }
+            })
+        })
+    </script>
+
+    {{-- <script>
+        $(function() {
+
+
+            $().contextMenu &&
+                $.contextMenu({
+                    selector: ".list .card",
+                    callback: function(e, t) {},
+                    events: {
+                        show: function(e) {
+                            var t = e.$trigger.parents(".list");
+                            t && t.length > 0 && t.data("shiftSelectable").rightClick(e.$trigger);
+                        },
+                    },
+                    items: {
+                        copy: {
+                            name: "Deploy",
+                            className: "simple-icon-docs"
+                        },
+                        archive: {
+                            name: "Move to archive",
+                            className: "simple-icon-drawer"
+                        },
+                        delete: {
+                            name: "Delete",
+                            className: "simple-icon-trash"
+                        }
+                    },
+                }),
+        })
+    </script> --}}
     {{-- <script src="{{asset('js/scripts.js')}}"></script> --}}
 </body>
 <!-- Mirrored from dore-jquery.coloredstrategies.com/Apps.Survey.List.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 06 Nov 2021 22:42:02 GMT -->

@@ -20,7 +20,7 @@
         <div class="container">
             <div class="row h-100">
                 <div class="col-12 col-md-10 mx-auto my-auto">
-                    <div class="card auth-card">
+                    <div class="card auth-card mt-3 mb-3">
                         <div class="position-relative image-side">
                             <p class="text-white h2">WELCOME TO ATU TRACER</p>
                             <p class="white mb-0">Dear Alumnus:</p>
@@ -76,6 +76,9 @@
                                     @error('password')
                                         <div class="invalid-tooltip d-block">{{ $message }}</div>
                                     @enderror
+                                </div>
+                                <div class="float-right">
+                                    <a  href="{{ route('forgot-password') }}">Forgotten password?</a>
                                 </div>
                                 <button type="submit" class="btn btn-primary mb-0">Log in</button>
                             </form>

@@ -2,14 +2,19 @@
 
 <style type="text/css">
     .card-style{
-        width: 65% !important;
+        width: 80% !important;
         margin: 0 auto;
+        }
+        @media (min-width: 320px) and (max-width: 652px){
+            .card-style{
+                width: 100%;
+            }
         }
 </style>
 
 @for ($i = 0; $i < count($survey->questions); $i++)
 
-    <div class="@if ($survey->questions[$i]->option_type_id == 5) col-12 @else col-lg-12 @endif">
+    <div class="col-12">
         <div class="card question d-flex mb-4 card-style">
             <div class="d-flex flex-grow-1 min-width-zero">
                 <div
@@ -28,7 +33,7 @@
                         </label>
                         <div class="mb-4">
                             @if ($survey->questions[$i]->option_type_id == 1)
-                                <input class="form-control" type="text"
+                                <input class="form-control trim" type="text"
                                     name="ans[{{ $survey->questions[$i]->id }}]" value="@foreach ($responses as $response)@if ($response->question_id == $survey->questions[$i]->id){{$response->response}}@endif @endforeach">
                             @elseif ($survey->questions[$i]->option_type_id == 2)
                                 <textarea class="form-control" name="ans[{{ $survey->questions[$i]->id }}]"
@@ -76,7 +81,7 @@
                                                     {{ $column->question }}
                                                 </div>
                                                 @foreach ($survey->options->where('question_id', $survey->questions[$i]->id) as $option)
-                                                    <div class="d-flex justify-content-center"><input type="radio"
+                                                    <div class="d-flex justify-content-center check-box"><input type="radio"
                                                             name="ans[{{ $survey->questions[$i]->id }}][{{ $option->id }}]"
                                                             id="" value="{{ $column->question }}"
                                                             @foreach ($responses as $response)@if ($response->response ==  $column->question) @if ($response->option_id == $option->id) checked @endif @endif @endforeach

@@ -20,7 +20,7 @@
         <div class="container">
             <div class="row h-100">
                 <div class="col-12 col-md-10 mx-auto my-auto">
-                    <div class="card auth-card">
+                    <div class="card auth-card mt-3 mb-3">
                         <div class="position-relative image-side">
                             <p class="text-white h2">WELCOME TO ATU TRACER</p>
                             <p class="white mb-0">Dear Alumnus:</p>
@@ -40,7 +40,7 @@
                             </p>
 
                             <p class="white">We look forward to receiving your responses.</p>
-                            <a href="{{ route('register') }}" class="white font-weight-bold h5">Register</a>.</p>
+                            <a href="{{ route('login') }}" class="white font-weight-bold h5">Login</a>.</p>
                         </div>
                         <div class="form-side position-relative">
                             @if (session('error'))
@@ -57,7 +57,7 @@
                                     <img src="/img/custom/atulogo.png" height="15%" width="45%" alt="">
                                 </a>
                             </div>
-                            <h5 class="header-title mb-3" style="margin-top: 0.5rem">Login</h5>
+                            <h5 class="header-title mb-3" style="margin-top: 0.5rem">Forgotten Password</h5>
 
                             {{-- <a href="{{route('login')}}"><span class="logo-single"></span></a> --}}
                             <form class="tooltip-right-bottom" novalidate method="POST" action="{{ route('login') }}">
@@ -72,12 +72,19 @@
 
                                 <div class="form-group has-float-label"><input name="password" class="form-control"
                                         type="password" required>
-                                    <span>Password</span>
+                                    <span>New Password</span>
                                     @error('password')
                                         <div class="invalid-tooltip d-block">{{ $message }}</div>
                                     @enderror
                                 </div>
-                                <button type="submit" class="btn btn-primary mb-0">Log in</button>
+                                <div class="form-group has-float-label"><input name="password" class="form-control"
+                                        type="password" required>
+                                    <span>Confirm Password</span>
+                                    @error('password')
+                                        <div class="invalid-tooltip d-block">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <button type="submit" class="btn btn-primary mb-0">Update Password</button>
                             </form>
                         </div>
                     </div>
