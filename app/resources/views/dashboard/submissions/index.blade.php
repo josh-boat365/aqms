@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- Mirrored from dore-jquery.coloredstrategies.com/Apps.Survey.List.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 06 Nov 2021 22:42:02 GMT -->
 
 <head>
     <meta charset="UTF-8">
@@ -164,8 +163,6 @@
             $('#submission-section').addClass('active');
         })
     </script>
-    {{-- <script src="{{asset('js/scripts.js')}}"></script> --}}
 </body>
-<!-- Mirrored from dore-jquery.coloredstrategies.com/Apps.Survey.List.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 06 Nov 2021 22:42:02 GMT -->
 
 </html>
