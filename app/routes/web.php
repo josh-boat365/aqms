@@ -46,6 +46,8 @@ Route::get('/dashboard/profile/', '\App\Http\Controllers\DashboardController@pro
     // submission
 Route::get('/dashboard/submissions', '\App\Http\Controllers\DashboardController@submissions')->name('submissions.index');
 Route::get('/dashboard/submissions/{i}', '\App\Http\Controllers\DashboardController@showSubmissions')->name('submissions.show');
+    // users
+Route::get('/dashboard/users', '\App\Http\Controllers\DashboardController@users')->name('users.index');   
 
 
 
