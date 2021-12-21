@@ -4,18 +4,18 @@
             <div class="col-12 survey-app">
                 <div class="mb-2">
                     <h1>{{$survey->name}}</h1>
-                    <div class="text-zero top-right-button-container"><button type="button"
+                    {{-- <div class="text-zero top-right-button-container"><button type="button"
                             class="btn btn-lg btn-outline-primary dropdown-toggle dropdown-toggle-split top-right-button top-right-button-single"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ACTIONS</button>
                         <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Action</a> <a
                                 class="dropdown-item" href="#">Another action</a></div>
-                    </div>
+                    </div> --}}
                 </div>
                 <ul class="nav nav-tabs separator-tabs ml-0 mb-5" role="tablist">
                     <li class="nav-item"><a class="nav-link active" id="first-tab" data-toggle="tab" href="#first"
-                            role="tab" aria-controls="first" aria-selected="true">DETAILS</a></li>
-                    <li class="nav-item"><a class="nav-link" id="third-tab" data-toggle="tab" href="#third"
-                            role="tab" aria-controls="third" aria-selected="false">RESULTS</a></li>
+                            role="tab" aria-controls="first" aria-selected="true">CREATE QUESTIONS</a></li>
+                    {{-- <li class="nav-item"><a class="nav-link" id="third-tab" data-toggle="tab" href="#third"
+                            role="tab" aria-controls="third" aria-selected="false">RESULTS</a></li> --}}
                 </ul>
                 <div class="tab-content mb-4">
                     <div class="tab-pane show active" id="first" role="tabpanel" aria-labelledby="first-tab">
@@ -24,7 +24,7 @@
                             @yield('question-list')
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="third" role="tabpanel" aria-labelledby="third-tab">
+                    {{-- <div class="tab-pane fade" id="third" role="tabpanel" aria-labelledby="third-tab">
                         <div class="row">
                             <div class="col-lg-4 col-12 mb-4">
                                 <div class="card mb-4">
@@ -159,7 +159,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
