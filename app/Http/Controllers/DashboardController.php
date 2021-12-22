@@ -30,8 +30,7 @@ class DashboardController extends Controller
 
     public function profile()
     {
-
-        return view('dashboard.profile.index', ['allSurveys', Survey::all(), 'surveys' => Survey::all(), 'notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2), 'users' => User::all()]);
+        return view('dashboard.profile.index', ['surveys' => Survey::all(), 'notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2), 'users' => User::all()])->with('allSurveys', Survey::all());
     }
 
     public function submissions()
