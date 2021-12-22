@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- Mirrored from dore-jquery.coloredstrategies.com/Apps.Survey.List.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 06 Nov 2021 22:42:02 GMT -->
+
 
 <head>
     <meta charset="UTF-8">
-    <title>Admin Dashboard | ATU Tracer</title>
+    <title>Users | ATU Tracer</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <link rel="stylesheet" href="{{ asset('font/iconsmind-s/css/iconsminds.css') }}">
     <link rel="stylesheet" href="{{ asset('font/simple-line-icons/css/simple-line-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor/bootstrap.rtl.only.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendor/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendor/datatables.responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor/perfect-scrollbar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor/select2-bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendor/glide.core.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor/jquery.contextMenu.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor/component-custom-switch.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/dore.dark.bluenavy.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/dore.light.bluenavy.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 
     <style>
@@ -36,17 +39,17 @@
 
 
     
-    @extends('inc.dashboard.submissions.content')
+    @extends('inc.dashboard.users.users-content')
     
 
 
-    @section('submission-tiles')
+    {{-- @section('submission-tiles')
         @foreach ($allSurveys as $survey)
             @include('inc.dashboard.submissions.submission-tile')
         @endforeach
-    @endsection
+    @endsection --}}
 
-    @section('stat')
+    {{-- @section('stat')
         <li class="active"><a href="#"> All Surveys <span
                     class="float-right">{{ $allSurveys->count() }}</span></a></li>
         <li><a href="#"> Deployed Surveys <span
@@ -57,19 +60,19 @@
                     class="float-right">{{ $allSurveys->where('status_id', '3')->count() }}</span></a></li>
         <li><a href="#"> Submitted Surveys <span
                     class="float-right">null</span></a></li>
-    @endsection
+    @endsection --}}
 
-    @section('survey-form')
-        @include('inc.dashboard.survey.survey-form')
-    @endsection
+  
 
 
     <script src="{{ asset('js/vendor/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('js/vendor/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('js/vendor/jquery.contextMenu.min.js') }}"></script>
     <script src="{{ asset('js/vendor/perfect-scrollbar.min.js') }}"></script>
+    <script src="{{ asset('js/vendor/datatables.min.js') }}"></script>
     <script src="{{ asset('js/vendor/select2.full.js') }}"></script>
     <script src="{{ asset('js/vendor/mousetrap.min.js') }}"></script>
-    <script src="{{ asset('js/vendor/jquery.contextMenu.min.js') }}"></script>
+    <script src="{{ asset('js/vendor/glide.min.js') }}"></script>
     <script src="{{ asset('js/dore.script.js') }}"></script>
 
     <script>
@@ -161,11 +164,10 @@
 
     <script>
         $(function () {
-            $('#submission-section').addClass('active');
+            $('#user-section').addClass('active');
         })
     </script>
-    {{-- <script src="{{asset('js/scripts.js')}}"></script> --}}
+    @include('footer')
 </body>
-<!-- Mirrored from dore-jquery.coloredstrategies.com/Apps.Survey.List.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 06 Nov 2021 22:42:02 GMT -->
 
 </html>
