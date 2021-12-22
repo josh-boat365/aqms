@@ -53,8 +53,8 @@
 
         <div class="text-center mt-4"><button type="button" class="btn btn-outline-primary btn-sm mb-2 add-que"><i
                     class="simple-icon-plus btn-group-icon"></i> Add Question</button></div>
-        {{-- <div class="text-center mt-4"><button type="button" class="btn btn-outline-success btn-sm mb-2 upd-que"><i
-                    class="simple-icon-plus btn-group-icon"></i> Update</button></div> --}}
+        <div class="text-center mt-4"><button type="button" class="btn btn-outline-success btn-sm mb-2 upd-que"><i
+                    class="simple-icon-plus btn-group-icon"></i> Update</button></div>
     @endsection
 
 
@@ -259,34 +259,64 @@
     {{-- add answer --}}
     <script>
         $(function() {
+            $index = 0;
             $('.sortable-survey').on('click', '.ans-btn', function(e) {
 
                 var $que_num = $(this).parent().parent().parent().parent().children('.que-section')
                     .children(
                         '.que-num').val();
 
+                var $is_new = $(this).parent().parent().parent().parent().children('.que-section')
+                    .children(
+                        '.is-new').val();
 
-                var ansBox = $('<div/>').addClass('mb-1 position-relative ans')
-                    .append(
-                        $('<input>').attr({
-                            'class': 'form-control',
-                            'type': 'text',
-                            'name': "ques[" + $que_num + "][ans][new][]"
-                        }),
-
-                        $('<div/>').addClass('input-icons')
+                if ($is_new) {
+                    var ansBox = $('<div/>').addClass('mb-1 position-relative ans')
                         .append(
-                            $('<span/>').addClass('badge badge-pill handle pr-0 mr-0')
-                            .append(
-                                $('<i/>').addClass('simple-icon-cursor-move')
-                            ),
+                            $('<input>').attr({
+                                'class': 'form-control',
+                                'type': 'text',
+                                'name': "ques[new][" + $que_num + "][ans][]"
+                            }),
 
-                            $('<span/>').addClass('badge badge-pill del-ans btn')
+                            $('<div/>').addClass('input-icons')
                             .append(
-                                $('<i/>').addClass('simple-icon-trash')
+                                $('<span/>').addClass('badge badge-pill handle pr-0 mr-0')
+                                .append(
+                                    $('<i/>').addClass('simple-icon-cursor-move')
+                                ),
+
+                                $('<span/>').addClass('badge badge-pill del-ans btn')
+                                .append(
+                                    $('<i/>').addClass('simple-icon-trash')
+                                )
                             )
                         )
-                    )
+                } else {
+                    var ansBox = $('<div/>').addClass('mb-1 position-relative ans')
+                        .append(
+                            $('<input>').attr({
+                                'class': 'form-control',
+                                'type': 'text',
+                                'name': "ques[old][" + $que_num + "][ans][new][" + $index++ + "]"
+                            }),
+
+                            $('<div/>').addClass('input-icons')
+                            .append(
+                                $('<span/>').addClass('badge badge-pill handle pr-0 mr-0')
+                                .append(
+                                    $('<i/>').addClass('simple-icon-cursor-move')
+                                ),
+
+                                $('<span/>').addClass('badge badge-pill del-ans btn')
+                                .append(
+                                    $('<i/>').addClass('simple-icon-trash')
+                                )
+                            )
+                        )
+                }
+
+
 
 
                 $(this).parent().parent().children('.answers').append(ansBox)
@@ -657,32 +687,61 @@
 
                 $que_num = $(this).parent().parent().parent().parent().parent().children('.que-section')
                     .children('.que-num').val();
+                var $is_new = $(this).parent().parent().parent().parent().parent().children('.que-section')
+                    .children(
+                        '.is-new').val();
 
-                console.log($(this).parent().parent().parent().parent().parent().children('.que-section')
-                    .children('.que-num').val());
+                console.log($que_num);
+                console.log($is_new);
 
-                var ansBox = $('<div/>').addClass('mb-1 position-relative ans')
-                    .append(
-                        $('<input>').attr({
-                            'class': 'form-control',
-                            'type': 'text',
-                            'name': "ques[" + $que_num + "][ans][rows][new][]"
-                        }),
-
-                        $('<div/>').addClass('input-icons')
+                if ($is_new) {
+                    var ansBox = $('<div/>').addClass('mb-1 position-relative ans')
                         .append(
-                            $('<span/>').addClass('badge badge-pill handle pr-0 mr-0')
-                            .append(
-                                $('<i/>').addClass('simple-icon-cursor-move')
-                            ),
+                            $('<input>').attr({
+                                'class': 'form-control',
+                                'type': 'text',
+                                'name': "ques[new][" + $que_num + "][ans][rows][]"
+                            }),
 
-                            $('<span/>').addClass('badge badge-pill del-ans btn')
+                            $('<div/>').addClass('input-icons')
                             .append(
-                                $('<i/>').addClass('simple-icon-trash')
+                                $('<span/>').addClass('badge badge-pill handle pr-0 mr-0')
+                                .append(
+                                    $('<i/>').addClass('simple-icon-cursor-move')
+                                ),
+
+                                $('<span/>').addClass('badge badge-pill del-ans btn')
+                                .append(
+                                    $('<i/>').addClass('simple-icon-trash')
+                                )
                             )
                         )
-                    )
-                $index++;
+                } else {
+                    var ansBox = $('<div/>').addClass('mb-1 position-relative ans')
+                        .append(
+                            $('<input>').attr({
+                                'class': 'form-control',
+                                'type': 'text',
+                                'name': "ques[old][" + $que_num + "][ans][rows][new][" + $index++ + "]"
+                            }),
+
+                            $('<div/>').addClass('input-icons')
+                            .append(
+                                $('<span/>').addClass('badge badge-pill handle pr-0 mr-0')
+                                .append(
+                                    $('<i/>').addClass('simple-icon-cursor-move')
+                                ),
+
+                                $('<span/>').addClass('badge badge-pill del-ans btn')
+                                .append(
+                                    $('<i/>').addClass('simple-icon-trash')
+                                )
+                            )
+                        )
+                }
+
+
+                // $index++;
                 $(this).parent().parent().parent().children('.answers').children('.rows').children(
                     '.sortable').append(ansBox)
             })
@@ -699,31 +758,61 @@
 
                 $que_num = $(this).parent().parent().parent().parent().parent().children('.que-section')
                     .children('.que-num').val();
+                var $is_new = $(this).parent().parent().parent().parent().parent().children('.que-section')
+                    .children(
+                        '.is-new').val();
 
                 console.log($que_num);
+                console.log($is_new);
 
-                var ansBox = $('<div/>').addClass('mb-1 position-relative ans')
-                    .append(
-                        $('<input>').attr({
-                            'class': 'form-control',
-                            'type': 'text',
-                            'name': "ques[" + $que_num + "][ans][columns][new][]"
-                        }),
-
-                        $('<div/>').addClass('input-icons')
+                if ($is_new) {
+                    var ansBox = $('<div/>').addClass('mb-1 position-relative ans')
                         .append(
-                            $('<span/>').addClass('badge badge-pill handle pr-0 mr-0')
-                            .append(
-                                $('<i/>').addClass('simple-icon-cursor-move')
-                            ),
+                            $('<input>').attr({
+                                'class': 'form-control',
+                                'type': 'text',
+                                'name': "ques[new][" + $que_num + "][ans][columns][]"
+                            }),
 
-                            $('<span/>').addClass('badge badge-pill del-ans btn')
+                            $('<div/>').addClass('input-icons')
                             .append(
-                                $('<i/>').addClass('simple-icon-trash')
+                                $('<span/>').addClass('badge badge-pill handle pr-0 mr-0')
+                                .append(
+                                    $('<i/>').addClass('simple-icon-cursor-move')
+                                ),
+
+                                $('<span/>').addClass('badge badge-pill del-ans btn')
+                                .append(
+                                    $('<i/>').addClass('simple-icon-trash')
+                                )
                             )
                         )
-                    )
-                $index++;
+                } else {
+                    var ansBox = $('<div/>').addClass('mb-1 position-relative ans')
+                        .append(
+                            $('<input>').attr({
+                                'class': 'form-control',
+                                'type': 'text',
+                                'name': "ques[old][" + $que_num + "][ans][columns][new][" + $index++ +
+                                    "]"
+                            }),
+
+                            $('<div/>').addClass('input-icons')
+                            .append(
+                                $('<span/>').addClass('badge badge-pill handle pr-0 mr-0')
+                                .append(
+                                    $('<i/>').addClass('simple-icon-cursor-move')
+                                ),
+
+                                $('<span/>').addClass('badge badge-pill del-ans btn')
+                                .append(
+                                    $('<i/>').addClass('simple-icon-trash')
+                                )
+                            )
+                        )
+                }
+
+                // $index++;
                 $(this).parent().parent().parent().children('.answers').children('.columns').children(
                     '.sortable').append(ansBox)
 
@@ -753,6 +842,11 @@
     <script>
         $(function() {
             $('.upd-que').click(function() {
+
+                // $('.question').each(function () {
+                //     console.log($(this));
+                // })
+
                 $('.option-type').each(function() {
                         if ($(this).val() == 5) {
                             $(this).parent().parent().children('.ans-form').children('.non-grid')
@@ -765,7 +859,102 @@
                             $(this).parent().parent().children('.ans-form').children('.grid').remove()
                         }
                     }),
-                    $('#update-form').submit()
+                    $que_order = 1;
+
+                
+                $('.question').each(function() {
+
+                    //get name
+                    $name = $(this).children('.question-collapse').children('.card-body').children(
+                        '.edit-mode').children('.que-section').children('.writtenQuestion').attr('name')
+
+                        $(this).children('.question-collapse').children('.card-body').children(
+                        '.edit-mode').children('.que-section').children('.writtenQuestion').attr('name', $name + '[que]')
+
+                        
+                    $(this).children('.question-collapse').children('.card-body').children(
+                        '.edit-mode').children('.que-section').append(
+                        $('<input>').attr({
+                            'type': 'hidden',
+                            'class': 'que_order',
+                            'name': $name + '[ord]',
+                            'value': $que_order++
+                        })
+                    )
+
+                    if ($(this).children('.question-collapse').children('.card-body').children(
+                            '.edit-mode').children('.ans-form').children('.ans-group').hasClass(
+                            'non-grid')) {
+
+                        $ans = $(this).children('.question-collapse').children('.card-body')
+                            .children('.edit-mode').children('.ans-form').children('.ans-group')
+                            .children('.sortable').children('.ans');
+                        // console.log($ans);
+
+                        $opt_order = 1;
+                        $ans.each(function() {
+                            $name = $(this).children('.form-control').attr('name');
+
+                            $(this).children('.form-control').attr('name', $name + '[opt]');
+
+                            $(this).append(
+                                $('<input>').attr({
+                                    'type': 'hidden',
+                                    'name': $name + '[ord]',
+                                    'value': $opt_order++,
+                                })
+                            )
+
+                        })
+
+                    } else {
+
+                        $rows = $(this).children('.question-collapse').children('.card-body')
+                            .children('.edit-mode').children('.ans-form').children('.ans-group')
+                            .children('.answers').children('.rows').children('.sortable').children(
+                                '.ans');
+                        $columns = $(this).children('.question-collapse').children('.card-body')
+                            .children('.edit-mode').children('.ans-form').children('.ans-group')
+                            .children('.answers').children('.columns').children('.sortable')
+                            .children('.ans');
+                        // console.log($rows);
+                        // console.log($columns);
+
+                        $opt_order = 1;
+                        $rows.each(function() {
+                            $name = $(this).children('.form-control').attr('name')
+
+                            $(this).children('.form-control').attr('name', $name + '[opt]');
+
+                                $(this).append(
+                                $('<input>').attr({
+                                    'type': 'hidden',
+                                    'name': $name + '[ord]',
+                                    'value': $opt_order++,
+                                })
+                            )
+                        })
+
+                        $opt_order = 1;
+                        $columns.each(function() {
+                            $name = $(this).children('.form-control').attr('name')
+
+                            $(this).children('.form-control').attr('name', $name + '[opt]');
+
+                                $(this).append(
+                                $('<input>').attr({
+                                    'type': 'hidden',
+                                    'name': $name + '[ord]',
+                                    'value': $opt_order++,
+                                })
+                            )
+                        })
+                    }
+
+
+                })
+
+                $('#update-form').submit()
             })
         })
     </script>
@@ -786,7 +975,8 @@
                                 ).append(
                                     $('<div/>').addClass('list-item-heading mb-0 truncate w-80 mb-1 mt-1')
                                     .append(
-                                        $('<span/>').addClass('heading-number d-inline-block').text($que_num + 1),
+                                        $('<span/>').addClass('heading-number d-inline-block').text(
+                                            $que_num + 1),
                                         $('<span/>').addClass('preview-question').text('')
                                     )
                                 ),
@@ -823,13 +1013,19 @@
                                             $('<input>').attr({
                                                 'type': 'hidden',
                                                 'class': 'que-num',
-                                                'value': '#quetion-id' // generate
+                                                'value': $que_num + 1 // generate
+                                            }),
+                                            $('<input>').attr({
+                                                'type': 'hidden',
+                                                'class': 'is-new',
+                                                'value': 'true'
                                             }),
                                             $('<input>').attr({
                                                 'type': 'text',
                                                 'class': 'form-control writtenQuestion',
                                                 'value': '', // question
-                                                'name': 'ques[#que-id][que]' // check out
+                                                'name': 'ques[new][' + ($que_num + 1) +
+                                                    ']' // check out
                                             })
                                         ),
                                         $('<div/>').addClass('seperator mb-4'),
@@ -838,7 +1034,8 @@
                                             $('<select/>').attr({
                                                 'class': 'form-control new-select2-single option-type',
                                                 'data-width': '100%',
-                                                'name': 'ques[#que_id][opt_type]' // check out
+                                                'name': 'ques[new][' + ($que_num + 1) +
+                                                    '][opt_type]' // check out
                                             })
                                         ),
                                         $('<div/>').addClass('form-group ans-form').append(
@@ -871,7 +1068,7 @@
                                                     .append(
                                                         $('<div/>').addClass(
                                                             'btn btn-outline-primary btn-sm mb-2 grid-column'
-                                                            ).append(
+                                                        ).append(
                                                             $('<i/>').addClass(
                                                                 'simple-icon-plus btn-group-icon')
                                                         ).text('Add Column')
@@ -918,41 +1115,11 @@
                 })
 
                 $('.select2-selection--single').addClass('form-control');
-                // $(".new-writtenQuestion").on("input", function() {
-                //     // console.log($(this).val())
-                //     $(this).parent().parent().parent().parent().parent().children('.d-flex')
-                //         .children('.card-body').children('.list-item-heading').children(
-                //             '.preview-question')
-                //         .text($(this).val())
 
-
-                // });
-
-                // $('.option-type').on('change', function() {
-
-                //     // get rows
-                //     $rows = [];
-                //     $i = 0;
-                //     $(this).parent().parent().children('.ans-form').children('.answers').children(
-                //         '.ans').each(
-                //         function() {
-                //             $rows[$i] = $(this).children('.form-control').val();
-                //             $i++;
-                //         });
-                //     // console.log($rows);
-
-                //     // check for grid
-                //     if ($(this).val() == 5) {
-                //         $(this).parent().parent().children('.ans-form').children('.grid').show()
-                //         $(this).parent().parent().children('.ans-form').children('.non-grid').hide()
-                //     } else if ($(this).val() == 1 || $(this).val() == 2) {
-                //         $(this).parent().parent().children('.ans-form').children('.grid').hide()
-                //         $(this).parent().parent().children('.ans-form').children('.non-grid').hide()
-                //     } else if ($(this).val() == 3 || $(this).val() == 4) {
-                //         $(this).parent().parent().children('.ans-form').children('.grid').hide()
-                //         $(this).parent().parent().children('.ans-form').children('.non-grid').show()
-                //     }
-                // })
+                $("html, body").animate({
+                    scrollTop: $(
+                        'html, body').get(0).scrollHeight
+                }, 1000);
             })
         })
     </script>

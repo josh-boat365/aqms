@@ -31,7 +31,7 @@ class DashboardController extends Controller
     public function profile()
     {
 
-        return view('dashboard.profile.index', ['allSurveys', Survey::all(), 'surveys' => Survey::all(),'notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2), 'users' => User::all()]);
+        return view('dashboard.profile.index', ['allSurveys', Survey::all(), 'surveys' => Survey::all(), 'notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2), 'users' => User::all()]);
     }
 
     public function submissions()
@@ -41,7 +41,7 @@ class DashboardController extends Controller
 
     public function showSubmissions(int $index)
     {
-        return view('dashboard.submissions.show')->with(['allSurveys', Survey::all(), 'notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2), 'allSurveys' => Survey::all(), 'users' => User::all(), 'submissions' => Submission::all()->where('survey_id', $index), 'survey' => Survey::find($index), 'allResponses' => Response::all(),'notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2),]);
+        return view('dashboard.submissions.show')->with(['allSurveys', Survey::all(), 'notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2), 'allSurveys' => Survey::all(), 'users' => User::all(), 'submissions' => Submission::all()->where('survey_id', $index), 'survey' => Survey::find($index), 'allResponses' => Response::all(), 'notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2),]);
     }
 
     public function storeSurvey(Request $request)
@@ -91,229 +91,264 @@ class DashboardController extends Controller
 
         $survey->save();
 
-        // update ques
+        // questions
         if (isset($request->ques)) {
-            # code...
-            foreach ($request->ques as $que_id => $que) {
-                // update question
-                $q = Question::find($que_id);
-                $q->question = $que['que'];
-                $q->option_type_id = $que['opt_type'];
-                $q->save();
+            foreach ($request->ques as $state => $queObj) {
 
-                //delete all previous related options
-                // Option::where('question_id', $que_id)->delete();
-                // Subquestion::where('question_id', $que_id)->delete();
+                // old questions
+                if ($state == 'old') {
+                    foreach ($queObj as $que_id => $queSet) {
+                        //find que
+                        $record = Question::find($que_id);
 
-                //assign new options
-                if (isset($que['ans'])) {
+                        //update que
+                        $record->question = $queSet['que'];
+                        $record->option_type_id = $queSet['opt_type'];
+                        $record->order = $queSet['ord'];
+                        $record->save();
+                        // dd($record);
+                        // update options
+                        if (isset($queSet['ans'])) {
 
-                    //pick opt from db
-                    //compare to req
-                    //if it exists modify
-                    //else delete
-                    foreach ($que['ans'] as $opt_id_1 => $value) {
+                            foreach ($queSet['ans'] as $state => $optObj) {
+                                // non-grid
+                                //old options
+                                if ($state == 'old' || $state == 'new') {
+                                    if ($state == 'old') {
 
-                        if ($que['opt_type'] == 5) {
-                            if ($opt_id_1 == 'rows') {
-                                $hasOld = false;
-                                $hasNew = false;
-                                // modify && delete
+                                        //delete old options not present in request
+                                        foreach (Option::all()->where('question_id', $que_id) as $subject) {
+                                            $found = false;
 
-                                //pick db record
-                                $db_i = 1;
-                                if (isset($value['old'])) {
-                                    $count = count($value['old']);
-                                    $req_arr_old = $value['old'];
-                                    $hasOld = true;
-                                }
-
-                                if (isset($value['new'])) {
-                                    $req_arr_new = $value['new'];
-                                    $hasNew = true;
-                                }
-
-                                $db_arr = Option::where('question_id', $que_id)->get();
-                                // dd($db_arr);
-                                // dd($req_arr);
-                                foreach ($db_arr as $db_record) {
-                                    //compare to old request records
-                                    $i = 1;
-                                    // dd($count);
-                                    if ($hasOld) {
-                                        foreach ($req_arr_old as $id => $value) {
-                                            // modify
-                                            // if match found
-                                            if ($db_record->id == $id) {
-                                                $subject = Option::find($id);
-                                                $subject->option = $value;
-                                                $subject->save();
-                                                break;
+                                            foreach ($optObj as $opt_id => $optSet) {
+                                                if ($subject->id == $opt_id) {
+                                                    $found = true;
+                                                    break;
+                                                } else {
+                                                    $found = false;
+                                                }
                                             }
 
-                                            // delete
-                                            // if no match
-                                            else if (($i == $count) && ($db_record->id != $id)) {
-                                                Option::find($db_record->id)->delete();
-                                            }
-                                            // dd($id);
-                                            $i++;
+                                            if (!$found) {
 
-                                            // dd($db_record);
+                                                Option::find($subject->id)->delete();
+                                            }
+                                        }
+
+                                        foreach ($optObj as $opt_id => $optSet) {
+                                            // find option
+                                            $record = Option::find($opt_id);
+                                            $record->option = $optSet['opt'];
+                                            $record->order = $optSet['ord'];
+                                            $record->save();
+                                            // dd($record);
+                                        }
+                                    } else if ($state == 'new') {
+
+                                        if (count($queSet['ans']) == 1) {
+                                            foreach (Option::all()->where('question_id', $que_id) as $subject) {
+                                                Option::find($subject->id)->delete();
+                                            }
+                                        }
+
+                                        foreach ($optObj as $opt_id => $optSet) {
+                                            // add option
+                                            $record = new Option();
+                                            $record->option = $optSet['opt'];
+                                            $record->order = $optSet['ord'];
+                                            $record->question_id = $que_id;
+                                            $record->save();
+                                            // dd($record);
                                         }
                                     }
 
-                                    $db_i++;
-                                }
 
-                                // add new records
-                                if ($hasNew) {
-                                    foreach ($req_arr_new as $id => $value) {
-                                        $record = new Option();
-                                        $record->question_id = $que_id;
-                                        $record->option = $value;
-                                        $record->save();
-                                    }
-                                }
-                            } else if ($opt_id_1 == 'columns') {
-                                $hasOld = false;
-                                $hasNew = false;
-                                // modify && delete
 
-                                //pick db record
-                                $db_i = 1;
-                                if (isset($value['old'])) {
-                                    $count = count($value['old']);
-                                    $req_arr_old = $value['old'];
-                                    $hasOld = true;
-                                }
 
-                                if (isset($value['new'])) {
-                                    $req_arr_new = $value['new'];
-                                    $hasNew = true;
-                                }
+                                    // grid
+                                } else if ($state == 'rows' || $state == 'columns') {
+                                    //rows
+                                    if ($state == 'rows') {
+                                        if (count($queSet['ans']) == 1) {
+                                            Subquestion::where('question_id', $que_id)->delete();
+                                            // dd('NO COLUMNS');
+                                        }
+                                        foreach ($optObj as $state => $optObjs) {
+                                            // new
+                                            if ($state == 'new') {
 
-                                $db_arr = Subquestion::where('question_id', $que_id)->get();
-                                // dd($db_arr);
-                                // dd($req_arr);
-                                foreach ($db_arr as $db_record) {
-                                    //compare to old request records
-                                    $i = 1;
-                                    // dd($count);
-                                    if ($hasOld) {
-                                        foreach ($req_arr_old as $id => $value) {
-                                            // modify
-                                            // if match found
-                                            if ($db_record->id == $id) {
-                                                $subject = Subquestion::find($id);
-                                                $subject->question = $value;
-                                                $subject->save();
-                                                break;
+                                                if (count($queSet['ans']['rows']) == 1) {
+                                                    foreach (Option::all()->where('question_id', $que_id) as $subject) {
+                                                        Option::find($subject->id)->delete();
+                                                    }
+                                                }
+
+                                                foreach ($optObjs as $group_id => $optObj) {
+                                                    $record = new Option();
+                                                    $record->option = $optObj['opt'];
+                                                    $record->question_id = $que_id;
+                                                    $record->order = $optObj['ord'];
+                                                    $record->save();
+                                                }
+
+                                                // old
+                                            } else if ($state == 'old') {
+
+                                                //delete old options not present in request
+                                                foreach (Option::all()->where('question_id', $que_id) as $subject) {
+                                                    $found = false;
+
+                                                    foreach ($optObjs as $opt_id => $optObj) {
+                                                        if ($subject->id == $opt_id) {
+                                                            // dd('subject id ' . $subject->id . ' == ' . $opt_id);
+                                                            $found = true;
+                                                            break;
+                                                        } else {
+                                                            // dd('subject id ' . $subject->id . ' != ' . $opt_id);
+                                                            $found = false;
+                                                        }
+                                                    }
+
+                                                    if (!$found) {
+                                                        Option::find($subject->id)->delete();
+                                                    }
+                                                }
+
+                                                foreach ($optObjs as $opt_id => $optObj) {
+                                                    $record = Option::find($opt_id);
+                                                    $record->option = $optObj['opt'];
+                                                    $record->order = $optObj['ord'];
+                                                    $record->save();
+                                                }
                                             }
+                                        }
+                                        //if all the old options were completely deleted
 
-                                            // delete
-                                            // if no match
-                                            else if (($i == $count) && ($db_record->id != $id)) {
-                                                Subquestion::find($db_record->id)->delete();
+                                        // columns
+                                    } else if ($state == 'columns') {
+                                        if (count($queSet['ans']) == 1) {
+                                            Option::where('question_id', $que_id)->delete();
+                                            // dd('no rows');
+                                        }
+                                        foreach ($optObj as $state => $optObjs) {
+                                            // new
+                                            if ($state == 'new') {
+
+                                                if (count($queSet['ans']['columns']) == 1) {
+                                                    foreach (Subquestion::all()->where('question_id', $que_id) as $subject) {
+                                                        Subquestion::find($subject->id)->delete();
+                                                    }
+                                                }
+
+                                                foreach ($optObjs as $group_id => $optObj) {
+                                                    $record = new Subquestion();
+                                                    $record->question = $optObj['opt'];
+                                                    $record->question_id = $que_id;
+                                                    $record->order = $optObj['ord'];
+                                                    $record->save();
+                                                }
+                                                //old
+                                            } else if ($state == 'old') {
+
+                                                //delete old options not present in request
+                                                foreach (Subquestion::all()->where('question_id', $que_id) as $subject) {
+
+                                                    $found = false;
+
+                                                    foreach ($optObjs as $opt_id => $optObj) {
+                                                        if ($subject->id == $opt_id) {
+                                                            $found = true;
+                                                            break;
+                                                        } else {
+                                                            $found = false;
+                                                        }
+                                                    }
+
+                                                    if (!$found) {
+
+                                                        Subquestion::find($subject->id)->delete();
+                                                    }
+                                                }
+
+
+                                                foreach ($optObjs as $opt_id => $optObj) {
+                                                    $record = Subquestion::find($opt_id);
+                                                    $record->question = $optObj['opt'];
+                                                    $record->order = $optObj['ord'];
+                                                    $record->save();
+                                                }
                                             }
-                                            // dd($id);
-                                            $i++;
-
-                                            // dd($db_record);
                                         }
                                     }
-
-                                    $db_i++;
                                 }
-
-                                // add new records
-                                if ($hasNew) {
-                                    foreach ($req_arr_new as $id => $value) {
-                                        $record = new Subquestion();
-                                        $record->question_id = $que_id;
-                                        $record->question = $value;
-                                        $record->save();
-                                    }
-                                }
-                                // return redirect('/dashboard/surveys/' . $request->survey_id);
                             }
-                        } else if ($que['opt_type'] == 3 || $que['opt_type'] == 4) {
-                            // dd();
-                            $hasOld = false;
-                            $hasNew = false;
-                            // modify && delete
+                        } else {
+                            //delete all
+                            Option::where('question_id', $que_id)->delete();
+                            Subquestion::where('question_id', $que_id)->delete();
+                        }
+                    }
+                    // new que set
+                } else if ($state == 'new') {
+                    foreach ($queObj as $group_id => $queSet) {
+                        //add question
+                        $new_que_record = new Question();
+                        $new_que_record->question = $queSet['que'];
+                        $new_que_record->survey_id = $request->survey_id;
+                        $new_que_record->option_type_id = $queSet['opt_type'];
+                        $new_que_record->order = $queSet['ord'];
+                        $new_que_record->save();
+                        // dd($record);
 
-                            //pick db record
-                            $db_i = 1;
-                            if ($opt_id_1 == 'old') {
-                                $count = count($value);
-                                $req_arr_old = $value;
-                                $hasOld = true;
-                                // dd($value);
-                            }
+                        // add options
+                        if (isset($queSet['ans'])) {
 
-                            if ($opt_id_1 == 'new') {
-                                $req_arr_new = $value;
-                                $hasNew = true;
-                            }
-
-                            $db_arr = Option::where('question_id', $que_id)->get();
-                            
-                            
-                            foreach ($db_arr as $db_record) {
-                                //compare to old request records
-                                $i = 1;
-                                // dd($count);
-                                if ($hasOld) {
-                                    foreach ($req_arr_old as $id => $value) {
-                                        // modify
-                                        // if match found
-                                        if ($db_record->id == $id) {
-                                            $subject = Option::find($id);
-                                            $subject->option = $value;
-                                            $subject->save();
-                                            break;
+                            foreach ($queSet['ans'] as $index => $opt) {
+                                //grid
+                                if ($index == 'rows' || $index == 'columns') {
+                                    // rows
+                                    if ($index == 'rows') {
+                                        foreach ($opt as $index => $ans) {
+                                            $record = new Option();
+                                            $record->option = $ans;
+                                            $record->question_id = $new_que_record->id;
+                                            $record->order = $index + 1;
+                                            $record->save();
                                         }
-
-                                        // delete
-                                        // if no match
-                                        else if (($i == $count) && ($db_record->id != $id)) {
-                                            Option::find($db_record->id)->delete();
+                                        // columns
+                                    } else if ($index == 'columns') {
+                                        foreach ($opt as $index => $ans) {
+                                            $record = new Subquestion();
+                                            $record->question = $ans;
+                                            $record->question_id = $new_que_record->id;
+                                            $record->order = $index + 1;
+                                            $record->save();
                                         }
-                                        // dd($id);
-                                        $i++;
-
-                                        // dd($db_record);
                                     }
-                                }
+                                    // non-grid
+                                } else {
 
-                                $db_i++;
-                            }
-
-                            // add new records
-                            if ($hasNew) {
-                                foreach ($req_arr_new as $id => $value) {
-                                    // dd('add');
                                     $record = new Option();
-                                    $record->question_id = $que_id;
-                                    $record->option = $value;
+                                    $record->option = $opt;
+                                    $record->question_id = $new_que_record->id;
+                                    $record->order = $index + 1;
                                     $record->save();
                                 }
                             }
-                        } 
+                        }
                     }
-                }else if ($que['opt_type'] == 1 || $que['opt_type'] == 2) {
-                    // dd(Option::where('question_id', $que_id));
-                    Option::where('question_id', $que_id)->delete();
                 }
             }
         }
+
+
         return redirect('/dashboard/surveys/' . $request->survey_id)->with('success', 'survey updated successfully');
     }
 
-    public function deploySurvey(Request $request){
+    public function deploySurvey(Request $request)
+    {
         $record = Survey::find($request->survey_id);
-        $record->expiration_date = date('Y-m-d',strtotime($request->date));
+        $record->expiration_date = date('Y-m-d', strtotime($request->date));
         $record->status_id = 2;
         $record->save();
 
@@ -325,7 +360,8 @@ class DashboardController extends Controller
         return redirect()->back()->with('success', 'survey successfully deployed');
     }
 
-    public function archiveSurvey(Request $request){
+    public function archiveSurvey(Request $request)
+    {
         // dd($request);
         $record = Survey::find($request->survey_id);
         $record->status_id = 3;
@@ -334,7 +370,8 @@ class DashboardController extends Controller
         return redirect()->back()->with('success', 'survey successfully archived');
     }
 
-    public function deleteSurvey(Request $request){
+    public function deleteSurvey(Request $request)
+    {
         // dd($request);
         $record = Survey::find($request->survey_id);
         $record->delete();
@@ -342,7 +379,8 @@ class DashboardController extends Controller
         return redirect()->back()->with('success', 'survey successfully deleted');
     }
 
-    public function viewResponse(Request $request){
+    public function viewResponse(Request $request)
+    {
         // dd($request);
         return redirect('/dashboard/responses/' . $request->survey_id);
     }
