@@ -16,7 +16,7 @@
             {{-- Dashboard's side-bar --}}
             <ul class="list-unstyled" data-link="dashboard">
 
-                <li><a href="Dashboard.Analytics.html"><i class="simple-icon-pie-chart"></i> <span
+                <li><a href="#"><i class="simple-icon-pie-chart"></i> <span
                             class="d-inline-block">Analytics</span></a></li>
             </ul>
 
