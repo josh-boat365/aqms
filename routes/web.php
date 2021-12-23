@@ -39,6 +39,7 @@ Route::post('/dashboard/surveys/update', '\App\Http\Controllers\DashboardControl
 Route::put('/dashboard/surveys/deploy', '\App\Http\Controllers\DashboardController@deploySurvey')->name('survey.deploy');
 Route::put('/dashboard/surveys/archive', '\App\Http\Controllers\DashboardController@archiveSurvey')->name('survey.archive');
 Route::delete('/dashboard/surveys/delete', '\App\Http\Controllers\DashboardController@deleteSurvey')->name('survey.delete');
+Route::delete('/dashboard/surveys/delete', '\App\Http\Controllers\DashboardController@deleteQuestion')->name('survey.question.delete');
 Route::post('/dashboard/surveys/view-response', '\App\Http\Controllers\DashboardController@viewResponse')->name('survey.view-response');
 Route::post('/dashboard/surveys', '\App\Http\Controllers\DashboardController@addQuestion')->name('survey.addQuestion');
     // profile
