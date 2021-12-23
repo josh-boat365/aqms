@@ -43,6 +43,11 @@ class DashboardController extends Controller
         return view('dashboard.users.index')->with(['notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2), 'allSurveys' => Survey::all(), 'users' => User::all(), 'submissions' => Submission::all(), 'notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2),]);
     }
 
+    public function analytics()
+    {
+        return view('dashboard.analytics.index')->with(['notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2), 'allSurveys' => Survey::all(), 'users' => User::all(), 'submissions' => Submission::all(), 'notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2),]);
+    }
+
     public function showSubmissions(int $index)
     {
         return view('dashboard.submissions.show')->with(['allSurveys', Survey::all(), 'notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2), 'allSurveys' => Survey::all(), 'users' => User::all(), 'submissions' => Submission::all()->where('survey_id', $index), 'survey' => Survey::find($index), 'allResponses' => Response::all(), 'notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2),]);
