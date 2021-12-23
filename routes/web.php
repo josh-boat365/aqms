@@ -47,7 +47,9 @@ Route::get('/dashboard/profile/', '\App\Http\Controllers\DashboardController@pro
 Route::get('/dashboard/submissions', '\App\Http\Controllers\DashboardController@submissions')->name('submissions.index');
 Route::get('/dashboard/submissions/{i}', '\App\Http\Controllers\DashboardController@showSubmissions')->name('submissions.show');
     // users
-Route::get('/dashboard/users', '\App\Http\Controllers\DashboardController@users')->name('users.index');   
+Route::get('/dashboard/users', '\App\Http\Controllers\DashboardController@users')->name('users.index');  
+    // analytics
+Route::get('/dashboard/analytics', '\App\Http\Controllers\DashboardController@analytics')->name('analytics.index');   
 
 
 
