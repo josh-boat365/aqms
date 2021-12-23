@@ -22,7 +22,6 @@ class DatabaseSeeder extends Seeder
         \App\Models\OptionType::factory()->create(['type' => 'Text (Single Line)']);
         \App\Models\OptionType::factory()->create(['type' => 'Text (Multiple Line)']);
         \App\Models\OptionType::factory()->create(['type' => 'Single Select (Radio Button)']);
-        \App\Models\OptionType::factory()->create(['type' => 'Single Select (Drop down)']);
         \App\Models\OptionType::factory()->create(['type' => 'Multiple Select (Check Box)']);
         \App\Models\OptionType::factory()->create(['type' => 'Grid']);
         

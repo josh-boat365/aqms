@@ -398,7 +398,6 @@
 
                 //set updated options
                 switch ($editMode.children('.opt-type').children('.form-control').val()) {
-                    //text (single line)
                     case '1':
                         // console.log('1')
                         $textBox = $('<input>').attr({
@@ -413,7 +412,6 @@
                         $viewMode.children('.mb-4').html($textBox);
                         break;
 
-                        //text (multi line)
                     case '2':
                         //clear view options
                         $viewMode.children('.mb-4').html(' ');
@@ -429,13 +427,12 @@
                         $viewMode.children('.mb-4').append($textArea);
                         break;
 
-                        // Single Select (Radio Button)
                     case '3':
 
                         //clear view options
                         $viewMode.children('.mb-4').html(' ');
 
-
+                        // get and set all options
                         $.each($options, function(index, elem) {
                             $optionBox = $('<div/>').addClass('custom-control custom-radio')
                                 .append(
@@ -458,35 +455,8 @@
                         // console.log(3)
 
                         break;
-                        // Single Select (Drop down)
+
                     case '4':
-
-                        //clear view options
-                        $viewMode.children('.mb-4').html(' ');
-
-                        $drop_down = $('<select>').addClass('drop-down-preview form-control')
-                        // get and set all options
-                        $.each($options, function(index, elem) {
-                            $option = $('<option/>').attr({
-                                'class': 'custom-control',
-                                'value': $(this).children('.form-control').val()
-                            }).text($(this).children('.form-control').val())
-                            $drop_down.append($option)
-                        })
-                        $viewMode.children('.mb-4').html($drop_down);
-
-                        $('.drop-down-preview').select2({
-                            
-                            theme: "bootstrap",
-                            placeholder: "",
-                            maximumSelectionSize: 6,
-                        })
-                        $('.select2-selection--single').addClass('form-control');
-
-
-                        break;
-                        // Multiple Select (Check Box)
-                    case '5':
                         //clear view options
                         $viewMode.children('.mb-4').html(' ');
 
@@ -512,8 +482,6 @@
                             $viewMode.children('.mb-4').append($optionBox);
                         })
                         break;
-
-                        // Grid
                     default:
                         //clear view options
                         $viewMode.children('.mb-4').html(' ');
@@ -577,19 +545,6 @@
             // $('.option-type').on('change', function () {
             //     console.log($(this).val())
             // })
-        })
-    </script>
-
-    <script>
-        $(function () {
-            $('.sortable-survey').on('click', '.select2-selection__rendered', function () {
-                
-                if ($(this).parent().parent().parent().parent().children('select').hasClass('drop-down-preview')) {
-                    $('.select2-search--dropdown').hide()
-                } else {
-                    $('.select2-search--dropdown').show()
-                }
-            })
         })
     </script>
 
@@ -698,13 +653,24 @@
         $(function() {
             $('.option-type').each(function() {
 
-                if ($(this).val() == 6) {
+                // get rows
+                // $rows = [];
+                // $i = 0;
+                // $(this).parent().parent().children('.ans-form').children('.answers').children('.ans').each(
+                //     function() {
+                //         $rows[$i] = $(this).children('.form-control').val();
+                //         $i++;
+                //     });
+                // console.log($rows);
+
+                // check for grid
+                if ($(this).val() == 5) {
                     $(this).parent().parent().children('.ans-form').children('.grid').show()
                     $(this).parent().parent().children('.ans-form').children('.non-grid').hide()
                 } else if ($(this).val() == 1 || $(this).val() == 2) {
                     $(this).parent().parent().children('.ans-form').children('.grid').hide()
                     $(this).parent().parent().children('.ans-form').children('.non-grid').hide()
-                } else if ($(this).val() == 3 || $(this).val() == 4 || $(this).val() == 5) {
+                } else if ($(this).val() == 3 || $(this).val() == 4) {
                     $(this).parent().parent().children('.ans-form').children('.grid').hide()
                     $(this).parent().parent().children('.ans-form').children('.non-grid').show()
                 }
@@ -895,19 +861,17 @@
                     }),
                     $que_order = 1;
 
-
+                
                 $('.question').each(function() {
 
                     //get name
                     $name = $(this).children('.question-collapse').children('.card-body').children(
-                            '.edit-mode').children('.que-section').children('.writtenQuestion')
-                        .attr('name')
+                        '.edit-mode').children('.que-section').children('.writtenQuestion').attr('name')
 
-                    $(this).children('.question-collapse').children('.card-body').children(
-                            '.edit-mode').children('.que-section').children('.writtenQuestion')
-                        .attr('name', $name + '[que]')
+                        $(this).children('.question-collapse').children('.card-body').children(
+                        '.edit-mode').children('.que-section').children('.writtenQuestion').attr('name', $name + '[que]')
 
-
+                        
                     $(this).children('.question-collapse').children('.card-body').children(
                         '.edit-mode').children('.que-section').append(
                         $('<input>').attr({
@@ -962,7 +926,7 @@
 
                             $(this).children('.form-control').attr('name', $name + '[opt]');
 
-                            $(this).append(
+                                $(this).append(
                                 $('<input>').attr({
                                     'type': 'hidden',
                                     'name': $name + '[ord]',
@@ -977,7 +941,7 @@
 
                             $(this).children('.form-control').attr('name', $name + '[opt]');
 
-                            $(this).append(
+                                $(this).append(
                                 $('<input>').attr({
                                     'type': 'hidden',
                                     'name': $name + '[ord]',

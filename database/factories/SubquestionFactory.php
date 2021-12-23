@@ -14,7 +14,7 @@ class SubquestionFactory extends Factory
      */
     public function definition()
     {
-        $questions = Question::where('option_type_id', 6)->pluck('id');
+        $questions = Question::where('option_type_id', 5)->pluck('id');
 
         return [
             'question' => $this->faker->unique()->word,

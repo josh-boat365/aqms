@@ -1,17 +1,15 @@
-{{-- style for question cards --}}
+{{-- style for question cards  --}}
 
 <style type="text/css">
-    .card-style {
+    .card-style{
         width: 80% !important;
         margin: 0 auto;
-    }
-
-    @media (min-width: 320px) and (max-width: 652px) {
-        .card-style {
-            width: 100%;
         }
-    }
-
+        @media (min-width: 320px) and (max-width: 652px){
+            .card-style{
+                width: 100%;
+            }
+        }
 </style>
 
 @for ($i = 0; $i < count($survey->questions); $i++)
@@ -36,32 +34,27 @@
                         <div class="mb-4">
                             @if ($survey->questions[$i]->option_type_id == 1)
                                 <input class="form-control trim" type="text"
-                                    name="ans[{{ $survey->questions[$i]->id }}]" value="@foreach ($responses as $response)@if ($response->question_id == $survey->questions[$i]->id){{ $response->response }}@endif @endforeach">
+                                    name="ans[{{ $survey->questions[$i]->id }}]" value="@foreach ($responses as $response)@if ($response->question_id == $survey->questions[$i]->id){{$response->response}}@endif @endforeach">
                             @elseif ($survey->questions[$i]->option_type_id == 2)
                                 <textarea class="form-control" name="ans[{{ $survey->questions[$i]->id }}]"
-                                    cols="30" rows="2">@foreach ($responses as $response)@if ($response->question_id == $survey->questions[$i]->id){{ $response->response }}@endif @endforeach</textarea>
+                                    cols="30" rows="2">@foreach ($responses as $response)@if ($response->question_id == $survey->questions[$i]->id){{$response->response}}@endif @endforeach</textarea>
 
                             @elseif ($survey->questions[$i]->option_type_id == 3)
                                 @foreach ($survey->options->where('question_id', $survey->questions[$i]->id) as $option)
                                     <div class="custom-control custom-radio"><input value="{{ $option->option }}"
-                                            type="radio" id="o{{ $option->id }}" @foreach ($responses as $response)@if ($response->response == $option->option) checked @endif @endforeach
+                                            type="radio" id="o{{ $option->id }}"
+                                            @foreach ($responses as $response)@if ($response->response == $option->option) checked @endif @endforeach
                                             name="ans[{{ $survey->questions[$i]->id }}]" class="custom-control-input">
                                         <label class="custom-control-label"
                                             for="o{{ $option->id }}">{{ $option->option }}</label>
                                     </div>
                                 @endforeach
-                            @elseif ($survey->questions[$i]->option_type_id == 4 && $survey->options->where('question_id', $survey->questions[$i]->id)->count() > 0)
-                                    <select name="ans[{{ $survey->questions[$i]->id }}]" class="form-control drop-down">
-                                        @foreach ($survey->options->where('question_id', $survey->questions[$i]->id) as $option)
-                                            <option @foreach ($responses as $response)@if ($response->response == $option->option) selected @endif @endforeach  value="{{$option->option}}">{{$option->option}}</option>
-                                        @endforeach
-                                    </select>
-
-                            @elseif ($survey->questions[$i]->option_type_id == 5)
+                            @elseif ($survey->questions[$i]->option_type_id == 4)
                                 @foreach ($survey->options->where('question_id', $survey->questions[$i]->id) as $option)
                                     <div class="custom-control custom-checkbox">
                                         <input value="{{ $option->option }}" class="custom-control-input"
-                                            type="checkbox" @foreach ($responses as $response)@if ($response->response == $option->option) checked @endif @endforeach
+                                            type="checkbox"
+                                            @foreach ($responses as $response)@if ($response->response ==  $option->option) checked @endif @endforeach
                                             name="ans[{{ $survey->questions[$i]->id }}][{{ $option->id }}]"
                                             id="o{{ $option->id }}">
                                         <label for="o{{ $option->id }}"
@@ -69,6 +62,7 @@
                                     </div>
 
                                 @endforeach
+
 
                             @else
                                 <div class="row col-12">
@@ -87,11 +81,11 @@
                                                     {{ $column->question }}
                                                 </div>
                                                 @foreach ($survey->options->where('question_id', $survey->questions[$i]->id) as $option)
-                                                    <div class="d-flex justify-content-center check-box"><input
-                                                            type="radio"
+                                                    <div class="d-flex justify-content-center check-box"><input type="radio"
                                                             name="ans[{{ $survey->questions[$i]->id }}][{{ $option->id }}]"
                                                             id="" value="{{ $column->question }}"
-                                                            @foreach ($responses as $response)@if ($response->response == $column->question) @if ($response->option_id == $option->id) checked @endif @endif @endforeach></div>
+                                                            @foreach ($responses as $response)@if ($response->response ==  $column->question) @if ($response->option_id == $option->id) checked @endif @endif @endforeach
+                                                            ></div>
                                                 @endforeach
                                             </div>
                                         @endforeach
