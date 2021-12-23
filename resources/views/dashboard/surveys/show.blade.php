@@ -55,6 +55,13 @@
                     class="simple-icon-plus btn-group-icon"></i> Add Question</button></div>
         <div class="text-center mt-4"><button type="button" class="btn btn-outline-success btn-sm mb-2 upd-que"><i
                     class="simple-icon-plus btn-group-icon"></i> Update</button></div>
+
+                    <form action="{{route('survey.question.delete')}}" method="post" style="display: none" id="delete-que-form">
+                        @csrf
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="que_id" class="que_id">
+                        <input type="hidden" name="survey_id" class="survey_id" value="{{$survey->id}}">
+                    </form>
     @endsection
 
 
@@ -345,6 +352,17 @@
                             .children('.column-btn').append($button)
                     }
                 }
+            })
+        })
+    </script>
+
+    {{-- del ques --}}
+    <script>
+        $(function () {
+            $('.sortable-survey').on('click', '.trash-button', function () {
+                $que_id = $(this).parent().parent().parent().children('.question-collapse').children('.card-body').children('.edit-mode').children('.que-section').children('.que-num').val()
+                $('#delete-que-form').children('.que_id').val($que_id);
+                $('#delete-que-form').submit();
             })
         })
     </script>
