@@ -388,7 +388,8 @@ class DashboardController extends Controller
         return redirect()->back()->with('success', 'survey successfully deleted');
     }
 
-    public function deleteQuestion(Request $request){
+    public function deleteQuestion(Request $request)
+    {
         // dd($request);
         //single question
         Question::find($request->que_id)->delete();
