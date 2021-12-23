@@ -679,13 +679,13 @@
                 // console.log($rows);
 
                 // check for grid
-                if ($(this).val() == 5) {
+                if ($(this).val() == 6) {
                     $(this).parent().parent().children('.ans-form').children('.grid').show()
                     $(this).parent().parent().children('.ans-form').children('.non-grid').hide()
                 } else if ($(this).val() == 1 || $(this).val() == 2) {
                     $(this).parent().parent().children('.ans-form').children('.grid').hide()
                     $(this).parent().parent().children('.ans-form').children('.non-grid').hide()
-                } else if ($(this).val() == 3 || $(this).val() == 4) {
+                } else if ($(this).val() == 3 || $(this).val() == 4 || $(this).val() == 5) {
                     $(this).parent().parent().children('.ans-form').children('.grid').hide()
                     $(this).parent().parent().children('.ans-form').children('.non-grid').show()
                 }
@@ -882,14 +882,14 @@
                 // })
 
                 $('.option-type').each(function() {
-                        if ($(this).val() == 5) {
+                        if ($(this).val() == 6) {
                             $(this).parent().parent().children('.ans-form').children('.non-grid')
                                 .remove()
                         } else if ($(this).val() == 1 || $(this).val() == 2) {
                             $(this).parent().parent().children('.ans-form').children('.grid').remove()
                             $(this).parent().parent().children('.ans-form').children('.non-grid')
                                 .remove()
-                        } else if ($(this).val() == 3 || $(this).val() == 4) {
+                        } else if ($(this).val() == 3 || $(this).val() == 4 || $(this).val() == 5) {
                             $(this).parent().parent().children('.ans-form').children('.grid').remove()
                         }
                     }),
@@ -921,7 +921,7 @@
                     if ($(this).children('.question-collapse').children('.card-body').children(
                             '.edit-mode').children('.ans-form').children('.ans-group').hasClass(
                             'non-grid')) {
-
+                                console.log($(this));
                         $ans = $(this).children('.question-collapse').children('.card-body')
                             .children('.edit-mode').children('.ans-form').children('.ans-group')
                             .children('.sortable').children('.ans');
