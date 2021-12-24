@@ -14,7 +14,7 @@
 @section('body')
     <div class="fixed-background"></div>
     <div class="container col-12 position-absolute" style="z-index: 200">
-        <a href="{{ route('register') }}" class="ml-auto float-right px-3 py-1 m-3 text-white">Register</a>
+        {{-- <a href="{{ route('register') }}" class="ml-auto float-right px-3 py-1 m-3 text-white">Register</a> --}}
     </div>
     <main>
         <div class="container">
@@ -23,7 +23,7 @@
                     <div class="card auth-card mt-3 mb-3">
                         <div class="position-relative image-side">
                             <p class="text-white h2">WELCOME TO ATU TRACER</p>
-                            <p class="white mb-0">Dear Alumnus:</p>
+                            <p class="white mb-0">Dear Alumnus:</p><br>
 
                             <p class="white">Thank you for the intended participation.</p>
 
