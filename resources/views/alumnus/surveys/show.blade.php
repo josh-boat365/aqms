@@ -177,6 +177,32 @@
         })(jQuery);
     </script>
 
+    <script>
+        $(function() {
+            $('.drop-down').select2({
+                theme: "bootstrap",
+                placeholder: "",
+                maximumSelectionSize: 6,
+            })
+
+            $('.select2-selection--single').addClass('form-control');
+
+            // setTimeout(() => {
+            //     $('.select2-search--dropdown').hide()
+            // }, 5000);
+
+            $('form').on('click', '.select2-selection__rendered', function() {
+                console.log($(this).parent().parent().parent().parent().children('select'));
+                if ($(this).parent().parent().parent().parent().children('select').hasClass('drop-down')) {
+                    $('.select2-search--dropdown').hide()
+                } else {
+                    $('.select2-search--dropdown').show()
+                }
+            })
+
+        })
+    </script>
+
     {{-- save --}}
     <script>
         $(function() {
@@ -329,6 +355,11 @@
     {{-- check and count answered question on load --}}
     <script>
         $(function() {
+            $('select').each(function() {
+                $(this).parent().parent().parent().parent().parent().addClass('answered')
+            })
+
+
             $('input').each(function() {
                 //text box
                 if ($(this).attr('type') == 'text') {
@@ -413,6 +444,7 @@
                         )
                     });
                 }
+
                 $('#progress').val($('.answered').length);
                 $('.progress-tracker').text($('.answered').length + '/' + $('.question').length);
                 if ($('.answered').length == $('.question').length) {
@@ -443,25 +475,25 @@
 
     {{-- notification --}}
     <script>
-        $(function () {
+        $(function() {
             setTimeout(() => {
                 $('#notification').fadeIn('slow')
             }, 1500);
         })
-        $(function () {
+        $(function() {
             setTimeout(() => {
                 $('#notification').fadeTo('slow', 0)
             }, 3000);
         })
     </script>
 
-    <script>
+    {{-- <script>
         $(function() {
             $('input').each(function() {
 
             })
         })
-    </script>
+    </script> --}}
 
 </body>
 <!-- Mirrored from dore-jquery.coloredstrategies.com/Apps.Survey.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 06 Nov 2021 22:42:24 GMT -->

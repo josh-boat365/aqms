@@ -24,7 +24,7 @@
                     <div class="card auth-card mt-3 mb-3">
                         <div class="position-relative image-side">
                             <p class="text-white h2">WELCOME TO ATU TRACER</p>
-                            <p class="white mb-0">Dear Alumnus:</p>
+                            <p class="white mb-0">Dear Alumnus:</p><br>
 
                             <p class="white">Thank you for the intended participation.</p>
 

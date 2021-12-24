@@ -9,13 +9,15 @@
                             class="heading-number d-inline-block">{{ $i + 1 }}
                         </span><span class="preview-question">{{ $survey->questions[$i]->question }}</span></div>
                 </div>
-                <div class="custom-control custom-checkbox pl-1 align-self-center pr-4">
-                    <div class="btn btn-outline-theme-3 icon-button edit-button"><i class="simple-icon-pencil"></i></div>
-                    <div class="btn btn-outline-theme-3 icon-button view-button"><i class="simple-icon-eye"></i></div>
-                    <div class="btn btn-outline-theme-3 icon-button rotate-icon-click rotate" type="button"
+                <div class="custom-control custom-checkbox pl-1 align-self-center pr-4" style="flex: 0 0 25%; max-width: 20%;">
+                    <div class="col btn btn-outline-theme-3 icon-button edit-button"><i class="simple-icon-pencil"></i></div>
+                    <div class="col btn btn-outline-theme-3 icon-button view-button"><i class="simple-icon-eye"></i></div>
+                    <div class="col btn btn-danger icon-button trash-button"><i class="simple-icon-trash"></i></div>
+                    <div class="col btn btn-outline-theme-3 icon-button rotate-icon-click rotate" type="button"
                         data-toggle="collapse" data-target="#q{{ $survey->questions[$i]->id }}" aria-expanded="true"
                         aria-controls="q{{ $survey->questions[$i]->id }}"><i
-                            class="simple-icon-arrow-down with-rotate-icon"></i></div>
+                            class="simple-icon-arrow-down with-rotate-icon"></i>
+                    </div>
                 </div>
             </div>
             <div class="question-collapse collapse show" id="q{{ $survey->questions[$i]->id }}">
@@ -26,7 +28,7 @@
                             {{-- question --}}
                             <input type="hidden" class="que-num" value="{{ $survey->questions[$i]->id }}">
                             <input class="form-control writtenQuestion" type="text"
-                                name="ques[{{ $survey->questions[$i]->id }}][que]"
+                                name="ques[old][{{ $survey->questions[$i]->id }}]"
                                 value="{{ $survey->questions[$i]->question }}">
                         </div>
 
@@ -36,28 +38,32 @@
                         <div class="form-group opt-type"><label class="d-block">Answer Type</label>
                             {{-- answer-type --}}
                             <select class="form-control select2-single option-type" data-width="100%"
-                                name="ques[{{ $survey->questions[$i]->id }}][opt_type]">
+                                name="ques[old][{{ $survey->questions[$i]->id }}][opt_type]">
                                 {{-- <option label="&nbsp;">&nbsp;</option> --}}
                                 @foreach ($optionTypes as $optionType)
                                     <option value="{{ $optionType->id }}" @if ($survey->questions[$i]->option_type_id == $optionType->id)
                                         selected
-                                    @endif>{{ $optionType->type }}</option>
-                                @endforeach
-                            </select>
+                                @endif>{{ $optionType->type }}</option>
+@endforeach
+</select>
 </div>
 
 {{-- possible answers --}}
 <div class="form-group ans-form">
-    <div class="grid" @if ($survey->questions[$i]->option_type_id != 5) style="display: none" @endif>
+    <div class="grid ans-group" @if ($survey->questions[$i]->option_type_id != 5) style="display: none" @endif>
         <label class="d-block">Answers</label>
         <div class="answers mb-3 d-flex col">
             <div class="col rows">
                 <h5>Rows</h5>
                 <div class="sortable">
                     @foreach ($survey->options->where('question_id', $survey->questions[$i]->id) as $option)
-                        <div class="mb-1 position-relative ans"><input class="form-control" type="text"
-                                name="ques[{{ $survey->questions[$i]->id }}][ans][rows][old][{{ $option->id }}]"
+                        <div class="mb-1 position-relative ans">
+                            <input class="form-control" type="text"
+                                name="ques[old][{{ $survey->questions[$i]->id }}][ans][rows][old][{{ $option->id }}]"
                                 value="{{ $option->option }}">
+                            {{-- <input class="form-control" type="hidden" 
+                                name="ques[old][{{ $survey->questions[$i]->id }}][ans][rows][old][{{ $survey->questions[$i]->id }}][id]"
+                                value="{{ $option->id }}"> --}}
                             <div class="input-icons"><span class="badge badge-pill handle pr-0 mr-0"><i
                                         class="simple-icon-cursor-move"></i> </span><span
                                     class="badge badge-pill btn del-ans"><i class="simple-icon-trash"></i></span></div>
@@ -70,8 +76,11 @@
                 <div class="sortable">
                     @foreach ($survey->columns->where('question_id', $survey->questions[$i]->id) as $option)
                         <div class="mb-1 position-relative ans"><input class="form-control" type="text"
-                                name="ques[{{ $survey->questions[$i]->id }}][ans][columns][old][{{ $option->id }}]"
+                                name="ques[old][{{ $survey->questions[$i]->id }}][ans][columns][old][{{ $option->id }}]"
                                 value="{{ $option->question }}">
+                            {{-- <input class="form-control" type="hidden" 
+                                name="ques[old][{{ $survey->questions[$i]->id }}][ans][columns][old][{{ $survey->questions[$i]->id }}][id]"
+                                value="{{ $option->id }}"> --}}
                             <div class="input-icons"><span class="badge badge-pill handle pr-0 mr-0"><i
                                         class="simple-icon-cursor-move"></i> </span><span
                                     class="badge badge-pill btn del-ans"><i class="simple-icon-trash"></i></span></div>
@@ -96,14 +105,17 @@
             </div>
         </div>
     </div>
-    <div class="non-grid" @if ($survey->questions[$i]->option_type_id == 5) style="display: none" @endif>
+    <div class="non-grid ans-group" @if ($survey->questions[$i]->option_type_id == 5) style="display: none" @endif>
         <label class="d-block">Answers</label>
         <div class="answers mb-3 sortable">
 
             @foreach ($survey->options->where('question_id', $survey->questions[$i]->id) as $option)
                 <div class="mb-1 position-relative ans"><input class="form-control" type="text"
-                        name="ques[{{ $survey->questions[$i]->id }}][ans][old][{{ $option->id }}]"
+                        name="ques[old][{{ $survey->questions[$i]->id }}][ans][old][{{ $option->id }}]"
                         value="{{ $option->option }}">
+                    {{-- <input class="form-control" type="hidden" 
+                        name="ques[old][{{ $survey->questions[$i]->id }}][ans][old][{{ $survey->questions[$i]->id }}][id]"
+                        value="{{ $option->id }}"> --}}
                     <div class="input-icons"><span class="badge badge-pill handle pr-0 mr-0"><i
                                 class="simple-icon-cursor-move"></i> </span><span
                             class="badge badge-pill btn del-ans"><i class="simple-icon-trash"></i></span></div>
