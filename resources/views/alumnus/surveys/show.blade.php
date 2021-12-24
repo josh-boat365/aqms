@@ -487,6 +487,12 @@
         })
     </script>
 
+<script>
+    $(function(){
+        $('#survey-section').addClass('active');
+    })
+</script>
+
     {{-- <script>
         $(function() {
             $('input').each(function() {
