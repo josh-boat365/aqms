@@ -56,12 +56,12 @@
         <div class="text-center mt-4"><button type="button" class="btn btn-outline-success btn-sm mb-2 upd-que"><i
                     class="simple-icon-plus btn-group-icon"></i> Update</button></div>
 
-                    <form action="{{route('survey.question.delete')}}" method="post" style="display: none" id="delete-que-form">
-                        @csrf
-                        <input type="hidden" name="_method" value="DELETE">
-                        <input type="hidden" name="que_id" class="que_id">
-                        <input type="hidden" name="survey_id" class="survey_id" value="{{$survey->id}}">
-                    </form>
+        <form action="{{ route('survey.question.delete') }}" method="post" style="display: none" id="delete-que-form">
+            @csrf
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="hidden" name="que_id" class="que_id">
+            <input type="hidden" name="survey_id" class="survey_id" value="{{ $survey->id }}">
+        </form>
     @endsection
 
 
@@ -358,9 +358,11 @@
 
     {{-- del ques --}}
     <script>
-        $(function () {
-            $('.sortable-survey').on('click', '.trash-button', function () {
-                $que_id = $(this).parent().parent().parent().children('.question-collapse').children('.card-body').children('.edit-mode').children('.que-section').children('.que-num').val()
+        $(function() {
+            $('.sortable-survey').on('click', '.trash-button', function() {
+                $que_id = $(this).parent().parent().parent().children('.question-collapse').children(
+                        '.card-body').children('.edit-mode').children('.que-section').children('.que-num')
+                    .val()
                 $('#delete-que-form').children('.que_id').val($que_id);
                 $('#delete-que-form').submit();
             })
@@ -494,7 +496,7 @@
                         $viewMode.children('.mb-4').html($drop_down);
 
                         $('.drop-down-preview').select2({
-                            
+
                             theme: "bootstrap",
                             placeholder: "",
                             maximumSelectionSize: 6,
@@ -599,10 +601,11 @@
     </script>
 
     <script>
-        $(function () {
-            $('.sortable-survey').on('click', '.select2-selection__rendered', function () {
-                
-                if ($(this).parent().parent().parent().parent().children('select').hasClass('drop-down-preview')) {
+        $(function() {
+            $('.sortable-survey').on('click', '.select2-selection__rendered', function() {
+
+                if ($(this).parent().parent().parent().parent().children('select').hasClass(
+                        'drop-down-preview')) {
                     $('.select2-search--dropdown').hide()
                 } else {
                     $('.select2-search--dropdown').show()
@@ -939,7 +942,7 @@
                     if ($(this).children('.question-collapse').children('.card-body').children(
                             '.edit-mode').children('.ans-form').children('.ans-group').hasClass(
                             'non-grid')) {
-                                console.log($(this));
+                        console.log($(this));
                         $ans = $(this).children('.question-collapse').children('.card-body')
                             .children('.edit-mode').children('.ans-form').children('.ans-group')
                             .children('.sortable').children('.ans');
@@ -1034,31 +1037,39 @@
                                         $('<span/>').addClass('preview-question').text('')
                                     )
                                 ),
-                                $('<div/>').addClass(
-                                    'custom-control custom-checkbox pl-1 align-self-center pr-4')
+                                $('<div/>').attr({
+                                    'class': 'custom-control custom-checkbox pl-1 align-self-center pr-4',
+                                    'style': 'flex: 0 0 25%; max-width: 20%;'
+                                })
                                 .append(
-                                    $('<div/>').addClass('btn btn-outline-theme-3 icon-button edit-button')
+                                    $('<div/>').addClass(
+                                        'col btn btn-outline-theme-3 icon-button edit-button')
                                     .append(
                                         $('<i/>').addClass('simple-icon-pencil')
                                     ),
-                                    $('<div/>').addClass('btn btn-outline-theme-3 icon-button view-button')
+                                    $('<div/>').addClass(
+                                        'col btn btn-outline-theme-3 icon-button view-button')
                                     .append(
                                         $('<i/>').addClass('simple-icon-eye')
                                     ),
                                     $('<div/>').attr({
-                                        'class': 'btn btn-outline-theme-3 icon-button rotate-icon-click rotate',
+                                        'class': 'col mx-1 btn btn-outline-theme-3 icon-button rotate-icon-click rotate',
                                         'data-toggle': 'collapse',
-                                        'data-target': '#id', // unique
+                                        'data-target': '#n' + $que_num, // unique
                                         'aria-expanded': 'true',
-                                        'aria-controls': '#id' // same unique
+                                        'aria-controls': '#n' + $que_num // same unique
                                     }).append(
                                         $('<i/>').addClass('simple-icon-arrow-down with-rotate-icon')
+                                    ),
+                                    $('<div/>').addClass('col btn btn-danger icon-button remove-button')
+                                    .append(
+                                        $('<i/>').addClass('iconsminds-close')
                                     )
                                 )
                             ),
                             $('<div/>').attr({
                                 'class': 'question-collapse collapse show',
-                                'id': '#id' // same unique
+                                'id': 'n' + $que_num // same unique
                             }).append(
                                 $('<div/>').addClass('card-body pt-0').append(
                                     $('<div/>').addClass('edit-mode').append(
@@ -1155,6 +1166,7 @@
 
                     );
                 $('.sortable-survey').append($test_que_card)
+
                 var $options = [
                     @foreach ($optionTypes as $optionType)
                         { id: {{ $optionType->id }}, text:'{{ $optionType->type }}' },
@@ -1175,6 +1187,31 @@
                         'html, body').get(0).scrollHeight
                 }, 1000);
             })
+        })
+    </script>
+
+
+    {{-- remove question --}}
+    <script>
+        $(function() {
+            $('.sortable-survey').on('click', '.remove-button', function() {
+
+                $card = $(this).parent().parent().parent().parent();
+
+                $card.slideUp(function() {
+                    $(this).remove();
+
+                    $que_num = 1;
+                    $('.heading-number').each(function() {
+                        $(this).text($que_num++);
+                        // console.log($(this));
+                    })
+                })
+
+
+            })
+
+
         })
     </script>
 
