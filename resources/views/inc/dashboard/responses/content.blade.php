@@ -12,8 +12,16 @@
                     </div>
                 </div>
                 <ul class="nav nav-tabs separator-tabs ml-0 mb-5" role="tablist">
-                    <li class="nav-item"><a class="nav-link active" id="third-tab" data-toggle="tab" href="#third"
-                            role="tab" aria-controls="third" aria-selected="false">SUBMITTED RESPONSES</a></li>
+                   
+                    <li class="nav-item">
+                        <a class="nav-link active" id="third-tab" data-toggle="tab" href="#third" role="tab" aria-controls="third" aria-selected="false">SUBMITTED RESPONSES</a>
+                    </li>
+
+                     <li class="nav-item">
+                         <a class="nav-link " id="fourth-tab" data-toggle="tab" href="#fourth" role="tab" aria-controls="fourth" aria-selected="true">ANALYTICS</a>
+                        </li>
+
+                            
                 </ul>
                 <div class="tab-content mb-4">
                     <div class="tab-pane show active" id="third" role="tabpanel" aria-labelledby="third-tab">
@@ -26,8 +34,19 @@
 
                                 @yield('question-list')
                             </div>
+                        </div>
+                    </div>
+                    {{-- Analytics for Responses --}}
+                    <div class="tab-pane show" id="fourth" role="tabpanel" aria-labelledby="fourth-tab">
+                        <div class="row">
+                            <div class="col-lg-4 col-12 mb-4">
 
-
+                                @include('inc.dashboard.responses.res-ques-list')                                                         
+                            </div>
+                            <div class="col-12 col-lg-8">
+                                {{-- <h1>No Analytics Yet</h1> --}}
+                                @include('inc.dashboard.responses.res-ques-analytics')
+                            </div>
                         </div>
                     </div>
                 </div>

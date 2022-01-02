@@ -26,18 +26,7 @@
                             aria-labelledby="exampleModalRight" aria-hidden="true">
                             @yield('survey-form')
                         </div>
-                        {{-- <div class="btn-group">
-                            <div class="btn btn-primary btn-lg pl-4 pr-0 check-button"><label
-                                    class="custom-control custom-checkbox mb-0 d-inline-block"><input type="checkbox"
-                                        class="custom-control-input" id="checkAll"> <span
-                                        class="custom-control-label">&nbsp;</span></label></div>
-                                        <button type="button"
-                                class="btn btn-lg btn-primary dropdown-toggle dropdown-toggle-split"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span
-                                    class="sr-only">Toggle Dropdown</span></button>
-                            <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a></div>
-                        </div> --}}
+                    
                     </div>
                 </div>
                 

@@ -11,36 +11,12 @@
                         <div class="alumni col alumnus-hover py-2 rounded">
                             @foreach ($users->where('id', $submission->user_id) as $user)
                             <input type="hidden" name="user_id" value="{{$user->id}}">
-                                {{ $user->firstName }}
+                                {{ $user->firstName }} {{ $user->lastName }}
                             @endforeach
                         </div>
                     {{-- </a> --}}
             @endforeach
-            {{-- <div class="col alumnus-hover py-2 rounded">
-                                                <a href="#">
-                                                <div class="">Aaron Kwame Koranteng Odoom</div>
-                                                </a>
-                                            </div>
-                                            <div class="col alumnus-hover py-2 rounded">
-                                                <a href="#">
-                                                <div class="">Aaron Kwame Koranteng Odoom</div>
-                                                </a>
-                                            </div>
-                                            <div class="col alumnus-hover py-2 rounded">
-                                                <a href="#">
-                                                <div class="">Aaron Kwame Koranteng Odoom</div>
-                                                </a>
-                                            </div>
-                                            <div class="col alumnus-hover py-2 rounded">
-                                                <a href="#">
-                                                <div class="">Aaron Kwame Koranteng Odoom</div>
-                                                </a>
-                                            </div>
-                                            <div class="col alumnus-hover py-2 rounded">
-                                                <a href="#">
-                                                <div class="">Aaron Kwame Koranteng Odoom</div>
-                                                </a>
-                                            </div> --}}
+          
         </div>
 
     </div>
