@@ -53,8 +53,12 @@
                                 <div class="card-body">
                     
                                    <ul class="nav nav-tabs separator-tabs ml-0 mb-5" role="tablist">
-                                        <li class="nav-item"><a class="nav-link active" id="first-tab" data-toggle="tab" href="#first" role="tab" aria-controls="first" aria-selected="true">UPDATE PROFILE</a></li>
-                                        <li class="nav-item"><a class="nav-link" id="second-tab" data-toggle="tab" href="#second" role="tab" aria-controls="second" aria-selected="true">CHANGE PASSWORD</a></li>
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="first-tab" data-toggle="tab" href="#first" role="tab" aria-controls="first" aria-selected="true">UPDATE PROFILE</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="second-tab" data-toggle="tab" href="#second" role="tab" aria-controls="second" aria-selected="true">CHANGE PASSWORD</a>
+                                        </li>
                                 
                                     </ul>
 
@@ -193,7 +197,7 @@
                                                 <button type="submit" class="btn btn-primary float-right">Update</button>
                                         </form>
                                     </div>
-                                    <div class="tab-pane fade" id="second" role="tabpane1" aria-labelledby="second-tab">
+                                    <div class="tab-pane show" id="second" role="tabpanel" aria-labelledby="second-tab">
                                         <form class="tooltip-right-bottom mob-view" novalidate method="POST" action="#">
                                             <div class="form-group has-float-label">
                                                 <input name="password" class="@error('password') border-danger @enderror form-control" type="password" required>
