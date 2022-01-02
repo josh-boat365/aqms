@@ -12,9 +12,6 @@
                     </div>
                 </div>
                 <ul class="nav nav-tabs separator-tabs ml-0 mb-5" role="tablist">
-                    {{-- <li class="nav-item"><a class="nav-link active" id="first-tab" data-toggle="tab" href="#first"
-                            role="tab" aria-controls="first" aria-selected="true">DETAILS</a></li> --}}
-
                     <li class="nav-item"><a class="nav-link active" id="third-tab" data-toggle="tab" href="#third"
                             role="tab" aria-controls="third" aria-selected="false">SUBMITTED RESPONSES</a></li>
                 </ul>
