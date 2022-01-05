@@ -44,7 +44,7 @@
                                 @include('inc.dashboard.responses.res-ques-list')                                                         
                             </div>
                             <div class="col-12 col-lg-8">
-                                {{-- <h1>No Analytics Yet</h1> --}}
+                            
                                 @include('inc.dashboard.responses.res-ques-analytics')
                             </div>
                         </div>
