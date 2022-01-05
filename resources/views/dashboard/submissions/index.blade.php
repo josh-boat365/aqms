@@ -67,9 +67,12 @@
     <script src="{{ asset('js/vendor/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('js/vendor/perfect-scrollbar.min.js') }}"></script>
     <script src="{{ asset('js/vendor/select2.full.js') }}"></script>
+    <script src="{{ asset('js/vendor/charts.min.js') }}"></script>
+    <script src="{{ asset('js/vendor/moment.min.js') }}"></script>
     <script src="{{ asset('js/vendor/mousetrap.min.js') }}"></script>
     <script src="{{ asset('js/vendor/jquery.contextMenu.min.js') }}"></script>
     <script src="{{ asset('js/dore.script.js') }}"></script>
+    <script src="{{ asset('js/custom-chart.js') }}"></script>
 
     <script>
         function loadStyle(e, t) {

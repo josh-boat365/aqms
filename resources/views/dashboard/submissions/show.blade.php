@@ -89,11 +89,15 @@
     <script src="{{ asset('js/vendor/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('js/vendor/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('js/vendor/perfect-scrollbar.min.js') }}"></script>
+    <script src="{{ asset('js/vendor/charts.min.js') }}"></script>
+    <script src="{{ asset('js/vendor/chartjs-plugin-datalabels.js') }}"></script>
+    <script src="{{ asset('js/vendor/moment.min.js') }}"></script>
     <script src="{{ asset('js/vendor/select2.full.js') }}"></script>
     <script src="{{ asset('js/vendor/mousetrap.min.js') }}"></script>
     <script src="{{ asset('js/vendor/jquery.contextMenu.min.js') }}"></script>
     <script src="{{ asset('js/dore.script.js') }}"></script>
-
+    {{-- <script src="{{ asset('js/custom-chart.js') }}"></script> --}}
+    
     <script>
         function loadStyle(e, t) {
             for (var o = 0; o < document.styleSheets.length; o++)
@@ -190,7 +194,7 @@
     {{-- auto select and show questions of first user in alumni list --}}
     <script>
         $(function() {
-            console.log('hi');
+            // console.log('hi');
             $('.alumni').first().addClass('dot-active')
             $('.ques').first().show()
         })

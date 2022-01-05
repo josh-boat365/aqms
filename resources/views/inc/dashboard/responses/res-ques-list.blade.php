@@ -11,7 +11,7 @@
         <div class="scroll h-100  mt-2" style="max-height: 500px">
             {{-- @foreach ($submissions as $submission) --}}
                     {{-- <a href="#"> --}}
-                        <div class="alumni  alumnus-hover  ">
+                        <div class="alumnus-hover  ">
                             {{-- @foreach ($users->where('id', $submission->user_id) as $user)
                             <input type="hidden" name="user_id" value="{{$user->id}}">
                                 {{ $user->firstName }} {{ $user->lastName }}
