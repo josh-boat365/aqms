@@ -1,12 +1,15 @@
 <style>
+    .card-matrixChoice{
+        height: 28% !important;
+    }
     .chart-body{
         height: 40vh;
     }
     .chart-radio{
-        width: 70%;
+        width: 79%;
         margin: 0 auto;
         position: relative;
-        bottom: 6.2rem;
+        bottom: 8.2rem;
     }
     .num-response{
         position: relative;
@@ -83,14 +86,13 @@
     <div class="num-response">
         <h6>10 responses</h6>
     </div>
-    <div class="chart card-body chart-body pt-0">
-        <h1>NO ANALYTICS YET</h1>
-        
+    <div class="chart-radio card-body chart-body pt-0">
+        <canvas id="dropdownChoice"></canvas>
     </div>
 
 </div>
 
-<div class="card question d-flex mb-4 edit-quesiton">
+<div class="card card-matrixChoice question d-flex mb-4 edit-quesiton">
     <div class="d-flex flex-grow-1 min-width-zero">
         <div class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center">
             <div class="list-item-heading mb-0 truncate w-80 mb-1 mt-1">
@@ -107,7 +109,7 @@
         <h6>30 responses</h6>
     </div>
     <div class="chart card-body chart-body pt-0">
-        <h1>NO ANALYTICS YET</h1>
+        <canvas id="matrixChoice"></canvas>
         
     </div>
 
@@ -117,33 +119,118 @@
 <script>
 
 const data = {
-    labels: ['Male','Female', 'Prefer Not to say', 'other', 'He', 'She', 'Him','With', 'Are', 'No'],
+    labels: [
+        'Male','Female', 'Prefer Not to say', 'other', 'He', 'She', 'Him','With', 'Are',
+         'josh', 'josh is the best of all time', 'kay is a mentor at casvalabs', 'i am happy about it', 'python'
+         
+        ],
     datasets: [{
-        data: [300, 600, 10, 5,23,34,56,12,23,24],
+        data: [20, 60, 10, 5,23,34,56,12,23,24,11,12,13,14],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 205, 86, 0.2)',
                 'rgba(75, 192, 192, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
                 'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
+                'rgba(201, 203, 207, 0.2)',
+                //added colors
+                'rgba(99, 225, 222, 0.2)',
+                'rgba(255, 73, 112, 0.2)',
+                'rgba(149, 149, 149, 0.2)',
+                'rgba(142, 77, 250, 0.2)',
+                'rgba(80, 19, 192, 0.2)',
+                'rgba(19, 225, 82, 0.2)',
+                'rgba(225, 69, 0, 0.2)'
             ],
             borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
+                'rgb(255, 99, 132)',
+                'rgb(255, 159, 64)',
+                'rgb(255, 205, 86)',
+                'rgb(75, 192, 192)',
+                'rgb(54, 162, 235)',
+                'rgb(153, 102, 255)',
+                'rgb(201, 203, 207)',
+                //added colors
+                'rgb(99, 225, 222)',
+                'rgb(255, 73, 112)',
+                'rgb(149, 149, 149)',
+                'rgb(142, 77, 250)',
+                'rgb(80, 19, 192)',
+                'rgb(19, 225, 82)',
+                'rgb(225, 69, 0)'
             ],
-            borderWidth: 1
+            borderWidth: 2,
+            hoverOffset: 5,
+            // datalabels:{
+            //     align: 'top',
+            //     anchor: 'end',
+            //     offset: 8
+            // }
     }, ],
 
 };
 
+//data for muti-bar chart for martrix/grid choice response type
+// const data_multiBar = {
+//     labels: [
+//         'Practical skills','Subject knowledge', 'Creativity and innovation',
+//          'Critical thinking skills', 'Educational background', 'Programme of study', 
+//          'Work experience', 'Basic computer literacy', 'Oral communication',  'Team work',
+//          'Written communication', 'Entrepreneurial skills', 'Ethics (Loyalty, integrity)',  
+//         ],
+//     datasets: [
+//         {
+//         label: 'Not Important',
+//         data: [20, 60, 10, 5,23,34,56,12,23,24,11,12,13],
+//             backgroundColor: [
+//                 'rgba(225, 69, 0, 0.2)'//orangered
+                 
+//             ],
+//             borderColor: [
+//                 'rgb(225, 69, 0,)',
+                
+//             ],
+//             borderWidth: 2,
+//             hoverOffset: 5,
+           
+            
+//     }, {
+//         label: 'Fairly Important',
+//         data: [10, 50, 70, 15,13,24,36,2,63,84,31,19,73],
+//             backgroundColor: [
+//                 'rgba(54, 162, 235, 0.2)'//blue
+                  
+//             ],
+//             borderColor: [
+//                 'rgb(54, 162, 235)'
+                
+//             ],
+//             borderWidth: 2,
+//             hoverOffset: 5,
+
+//     },
+//     {
+//         label: 'Highly Important',
+//         data: [30, 20, 19, 51,3,4,6,19,25,29,1,38,3],
+//             backgroundColor: [
+//                 'rgba(142, 77, 250, 0.2)',//voilet 
+//             ],
+//             borderColor: [
+//                 'rgb(142, 77, 250)'
+//             ],
+//             borderWidth: 2,
+//             hoverOffset: 5,
+
+//     },
+        
+//     ],
+
+// };
+
 //config for pie chart with radio choices
 const config_pie_radio = {
-    type: 'pie',
+    type: 'doughnut',
     data: data,
     options: {
         responsive: true,
@@ -193,83 +280,95 @@ const config_checkbox = {
             beginAtZero: true
           }
         },
-        datalabels:{
-            align: 'top',
-            anchor: 'end',
-            // formatter: (value, context) =>{
-            //     //console.log(value)
-            //     //console.log(context.chart.data.datasets[0].data)
-            //     const datapoints = context.chart.data.datasets[0].data;
-            //     function totalSum( total, datapoint){
-            //         return total + datapoint;
-            //     }
-            //     const totalValue = datapoints.reduce(totalSum, 0);
-            //     const percentageValue = (value/ totalValue * 100).toFixed(0);
-            //     const displayData = [`${value}`,`(${percentageValue}%)`]
-            //     return displayData;
-            // }
-        }
-      },
+      
       plugins:[ChartDataLabels]
-    };
+    }
+};
 
-//render pie chart
-const radioChoice = new Chart(document.getElementById('radioChoice'), config_pie_radio);
-
-//render bar chart
-const checkboxChoice = new Chart(document.getElementById('checkboxChoice'), config_checkbox);
-</script>
-
-{{-- Bar for checkbox choice response type
-<script>
-const barCheckbox = document.getElementById('checkboxChoice').getContext('2d');
-const data_checkbox = {
-      labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-      datasets: [{
-        label: 'Weekly Sales',
-        data: [18, 12, 6, 9, 12, 3, 9],
-        backgroundColor: [
-          'rgba(255, 26, 104, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
-          'rgba(0, 0, 0, 0.2)'
-        ],
-        borderColor: [
-          'rgba(255, 26, 104, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)',
-          'rgba(0, 0, 0, 1)'
-        ],
-        borderWidth: 1
-      }]
-    };
-
-    // config 
-    const config_checkbox = {
+//config for muti-bar chart for matrix/grid choice response type
+const config_matrix = {
       type: 'bar',
-      data_checkbox,
+      data:{
+            labels: [
+            'Practical skills','Subject knowledge', 'Creativity and innovation',
+            'Critical thinking skills', 'Educational background', 'Programme of study', 
+            'Work experience', 'Basic computer literacy', 'Oral communication',  'Team work',
+            'Written communication', 'Entrepreneurial skills', 'Ethics (Loyalty, integrity)',  
+            ],
+        datasets: [
+            {
+            label: 'Not Important',
+            data: [20, 60, 10, 5,23,34,56,12,23,24,11,12,13],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    
+                ],
+                borderColor: [
+                    'rgb(225, 99, 132)',
+                    
+                ],
+                borderWidth: 2,
+                hoverOffset: 5,
+            
+                
+        }, {
+            label: 'Fairly Important',
+            data: [10, 50, 70, 15,13,24,36,2,63,84,31,19,73],
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.2)'//blue
+                    
+                ],
+                borderColor: [
+                    'rgb(54, 162, 235)'
+                    
+                ],
+                borderWidth: 2,
+                hoverOffset: 5,
+
+        },
+        {
+            label: 'Highly Important',
+            data: [30, 20, 19, 51,3,4,6,19,25,29,1,38,3],
+                backgroundColor: [
+                    'rgba(142, 77, 250, 0.2)',//voilet 
+                ],
+                borderColor: [
+                    'rgb(142, 77, 250)'
+                ],
+                borderWidth: 2,
+                hoverOffset: 5,
+
+        },
+            
+        ]
+      },
       options: {
         responsive: true,
             plugins:{
                 legend:{
                     display: true,
-                    position: "right"
+                    position: "top"
                 }
             },
+        // indexAxis: 'y',    
         scales: {
           y: {
             beginAtZero: true
           }
         }
-      }
+      },
+      plugins:[ChartDataLabels]
     };
 
-const checkboxChoice = new Chart(barCheckbox, config_checkbox);
+
+//render pie chart for radio choice types
+const radioChoice = new Chart(document.getElementById('radioChoice'), config_pie_radio);
+//render pie chart for dropdown choice types
+const dropdownChoice = new Chart(document.getElementById('dropdownChoice'), config_pie_radio);
+
+//render bar chart
+const checkboxChoice = new Chart(document.getElementById('checkboxChoice'), config_checkbox);
+//render multi-bar chart
+const matrixChoice = new Chart(document.getElementById('matrixChoice'), config_matrix);
 </script>
- --}}
+
