@@ -102,6 +102,7 @@ class DashboardController extends Controller
 
         // questions
         if (isset($request->ques)) {
+            // dd($request);
             foreach ($request->ques as $state => $queObj) {
 
                 // old questions
