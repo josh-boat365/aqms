@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Admin Dashboard - Responses | ATU Tracer</title>
+    <title>Survey Analytics - Responses | ATU Tracer</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <link rel="stylesheet" href="{{ asset('font/iconsmind-s/css/iconsminds.css') }}">
     <link rel="stylesheet" href="{{ asset('font/simple-line-icons/css/simple-line-icons.css') }}">
@@ -229,6 +229,6 @@
     </script>
     {{-- <script src="{{asset('js/scripts.js')}}"></script> --}}
 </body>
-<!-- Mirrored from dore-jquery.coloredstrategies.com/Apps.Survey.List.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 06 Nov 2021 22:42:02 GMT -->
+
 
 </html>

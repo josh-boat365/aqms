@@ -4,12 +4,11 @@
             <div class="col-12 survey-app">
                 <div class="mb-2">
                     {{-- <h1>{{$survey->name}}</h1> --}}
-                    <div class="text-zero top-right-button-container"><button type="button"
-                            class="btn btn-lg btn-outline-primary dropdown-toggle dropdown-toggle-split top-right-button top-right-button-single"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ACTIONS</button>
+                    <!-- <div class="text-zero top-right-button-container">
+                        <button type="button" class="btn btn-lg btn-outline-primary dropdown-toggle dropdown-toggle-split top-right-button top-right-button-single" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ACTIONS</button>
                         <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Action</a> <a
                                 class="dropdown-item" href="#">Another action</a></div>
-                    </div>
+                    </div> -->
                 </div>
                 <ul class="nav nav-tabs separator-tabs ml-0 mb-5" role="tablist">
                    
@@ -18,7 +17,11 @@
                     </li>
 
                      <li class="nav-item">
-                         <a class="nav-link " id="fourth-tab" data-toggle="tab" href="#fourth" role="tab" aria-controls="fourth" aria-selected="true">ANALYTICS</a>
+                         <a class="nav-link " id="fourth-tab" data-toggle="tab" href="#fourth" role="tab" aria-controls="fourth" aria-selected="true">QUESTION ANALYTICS</a>
+                        </li>
+
+                     <li class="nav-item">
+                         <a class="nav-link " id="fifth-tab" data-toggle="tab" href="#fifth" role="tab" aria-controls="fifth" aria-selected="true">SURVEY ANALYSIS</a>
                         </li>
 
                             
@@ -47,6 +50,16 @@
                             
                                 @include('inc.dashboard.responses.res-ques-analytics')
                             </div>
+                        </div>
+                    </div>
+                    {{-- Survey Level Analytics --}}
+                    <div class="tab-pane show" id="fifth" role="tabpanel" aria-labelledby="fifth-tab">
+                                 <h1>Survey Level Analytics</h1>
+                        <div class="row">
+                            <div class="col-lg-12 col-12 mb-4">
+                                 @include('inc.dashboard.survey-level-analysis.survey-analysis') 
+                            </div>
+                           
                         </div>
                     </div>
                 </div>

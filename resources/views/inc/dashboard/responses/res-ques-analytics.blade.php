@@ -278,21 +278,21 @@ const config_checkbox = {
                     display: false,
                     position: "right"
                 },
-                datalabels:{
-                formatter: (value, datainfo) =>{
-                console.log(value)
-                console.log(datainfo.chart.data.datasets[1].data)
-                const datavalues = datainfo.chart.data.datasets[1].data;
-                function totalSum( total, datavalues){
-                    return total + datavalues;
-                }
-                const totalValue1 = datavalues.reduce(totalSum, 0);
-                const percentageValue1 = (value/ totalValue1 * 100).toFixed(0);
-                const displayData1 = [`${value}`,`(${percentageValue1}%)`]
-                return displayData;
-            }
+            //     datalabels:{
+            //     formatter: (value, datainfo) =>{
+            //     console.log(value)
+            //     console.log(datainfo.chart.data.datasets[1].data)
+            //     const datavalues = datainfo.chart.data.datasets[1].data;
+            //     function totalSum( total, datavalues){
+            //         return total + datavalues;
+            //     }
+            //     const totalValue1 = datavalues.reduce(totalSum, 0);
+            //     const percentageValue1 = (value/ totalValue1 * 100).toFixed(0);
+            //     const displayData1 = [`${value}`,`(${percentageValue1}%)`]
+            //     return displayData;
+            // }
 
-            }
+            // }
             },
             tooltip:{
                 enabled: true,
