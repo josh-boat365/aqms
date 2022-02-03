@@ -9,7 +9,7 @@
                             class="heading-number d-inline-block">{{ $i + 1 }}
                         </span><span class="preview-question">{{ $survey->questions[$i]->question }}</span></div>
                 </div>
-                <div class="custom-control custom-checkbox pl-1 align-self-center pr-4" style="flex: 0 0 25%; max-width: 20%;">
+                <div class="custom-control d-flex custom-checkbox pl-1 align-self-center pr-4" style="flex: 0 0 25%; max-width: 20%;">
                     <div class="col btn btn-outline-theme-3 icon-button edit-button"><i class="simple-icon-pencil"></i></div>
                     <div class="col btn btn-outline-theme-3 icon-button view-button"><i class="simple-icon-eye"></i></div>
                     <div class="col btn btn-danger icon-button trash-button"><i class="simple-icon-trash"></i></div>
