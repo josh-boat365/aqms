@@ -109,7 +109,7 @@
         </div>
         <div class="user d-inline-block"><button class="btn btn-empty p-0" type="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false"><span
-                    class="name">{{ auth()->user()->firstName }}</span> <span><img alt="Profile Picture"
+                    class="name">{{ auth()->user()->firstName }} {{ auth()->user()->lastName }}</span> <span><img alt="Profile Picture"
                         src="{{asset('img/profiles/profile-avatar.jpg')}}"></span></button>
             <div class="dropdown-menu dropdown-menu-right mt-3"><a class="dropdown-item" href="#">Account</a> <a
                     class="dropdown-item" href="#">Features</a> <a class="dropdown-item" href="#">History</a> <a

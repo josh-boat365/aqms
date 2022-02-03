@@ -27,7 +27,7 @@
                             <div class="card mb-4">
                                 <div class="card-body">
                                     <div class="text-center pt-4">
-                                        <p class="list-item-heading pt-2">{{ auth()->user()->firstName }}  {{ auth()->user()->lastName }}</p>
+                                        <p class="list-item-heading pt-2">{{ auth()->user()->firstName }}  {{ auth()->user()->lastName }}  {{ auth()->user()->otherName }}</p>
                                     </div>
                                     <div class="d-flex">
                                         <p class="mb-3">Name: &nbsp;</p>
