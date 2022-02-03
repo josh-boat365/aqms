@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700);
+/* @import url(https://fonts.googleapis.com/css?family=Nunito:300,400,400i,600,700); */
 html {
     width: 100%;
     height: 100%;
@@ -7030,7 +7030,8 @@ i.large-icon {
     width: 100%;
     height: 380px;
     object-fit: cover;
-    max-height: 380px
+    max-height: 380px;
+    border: #00558d solid 5px;
 }
 
 .social-profile-img {
