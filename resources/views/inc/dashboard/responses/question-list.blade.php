@@ -50,7 +50,7 @@
                                                                 @elseif ($survey->questions[$i]->option_type_id ==
                                                                     4)
                                                                     @foreach ($survey->options->where('question_id', $survey->questions[$i]->id) as $option)
-                                                                        <div class="custom-control custom-checkbox">
+                                                                        <div class="custom-control d-flex custom-checkbox">
                                                                             <input value="{{ $option->option }}"
                                                                                 class="custom-control-input"
                                                                                 type="checkbox"

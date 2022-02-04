@@ -2,14 +2,31 @@
 
 <style type="text/css">
     .card-style {
-        width: 80% !important;
+        width: 100% !important;
         margin: 0 auto;
     }
+    /* .grid-contents{
+        width: 50%;
+    } */
 
-    @media (min-width: 320px) and (max-width: 652px) {
+    @media (min-width: 320px) and (max-width: 672px) {
         .card-style {
-            width: 100%;
+        position: relative;
+        left: -11%;
+        max-width: 100%;
+        min-width: 18rem;
+        font-size: 75%;
+
         }
+        .f2{
+            flex-wrap: wrap;
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 25%;
+            flex: 0 0 25%;
+            max-width: 25%;
+        }
+      
+
     }
 
 </style>
@@ -17,7 +34,7 @@
 @for ($i = 0; $i < count($survey->questions); $i++)
 
     <div class="col-12">
-        <div class="card question d-flex mb-4 card-style">
+        <div class="card question d-flex mb-4 col-mmd-5 card-style">
             <div class="d-flex flex-grow-1 min-width-zero">
                 <div
                     class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center">
@@ -33,7 +50,7 @@
                         <label class="preview-question">
                             {{ $survey->questions[$i]->question }}
                         </label>
-                        <div class="mb-4">
+                        <div class="mb-4 grid-contents">
                             @if ($survey->questions[$i]->option_type_id == 1)
                                 <input class="form-control trim" type="text"
                                     name="ans[{{ $survey->questions[$i]->id }}]" value="@foreach ($responses as $response)@if ($response->question_id == $survey->questions[$i]->id){{ $response->response }}@endif @endforeach">
@@ -72,13 +89,13 @@
 
                             @else
                                 <div class="row col-12">
-                                    <div class="d-flex flex-column col-2">
+                                    <div class="d-flex flex-column flex-wrap col-2 f2">
                                         <div style="height: 50px"></div>
                                         @foreach ($survey->options->where('question_id', $survey->questions[$i]->id) as $option)
                                             <div class="text-center">{{ $option->option }}</div>
                                         @endforeach
                                     </div>
-                                    <div class="col-10 row" style="flex-wrap: nowrap">
+                                    <div class="col-10 truncate  row" style="flex-wrap: nowrap; overflow-y: auto; overflow-x: auto;">
                                         @foreach ($survey->columns->where('question_id', $survey->questions[$i]->id) as $column)
                                             <div class="d-flex flex-column justify-content-between"
                                                 style="width: 100px; height: 100%; min-width:100px">

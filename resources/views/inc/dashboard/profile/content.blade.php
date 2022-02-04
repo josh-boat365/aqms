@@ -1,3 +1,16 @@
+<style>
+    .profile-banner{
+        width: 100% !important;
+        height: 450px;
+        max-height: 450px;
+        border: #00558d solid 2px;
+        border-radius: 1rem !important;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+    .img-border{
+        border: #00558d solid 2px !important;
+    }
+</style>
 <main>
     <div class="container-fluid">
         <div class="row">
@@ -8,13 +21,13 @@
             <div class="tab-content">
                 <div class="tab-pane show active" id="first" role="tabpanel" aria-labelledby="first-tab">
                     <div class="row">
-                        <div class="col-12 mb-5"><img class="social-header card-img" src="{{asset('img/profiles/p-h3.jpg')}}"></div>
+                        <div class="col-12 mb-5"><img class="profile-banner profile-banner-card" src="{{asset('img/profiles/atulogo.png')}}"></div>
                         <div class="col-12 col-lg-5 col-xl-4 col-left">
-                            <a href="#" class="lightbox"><img alt="Profile" src="{{asset('img/profiles/p-a1.png')}}" class="img-thumbnail card-img social-profile-img"></a>
+                            <a href="#" class="lightbox"><img alt="Profile" src="{{asset('img/profiles/p-a1.png')}}" class="img-thumbnail card-img social-profile-img img-border"></a>
                             <div class="card mb-4">
                                 <div class="card-body">
                                     <div class="text-center pt-4">
-                                        <p class="list-item-heading pt-2">{{ auth()->user()->firstName }}  {{ auth()->user()->lastName }}</p>
+                                        <p class="list-item-heading pt-2">{{ auth()->user()->firstName }}  {{ auth()->user()->lastName }}  {{ auth()->user()->otherName }}</p>
                                     </div>
                                     <div class="d-flex">
                                         <p class="mb-3">Name: &nbsp;</p>
@@ -54,7 +67,7 @@
                     
                                    <ul class="nav nav-tabs separator-tabs ml-0 mb-5" role="tablist">
                                         <li class="nav-item">
-                                            <a class="nav-link active" id="first-tab" data-toggle="tab" href="#first" role="tab" aria-controls="first" aria-selected="true">UPDATE PROFILE</a>
+                                            <a class="nav-link active" id="first-tab" data-toggle="tab" href="#first" role="tab" aria-controls="first" aria-selected="false">UPDATE PROFILE</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" id="second-tab" data-toggle="tab" href="#second" role="tab" aria-controls="second" aria-selected="true">CHANGE PASSWORD</a>
@@ -91,51 +104,51 @@
                                                 <div class="form-group has-float-label">
                                                     <select id="inputState" class="form-control">
                                                         <option selected="selected">Choose...</option>
-                                                        <option>Male</option>
-                                                        <option>Female</option>
+                                                        <option value="Male">Male</option>
+                                                        <option vlaue="Female">Female</option>
                                                     </select>
                                                     <span>Gender</span> 
                                                 </div>
                                                 <div class="form-group has-float-label">
-                                                    <input value="" type="tel" class="form-control" name="otherName" required>
+                                                    <input value="" type="tel" class="form-control" name="contact" required>
                                                     <span>Phone number</span>
                                                 </div>
                                             {{-- Program Studied --}}
                                                 <div class="form-group has-float-label">
                                                     <select class="form-control select2-single" name="jQueryTopLabelsState" required data-width="100%">
                                                         <option></option>
-                                                        <option value="AK">BTECH - Mechanical Engineering</option>
-                                                        <option value="HI">BTECH - Automobile Engineering</option>
-                                                        <option value="HI">BTECH - Electrical/Electronics Engineering</option>
-                                                        <option value="HI">BTECH - Civil Engineering</option>
-                                                        <option value="HI">BTECH - Building Technology</option>
-                                                        <option value="HI">BTECH - Medical Laboratory Science</option>
-                                                        <option value="HI">BTECH - Science Laboratory Science</option>
-                                                        <option value="HI">BTECH - Statistics</option>
-                                                        <option value="HI">BTECH - Computer Science</option>
-                                                        <option value="HI">BTECH - Fashion Design and Textiles</option>
-                                                        <option value="HI">BTECH - Procurement and Supply Chain Management</option>
-                                                        <option value="HI">BTECH - Accounting</option>
-                                                        <option value="HI">BTECH - Banking and Finance</option>
-                                                        <option value="HI">BTECH - Secretaryship and Management Studies</option>
-                                                        <option value="HI">BTECH - Marketing</option>
-                                                        <option value="HI">HND - Mechanical Engineering</option>
-                                                        <option value="HI">HND - Electrical/Electronics Engineering</option>
-                                                        <option value="HI">HND - Building Technology</option>
-                                                        <option value="HI">HND - Civil Engineering</option>
-                                                        <option value="HI">HND - Interior Design and Technology</option>
-                                                        <option value="HI">HND - Furniture Design and Production</option>
-                                                        <option value="HI">HND - Science Laboratory Technology (SLT)</option>
-                                                        <option value="HI">HND - Statistics</option>
-                                                        <option value="HI">HND - Computer Science</option>
-                                                        <option value="HI">HND - Hotel, Catering and Institutional Management (HCIM)</option>
-                                                        <option value="HI">HND - Accountancy</option>
-                                                        <option value="HI">HND - Marketing</option>
-                                                        <option value="HI">HND - Purchasing and Supply</option>
-                                                        <option value="HI">HND - Secretaryship and Management Studies</option>
-                                                        <option value="HI">HND - Bilingual Secretaryship and Management Studies</option>
-                                                        <option value="HI">HND - Fashion Design and Textiles</option>
-                                                        <option value="HI">CERTIFICATE</option>
+                                                        <option value="BTECH - Mechanical Engineering">BTECH - Mechanical Engineering</option>
+                                                        <option value="BTECH - Automobile Engineering">BTECH - Automobile Engineering</option>
+                                                        <option value="BTECH - Electrical/Electronics Engineering">BTECH - Electrical/Electronics Engineering</option>
+                                                        <option value="BTECH - Civil Engineering">BTECH - Civil Engineering</option>
+                                                        <option value="BTECH - Building Technology">BTECH - Building Technology</option>
+                                                        <option value="BTECH - Medical Laboratory Science">BTECH - Medical Laboratory Science</option>
+                                                        <option value="BTECH - Science Laboratory Science">BTECH - Science Laboratory Science</option>
+                                                        <option value="BTECH - Statistics">BTECH - Statistics</option>
+                                                        <option value="BTECH - Computer Science">BTECH - Computer Science</option>
+                                                        <option value="BTECH - Fashion Design and Textiles">BTECH - Fashion Design and Textiles</option>
+                                                        <option value="BTECH - Procurement and Supply Chain Management">BTECH - Procurement and Supply Chain Management</option>
+                                                        <option value="BTECH - Accounting">BTECH - Accounting</option>
+                                                        <option value="BTECH - Banking and Finance">BTECH - Banking and Finance</option>
+                                                        <option value="BTECH - Secretaryship and Management Studies">BTECH - Secretaryship and Management Studies</option>
+                                                        <option value="BTECH - Marketing">BTECH - Marketing</option>
+                                                        <option value="HND - Mechanical Engineering">HND - Mechanical Engineering</option>
+                                                        <option value="HND - Electrical/Electronics Engineering">HND - Electrical/Electronics Engineering</option>
+                                                        <option value="HND - Building Technology">HND - Building Technology</option>
+                                                        <option value="HND - Civil Engineering">HND - Civil Engineering</option>
+                                                        <option value="HND - Interior Design and Technology">HND - Interior Design and Technology</option>
+                                                        <option value="HND - Furniture Design and Production">HND - Furniture Design and Production</option>
+                                                        <option value="HND - Science Laboratory Technology (SLT)">HND - Science Laboratory Technology (SLT)</option>
+                                                        <option value="HND - Statistics">HND - Statistics</option>
+                                                        <option value="HND - Computer Science">HND - Computer Science</option>
+                                                        <option value="HND - Hotel, Catering and Institutional Management (HCIM)">HND - Hotel, Catering and Institutional Management (HCIM)</option>
+                                                        <option value="HND - Accountancy">HND - Accountancy</option>
+                                                        <option value="HND - Marketing">HND - Marketing</option>
+                                                        <option value="HND - Purchasing and Supply">HND - Purchasing and Supply</option>
+                                                        <option value="HND - Secretaryship and Management Studies">HND - Secretaryship and Management Studies</option>
+                                                        <option value="HND - Bilingual Secretaryship and Management Studies">HND - Bilingual Secretaryship and Management Studies</option>
+                                                        <option value="HND - Fashion Design and Textiles">HND - Fashion Design and Textiles</option>
+                                                        <option value="CERTIFICATE">CERTIFICATE</option>
                                                     </select>
                                                     <span>Program Studied</span>
                                                 </div>
@@ -143,20 +156,20 @@
                                                 <div class="form-group has-float-label">
                                                     <select class="form-control select2-single" name="jQueryTopLabelsState" required data-width="100%">
                                                         <option></option>
-                                                        <option value="AK">Accounting and Finance</option>
-                                                        <option value="HI">Applied Mathematics and Statistics</option>
-                                                        <option value="HI">Building Technology</option>
-                                                        <option value="CA">Civil Engineering</option>
-                                                        <option value="NV">Electrical and Electronic Engineering</option>
-                                                        <option value="OR">Fashion Design and Textiles</option>
-                                                        <option value="WA">Interior Design and Upholstery Technology</option>
-                                                        <option value="AZ">Liberal Studies and Communications Technology</option>
-                                                        <option value="CO">Management and Public Administration</option>
-                                                        <option value="ID">Marketing</option>
-                                                        <option value="MT">Medical laboratory Technology</option>
-                                                        <option value="NE">Procurement and Supply Chain Management</option>
-                                                        <option value="NM">Science Laboratory Technology</option>
-                                                        <option value="ND">Hotel Catering and Institutional Management</option>
+                                                        <option value="Accounting and Finance">Accounting and Finance</option>
+                                                        <option value="Applied Mathematics and Statistics">Applied Mathematics and Statistics</option>
+                                                        <option value="Building Technology">Building Technology</option>
+                                                        <option value="Civil Engineering">Civil Engineering</option>
+                                                        <option value="Electrical and Electronic Engineering">Electrical and Electronic Engineering</option>
+                                                        <option value="Fashion Design and Textiles">Fashion Design and Textiles</option>
+                                                        <option value="Interior Design and Upholstery Technology">Interior Design and Upholstery Technology</option>
+                                                        <option value="Liberal Studies and Communications Technology">Liberal Studies and Communications Technology</option>
+                                                        <option value="Management and Public Administration">Management and Public Administration</option>
+                                                        <option value="Marketing">Marketing</option>
+                                                        <option value="Medical laboratory Technology">Medical laboratory Technology</option>
+                                                        <option value="Procurement and Supply Chain Management">Procurement and Supply Chain Management</option>
+                                                        <option value="Science Laboratory Technology">Science Laboratory Technology</option>
+                                                        <option value="Hotel Catering and Institutional Management">Hotel Catering and Institutional Management</option>
                                                 
                                                     </select><span>Department of study</span>
                                                 </div>
@@ -165,32 +178,32 @@
                                                     <select class="form-control select2-single" name="jQueryTopLabelsState" required data-width="100%">
                                                         <option></option>
                                                         
-                                                            <option value="AK">2020</option>
-                                                            <option value="HI">2019</option>
+                                                            <option value="2020">2020</option>
+                                                            <option value="2019">2019</option>
                                                         
                                                     
-                                                            <option value="CA">2018</option>
-                                                            <option value="NV">2017</option>
-                                                            <option value="OR">2016</option>
-                                                            <option value="WA">2015</option>
+                                                            <option value="2018">2018</option>
+                                                            <option value="2017">2017</option>
+                                                            <option value="2016">2016</option>
+                                                            <option value="2015">2015</option>
                                                 
                                                         
-                                                            <option value="AZ">2014</option>
-                                                            <option value="CO">2013</option>
-                                                            <option value="ID">2012</option>
-                                                            <option value="MT">2011</option>
-                                                            <option value="NE">2010</option>
-                                                            <option value="NM">2009</option>
-                                                            <option value="ND">2008</option>
-                                                            <option value="UT">2007</option>
-                                                            <option value="WY">2006</option>
-                                                            <option value="WY">2005</option>
-                                                            <option value="WY">2004</option>
-                                                            <option value="WY">2003</option>
-                                                            <option value="WY">2002</option>
-                                                            <option value="WY">2001</option>
-                                                            <option value="WY">2000</option>
-                                                            <option value="WY">Before 2000</option>
+                                                            <option value="2014">2014</option>
+                                                            <option value="2013">2013</option>
+                                                            <option value="2012">2012</option>
+                                                            <option value="2011">2011</option>
+                                                            <option value="2010">2010</option>
+                                                            <option value="2009">2009</option>
+                                                            <option value="2008">2008</option>
+                                                            <option value="2007">2007</option>
+                                                            <option value="2006">2006</option>
+                                                            <option value="2005">2005</option>
+                                                            <option value="2004">2004</option>
+                                                            <option value="2003">2003</option>
+                                                            <option value="2002">2002</option>
+                                                            <option value="2001">2001</option>
+                                                            <option value="2000">2000</option>
+                                                            <option value="Before 2000">Before 2000</option>
                                                         
                                                     </select><span>Year of completion</span>
                                                 </div>

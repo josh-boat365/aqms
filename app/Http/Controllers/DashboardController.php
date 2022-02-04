@@ -21,6 +21,7 @@ class DashboardController extends Controller
         $this->middleware('auth');
         $this->middleware('isAdmin');
     }
+  
 
     public function index()
     {

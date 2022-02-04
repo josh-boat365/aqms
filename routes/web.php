@@ -51,6 +51,13 @@ Route::get('/dashboard/submissions/{i}', '\App\Http\Controllers\DashboardControl
 Route::get('/dashboard/users', '\App\Http\Controllers\DashboardController@users')->name('users.index');  
     // analytics
 Route::get('/dashboard/analytics', '\App\Http\Controllers\DashboardController@analytics')->name('analytics.index');   
+//     // survey level analysis - gender
+// Route::get('/dashboard/survey-level-analysis', '\App\Http\Controllers\DashboardController@gender')->name('analysis.gender');   
+//     // survey level analysis - departments
+// Route::get('/dashboard/survey-level-analysis', '\App\Http\Controllers\DashboardController@sessions')->name('analytics.sessions');   
+//     // survey level analysis - sessions
+// Route::get('/dashboard/survey-level-analysis', '\App\Http\Controllers\DashboardController@departments')->name('analytics.departments');   
+   
 
 
 
