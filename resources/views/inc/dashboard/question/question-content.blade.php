@@ -19,9 +19,9 @@
                 </ul>
                 <div class="tab-content mb-4">
                     <div class="tab-pane show active" id="first" role="tabpanel" aria-labelledby="first-tab">
-                        <div class="row">
+                        <div class="row " id="question-summary-list">
                             @yield('question-summary')
-                            @yield('question-list')
+                            @yield('question-list', )
                         </div>
                     </div>
                    

@@ -36,12 +36,12 @@
             box-sizing: border-box; */
         }
 
-        .pointer:hover{
+        .pointer:hover {
             cursor: pointer;
         }
 
-        .current{
-            display: block!important;
+        .current {
+            display: block !important;
         }
 
     </style>
@@ -79,19 +79,48 @@
                     class="simple-icon-plus btn-group-icon"></i> Update</button></div>
 
         <div class="separator my-3"></div>
-        <div class="mt-4">
-            <input type="checkbox" name="enable-section" id="enable-section"> <label for="enable-section">Enable Sections</label>
-        </div>
-        <div class="mt-2" id="section-list" class="scroll h-100 col mt-2" style="max-height: 500px">
-            <div class="sections">
-                <div class="position-relative my-1 py-1 ml-4 dot-active pointer" id="section-1">Untitiled~1</div>
-                {{-- <div class="position-relative my-1 py-1 ml-4">Section Two</div>
+        @if ($survey->sections == null)
+            <div class="mt-4">
+                <input type="checkbox" name="enable-section" id="enable-section"> <label for="enable-section">Enable
+                    Sections</label>
+            </div>
+            <div class="mt-2" id="section-list" class="scroll h-100 col mt-2"
+                style="max-height: 500px; display: none">
+                <div class="sections">
+                    <div class="position-relative my-1 py-1 ml-4 dot-active pointer" id="section-1">Untitiled~1</div>
+                    {{-- <div class="position-relative my-1 py-1 ml-4">Section Two</div>
                 <div class="position-relative my-1 py-1 ml-4">Section Three</div>
                 <div class="position-relative my-1 py-1 ml-4">Section Four</div> --}}
+                </div>
+                <div class="text-center mt-2"><button type="button" class="btn btn-outline-primary btn-sm mb-2"
+                        id="add-section-button"><i class="simple-icon-plus btn-group-icon"></i> Add section</button></div>
             </div>
-            <div class="text-center mt-2"><button type="button" class="btn btn-outline-primary btn-sm mb-2"
-                    id="add-section-button"><i class="simple-icon-plus btn-group-icon"></i> Add section</button></div>
-        </div>
+        @else
+            <div class="mt-4">
+                <input type="checkbox" name="enable-section" id="enable-section" @if ($survey->sections->count() > 0) checked @endif> <label
+                    for="enable-section">Enable
+                    Sections</label>
+            </div>
+            <div class="mt-2" id="section-list" class="scroll h-100 col mt-2" style="max-height: 500px">
+                {{-- <div class="sections">
+                <div class="position-relative my-1 py-1 ml-4 dot-active pointer" id="section-1">Untitiled~1</div>
+                
+                </div> --}}
+                <div class="sections">
+                    @for ($i = 0; $i < $survey->sections->count(); $i++)
+                        <div class="position-relative my-1 py-1 ml-4  pointer" id="section-{{ $i + 1 }}">
+                            {{ $survey->sections[$i]->title }}</div>
+                    @endfor
+                    {{-- @foreach ($survey->sections as $section)
+                        <div class="position-relative my-1 py-1 ml-4  pointer" id="section-{{}}">
+                            {{ $section->title }}</div>
+                    @endforeach --}}
+                </div>
+                <div class="text-center mt-2"><button type="button" class="btn btn-outline-primary btn-sm mb-2"
+                            id="add-section-button"><i class="simple-icon-plus btn-group-icon"></i> Add section</button>
+                </div>
+            </div>
+        @endif
         <form action="{{ route('survey.question.delete') }}" method="post" style="display: none" id="delete-que-form">
             @csrf
             <input type="hidden" name="_method" value="DELETE">
@@ -159,7 +188,7 @@
             $("#update-form").on("input", '#section-header-input', function() {
 
                 // console.log($('.sections').children('#' + $(this).parent().children('.section-name').val()));
-                
+
                 $('.sections').children('#' + $(this).parent().children('.section-name').val())
                     .text($(this).val())
 
@@ -170,13 +199,20 @@
 
     {{-- switching sections --}}
     <script>
-        $(function () {
-            $('.sections').on('click', '.pointer', function () {
+        $(function() {
+
+            if (!$('#enable-section').is(':checked')) {
+                $('#section-list').slideUp()
+            }
+
+            $('.sections').on('click', '.pointer', function() {
                 $('.dot-active').removeClass('dot-active')
                 $(this).addClass('dot-active')
                 $target_section = $(this).attr('id');
                 $('.current').removeClass('current')
                 $('.' + $target_section).addClass('current')
+
+                // console.log($('.current #sec-num').val());
             })
         })
     </script>
@@ -184,41 +220,163 @@
     {{-- add / enable sections --}}
     <script>
         $(function() {
-            $('#section-list').slideUp();
+            // $('#section-list').slideUp();
+            $('.sections .pointer').first().addClass('dot-active')
 
             $('#enable-section').change(function() {
                 if ($(this).is(':checked')) {
+                    $count = $('.survey-wrapper').length;
+
+
+                    var $section = $('<div/>').attr({
+                        'class': 'current col-12 col-lg-8 survey-wrapper section-' + ($count + 1),
+                        'style': 'display: none'
+                    }).append(
+                        $('<input>').attr({
+                            'type': 'hidden',
+                            'id': 'sec-num',
+                            'value': ($count + 1)
+                        })
+                    );
+
+                    $section_count = $('.section-card').length;
+
+                    var $section_card = $('<div/>').attr({
+                        'class': 'mb-3  border-primary card section-card',
+                        'style': 'border-top: 7px solid #f3f3f3;'
+                    }).append(
+                        $('<div/>').addClass('position-absolute card-top-buttons').append(
+                            $('<div/>').addClass('btn icon-button btn-header-light sec-desc sec-edit')
+                            .append(
+                                $('<i/>').addClass('simple-icon-pencil')
+                            )
+                        ),
+                        $('<div/>').addClass('card-body').append(
+                            $('<h1/>').addClass('col-11 section-header').text('Untitled~' + ($count +
+                                1)),
+
+                            $('<input>').attr({
+                                'type': 'text',
+                                'name': 'section[new][' + ($section_count + 1) +
+                                    '][section_header]',
+                                'id': 'section-header-input',
+                                'style': 'display: none',
+                                'class': 'form-control col-11 mb-3',
+                                'placeholder': 'section-description (optional)'
+                            }),
+                            $('<input>').attr({
+                                'type': 'hidden',
+                                'class': 'section-name',
+                                'value': 'section-' + ($count + 1)
+                            }),
+                            // <input type="hidden" class="section-name" value="section-1">
+                            $('<p/>').addClass('col-12 section-description').text(
+                                'section-description (optional)'),
+
+                            $('<textarea/>').attr({
+                                'name': 'section[new][' + ($section_count + 1) +
+                                    '][section_description]',
+                                'id': 'section-description-input',
+                                'style': 'display: none',
+                                'class': 'form-control col-12'
+                            })
+                        )
+                    )
+
+                    $section.append($section_card);
+                    // $section.append($section_card);
+
+                    $section.append($('.sortable-survey').removeClass('col-lg-8').removeClass('col-12'));
+
+                    $('#update-form').append($section)
+
+
                     $('#section-list').slideDown()
                     $('.section-card').slideDown(function() {
                         $(this).show();
                     })
 
-                    $('.section-1 .sortable-survey input').each(function(){
+                    $('.sortable-survey input').each(function() {
                         // console.log( $(this));
                         // console.log( $(this).attr('name'));
                         // $str = "Hello World";
                         // console.log();
-                        if ( $(this).attr('name') != undefined) {
-                            
-                            $(this).attr('name', 'section[new][1][ques]' + $(this).attr('name').substring(4, $(this).attr('name').length))
+                        if ($(this).attr('name') != undefined) {
+
+                            $(this).attr('name', 'section[new][1][ques]' + $(this).attr('name')
+                                .substring(4, $(this).attr('name').length))
                         }
                     })
 
-                    $('.section-1 .sortable-survey select').each(function(){
+                    $('.sortable-survey select').each(function() {
                         // console.log( $(this));
                         // console.log( $(this).attr('name'));
                         // $str = "Hello World";
                         // console.log();
-                        if ( $(this).attr('name') != undefined) {
-                            
-                            $(this).attr('name', 'section[new][1][ques]' + $(this).attr('name').substring(4, $(this).attr('name').length))
+                        if ($(this).attr('name') != undefined) {
+
+                            $(this).attr('name', 'section[new][1][ques]' + $(this).attr('name')
+                                .substring(4, $(this).attr('name').length))
                         }
                     })
 
-                } else {
-                    $('#section-list').slideUp();
+
+
+                } else { //TODO: reverse the effect of checked state on input and selects
+                    $('#section-list').slideUp(function() {
+                        $(this).children('.sections').children('.pointer').remove()
+                        $(this).children('.sections').append(
+                            $('<div/>').addClass('position-relative my-1 py-1 ml-4 dot-active pointer').attr({'id': 'section-1'}).text('Untitiled~1')
+                            // <div class="position-relative my-1 py-1 ml-4 dot-active pointer" id="section-1">Untitiled~1</div>
+                        )
+                    });
                     $('.section-card').slideUp(function() {
                         $(this).hide();
+                    })
+
+                    //get all ques cards
+                    $sortable_survey = $('<div/>').addClass('sortable-survey col-lg-8 col-12 mb-4')
+                    $allQuestions = $('.question');
+                    $allQuestions.each(function() {
+                        $sortable_survey.append(
+                            $('<div/>').append($(this))
+                        )
+                    })
+
+                    $('.survey-wrapper').remove();
+
+                    $('#update-form').append(
+                        $sortable_survey
+                    )
+
+                    $num = 1;
+                    $('.question').each(function() {
+                        $(this).children('.d-flex').children('.card-body').children(
+                            '.list-item-heading').children('.heading-number').text($num++);
+
+                        // console.log($num);
+                    })
+
+                    $('.sortable-survey input').each(function() {
+                        // console.log( $(this));
+                        // console.log( $(this).attr('name'));
+                        // $str = "Hello World";
+                        // console.log();
+                        if ($(this).attr('name') != undefined) {
+
+                            $(this).attr('name', 'ques' + $(this).attr('name').slice(21, $(this).attr('name').length))
+                        }
+                    })
+
+                    $('.sortable-survey select').each(function() {
+                        // console.log( $(this));
+                        // console.log( $(this).attr('name'));
+                        // $str = "Hello World";
+                        // console.log();
+                        if ($(this).attr('name') != undefined) {
+
+                            $(this).attr('name', 'ques' +    $(this).attr('name').slice(21, $(this).attr('name').length))
+                        }
                     })
                 }
             });
@@ -228,17 +386,20 @@
 
                 $('.dot-active').removeClass('dot-active')
 
-                var $section_label = $('<div/>').attr({'class': 'position-relative my-1 py-1 ml-4 dot-active pointer', 'id': 'section-' + ($count + 1)}).text('Untitiled~' + ($count + 1))
-                
+                var $section_label = $('<div/>').attr({
+                    'class': 'position-relative my-1 py-1 ml-4 dot-active pointer',
+                    'id': 'section-' + ($count + 1)
+                }).text('Untitiled~' + ($count + 1))
+
                 $('.sections').append($section_label);
 
                 var $section = $('<div/>').attr({
-                    'class': 'current col-12 col-lg-8 survey-wrapper section-' + ($count +1), 
+                    'class': 'current col-12 col-lg-8 survey-wrapper section-' + ($count + 1),
                     'style': 'display: none'
                 }).append(
                     $('<input>').attr({
-                        'type': 'hidden', 
-                        'id': 'sec-num', 
+                        'type': 'hidden',
+                        'id': 'sec-num',
                         'value': ($count + 1)
                     })
                 );
@@ -250,7 +411,8 @@
                     'style': 'border-top: 7px solid #f3f3f3;'
                 }).append(
                     $('<div/>').addClass('position-absolute card-top-buttons').append(
-                        $('<div/>').addClass('btn icon-button btn-header-light sec-desc sec-edit').append(
+                        $('<div/>').addClass('btn icon-button btn-header-light sec-desc sec-edit')
+                        .append(
                             $('<i/>').addClass('simple-icon-pencil')
                         )
                     ),
@@ -259,7 +421,7 @@
 
                         $('<input>').attr({
                             'type': 'text',
-                            'name': 'section[new][' + ($section_count + 1) +'][section_header]',
+                            'name': 'section[new][' + ($section_count + 1) + '][section_header]',
                             'id': 'section-header-input',
                             'style': 'display: none',
                             'class': 'form-control col-11 mb-3',
@@ -275,7 +437,8 @@
                             'section-description (optional)'),
 
                         $('<textarea/>').attr({
-                            'name': 'section[new][' + ($section_count + 1) +'][section_description]',
+                            'name': 'section[new][' + ($section_count + 1) +
+                                '][section_description]',
                             'id': 'section-description-input',
                             'style': 'display: none',
                             'class': 'form-control col-12'
@@ -487,61 +650,54 @@
     <script>
         $(function() {
             $index = 0;
+
             $('#update-form').on('click', '.ans-btn', function(e) {
+
+                $spec = $('.current #section-header-input')
+                if ($spec.length > 0 && $spec.attr('name').indexOf('new') != -1) {
+                    $section_state = 'new'
+                } else {
+                    $section_state = 'old'
+                }
+
+                $section_num = $('.current #sec-num').val()
 
                 var $que_num = $(this).parent().parent().parent().parent().children('.que-section')
                     .children(
                         '.que-num').val();
 
-                var $is_new = $(this).parent().parent().parent().parent().children('.que-section')
+                if ($(this).parent().parent().parent().parent().children('.que-section')
                     .children(
-                        '.is-new').val();
-
-                if ($is_new) {
-                    var ansBox = $('<div/>').addClass('mb-1 position-relative ans')
-                        .append(
-                            $('<input>').attr({
-                                'class': 'form-control',
-                                'type': 'text',
-                                'name': "ques[new][" + $que_num + "][ans][]"
-                            }),
-
-                            $('<div/>').addClass('input-icons')
-                            .append(
-                                $('<span/>').addClass('badge badge-pill handle pr-0 mr-0')
-                                .append(
-                                    $('<i/>').addClass('simple-icon-cursor-move')
-                                ),
-
-                                $('<span/>').addClass('badge badge-pill del-ans btn')
-                                .append(
-                                    $('<i/>').addClass('simple-icon-trash')
-                                )
-                            )
-                        )
+                        '.is-new').val()) {
+                    $question_state = 'new';
                 } else {
-                    var ansBox = $('<div/>').addClass('mb-1 position-relative ans')
+                    $question_state = 'old';
+                }
+
+                var ansBox = $('<div/>').addClass('mb-1 position-relative ans')
+                    .append(
+                        $('<input>').attr({
+                            'class': 'form-control',
+                            'type': 'text',
+                            'name': {{ $survey->sections != null }} ? "section[" + $section_state +
+                                "][" + $section_num + "][ques][" + $question_state + "][" + $que_num +
+                                "][ans][" + ($index++) + "]" : "ques[new][" + $que_num + "][ans][" + (
+                                    $index++) + "]"
+                        }),
+
+                        $('<div/>').addClass('input-icons')
                         .append(
-                            $('<input>').attr({
-                                'class': 'form-control',
-                                'type': 'text',
-                                'name': "ques[old][" + $que_num + "][ans][new][" + $index++ + "]"
-                            }),
-
-                            $('<div/>').addClass('input-icons')
+                            $('<span/>').addClass('badge badge-pill handle pr-0 mr-0')
                             .append(
-                                $('<span/>').addClass('badge badge-pill handle pr-0 mr-0')
-                                .append(
-                                    $('<i/>').addClass('simple-icon-cursor-move')
-                                ),
+                                $('<i/>').addClass('simple-icon-cursor-move')
+                            ),
 
-                                $('<span/>').addClass('badge badge-pill del-ans btn')
-                                .append(
-                                    $('<i/>').addClass('simple-icon-trash')
-                                )
+                            $('<span/>').addClass('badge badge-pill del-ans btn')
+                            .append(
+                                $('<i/>').addClass('simple-icon-trash')
                             )
                         )
-                }
+                    )
 
 
 
@@ -1306,10 +1462,10 @@
                                                 'type': 'text',
                                                 'class': 'form-control writtenQuestion',
                                                 'value': '', // question
-                                                'name': ($('#enable-section').is(':checked')) 
-                                                ? 'section[new][' + ($sec_num) + '][ques][new][' + ($que_num + 1) +
-                                                    ']' 
-                                                :'ques[new][' + ($que_num + 1) +
+                                                'name': ($('#enable-section').is(':checked')) ?
+                                                    'section[new][' + ($sec_num) + '][ques][new][' + (
+                                                        $que_num + 1) +
+                                                    ']' : 'ques[new][' + ($que_num + 1) +
                                                     ']'
                                             })
                                         ),
@@ -1319,10 +1475,10 @@
                                             $('<select/>').attr({
                                                 'class': 'form-control new-select2-single option-type',
                                                 'data-width': '100%',
-                                                'name': ($('#enable-section').is(':checked')) 
-                                                ? 'section[new][' + ($sec_num) + '][ques][new][' + ($que_num + 1) +
-                                                    '][opt_type]' 
-                                                :'ques[new][' + ($que_num + 1) +
+                                                'name': ($('#enable-section').is(':checked')) ?
+                                                    'section[new][' + ($sec_num) + '][ques][new][' + (
+                                                        $que_num + 1) +
+                                                    '][opt_type]' : 'ques[new][' + ($que_num + 1) +
                                                     '][opt_type]' // check out
                                             })
                                         ),

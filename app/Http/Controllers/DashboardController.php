@@ -91,7 +91,7 @@ class DashboardController extends Controller
     public function updateSurvey(Request $request)
     {
 
-        // dd($request);
+        dd($request);
 
         // update survey info
         $survey = Survey::find($request->survey_id);
@@ -350,19 +350,22 @@ class DashboardController extends Controller
                     }
                 }
             }
+
+            Section::where('survey_id', $request['survey_id'])->delete();
+        
         }
 
         // sectioned question
-        if (isset($request->section)) {
-            
+        else if (isset($request->section)) {
+            // dd($request);
             foreach ($request->section as $state => $sections) {
                 // new section
                 if ($state == 'new') {
-                    
                     foreach ($sections as $sec_num => $section) {
                         $title = $section['section_header'];
                         $description = $section['section_description'];
-                        $section_id = Section::create(compact('title', 'description'))->id;
+                        $survey_id = $request['survey_id'];
+                        $section_id = Section::create(compact('title', 'description', 'survey_id'))->id;
 
                         if (isset($section['ques'])) {
                             // dd($request);
@@ -379,6 +382,7 @@ class DashboardController extends Controller
                                         $record->option_type_id = $queSet['opt_type'];
                                         $record->order = $queSet['ord'];
                                         $record->section_id = $section_id;
+                                        // $record->section_id = 1;
                                         $record->save();
                                         // dd($record);
                                         // update options
@@ -571,6 +575,7 @@ class DashboardController extends Controller
                                         $new_que_record->survey_id = $request->survey_id;
                                         $new_que_record->option_type_id = $queSet['opt_type'];
                                         $new_que_record->order = $queSet['ord'];
+                                        $new_que_record->section_id = $section_id;
                                         $new_que_record->save();
                                         // dd($record);
                 

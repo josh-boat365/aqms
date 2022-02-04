@@ -15,6 +15,7 @@ class CreateSectionsTable extends Migration
     {
         Schema::create('sections', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('survey_id')->constrained()->onDelete('cascade');
             $table->string('title');
             $table->string('description');
             $table->timestamps();
