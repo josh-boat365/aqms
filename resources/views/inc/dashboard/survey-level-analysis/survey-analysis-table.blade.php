@@ -11,10 +11,6 @@
          border-top-left-radius: 5px;
          border-bottom-left-radius: 5px;
      }
-     .t-height{
-         height: 50vh;
-         overflow-y: auto;
-     }
      .table-scroll {
         height: 70vh;
         overflow-x: auto;
