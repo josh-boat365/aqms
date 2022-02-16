@@ -57,7 +57,8 @@
                                  <h1>Survey Level Analytics</h1>
                         <div class="row">
                             <div class="col-lg-12 col-12 mb-4">
-                                 @include('inc.dashboard.survey-level-analysis.survey-analysis') 
+                                @include('inc.dashboard.survey-level-analysis.survey-analysis-table')
+                                @include('inc.dashboard.survey-level-analysis.survey-analysis') 
                             </div>
                            
                         </div>
@@ -74,7 +75,7 @@
                 <ul class="list-unstyled mb-5">
                     @yield('stat')
                 </ul>
-                {{-- <p class="text-muted text-small">Categories</p>
+                <!-- {{-- <p class="text-muted text-small">Categories</p>
                 <ul class="list-unstyled mb-5">
                     <li>
                         <div class="custom-control custom-checkbox mb-2"><input type="checkbox" class="custom-control-input"
@@ -98,7 +99,7 @@
                                 class="badge badge-pill badge-outline-theme-3 mb-1">EDUCATION</span></a></p>
                     <p class="d-sm-inline-block mb-1"><a href="#"><span
                                 class="badge badge-pill badge-outline-secondary mb-1">PERSONAL</span></a></p>
-                </div> --}}
+                </div> --}} -->
             </div>
         </div><a class="app-menu-button d-inline-block d-xl-none" href="#"><i class="simple-icon-options"></i></a>
     </div>

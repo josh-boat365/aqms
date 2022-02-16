@@ -32,10 +32,26 @@
                 <span class="heading-number d-inline-block">3 </span>Radio Choice Type
             </div>
         </div>
+
+        <!-- Toggle view for table on chart -->
+        <!-- <div class="custom-control custom-checkbox pl-1 align-self-center">
+            <button class="btn btn-outline-theme-3 icon-button view-button">
+                 <i class="simple-icon-eye"></i>
+            </button>  
+        </div>  -->
+        <!-- button for copying/downloading     -->
         <div class="custom-control custom-checkbox pl-1 align-self-center pr-4">
-            <button class="btn btn-outline-theme-3 icon-button">
+            <button class="btn btn-outline-theme-3 icon-button" data-toggle="dropdown">
                 <i class="iconsminds-files"></i>
             </button> 
+             <div class="dropdown-menu">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="padding-left:20px">Download</a>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">copy chart</a>
+                    <a href="#" class="dropdown-item">jpeg file</a>
+                    <a href="#" class="dropdown-item">excel file</a>
+                </div>
+        </div>
         </div>
     </div>
     <div class="num-response">
@@ -55,9 +71,17 @@
             </div>
         </div>
         <div class="custom-control custom-checkbox pl-1 align-self-center pr-4">
-            <button class="btn btn-outline-theme-3 icon-button">
+            <button class="btn btn-outline-theme-3 icon-button" data-toggle="dropdown">
                 <i class="iconsminds-files"></i>
             </button> 
+              <div class="dropdown-menu">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="padding-left:20px">Download</a>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">copy chart</a>
+                    <a href="#" class="dropdown-item">jpeg file</a>
+                    <a href="#" class="dropdown-item">excel file</a>
+                </div>
+        </div>
         </div>
     </div>
     <div class="num-response">
@@ -78,9 +102,17 @@
             </div>
         </div>
         <div class="custom-control custom-checkbox pl-1 align-self-center pr-4">
-            <button class="btn btn-outline-theme-3 icon-button">
+            <button class="btn btn-outline-theme-3 icon-button" data-toggle="dropdown">
                 <i class="iconsminds-files"></i>
             </button> 
+               <div class="dropdown-menu">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="padding-left:20px">Download</a>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">copy chart</a>
+                    <a href="#" class="dropdown-item">jpeg file</a>
+                    <a href="#" class="dropdown-item">excel file</a>
+                </div>
+        </div>
         </div>
     </div>
     <div class="num-response">
@@ -100,9 +132,17 @@
             </div>
         </div>
         <div class="custom-control custom-checkbox pl-1 align-self-center pr-4">
-            <button class="btn btn-outline-theme-3 icon-button">
+            <button class="btn btn-outline-theme-3 icon-button" data-toggle="dropdown">
                 <i class="iconsminds-files"></i>
             </button> 
+                 <div class="dropdown-menu">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="padding-left:20px">Download</a>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">copy chart</a>
+                    <a href="#" class="dropdown-item">jpeg file</a>
+                    <a href="#" class="dropdown-item">excel file</a>
+                </div>
+        </div>
         </div>
     </div>
     <div class="num-response">
@@ -171,62 +211,6 @@ const data = {
 
 };
 
-//data for muti-bar chart for martrix/grid choice response type
-// const data_multiBar = {
-//     labels: [
-//         'Practical skills','Subject knowledge', 'Creativity and innovation',
-//          'Critical thinking skills', 'Educational background', 'Programme of study', 
-//          'Work experience', 'Basic computer literacy', 'Oral communication',  'Team work',
-//          'Written communication', 'Entrepreneurial skills', 'Ethics (Loyalty, integrity)',  
-//         ],
-//     datasets: [
-//         {
-//         label: 'Not Important',
-//         data: [20, 60, 10, 5,23,34,56,12,23,24,11,12,13],
-//             backgroundColor: [
-//                 'rgba(225, 69, 0, 0.2)'//orangered
-                 
-//             ],
-//             borderColor: [
-//                 'rgb(225, 69, 0,)',
-                
-//             ],
-//             borderWidth: 2,
-//             hoverOffset: 5,
-           
-            
-//     }, {
-//         label: 'Fairly Important',
-//         data: [10, 50, 70, 15,13,24,36,2,63,84,31,19,73],
-//             backgroundColor: [
-//                 'rgba(54, 162, 235, 0.2)'//blue
-                  
-//             ],
-//             borderColor: [
-//                 'rgb(54, 162, 235)'
-                
-//             ],
-//             borderWidth: 2,
-//             hoverOffset: 5,
-
-//     },
-//     {
-//         label: 'Highly Important',
-//         data: [30, 20, 19, 51,3,4,6,19,25,29,1,38,3],
-//             backgroundColor: [
-//                 'rgba(142, 77, 250, 0.2)',//voilet 
-//             ],
-//             borderColor: [
-//                 'rgb(142, 77, 250)'
-//             ],
-//             borderWidth: 2,
-//             hoverOffset: 5,
-
-//     },
-        
-//     ],
-
-// };
 
 //config for pie chart with radio choices
 const config_pie_radio = {
