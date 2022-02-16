@@ -12,17 +12,18 @@
          border-bottom-left-radius: 5px;
      }
      .table-scroll {
-        height: 70vh;
+        height: 65vh;
         overflow-x: auto;
         overflow-y: auto;
     }
  </style>
  
  {{-- Table --}}
-        <div class=" mt-5 mb-4">
+        <div class=" mt-2 mb-4">
             <div class="col-lg-12 mb-4">
                 <div class="card">
                     <div class="card-body">
+                        <h3>Full Survey Report</h3>
                         <!-- <input type="text" class="cd-search table-filter" data-table="order-table" placeholder="Item to filter.." /> -->
                         {{-- Search Bar --}}
                         <div class="d-flex">
@@ -43,8 +44,8 @@
                                     <div role="separator" class="dropdown-divider"></div> -->
                                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="padding-left:20px">Download</a>
                                     <div class="dropdown-menu">
-                                        <a href="#" class="dropdown-item">excel file</a>
-                                        <a href="#" class="dropdown-item">csv file</a>
+                                        <a href="#" class="dropdown-item">As excel file</a>
+                                        <a href="#" class="dropdown-item">As csv file</a>
                                     </div>
                                 </div>
                         </div>
@@ -67,7 +68,31 @@
                                 </tr>
                                 <tr>
                                     <td>1</td>
+                                    <td>admin@codehim.com Lorem ipsum dolor sit amet python adipisicing elit. Consequuntur, obcaecati eveniet eligendi molestiae ut, repudiandae tempore facilis blanditiis mollitia totam iusto minima porro in, beatae magni amet aut modi quod.</td>
+                                    <td>0123456789</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>1</td>
                                     <td>admin@codehim.com Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, obcaecati eveniet eligendi molestiae ut, repudiandae tempore facilis blanditiis mollitia totam iusto minima porro in, beatae magni amet aut modi quod.</td>
+                                    <td>0123456789</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>admin@codehim.com Lorem ipsum dolor sit amet consectetur joshua adipisicing elit. Consequuntur, obcaecati eveniet eligendi molestiae ut, repudiandae tempore facilis blanditiis mollitia totam iusto minima porro in, beatae magni amet aut modi quod.</td>
+                                    <td>0123456789</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>admin@codehim.com Lorem ipsum dolor sit amet consectetur fuad adipisicing elit. Consequuntur, obcaecati eveniet eligendi molestiae ut, repudiandae tempore facilis blanditiis mollitia totam iusto minima porro in, beatae magni amet aut modi quod.</td>
+                                    <td>0123456789</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>admin@codehim.com Lorem ipsum dolor sit amet consectetur adipisicing sammy elit. Consequuntur, obcaecati eveniet eligendi molestiae ut, repudiandae tempore facilis blanditiis mollitia totam iusto minima porro in, beatae magni amet aut modi quod.</td>
                                     <td>0123456789</td>
                                     
                                 </tr>
@@ -85,7 +110,7 @@
                                 </tr>
                                 <tr>
                                     <td>1</td>
-                                    <td>admin@codehim.com Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, obcaecati eveniet eligendi molestiae ut, repudiandae tempore facilis blanditiis mollitia totam iusto minima porro in, beatae magni amet aut modi quod.</td>
+                                    <td>admin@codehim.com Lorem ipsum dolor sit amet consectetur emma adipisicing elit. Consequuntur, obcaecati eveniet eligendi molestiae ut, repudiandae tempore facilis blanditiis mollitia totam iusto minima porro in, beatae magni amet aut modi quod.</td>
                                     <td>0123456789</td>
                                     
                                 </tr>
@@ -97,43 +122,19 @@
                                 </tr>
                                 <tr>
                                     <td>1</td>
-                                    <td>admin@codehim.com Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, obcaecati eveniet eligendi molestiae ut, repudiandae tempore facilis blanditiis mollitia totam iusto minima porro in, beatae magni amet aut modi quod.</td>
+                                    <td>admin@codehim.com Lorem ipsum dolor sit amet consectetur java adipisicing elit. Consequuntur, obcaecati eveniet eligendi molestiae ut, repudiandae tempore facilis blanditiis mollitia totam iusto minima porro in, beatae magni amet aut modi quod.</td>
                                     <td>0123456789</td>
                                     
                                 </tr>
                                 <tr>
                                     <td>1</td>
-                                    <td>admin@codehim.com Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, obcaecati eveniet eligendi molestiae ut, repudiandae tempore facilis blanditiis mollitia totam iusto minima porro in, beatae magni amet aut modi quod.</td>
+                                    <td>admin@codehim.com Lorem ipsum dolor sit amet consectetur template adipisicing elit. Consequuntur, obcaecati eveniet eligendi molestiae ut, repudiandae tempore facilis blanditiis mollitia totam iusto minima porro in, beatae magni amet aut modi quod.</td>
                                     <td>0123456789</td>
                                     
                                 </tr>
                                 <tr>
                                     <td>1</td>
-                                    <td>admin@codehim.com Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, obcaecati eveniet eligendi molestiae ut, repudiandae tempore facilis blanditiis mollitia totam iusto minima porro in, beatae magni amet aut modi quod.</td>
-                                    <td>0123456789</td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>admin@codehim.com Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, obcaecati eveniet eligendi molestiae ut, repudiandae tempore facilis blanditiis mollitia totam iusto minima porro in, beatae magni amet aut modi quod.</td>
-                                    <td>0123456789</td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>admin@codehim.com Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, obcaecati eveniet eligendi molestiae ut, repudiandae tempore facilis blanditiis mollitia totam iusto minima porro in, beatae magni amet aut modi quod.</td>
-                                    <td>0123456789</td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>admin@codehim.com Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, obcaecati eveniet eligendi molestiae ut, repudiandae tempore facilis blanditiis mollitia totam iusto minima porro in, beatae magni amet aut modi quod.</td>
-                                    <td>0123456789</td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>admin@codehim.com Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, obcaecati eveniet eligendi molestiae ut, repudiandae tempore facilis blanditiis mollitia totam iusto minima porro in, beatae magni amet aut modi quod.</td>
+                                    <td>admin@codehim.com Lorem ipsum dolor sit amet consectetur turntabl adipisicing elit. Consequuntur, obcaecati eveniet eligendi molestiae ut, repudiandae tempore facilis blanditiis mollitia totam iusto minima porro in, beatae magni amet aut modi quod.</td>
                                     <td>0123456789</td>
                                     
                                 </tr>

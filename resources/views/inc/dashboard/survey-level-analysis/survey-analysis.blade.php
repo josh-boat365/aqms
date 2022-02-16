@@ -50,9 +50,9 @@
             <div class="dropdown-menu">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="padding-left:20px">Download</a>
             <div class="dropdown-menu">
-                <a href="#" class="dropdown-item">copy chart</a>
-                <a href="#" class="dropdown-item">jpeg file</a>
-                <a href="#" class="dropdown-item">excel file</a>
+                <a href="#" class="dropdown-item">Copy chart</a>
+                <a href="#" class="dropdown-item">As jpeg file</a>
+                <a href="#" class="dropdown-item">As excel file</a>
             </div>
         </div>
         </div>
@@ -80,9 +80,9 @@
             <div class="dropdown-menu">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="padding-left:20px">Download</a>
                 <div class="dropdown-menu">
-                    <a href="#" class="dropdown-item">copy chart</a>
-                    <a href="#" class="dropdown-item">jpeg file</a>
-                    <a href="#" class="dropdown-item">excel file</a>
+                    <a href="#" class="dropdown-item">Copy chart</a>
+                    <a href="#" class="dropdown-item">As jpeg file</a>
+                    <a href="#" class="dropdown-item">As excel file</a>
                 </div>
         </div>
         </div>
@@ -111,9 +111,9 @@
              <div class="dropdown-menu">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="padding-left:20px">Download</a>
                 <div class="dropdown-menu">
-                    <a href="#" class="dropdown-item">copy chart</a>
-                    <a href="#" class="dropdown-item">jpeg file</a>
-                    <a href="#" class="dropdown-item">excel file</a>
+                    <a href="#" class="dropdown-item">Copy chart</a>
+                    <a href="#" class="dropdown-item">As jpeg file</a>
+                    <a href="#" class="dropdown-item">As excel file</a>
                 </div>
         </div>
         </div>
@@ -141,9 +141,9 @@
              <div class="dropdown-menu">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="padding-left:20px">Download</a>
                 <div class="dropdown-menu">
-                    <a href="#" class="dropdown-item">copy chart</a>
-                    <a href="#" class="dropdown-item">jpeg file</a>
-                    <a href="#" class="dropdown-item">excel file</a>
+                    <a href="#" class="dropdown-item">Copy chart</a>
+                    <a href="#" class="dropdown-item">As jpeg file</a>
+                    <a href="#" class="dropdown-item">As excel file</a>
                 </div>
         </div>
             
@@ -171,9 +171,9 @@
              <div class="dropdown-menu">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="padding-left:20px">Download</a>
                 <div class="dropdown-menu">
-                    <a href="#" class="dropdown-item">copy chart</a>
-                    <a href="#" class="dropdown-item">jpeg file</a>
-                    <a href="#" class="dropdown-item">excel file</a>
+                    <a href="#" class="dropdown-item">Copy chart</a>
+                    <a href="#" class="dropdown-item">As jpeg file</a>
+                    <a href="#" class="dropdown-item">As excel file</a>
                 </div>
         </div>
             
