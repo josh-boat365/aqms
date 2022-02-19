@@ -4,6 +4,7 @@
     <div class="sortable-survey col-lg-8 col-12 mb-4">
         @include('inc.dashboard.question.question-card', ['questions' => $survey->questions->toArray()])
     </div>
+    <div id="all-deletes" style="display: none"></div>
 @else
     @for ($i = 1; $i <= $survey->sections->count(); $i++)
         <div class="col-12 col-lg-8 survey-wrapper section-{{ $i }} @if ($i == 1) current @endif "
@@ -17,12 +18,12 @@
 
                 <div class="card-body">
                     <h1 class="col-11 section-header">{{ $survey->sections[$i - 1]->title }}</h1>
-                    <input type="text" name="section[old][{{ $i }}][section_header]"
+                    <input type="text" name="sections[old][{{ $i }}][section_header]"
                         value="{{ $survey->sections[$i - 1]->title }}" id="section-header-input" style="display: none"
                         class="form-control col-11 mb-3" placeholder="section-description (optional)">
                     <input type="hidden" class="section-name" value="section-1">
                     <p class="col-12 section-description">{{ $survey->sections[$i - 1]->description }}</p>
-                    <textarea name="section[old][{{ $i }}][section_description]" id="section-description-input"
+                    <textarea name="sections[old][{{ $i }}][section_description]" id="section-description-input"
                         style="display: none"
                         class="form-control col-12">{{ $survey->sections[$i - 1]->description }}</textarea>
                 </div>
@@ -31,9 +32,10 @@
 
                 @include('inc.dashboard.question.question-card', ['questions'=>
                 $survey->sectionQuestions->where('section_id', $survey->sections[$i-1]->id)->values()->toArray(),
-                'order' => $i,
-                ]),
+                'section_id' => $survey->sections[$i-1]->id,
+                ])
             </div>
+            
         </div>
     @endfor
 @endempty
@@ -57,12 +59,12 @@
                 
                 <div class="card-body">
                     <h1 class="col-11 section-header">{{ $survey->sections[$i - 1]->title }}</h1>
-                    <input type="text" name="section[old][{{ $i }}][section_header]"
+                    <input type="text" name="sections[old][{{ $i }}][section_header]"
                         value="{{ $survey->sections[$i - 1]->title }}" id="section-header-input" style="display: none"
                         class="form-control col-11 mb-3" placeholder="section-description (optional)">
                     <input type="hidden" class="section-name" value="section-1">
                     <p class="col-12 section-description">{{ $survey->sections[$i - 1]->description }}</p>
-                    <textarea name="section[old][{{ $i }}][section_description]" id="section-description-input"
+                    <textarea name="sections[old][{{ $i }}][section_description]" id="section-description-input"
                         style="display: none"
                         class="form-control col-12">{{ $survey->sections[$i - 1]->description }}</textarea>
                 </div>

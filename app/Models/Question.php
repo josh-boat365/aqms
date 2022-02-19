@@ -11,7 +11,10 @@ class Question extends Model
 
     protected $fillable = [
         'question',
+        'order',
         'option_type_id',
+        'survey_id',
+        'section_id'
     ];
 
     public function options(){

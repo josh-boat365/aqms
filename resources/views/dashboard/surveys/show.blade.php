@@ -117,7 +117,7 @@
                     @endforeach --}}
                 </div>
                 <div class="text-center mt-2"><button type="button" class="btn btn-outline-primary btn-sm mb-2"
-                            id="add-section-button"><i class="simple-icon-plus btn-group-icon"></i> Add section</button>
+                        id="add-section-button"><i class="simple-icon-plus btn-group-icon"></i> Add section</button>
                 </div>
             </div>
         @endif
@@ -229,7 +229,7 @@
 
 
                     var $section = $('<div/>').attr({
-                        'class': 'current col-12 col-lg-8 survey-wrapper section-' + ($count + 1),
+                        'class': 'is-new current col-12 col-lg-8 survey-wrapper section-' + ($count + 1),
                         'style': 'display: none'
                     }).append(
                         $('<input>').attr({
@@ -257,7 +257,7 @@
 
                             $('<input>').attr({
                                 'type': 'text',
-                                'name': 'section[new][' + ($section_count + 1) +
+                                'name': 'sections[new][' + ($section_count + 1) +
                                     '][section_header]',
                                 'id': 'section-header-input',
                                 'style': 'display: none',
@@ -274,7 +274,7 @@
                                 'section-description (optional)'),
 
                             $('<textarea/>').attr({
-                                'name': 'section[new][' + ($section_count + 1) +
+                                'name': 'sections[new][' + ($section_count + 1) +
                                     '][section_description]',
                                 'id': 'section-description-input',
                                 'style': 'display: none',
@@ -290,7 +290,13 @@
 
                     $('#update-form').append($section)
 
-
+                    $('#section-list').children('.sections').append(
+                        $('<div/>').addClass('position-relative my-1 py-1 ml-4 dot-active pointer')
+                        .attr({
+                            'id': 'section-1'
+                        }).text('Untitiled~1')
+                        // <div class="position-relative my-1 py-1 ml-4 dot-active pointer" id="section-1">Untitiled~1</div>
+                    )
                     $('#section-list').slideDown()
                     $('.section-card').slideDown(function() {
                         $(this).show();
@@ -303,8 +309,8 @@
                         // console.log();
                         if ($(this).attr('name') != undefined) {
 
-                            $(this).attr('name', 'section[new][1][ques]' + $(this).attr('name')
-                                .substring(4, $(this).attr('name').length))
+                            $(this).attr('name', 'sections[new][1][questions]' + $(this).attr('name')
+                                .substring(9, $(this).attr('name').length))
                         }
                     })
 
@@ -315,8 +321,8 @@
                         // console.log();
                         if ($(this).attr('name') != undefined) {
 
-                            $(this).attr('name', 'section[new][1][ques]' + $(this).attr('name')
-                                .substring(4, $(this).attr('name').length))
+                            $(this).attr('name', 'sections[new][1][questions]' + $(this).attr('name')
+                                .substring(9, $(this).attr('name').length))
                         }
                     })
 
@@ -325,10 +331,7 @@
                 } else { //TODO: reverse the effect of checked state on input and selects
                     $('#section-list').slideUp(function() {
                         $(this).children('.sections').children('.pointer').remove()
-                        $(this).children('.sections').append(
-                            $('<div/>').addClass('position-relative my-1 py-1 ml-4 dot-active pointer').attr({'id': 'section-1'}).text('Untitiled~1')
-                            // <div class="position-relative my-1 py-1 ml-4 dot-active pointer" id="section-1">Untitiled~1</div>
-                        )
+
                     });
                     $('.section-card').slideUp(function() {
                         $(this).hide();
@@ -364,7 +367,8 @@
                         // console.log();
                         if ($(this).attr('name') != undefined) {
 
-                            $(this).attr('name', 'ques' + $(this).attr('name').slice(21, $(this).attr('name').length))
+                            $(this).attr('name', 'ques' + $(this).attr('name').slice(21, $(this)
+                                .attr('name').length))
                         }
                     })
 
@@ -375,7 +379,8 @@
                         // console.log();
                         if ($(this).attr('name') != undefined) {
 
-                            $(this).attr('name', 'ques' +    $(this).attr('name').slice(21, $(this).attr('name').length))
+                            $(this).attr('name', 'ques' + $(this).attr('name').slice(21, $(this)
+                                .attr('name').length))
                         }
                     })
                 }
@@ -421,7 +426,7 @@
 
                         $('<input>').attr({
                             'type': 'text',
-                            'name': 'section[new][' + ($section_count + 1) + '][section_header]',
+                            'name': 'sections[new][' + ($section_count + 1) + '][section_header]',
                             'id': 'section-header-input',
                             'style': 'display: none',
                             'class': 'form-control col-11 mb-3',
@@ -437,7 +442,7 @@
                             'section-description (optional)'),
 
                         $('<textarea/>').attr({
-                            'name': 'section[new][' + ($section_count + 1) +
+                            'name': 'sections[new][' + ($section_count + 1) +
                                 '][section_description]',
                             'id': 'section-description-input',
                             'style': 'display: none',
@@ -583,69 +588,6 @@
     </script>
 
 
-
-    {{-- que add --}}
-    {{-- <script>
-        $(function() {
-            $('.add-que').click(function() {
-                $que_box = $('<div/>').append(
-                    $('<div/>').text('New Question').addClass('mb-1'),
-                    $('<form> @csrf </form>').attr({
-                        'method': 'post',
-                        'action': '{{ route('survey.addQuestion') }}',
-                    }).append(
-                        $('<input/>').attr({
-                            'type': 'hidden',
-                            'value': '{{ $survey->id }}',
-                            'name': 'survey_id',
-                        }),
-                        $('<textarea/>').attr({
-                            'class': 'form-control',
-                            'name': 'question',
-                            'id': 'question',
-                            'autocomplete': 'off',
-                        }),
-                        $('<div/>').addClass('text-center mt-3').append(
-
-                            $('<button/>').addClass('btn btn-danger cancel-add-que mr-2').text(
-                                'cancel'),
-
-                            $('<input>').attr({
-                                'type': 'submit',
-                                'class': 'btn btn-primary',
-                                'value': 'add'
-                            })
-                        )
-                    ),
-
-
-                );
-
-                // $('.sortable-survey').append($que_box);
-                $(this).parent().parent().append($que_box);
-
-                $(this).hide();
-                $('.upd-que').hide();
-
-            })
-
-            $('.app-menu').on('click', '.cancel-add-que', function() {
-                $(this).parent().parent().parent().remove();
-                $('.add-que').show()
-                $('.upd-que').show()
-            })
-        })
-        // <div>
-        //     <div class="card p-4 mb-4" style="border-radius: .75rem">
-        //         <div class="mb-1">Question</div>
-        //         <form action="" method="post">
-        //             @csrf
-        //             <input class="form-control" type="text" name="question" id="question">
-        //         </form>
-        //     </div>
-        // </div>
-    </script> --}}
-
     {{-- add answer --}}
     <script>
         $(function() {
@@ -679,10 +621,16 @@
                         $('<input>').attr({
                             'class': 'form-control',
                             'type': 'text',
-                            'name': {{ $survey->sections != null }} ? "section[" + $section_state +
-                                "][" + $section_num + "][ques][" + $question_state + "][" + $que_num +
-                                "][ans][" + ($index++) + "]" : "ques[new][" + $que_num + "][ans][" + (
-                                    $index++) + "]"
+                            'name': @php if(empty($survey->sections->values()->toArray())) echo 1; else echo 0; @endphp ?
+                                // questions -> Qstate -> Qid/Qgroup_id -> options -> Ogroup_id -> option
+                                "questions[" + $question_state + "][" + $que_num + "][options][new][" +
+                                (
+                                    $index++) + "]" :
+
+                                "sections[" + $section_state +
+                                "][" + $section_num + "][questions][" + $question_state + "][" +
+                                $que_num +
+                                "][options][new][" + ($index++) + "]"
                         }),
 
                         $('<div/>').addClass('input-icons')
@@ -711,9 +659,22 @@
     {{-- del ans --}}
     <script>
         $(function() {
+            $index = 0;
             $('#update-form').on('click', '.del-ans', function() {
                 $(this).parent().parent().slideUp('', function() {
-                    $(this).remove();
+                    // console.log($(this).children('.form-control').attr('name'));
+                    $name = $(this).children('.form-control').attr('name')
+                        .substring(0, $(this).children('.form-control').attr('name').indexOf('[options]') + 9) 
+                        + "[deleted][" + $index++ + "]" ;
+                    
+                    $delete = $('<input>').attr({
+                        'name': $name,
+                        'value':  $(this).children('.form-control').attr('id'),
+                    })
+
+                    $('#all-deletes').append(
+                        $delete
+                    )
                 });
                 //FIND OUT IF IT'S A COLUMN HEADER THAT HAS BEEN DELETED
                 // console.log($(this).parent().parent().parent().parent())
@@ -1114,60 +1075,84 @@
 
             $('#update-form').on('click', '.grid-row', function() {
 
+                $section_num = $('.current #sec-num').val()
+
                 $que_num = $(this).parent().parent().parent().parent().parent().children('.que-section')
                     .children('.que-num').val();
-                var $is_new = $(this).parent().parent().parent().parent().parent().children('.que-section')
+
+                var $is_new_que = $(this).parent().parent().parent().parent().parent().children('.que-section')
                     .children(
                         '.is-new').val();
 
                 console.log($que_num);
-                console.log($is_new);
+                console.log($is_new_que);
 
-                if ($is_new) {
-                    var ansBox = $('<div/>').addClass('mb-1 position-relative ans')
-                        .append(
-                            $('<input>').attr({
-                                'class': 'form-control',
-                                'type': 'text',
-                                'name': "ques[new][" + $que_num + "][ans][rows][]"
-                            }),
-
-                            $('<div/>').addClass('input-icons')
-                            .append(
-                                $('<span/>').addClass('badge badge-pill handle pr-0 mr-0')
-                                .append(
-                                    $('<i/>').addClass('simple-icon-cursor-move')
-                                ),
-
-                                $('<span/>').addClass('badge badge-pill del-ans btn')
-                                .append(
-                                    $('<i/>').addClass('simple-icon-trash')
-                                )
-                            )
-                        )
+                if ($is_new_que) {
+                    $question_state = 'new';
                 } else {
-                    var ansBox = $('<div/>').addClass('mb-1 position-relative ans')
+                    $question_state = 'old';
+                }
+
+                $spec = $('.current #section-header-input')
+                if ($spec.length > 0 && $spec.attr('name').indexOf('new') != -1) {
+                    $section_state = 'new'
+                } else {
+                    $section_state = 'old'
+                }
+
+                // if ($is_new_que) {
+                var ansBox = $('<div/>').addClass('mb-1 position-relative ans')
+                    .append(
+                        $('<input>').attr({
+                            'class': 'form-control',
+                            'type': 'text',
+                            'name': @php if(empty($survey->sections->values()->toArray())) echo 1; else echo 0; @endphp ?
+                                "questions[" + $question_state + "][" + $que_num +
+                                "][options][rows][new][" + (
+                                    $index++) + "]" :
+
+                                "sections[" + $section_state +
+                                "][" + $section_num + "][questions][" + $question_state + "][" +
+                                $que_num +
+                                "][options][rows][new][" + ($index++) + "]",
+                        }),
+
+                        $('<div/>').addClass('input-icons')
                         .append(
-                            $('<input>').attr({
-                                'class': 'form-control',
-                                'type': 'text',
-                                'name': "ques[old][" + $que_num + "][ans][rows][new][" + $index++ + "]"
-                            }),
-
-                            $('<div/>').addClass('input-icons')
+                            $('<span/>').addClass('badge badge-pill handle pr-0 mr-0')
                             .append(
-                                $('<span/>').addClass('badge badge-pill handle pr-0 mr-0')
-                                .append(
-                                    $('<i/>').addClass('simple-icon-cursor-move')
-                                ),
+                                $('<i/>').addClass('simple-icon-cursor-move')
+                            ),
 
-                                $('<span/>').addClass('badge badge-pill del-ans btn')
-                                .append(
-                                    $('<i/>').addClass('simple-icon-trash')
-                                )
+                            $('<span/>').addClass('badge badge-pill del-ans btn')
+                            .append(
+                                $('<i/>').addClass('simple-icon-trash')
                             )
                         )
-                }
+                    )
+                // } else {
+                //     var ansBox = $('<div/>').addClass('mb-1 position-relative ans')
+                //         .append(
+                //             $('<input>').attr({
+                //                 'class': 'form-control',
+                //                 'type': 'text',
+                //                 'name': "ques[old][" + $que_num + "][ans][rows][new][" + $index++ + "]"
+                //             }),
+
+                //             $('<div/>').addClass('input-icons')
+                //             .append(
+                //                 $('<span/>').addClass('badge badge-pill handle pr-0 mr-0')
+                //                 .append(
+                //                     $('<i/>').addClass('simple-icon-cursor-move')
+                //                 ),
+
+                //                 $('<span/>').addClass('badge badge-pill del-ans btn')
+                //                 .append(
+                //                     $('<i/>').addClass('simple-icon-trash')
+                //                 )
+                //             )
+                //         )
+                // }
 
 
                 // $index++;
@@ -1183,63 +1168,79 @@
                 }
             })
 
-            $('#update-form').on('click', '.grid-column', function() {
+            if ($(this).parent().parent().parent().parent().children('.que-section')
+                    .children(
+                        '.is-new').val()) {
+                    $question_state = 'new';
+                } else {
+                    $question_state = 'old';
+                }
 
+            $('#update-form').on('click', '.grid-column', function() {
+                $section_num = $('.current #sec-num').val()
                 $que_num = $(this).parent().parent().parent().parent().parent().children('.que-section')
                     .children('.que-num').val();
-                var $is_new = $(this).parent().parent().parent().parent().parent().children('.que-section')
+                var $is_new_que = $(this).parent().parent().parent().parent().parent().children('.que-section')
                     .children(
                         '.is-new').val();
 
                 console.log($que_num);
-                console.log($is_new);
+                console.log($is_new_que);
 
-                if ($is_new) {
-                    var ansBox = $('<div/>').addClass('mb-1 position-relative ans')
+                // if ($is_new_que) {
+                var ansBox = $('<div/>').addClass('mb-1 position-relative ans')
+                    .append(
+                        $('<input>').attr({
+                            'class': 'form-control',
+                            'type': 'text',
+                            'name': @php if(empty($survey->sections->values()->toArray())) echo 1; else echo 0; @endphp ?
+                                "questions[" + $question_state + "][" + $que_num +
+                                "][options][columns][new][" + (
+                                    $index++) + "]" :
+
+                                "sections[" + $section_state +
+                                "][" + $section_num + "][questions][" + $question_state + "][" +
+                                $que_num +
+                                "][options][columns][new][" + ($index++) + "]",
+                        }),
+
+                        $('<div/>').addClass('input-icons')
                         .append(
-                            $('<input>').attr({
-                                'class': 'form-control',
-                                'type': 'text',
-                                'name': "ques[new][" + $que_num + "][ans][columns][]"
-                            }),
-
-                            $('<div/>').addClass('input-icons')
+                            $('<span/>').addClass('badge badge-pill handle pr-0 mr-0')
                             .append(
-                                $('<span/>').addClass('badge badge-pill handle pr-0 mr-0')
-                                .append(
-                                    $('<i/>').addClass('simple-icon-cursor-move')
-                                ),
+                                $('<i/>').addClass('simple-icon-cursor-move')
+                            ),
 
-                                $('<span/>').addClass('badge badge-pill del-ans btn')
-                                .append(
-                                    $('<i/>').addClass('simple-icon-trash')
-                                )
+                            $('<span/>').addClass('badge badge-pill del-ans btn')
+                            .append(
+                                $('<i/>').addClass('simple-icon-trash')
                             )
                         )
-                } else {
-                    var ansBox = $('<div/>').addClass('mb-1 position-relative ans')
-                        .append(
-                            $('<input>').attr({
-                                'class': 'form-control',
-                                'type': 'text',
-                                'name': "ques[old][" + $que_num + "][ans][columns][new][" + $index++ +
-                                    "]"
-                            }),
+                    )
+                // } else {
+                //     var ansBox = $('<div/>').addClass('mb-1 position-relative ans')
+                //         .append(
+                //             $('<input>').attr({
+                //                 'class': 'form-control',
+                //                 'type': 'text',
+                //                 'name': "ques[old][" + $que_num + "][ans][columns][new][" + $index++ +
+                //                     "]"
+                //             }),
 
-                            $('<div/>').addClass('input-icons')
-                            .append(
-                                $('<span/>').addClass('badge badge-pill handle pr-0 mr-0')
-                                .append(
-                                    $('<i/>').addClass('simple-icon-cursor-move')
-                                ),
+                //             $('<div/>').addClass('input-icons')
+                //             .append(
+                //                 $('<span/>').addClass('badge badge-pill handle pr-0 mr-0')
+                //                 .append(
+                //                     $('<i/>').addClass('simple-icon-cursor-move')
+                //                 ),
 
-                                $('<span/>').addClass('badge badge-pill del-ans btn')
-                                .append(
-                                    $('<i/>').addClass('simple-icon-trash')
-                                )
-                            )
-                        )
-                }
+                //                 $('<span/>').addClass('badge badge-pill del-ans btn')
+                //                 .append(
+                //                     $('<i/>').addClass('simple-icon-trash')
+                //                 )
+                //             )
+                //         )
+                // }
 
                 // $index++;
                 $(this).parent().parent().parent().children('.answers').children('.columns').children(
@@ -1291,7 +1292,7 @@
                     $que_order = 1;
 
 
-                $('.question').each(function() {
+                $('#update-form .question').each(function() {
 
                     //get name
                     $name = $(this).children('.question-collapse').children('.card-body').children(
@@ -1300,7 +1301,7 @@
 
                     $(this).children('.question-collapse').children('.card-body').children(
                             '.edit-mode').children('.que-section').children('.writtenQuestion')
-                        .attr('name', $name + '[que]')
+                        .attr('name', $name + '[question]')
 
 
                     $(this).children('.question-collapse').children('.card-body').children(
@@ -1308,7 +1309,7 @@
                         $('<input>').attr({
                             'type': 'hidden',
                             'class': 'que_order',
-                            'name': $name + '[ord]',
+                            'name': $name + '[order]',
                             'value': $que_order++
                         })
                     )
@@ -1316,7 +1317,7 @@
                     if ($(this).children('.question-collapse').children('.card-body').children(
                             '.edit-mode').children('.ans-form').children('.ans-group').hasClass(
                             'non-grid')) {
-                        console.log($(this));
+                        // console.log($(this));
                         $ans = $(this).children('.question-collapse').children('.card-body')
                             .children('.edit-mode').children('.ans-form').children('.ans-group')
                             .children('.sortable').children('.ans');
@@ -1326,12 +1327,13 @@
                         $ans.each(function() {
                             $name = $(this).children('.form-control').attr('name');
 
-                            $(this).children('.form-control').attr('name', $name + '[opt]');
+                            $(this).children('.form-control').attr('name', $name +
+                                '[option]');
 
                             $(this).append(
                                 $('<input>').attr({
                                     'type': 'hidden',
-                                    'name': $name + '[ord]',
+                                    'name': $name + '[order]',
                                     'value': $opt_order++,
                                 })
                             )
@@ -1348,19 +1350,21 @@
                             .children('.edit-mode').children('.ans-form').children('.ans-group')
                             .children('.answers').children('.columns').children('.sortable')
                             .children('.ans');
-                        // console.log($rows);
-                        // console.log($columns);
+                            // console.log($rows);
+                            // console.log($columns);
+                            // console.log($(this));
 
                         $opt_order = 1;
                         $rows.each(function() {
                             $name = $(this).children('.form-control').attr('name')
 
-                            $(this).children('.form-control').attr('name', $name + '[opt]');
+                            $(this).children('.form-control').attr('name', $name +
+                                '[option]');
 
                             $(this).append(
                                 $('<input>').attr({
                                     'type': 'hidden',
-                                    'name': $name + '[ord]',
+                                    'name': $name + '[order]',
                                     'value': $opt_order++,
                                 })
                             )
@@ -1370,12 +1374,13 @@
                         $columns.each(function() {
                             $name = $(this).children('.form-control').attr('name')
 
-                            $(this).children('.form-control').attr('name', $name + '[opt]');
+                            $(this).children('.form-control').attr('name', $name +
+                                '[option]');
 
                             $(this).append(
                                 $('<input>').attr({
                                     'type': 'hidden',
-                                    'name': $name + '[ord]',
+                                    'name': $name + '[order]',
                                     'value': $opt_order++,
                                 })
                             )
@@ -1394,8 +1399,23 @@
     <script>
         $(function() {
             $('.add-que').click(function() {
-                var $que_num = $('.current').children('.sortable-survey').children('div').length;
+
+                // get question number
+                var $que_num = ($('#enable-section').is(':checked')) ?
+                    $('.current').children('.sortable-survey').children('div').length :
+                    $('.sortable-survey').children('div').length;
+
+                // get section number
                 var $sec_num = $('.current #sec-num').val();
+
+                $spec = $('.current #section-header-input')
+                if ($spec.length > 0 && $spec.attr('name').indexOf('new') != -1) {
+                    $section_state = 'new'
+                } else {
+                    $section_state = 'old'
+                }
+
+                // build card
                 var $test_que_card = $('<div/>')
                     .append(
                         $('<div/>').addClass('card question d-flex mb-4 edit-quesiton').append(
@@ -1458,14 +1478,17 @@
                                                 'class': 'is-new',
                                                 'value': 'true'
                                             }),
+
+                                            // question input
                                             $('<input>').attr({
                                                 'type': 'text',
                                                 'class': 'form-control writtenQuestion',
                                                 'value': '', // question
                                                 'name': ($('#enable-section').is(':checked')) ?
-                                                    'section[new][' + ($sec_num) + '][ques][new][' + (
+                                                    'sections[' + $section_state + '][' + ($sec_num) +
+                                                    '][questions][new][' + (
                                                         $que_num + 1) +
-                                                    ']' : 'ques[new][' + ($que_num + 1) +
+                                                    ']' : 'questions[new][' + ($que_num + 1) +
                                                     ']'
                                             })
                                         ),
@@ -1476,14 +1499,16 @@
                                                 'class': 'form-control new-select2-single option-type',
                                                 'data-width': '100%',
                                                 'name': ($('#enable-section').is(':checked')) ?
-                                                    'section[new][' + ($sec_num) + '][ques][new][' + (
+                                                    'sections['+ $section_state      +'][' + ($sec_num) +
+                                                    '][questions][new][' + (
                                                         $que_num + 1) +
-                                                    '][opt_type]' : 'ques[new][' + ($que_num + 1) +
-                                                    '][opt_type]' // check out
+                                                    '][option_type_id]' : 'questions[new][' + ($que_num +
+                                                        1) +
+                                                    '][option_type_id]' // check out
                                             })
                                         ),
                                         $('<div/>').addClass('form-group ans-form').append(
-                                            $('<div/>').addClass('grid').hide().append(
+                                            $('<div/>').addClass('grid ans-group').hide().append(
                                                 $('<label/>').addClass('d-block').text('Answers'),
                                                 $('<div/>').addClass('answers mb-3 d-flex col').append(
                                                     $('<div/>').addClass('col rows').append(
@@ -1519,7 +1544,7 @@
                                                     ),
                                                 )
                                             ),
-                                            $('<div/>').addClass('non-grid').hide().append(
+                                            $('<div/>').addClass('non-grid ans-group').hide().append(
                                                 $('<label/>').addClass('d-block').text('Answers'),
                                                 $('<div/>').addClass('answers mb-3 sortable').append(
                                                     // non-grid options
@@ -1544,7 +1569,13 @@
                         )
 
                     );
-                $('.current .sortable-survey').append($test_que_card)
+                console.log($test_que_card);
+                console.log($('.current .sortable-survey'));
+
+                ($('#enable-section').is(':checked')) ?
+
+                $('.current .sortable-survey').append($test_que_card):
+                    $('.sortable-survey').append($test_que_card)
 
                 var $options = [
                     @foreach ($optionTypes as $optionType)

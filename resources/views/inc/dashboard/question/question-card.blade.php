@@ -32,7 +32,7 @@
                                 {{-- question --}}
                                 <input type="hidden" class="que-num" value="{{ $questions[$i]['id'] }}">
                                 <input class="form-control writtenQuestion" type="text"
-                                    name="ques[old][{{ $questions[$i]['id'] }}]"
+                                    name="questions[old][{{ $questions[$i]['id'] }}]"
                                     value="{{ $questions[$i]['question'] }}">
                             </div>
 
@@ -42,7 +42,7 @@
                             <div class="form-group opt-type"><label class="d-block">Answer Type</label>
                                 {{-- answer-type --}}
                                 <select class="form-control select2-single option-type" data-width="100%"
-                                    name="ques[old][{{ $questions[$i]['id'] }}][opt_type]">
+                                    name="questions[old][{{ $questions[$i]['id'] }}][option_type_id]">
                                     {{-- <option label="&nbsp;">&nbsp;</option> --}}
                                     @foreach ($optionTypes as $optionType)
                                         <option value="{{ $optionType->id }}" @if ($questions[$i]['option_type_id'] == $optionType->id) selected @endif>
@@ -60,13 +60,13 @@
                                         <div class="col rows">
                                             <h5>Rows</h5>
                                             <div class="sortable">
-                                                @foreach ($survey->options->where('question_id', $questions[$i]['id']) as $option)
+                                                @foreach ($survey->options->where('question_id', $questions[$i]['id'])->where('row_column', 'row') as $option)
                                                     <div class="mb-1 position-relative ans">
                                                         <input class="form-control" type="text"
-                                                            name="ques[old][{{ $questions[$i]['id'] }}][ans][rows][old][{{ $option->id }}]"
-                                                            value="{{ $option->option }}">
+                                                            name="questions[old][{{ $questions[$i]['id'] }}][options][rows][old][{{ $option->id }}]"
+                                                            value="{{ $option->option }}" id="{{$option->id}}">
                                                         {{-- <input class="form-control" type="hidden" 
-                                                            name="ques[old][{{ $questions[$i]['id'] }}][ans][rows][old][{{ $questions[$i]['id'] }}][id]"
+                                                            name="ques[old][{{ $questions[$i]['id'] }}][options][rows][old][{{ $questions[$i]['id'] }}][id]"
                                                             value="{{ $option->id }}"> --}}
                                                         <div class="input-icons"><span class="badge badge-pill handle pr-0 mr-0"><i
                                                                     class="simple-icon-cursor-move"></i> </span><span
@@ -78,12 +78,12 @@
                                         <div class="col columns">
                                             <h5>Columns</h5>
                                             <div class="sortable">
-                                                @foreach ($survey->columns->where('question_id', $questions[$i]['id']) as $option)
+                                                @foreach ($survey->options->where('question_id', $questions[$i]['id'])->where('row_column', 'column') as $option)
                                                     <div class="mb-1 position-relative ans"><input class="form-control" type="text"
-                                                            name="ques[old][{{ $questions[$i]['id'] }}][ans][columns][old][{{ $option->id }}]"
-                                                            value="{{ $option->question }}">
+                                                            name="questions[old][{{ $questions[$i]['id'] }}][options][columns][old][{{ $option->id }}]"
+                                                            value="{{ $option->option }}" id="{{ $option->id }}">
                                                         {{-- <input class="form-control" type="hidden" 
-                                                            name="ques[old][{{ $questions[$i]['id'] }}][ans][columns][old][{{ $questions[$i]['id'] }}][id]"
+                                                            name="ques[old][{{ $questions[$i]['id'] }}][options][columns][old][{{ $questions[$i]['id'] }}][id]"
                                                             value="{{ $option->id }}"> --}}
                                                         <div class="input-icons"><span class="badge badge-pill handle pr-0 mr-0"><i
                                                                     class="simple-icon-cursor-move"></i> </span><span
@@ -115,10 +115,10 @@
 
                                         @foreach ($survey->options->where('question_id', $questions[$i]['id']) as $option)
                                             <div class="mb-1 position-relative ans"><input class="form-control" type="text"
-                                                    name="ques[old][{{ $questions[$i]['id'] }}][ans][old][{{ $option->id }}]"
-                                                    value="{{ $option->option }}">
+                                                    name="questions[old][{{ $questions[$i]['id'] }}][options][old][{{ $option->id }}]"
+                                                    value="{{ $option->option }}" id="{{ $option->id }}">
                                                 {{-- <input class="form-control" type="hidden" 
-                                                    name="ques[old][{{ $questions[$i]['id'] }}][ans][old][{{ $questions[$i]['id'] }}][id]"
+                                                    name="ques[old][{{ $questions[$i]['id'] }}][options][old][{{ $questions[$i]['id'] }}][id]"
                                                     value="{{ $option->id }}"> --}}
                                                 <div class="input-icons"><span class="badge badge-pill handle pr-0 mr-0"><i
                                                             class="simple-icon-cursor-move"></i> </span><span
@@ -243,7 +243,7 @@
                                 {{-- question --}}
                                 <input type="hidden" class="que-num" value="{{ $questions[$i]['id'] }}">
                                 <input class="form-control writtenQuestion" type="text"
-                                    name="section[old][{{ $order }}][ques][old][{{ $questions[$i]['id'] }}]"
+                                    name="sections[old][{{ $order }}][questions][old][{{ $questions[$i]['id'] }}]"
                                     value="{{ $questions[$i]['question'] }}">
                             </div>
 
@@ -253,7 +253,7 @@
                             <div class="form-group opt-type"><label class="d-block">Answer Type</label>
                                 {{-- answer-type --}}
                                 <select class="form-control select2-single option-type" data-width="100%"
-                                    name="section[old][{{ $order }}][ques][old][{{ $questions[$i]['id'] }}][opt_type]">
+                                    name="sections[old][{{ $order }}][questions][old][{{ $questions[$i]['id'] }}][option_type_id]">
                                     {{-- <option label="&nbsp;">&nbsp;</option> --}}
                                     @foreach ($optionTypes as $optionType)
                                         <option value="{{ $optionType->id }}" @if ($questions[$i]['option_type_id'] == $optionType->id) selected @endif>
@@ -272,13 +272,13 @@
                                         <div class="col rows">
                                             <h5>Rows</h5>
                                             <div class="sortable">
-                                                @foreach ($survey->options->where('question_id', $questions[$i]['id']) as $option)
+                                                @foreach ($survey->options->where('question_id', $questions[$i]['id'])->where('row_column', 'row') as $option)
                                                     <div class="mb-1 position-relative ans">
                                                         <input class="form-control" type="text"
-                                                            name="section[old][{{ $order }}][ques][old][{{ $questions[$i]['id'] }}][ans][rows][old][{{ $option->id }}]"
-                                                            value="{{ $option->option }}">
+                                                            name="sections[old][{{ $order }}][questions][old][{{ $questions[$i]['id'] }}][options][rows][old][{{ $option->id }}]"
+                                                            value="{{ $option->option }}" id="{{ $option->id }}">
                                                         {{-- <input class="form-control" type="hidden" 
-                                                            name="ques[old][{{ $questions[$i]['id'] }}][ans][rows][old][{{ $questions[$i]['id'] }}][id]"
+                                                            name="ques[old][{{ $questions[$i]['id'] }}][options][rows][old][{{ $questions[$i]['id'] }}][id]"
                                                             value="{{ $option->id }}"> --}}
                                                         <div class="input-icons"><span class="badge badge-pill handle pr-0 mr-0"><i
                                                                     class="simple-icon-cursor-move"></i> </span><span
@@ -290,12 +290,12 @@
                                         <div class="col columns">
                                             <h5>Columns</h5>
                                             <div class="sortable">
-                                                @foreach ($survey->columns->where('question_id', $questions[$i]['id']) as $option)
+                                                @foreach ($survey->options->where('question_id', $questions[$i]['id'])->where('row_column', 'column') as $option)
                                                     <div class="mb-1 position-relative ans"><input class="form-control" type="text"
-                                                            name="section[old][{{ $order }}][ques][old][{{ $questions[$i]['id'] }}][ans][columns][old][{{ $option->id }}]"
-                                                            value="{{ $option->question }}">
+                                                            name="sections[old][{{ $order }}][questions][old][{{ $questions[$i]['id'] }}][options][columns][old][{{ $option->id }}]"
+                                                            value="{{ $option->option }}" id="{{ $option->id }}">
                                                         {{-- <input class="form-control" type="hidden" 
-                                                            name="ques[old][{{ $questions[$i]['id'] }}][ans][columns][old][{{ $questions[$i]['id'] }}][id]"
+                                                            name="ques[old][{{ $questions[$i]['id'] }}][options][columns][old][{{ $questions[$i]['id'] }}][id]"
                                                             value="{{ $option->id }}"> --}}
                                                         <div class="input-icons"><span class="badge badge-pill handle pr-0 mr-0"><i
                                                                     class="simple-icon-cursor-move"></i> </span><span
@@ -328,10 +328,10 @@
 
                                         @foreach ($survey->options->where('question_id', $questions[$i]['id']) as $option)
                                             <div class="mb-1 position-relative ans"><input class="form-control" type="text"
-                                                    name="section[old][{{ $order }}][ques][old][{{ $questions[$i]['id'] }}][ans][old][{{ $option->id }}]"
-                                                    value="{{ $option->option }}">
+                                                    name="sections[old][{{ $order }}][questions][old][{{ $questions[$i]['id'] }}][options][old][{{ $option->id }}]"
+                                                    value="{{ $option->option }}" id="{{ $option->id }}">
                                                 {{-- <input class="form-control" type="hidden" 
-                                                    name="ques[old][{{ $questions[$i]['id'] }}][ans][old][{{ $questions[$i]['id'] }}][id]"
+                                                    name="ques[old][{{ $questions[$i]['id'] }}][options][old][{{ $questions[$i]['id'] }}][id]"
                                                     value="{{ $option->id }}"> --}}
                                                 <div class="input-icons"><span class="badge badge-pill handle pr-0 mr-0"><i
                                                             class="simple-icon-cursor-move"></i> </span><span
