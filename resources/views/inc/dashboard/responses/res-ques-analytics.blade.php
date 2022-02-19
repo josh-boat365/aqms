@@ -23,6 +23,29 @@
         right: 2rem;
         bottom: 2.2rem;
     }
+    .toggle-chart{
+        position: relative;
+        z-index: 2;
+    }
+    .toggled-table{
+        position: relative;
+        top: 7rem;
+        left: -1rem;
+    }
+    .table-scroll-q{
+        height: 40vh;
+        overflow-x: auto;
+        overflow-y: auto;
+    }
+     .t-head-q{
+         background-color: #00365a;
+         color: white;
+         border-top-left-radius: 5px;
+         border-bottom-left-radius: 5px;
+     }
+     .alyt-table-q td{
+         border: 1px solid gray;
+     }
 </style>
 
 <div class="card question d-flex mb-4 edit-quesiton">
@@ -32,17 +55,134 @@
                 <span class="heading-number d-inline-block">3 </span>Radio Choice Type
             </div>
         </div>
+            <!-- Toggle view for chart -->
+            <div class="custom-control toggle-chart custom-checkbox pl-1 align-self-center pr-0">
+                <button class="btn btn-outline-theme-3 icon-button" id="twelveth-tab" data-toggle="tab" href="#twelveth" role="tab" aria-controls="twelveth" aria-selected="false">
+                    <i class="iconsminds-pie-chart-3"></i>
+                </button>  
+            </div> 
+            <!-- Toggle view for table -->
+            <div class="custom-control toggle-chart custom-checkbox pl-1 align-self-center pr-0">
+                <button class="btn btn-outline-theme-3 icon-button" id="thirteenth-tab" data-toggle="tab" href="#thirteenth" role="tab" aria-controls="thirteenth" aria-selected="false">
+                    <i class="iconsminds-align-justify-all"></i>
+                </button>  
+            </div> 
+        <!-- button for copying/downloading     -->
         <div class="custom-control custom-checkbox pl-1 align-self-center pr-4">
-            <button class="btn btn-outline-theme-3 icon-button">
+            <button class="btn btn-outline-theme-3 icon-button" data-toggle="dropdown" >
                 <i class="iconsminds-files"></i>
             </button> 
+             <div class="dropdown-menu">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="padding-left:20px">Download</a>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">copy chart</a>
+                    <a href="#" class="dropdown-item"> As jpeg file</a>
+                    <a href="#" class="dropdown-item"> As excel file</a>
+                </div>
+        </div>
         </div>
     </div>
     <div class="num-response">
         <h6>20 responses</h6>
     </div>
     <div class="chart-radio card-body chart-body pt-0">
-        <canvas id="radioChoice"></canvas>
+    <div class="tab-content mb-4">
+        <div class="tab-pane show active" id="twelveth" role="tabpanel" aria-labelledby="twelvwth-tab">
+            <div class="row">
+             <canvas id="radioChoice"></canvas>
+            </div>
+        </div>
+
+
+        <div class="tab-pane show" id="thirteenth" role="tabpanel" aria-labelledby="thirteenth-tab">
+            <div class=" col-12">
+             <div class="toggled-table table-scroll-q">
+                 <table class="col-12 table table-hover alyt-table-q">
+                     <thead class="t-head-q">
+                         <tr>
+                         <th class="col-1">#</th>
+                         <th class="col-3">Number of Choices</th>
+                         <th class="col-8">Answer</th>
+                         </tr>
+                     </thead>
+                     <tbody>
+                         <tr>
+                             <td>1</td>
+                             <td>50</td>
+                             <td>Male</td>
+                         </tr>
+                         <tr>
+                             <td>2</td>
+                             <td>50</td>
+                             <td>Female</td>
+                         </tr>
+                         <tr>
+                             <td>3</td>
+                             <td>50</td>
+                             <td>Prefer Not to say</td>
+                         </tr>
+                         <tr>
+                             <td>4</td>
+                             <td>50</td>
+                             <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, nisi!</td>
+                         </tr>
+                         <tr>
+                             <td>5</td>
+                             <td>50</td>
+                             <td>Lorem ipsum dolor sit amet.</td>
+                         </tr>
+                         <tr>
+                             <td>6</td>
+                             <td>50</td>
+                             <td>Lorem ipsum dolor sit.</td>
+                         </tr>
+                         <tr>
+                             <td>7</td>
+                             <td>50</td>
+                             <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam quas excepturi non fugiat quis veritatis temporibus, voluptate, nulla quam animi perspiciatis labore eum? Tenetur voluptatibus, nobis quaerat nam accusantium delectus.</td>
+                         </tr>
+                         <tr>
+                             <td>8</td>
+                             <td>50</td>
+                             <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, explicabo.</td>
+                         </tr>
+                         <tr>
+                             <td>9</td>
+                             <td>50</td>
+                             <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</td>
+                         </tr>
+                         <tr>
+                             <td>10</td>
+                             <td>50</td>
+                             <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptas error vel unde nemo vitae ipsa minima quae doloribus, et ea provident aliquid obcaecati! Vero quae harum vitae qui non?</td>
+                         </tr>
+                         <tr>
+                             <td>11</td>
+                             <td>50</td>
+                             <td>Male</td>
+                         </tr>
+                         <tr>
+                             <td>12</td>
+                             <td>50</td>
+                             <td>Lorem ipsum dolor sit amet.</td>
+                         </tr>
+                         <tr>
+                             <td>13</td>
+                             <td>50</td>
+                             <td>Lorem ipsum dolor sit amet consectetur adipisicing.</td>
+                         </tr>
+                         <tr>
+                             <td>14</td>
+                             <td>50</td>
+                             <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
+                         </tr>
+                     </tbody>
+                 </table>
+             </div>
+            </div>
+        </div>
+
+    </div>    
     </div>
 
 </div>
@@ -54,10 +194,32 @@
                 <span class="heading-number d-inline-block">5 </span>Checkbox Type
             </div>
         </div>
+
+         <!-- Toggle view for chart -->
+        <div class="custom-control toggle-chart custom-checkbox pl-1 align-self-center pr-0">
+            <button class="btn btn-outline-theme-3 icon-button" id="sixth-tab" data-toggle="tab" href="#sixth" role="tab" aria-controls="sixth" aria-selected="false">
+                 <i class="simple-icon-chart"></i>
+            </button>  
+        </div> 
+        <!-- Toggle view for table -->
+        <div class="custom-control toggle-chart custom-checkbox pl-1 align-self-center pr-0">
+            <button class="btn btn-outline-theme-3 icon-button" id="seventh-tab" data-toggle="tab" href="#seventh" role="tab" aria-controls="seventh" aria-selected="false">
+                 <i class="iconsminds-align-justify-all"></i>
+            </button>  
+        </div> 
+
         <div class="custom-control custom-checkbox pl-1 align-self-center pr-4">
-            <button class="btn btn-outline-theme-3 icon-button">
+            <button class="btn btn-outline-theme-3 icon-button" data-toggle="dropdown">
                 <i class="iconsminds-files"></i>
             </button> 
+              <div class="dropdown-menu">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="padding-left:20px">Download</a>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">Copy chart</a>
+                    <a href="#" class="dropdown-item">As jpeg file</a>
+                    <a href="#" class="dropdown-item">As excel file</a>
+                </div>
+        </div>
         </div>
     </div>
     <div class="num-response">
@@ -77,10 +239,33 @@
                 <span class="heading-number d-inline-block">6 </span>Dropdwon Choice Type
             </div>
         </div>
+
+         <!-- Toggle view for chart -->
+        <div class="custom-control toggle-chart custom-checkbox pl-1 align-self-center pr-0">
+            <button class="btn btn-outline-theme-3 icon-button" id="eighth-tab" data-toggle="tab" href="#eighth" role="tab" aria-controls="eighth" aria-selected="false">
+                 <i class="iconsminds-pie-chart-3"></i>
+            </button>  
+        </div> 
+        <!-- Toggle view for table -->
+        <div class="custom-control toggle-chart custom-checkbox pl-1 align-self-center pr-0">
+            <button class="btn btn-outline-theme-3 icon-button" id="nineth-tab" data-toggle="tab" href="#nineth" role="tab" aria-controls="nineth" aria-selected="false">
+                 <i class="iconsminds-align-justify-all"></i>
+            </button>  
+        </div> 
+
+
         <div class="custom-control custom-checkbox pl-1 align-self-center pr-4">
-            <button class="btn btn-outline-theme-3 icon-button">
+            <button class="btn btn-outline-theme-3 icon-button" data-toggle="dropdown">
                 <i class="iconsminds-files"></i>
             </button> 
+               <div class="dropdown-menu">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="padding-left:20px">Download</a>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">Copy chart</a>
+                    <a href="#" class="dropdown-item">As jpeg file</a>
+                    <a href="#" class="dropdown-item">As excel file</a>
+                </div>
+        </div>
         </div>
     </div>
     <div class="num-response">
@@ -99,10 +284,33 @@
                 <span class="heading-number d-inline-block">2</span>Matrix Choice Type
             </div>
         </div>
+
+         <!-- Toggle view for chart -->
+        <div class="custom-control toggle-chart custom-checkbox pl-1 align-self-center pr-0">
+            <button class="btn btn-outline-theme-3 icon-button" id="tenth-tab" data-toggle="tab" href="#tenth" role="tab" aria-controls="tenth" aria-selected="false">
+                 <i class="simple-icon-chart"></i>
+            </button>  
+        </div> 
+        <!-- Toggle view for table -->
+        <div class="custom-control toggle-chart custom-checkbox pl-1 align-self-center pr-0">
+            <button class="btn btn-outline-theme-3 icon-button" id="eleventh-tab" data-toggle="tab" href="#eleventh" role="tab" aria-controls="eleventh" aria-selected="false">
+                 <i class="iconsminds-align-justify-all"></i>
+            </button>  
+        </div> 
+
+
         <div class="custom-control custom-checkbox pl-1 align-self-center pr-4">
-            <button class="btn btn-outline-theme-3 icon-button">
+            <button class="btn btn-outline-theme-3 icon-button" data-toggle="dropdown">
                 <i class="iconsminds-files"></i>
             </button> 
+                 <div class="dropdown-menu">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="padding-left:20px">Download</a>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">Copy chart</a>
+                    <a href="#" class="dropdown-item">As jpeg file</a>
+                    <a href="#" class="dropdown-item">As excel file</a>
+                </div>
+        </div>
         </div>
     </div>
     <div class="num-response">
@@ -171,62 +379,6 @@ const data = {
 
 };
 
-//data for muti-bar chart for martrix/grid choice response type
-// const data_multiBar = {
-//     labels: [
-//         'Practical skills','Subject knowledge', 'Creativity and innovation',
-//          'Critical thinking skills', 'Educational background', 'Programme of study', 
-//          'Work experience', 'Basic computer literacy', 'Oral communication',  'Team work',
-//          'Written communication', 'Entrepreneurial skills', 'Ethics (Loyalty, integrity)',  
-//         ],
-//     datasets: [
-//         {
-//         label: 'Not Important',
-//         data: [20, 60, 10, 5,23,34,56,12,23,24,11,12,13],
-//             backgroundColor: [
-//                 'rgba(225, 69, 0, 0.2)'//orangered
-                 
-//             ],
-//             borderColor: [
-//                 'rgb(225, 69, 0,)',
-                
-//             ],
-//             borderWidth: 2,
-//             hoverOffset: 5,
-           
-            
-//     }, {
-//         label: 'Fairly Important',
-//         data: [10, 50, 70, 15,13,24,36,2,63,84,31,19,73],
-//             backgroundColor: [
-//                 'rgba(54, 162, 235, 0.2)'//blue
-                  
-//             ],
-//             borderColor: [
-//                 'rgb(54, 162, 235)'
-                
-//             ],
-//             borderWidth: 2,
-//             hoverOffset: 5,
-
-//     },
-//     {
-//         label: 'Highly Important',
-//         data: [30, 20, 19, 51,3,4,6,19,25,29,1,38,3],
-//             backgroundColor: [
-//                 'rgba(142, 77, 250, 0.2)',//voilet 
-//             ],
-//             borderColor: [
-//                 'rgb(142, 77, 250)'
-//             ],
-//             borderWidth: 2,
-//             hoverOffset: 5,
-
-//     },
-        
-//     ],
-
-// };
 
 //config for pie chart with radio choices
 const config_pie_radio = {

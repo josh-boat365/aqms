@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{{ asset('css/vendor/select2-bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor/jquery.contextMenu.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor/component-custom-switch.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/dore.dark.bluenavy.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/dore.light.bluenavy.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 
     <style>

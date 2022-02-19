@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- Mirrored from dore-jquery.coloredstrategies.com/Apps.Survey.List.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 06 Nov 2021 22:42:02 GMT -->
 
 <head>
     <meta charset="UTF-8">
@@ -10,12 +9,17 @@
     <link rel="stylesheet" href="{{ asset('font/simple-line-icons/css/simple-line-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor/bootstrap.rtl.only.min.css') }}">
+     <link rel="stylesheet" href="{{ asset('css/vendor/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendor/datatables.responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendor/perfect-scrollbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendor/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendor/select2-bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor/perfect-scrollbar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor/select2-bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor/jquery.contextMenu.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor/component-custom-switch.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/dore.dark.bluenavy.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/dore.light.bluenavy.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <style>
         .theme-colors {
@@ -91,6 +95,7 @@
     <script src="{{ asset('js/vendor/perfect-scrollbar.min.js') }}"></script>
     <script src="{{ asset('js/vendor/charts.min.js') }}"></script>
     <script src="{{ asset('js/vendor/chartjs-plugin-datalabels.js') }}"></script>
+    <script src="{{ asset('js/vendor/datatables.min.js') }}"></script>
     <script src="{{ asset('js/vendor/moment.min.js') }}"></script>
     <script src="{{ asset('js/vendor/select2.full.js') }}"></script>
     <script src="{{ asset('js/vendor/mousetrap.min.js') }}"></script>

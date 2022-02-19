@@ -24,8 +24,17 @@
         right: 2rem;
         bottom: 2.2rem;
     }
+    .timeLine-chart{
+        width: 96%;
+        height: 61vh;
+        margin: 0 auto;
+        position: relative;
+        right: 2rem;
+        bottom: 2.2rem;
+    }
     
 </style>
+
 
 <div class="card question d-flex mb-4 edit-quesiton">
     <div class="d-flex flex-grow-1 min-width-zero">
@@ -35,9 +44,17 @@
             </div>
         </div>
         <div class="custom-control custom-checkbox pl-1 align-self-center pr-4">
-            <button class="btn btn-outline-theme-3 icon-button">
+            <button class="btn btn-outline-theme-3 icon-button" data-toggle="dropdown">
                 <i class="iconsminds-files"></i>
             </button> 
+            <div class="dropdown-menu">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="padding-left:20px">Download</a>
+            <div class="dropdown-menu">
+                <a href="#" class="dropdown-item">Copy chart</a>
+                <a href="#" class="dropdown-item">As jpeg file</a>
+                <a href="#" class="dropdown-item">As excel file</a>
+            </div>
+        </div>
         </div>
     </div>
         <div class="num-response">
@@ -57,9 +74,17 @@
             </div>
         </div>
         <div class="custom-control custom-checkbox pl-1 align-self-center pr-4">
-            <button class="btn btn-outline-theme-3 icon-button">
+            <button class="btn btn-outline-theme-3 icon-button" data-toggle="dropdown">
                 <i class="iconsminds-files"></i>
             </button> 
+            <div class="dropdown-menu">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="padding-left:20px">Download</a>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">Copy chart</a>
+                    <a href="#" class="dropdown-item">As jpeg file</a>
+                    <a href="#" class="dropdown-item">As excel file</a>
+                </div>
+        </div>
         </div>
     </div>
     <div class="num-response">
@@ -80,9 +105,17 @@
             </div>
         </div>
         <div class="custom-control custom-checkbox pl-1 align-self-center pr-4">
-            <button class="btn btn-outline-theme-3 icon-button">
+            <button class="btn btn-outline-theme-3 icon-button" data-toggle="dropdown">
                 <i class="iconsminds-files"></i>
             </button> 
+             <div class="dropdown-menu">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="padding-left:20px">Download</a>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">Copy chart</a>
+                    <a href="#" class="dropdown-item">As jpeg file</a>
+                    <a href="#" class="dropdown-item">As excel file</a>
+                </div>
+        </div>
         </div>
     </div>
     <div class="num-response">
@@ -102,9 +135,18 @@
             </div>
         </div>
         <div class="custom-control custom-checkbox pl-1 align-self-center pr-4">
-            <button class="btn btn-outline-theme-3 icon-button">
+            <button class="btn btn-outline-theme-3 icon-button" data-toggle="dropdown">
                 <i class="iconsminds-files"></i>
             </button> 
+             <div class="dropdown-menu">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="padding-left:20px">Download</a>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">Copy chart</a>
+                    <a href="#" class="dropdown-item">As jpeg file</a>
+                    <a href="#" class="dropdown-item">As excel file</a>
+                </div>
+        </div>
+            
         </div>
     </div>
     <div class="num-response">
@@ -112,10 +154,38 @@
     </div>
     <div class="chart department-chart card-body chart-body pt-0">
         <canvas id="yearGroupChart"></canvas>
-        
+    </div>
+</div>
+
+<div class="card card-matrixChoice question d-flex mb-4 edit-quesiton">
+    <div class="d-flex flex-grow-1 min-width-zero">
+        <div class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center">
+            <div class="list-item-heading mb-0 truncate w-80 mb-1 mt-1">
+                Survey TimeLine
+            </div>
+        </div>
+        <div class="custom-control custom-checkbox pl-1 align-self-center pr-4">
+            <button class="btn btn-outline-theme-3 icon-button" data-toggle="dropdown">
+                <i class="iconsminds-files"></i>
+            </button> 
+             <div class="dropdown-menu">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="padding-left:20px">Download</a>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">Copy chart</a>
+                    <a href="#" class="dropdown-item">As jpeg file</a>
+                    <a href="#" class="dropdown-item">As excel file</a>
+                </div>
+        </div>
+            
+        </div>
+    </div>
+    <!-- <div class="num-response">
+        <h6>64 Participants</h6>
+    </div> -->
+    <div class="chart timeLine-chart card-body chart-body pt-0">
+        <canvas id="timeLineChart"></canvas>
     </div>
 
-</div>
 
 {{-- Pie chart for radio choice response type --}}
 <script>
@@ -129,36 +199,10 @@ const config_genderChart = {
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(255, 159, 64, 0.2)',
-                // 'rgba(255, 205, 86, 0.2)',
-                // 'rgba(75, 192, 192, 0.2)',
-                // 'rgba(54, 162, 235, 0.2)',
-                // 'rgba(153, 102, 255, 0.2)',
-                // 'rgba(201, 203, 207, 0.2)',
-                //added colors
-                // 'rgba(99, 225, 222, 0.2)',
-                // 'rgba(255, 73, 112, 0.2)',
-                // 'rgba(149, 149, 149, 0.2)',
-                // 'rgba(142, 77, 250, 0.2)',
-                // 'rgba(80, 19, 192, 0.2)',
-                // 'rgba(19, 225, 82, 0.2)',
-                // 'rgba(225, 69, 0, 0.2)'
             ],
             borderColor: [
                 'rgb(255, 99, 132)',
                 'rgb(255, 159, 64)',
-                // 'rgb(255, 205, 86)',
-                // 'rgb(75, 192, 192)',
-                // 'rgb(54, 162, 235)',
-                // 'rgb(153, 102, 255)',
-                // 'rgb(201, 203, 207)',
-                //added colors
-                // 'rgb(99, 225, 222)',
-                // 'rgb(255, 73, 112)',
-                // 'rgb(149, 149, 149)',
-                // 'rgb(142, 77, 250)',
-                // 'rgb(80, 19, 192)',
-                // 'rgb(19, 225, 82)',
-                // 'rgb(225, 69, 0)'
             ],
             borderWidth: 2,
             hoverOffset: 5,
@@ -207,38 +251,12 @@ const config_sessionsChart = {
     datasets: [{
         data: [120, 60],
             backgroundColor: [
-                // 'rgba(255, 99, 132, 0.2)',
-                // 'rgba(255, 159, 64, 0.2)',
                 'rgba(255, 205, 86, 0.2)',
                 'rgba(75, 192, 192, 0.2)',
-                // 'rgba(54, 162, 235, 0.2)',
-                // 'rgba(153, 102, 255, 0.2)',
-                // 'rgba(201, 203, 207, 0.2)',
-                //added colors
-                // 'rgba(99, 225, 222, 0.2)',
-                // 'rgba(255, 73, 112, 0.2)',
-                // 'rgba(149, 149, 149, 0.2)',
-                // 'rgba(142, 77, 250, 0.2)',
-                // 'rgba(80, 19, 192, 0.2)',
-                // 'rgba(19, 225, 82, 0.2)',
-                // 'rgba(225, 69, 0, 0.2)'
             ],
             borderColor: [
-                // 'rgb(255, 99, 132)',
-                // 'rgb(255, 159, 64)',
                 'rgb(255, 205, 86)',
                 'rgb(75, 192, 192)',
-                // 'rgb(54, 162, 235)',
-                // 'rgb(153, 102, 255)',
-                // 'rgb(201, 203, 207)',
-                //added colors
-                // 'rgb(99, 225, 222)',
-                // 'rgb(255, 73, 112)',
-                // 'rgb(149, 149, 149)',
-                // 'rgb(142, 77, 250)',
-                // 'rgb(80, 19, 192)',
-                // 'rgb(19, 225, 82)',
-                // 'rgb(225, 69, 0)'
             ],
             borderWidth: 2,
             hoverOffset: 5,
@@ -488,6 +506,61 @@ const config_yearGroupChart = {
       plugins:[ChartDataLabels]
 };
 
+//config for time-line chart
+const config_timeLineChart = {
+    type: 'line',
+    data: {
+   labels: ['Jan 11', 'Jan 13', 'Jan 14', 'Jan 16', 'Jan 17', 'Jan 20','Jan 22', 
+                'Jan 23', 'Jan 24', 'Jan 25', 'Jan 26', 'Feb 1', 'Feb 4' ],
+    datasets: [{
+        data: [120, 60, 78, 78, 90, 12, 45, 30, 22, 10, 32, 54],
+            backgroundColor: [
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgb(255, 159, 64)',
+            ],
+            borderWidth: 2,
+            hoverOffset: 5,
+            // datalabels:{
+            //     align: 'top',
+            //     anchor: 'end',
+            //     offset: 8
+            // }
+    }, ],
+
+},
+    options: {
+        responsive: true,
+       plugins:{
+        legend:{
+            display: false,
+            position: "right"
+        },
+        tooltip:{
+            enabled: true
+        },
+        datalabels:{
+            align: 'center',
+            formatter: (value, context) =>{
+                //console.log(value)
+                //console.log(context.chart.data.datasets[0].data)
+                const datapoints = context.chart.data.datasets[0].data;
+                function totalSum( total, datapoint){
+                    return total + datapoint;
+                }
+                const totalValue = datapoints.reduce(totalSum, 0);
+                const percentageValue = (value/ totalValue * 100).toFixed(0);
+                const displayData = [`${value}`,`(${percentageValue}%)`]
+                return displayData;
+            }
+        }
+       },
+    },
+    plugins:[ChartDataLabels]
+};
+
+
 
 //render doughnurt chart for gender
 const genderChart = new Chart(document.getElementById('genderChart'), config_genderChart).getContext("2d");
@@ -498,5 +571,7 @@ const sessionsChart = new Chart(document.getElementById('sessionsChart'), config
 const departmentsCharts = new Chart(document.getElementById('departmentsChart'), config_departmentsChart).getContext("2d");
 // //render bar
 const yearGroupChart = new Chart(document.getElementById('yearGroupChart'), config_yearGroupChart).getContext("2d");
+// //render line chart
+const timeLineChart = new Chart(document.getElementById('timeLineChart'), config_timeLineChart).getContext("2d");
 </script>
 
