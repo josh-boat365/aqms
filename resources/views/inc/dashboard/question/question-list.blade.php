@@ -18,12 +18,12 @@
 
                 <div class="card-body">
                     <h1 class="col-11 section-header">{{ $survey->sections[$i - 1]->title }}</h1>
-                    <input type="text" name="sections[old][{{ $i }}][section_header]"
+                    <input type="text" name="sections[old][{{ $survey->sections[$i - 1]->id }}][section_header]"
                         value="{{ $survey->sections[$i - 1]->title }}" id="section-header-input" style="display: none"
                         class="form-control col-11 mb-3" placeholder="section-description (optional)">
                     <input type="hidden" class="section-name" value="section-1">
                     <p class="col-12 section-description">{{ $survey->sections[$i - 1]->description }}</p>
-                    <textarea name="sections[old][{{ $i }}][section_description]" id="section-description-input"
+                    <textarea name="sections[old][{{ $survey->sections[$i - 1]->id }}][section_description]" id="section-description-input"
                         style="display: none"
                         class="form-control col-12">{{ $survey->sections[$i - 1]->description }}</textarea>
                 </div>
@@ -59,12 +59,12 @@
                 
                 <div class="card-body">
                     <h1 class="col-11 section-header">{{ $survey->sections[$i - 1]->title }}</h1>
-                    <input type="text" name="sections[old][{{ $i }}][section_header]"
+                    <input type="text" name="sections[old][{{ $survey->sections[$i - 1]->id }}][section_header]"
                         value="{{ $survey->sections[$i - 1]->title }}" id="section-header-input" style="display: none"
                         class="form-control col-11 mb-3" placeholder="section-description (optional)">
                     <input type="hidden" class="section-name" value="section-1">
                     <p class="col-12 section-description">{{ $survey->sections[$i - 1]->description }}</p>
-                    <textarea name="sections[old][{{ $i }}][section_description]" id="section-description-input"
+                    <textarea name="sections[old][{{ $survey->sections[$i - 1]->id }}][section_description]" id="section-description-input"
                         style="display: none"
                         class="form-control col-12">{{ $survey->sections[$i - 1]->description }}</textarea>
                 </div>

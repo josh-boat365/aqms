@@ -90,7 +90,7 @@ class DashboardController extends Controller
 
     public function updateSurvey(Request $request)
     {
-        dd($request);
+        // dd($request);
         //unsectiioned
         if (isset($request['questions'])) {
 
