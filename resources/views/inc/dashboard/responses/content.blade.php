@@ -105,3 +105,4 @@
     </div>
 
 </main>
+@include('footer')

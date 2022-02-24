@@ -159,9 +159,9 @@
                                     </div>
 
                                 </div>
-                                <div class="search-sm  d-inline-block float-md-left mr-1 mb-1 align-top">
+                                {{-- <div class="search-sm  d-inline-block float-md-left mr-1 mb-1 align-top">
                                     <input class="orderby-search" placeholder="Search...">
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>

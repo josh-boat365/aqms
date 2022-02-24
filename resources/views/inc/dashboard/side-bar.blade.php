@@ -3,7 +3,7 @@
     <div class="main-menu">
         <div class="scroll">
             <ul class="list-unstyled">
-                <li id="dashboard-section"><a href="#dashboard"><i class="iconsminds-shop-4"></i> <span>Dashboards</span></a></li>
+                {{-- <li id="dashboard-section"><a href="#dashboard"><i class="iconsminds-shop-4"></i> <span>Dashboards</span></a></li> --}}
                 <li id="survey-section"><a href="#surveys"><i class="iconsminds-check"></i> Surveys</a></li>
                 <li id="user-section"><a href="{{ route('users.index') }}"><i class="simple-icon-people"></i>Users</a></li>
                 <li id="submission-section"><a href="{{route('submissions.index')}}"><i class="iconsminds-bar-chart-4"></i>Submissions</a></li>
@@ -16,8 +16,8 @@
             {{-- Dashboard's side-bar --}}
             <ul class="list-unstyled" data-link="dashboard">
 
-                <li><a href="{{ route('analytics.index') }}"><i class="simple-icon-pie-chart"></i> <span
-                            class="d-inline-block">Analytics</span></a></li>
+                {{-- <li><a href="{{ route('analytics.index') }}"><i class="simple-icon-pie-chart"></i> <span --}}
+                            {{-- class="d-inline-block">Analytics</span></a></li> --}}
             </ul>
 
             {{-- Survey's side-bar --}}

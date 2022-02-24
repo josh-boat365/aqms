@@ -8,6 +8,14 @@
                             {{-- class="glide__track" --}}
                             <ul class="glide__slides">
                                 {{-- class="glide__slides" --}}
+                                 <li class="glide__slide">
+                                    <a href="#" class="card">
+                                        <div class="card-body text-center"><i class="iconsminds-male-female"></i>
+                                            <p class="card-text mb-0">Total Number of Users</p>
+                                            <p class="lead text-center">16</p>
+                                        </div>
+                                    </a>
+                                </li>
                                 <li class="glide__slide">
                                     <a href="#" class="card">
                                         <div class="card-body text-center"><i class="iconsminds-male"></i>
@@ -37,6 +45,14 @@
                                         <div class="card-body text-center"><i class="iconsminds-diploma-2"></i>
                                             <p class="card-text mb-0">Part-Time Session</p>
                                             <p class="lead text-center">25</p>
+                                        </div>
+                                    </a>
+                                </li>
+                                 <li class="glide__slide">
+                                    <a href="#" class="card">
+                                        <div class="card-body text-center"><i class="iconsminds-add-user"></i>
+                                            <p class="card-text mb-0">Profile Updates</p>
+                                            <p class="lead text-center">32</p>
                                         </div>
                                     </a>
                                 </li>
