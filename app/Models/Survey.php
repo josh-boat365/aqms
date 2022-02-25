@@ -21,11 +21,19 @@ class Survey extends Model
         return $this->hasManyThrough(option::class, Question::class);
     }
 
-    public function columns(){
-        return $this->hasManyThrough(Subquestion::class, Question::class);
-    }
+    // public function columns(){
+    //     return $this->hasMany(Option::class);
+    // }
 
     public function submissions(){
         return $this->hasMany(Submission::class);
+    }
+
+    public function sections(){
+        return $this->hasMany(Section::class);
+    }
+
+    public function sectionQuestions(){
+        return $this->hasManyThrough(Question::class, Section::class);
     }
 }

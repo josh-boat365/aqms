@@ -9,5 +9,5 @@ class Section extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description'];
+    protected $fillable = ['title', 'description', 'survey_id'];
 }
