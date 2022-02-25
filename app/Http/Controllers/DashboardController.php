@@ -155,7 +155,7 @@ class DashboardController extends Controller
         //grid
         Subquestion::where('question_id', $request->que_id)->delete();
 
-        return redirect('/dashboard/surveys/' . $request->survey_id)->with('success', 'question deleted successfully');
+        return redirect('/dashboard/surveys/' . $request->survey_id)->with('success', 'Question '. $request->que_num .' Deleted Successfully');
     }
 
     public function viewResponse(Request $request)

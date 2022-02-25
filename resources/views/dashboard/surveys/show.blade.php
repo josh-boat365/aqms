@@ -125,6 +125,7 @@
             @csrf
             <input type="hidden" name="_method" value="DELETE">
             <input type="hidden" name="que_id" class="que_id">
+            <input type="hidden" name="que_num" class="que_num">
             <input type="hidden" name="survey_id" class="survey_id" value="{{ $survey->id }}">
         </form>
     @endsection
@@ -708,7 +709,11 @@
                 $que_id = $(this).parent().parent().parent().children('.question-collapse').children(
                         '.card-body').children('.edit-mode').children('.que-section').children('.que-num')
                     .val()
+
+                $que_num = $(this).parent().parent().children('.card-body').children('.list-item-heading').children('.heading-number').text();
+
                 $('#delete-que-form').children('.que_id').val($que_id);
+                $('#delete-que-form').children('.que_num').val($que_num);
                 $('#delete-que-form').submit();
             })
         })
