@@ -127,7 +127,7 @@ class QuestionController extends Controller
                     // new row option ✔
                     if ($has_new_row_options) {
 
-                        foreach ($questionObj['options']['rows']['new'] as $option_id => $optionObj) {
+                        foreach ($questionObj['options']['rows']['new'] as $group_id => $optionObj) {
                             $option = $optionObj['option'];
                             $order = $optionObj['order'];
                             $row_column = 'row';
@@ -174,10 +174,15 @@ class QuestionController extends Controller
 
                     // new single option ✔
                     if ($has_new_single_options) {
-                        foreach ($questionObj['options']['new'] as $id => $optionObj) {
+                        foreach ($questionObj['options']['new'] as $group_id => $optionObj) {
+                            // dd($optionObj);
                             $option = $optionObj['option'];
                             $order = $optionObj['order'];
-                            Option::create(compact('option', 'order', 'question_id'));
+                            
+                            if (!isset($optionObj['deleted'])) {
+                                Option::create(compact('option', 'order', 'question_id'));
+                            }
+                            
                         }
                     }
 
