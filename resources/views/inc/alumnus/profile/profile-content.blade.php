@@ -10,6 +10,10 @@
     .img-border{
         border: #00558d solid 2px !important;
     }
+
+    .nav-link:hover{
+        cursor: pointer;
+    }
 </style>
 <main>
     <div class="container-fluid">
@@ -28,34 +32,32 @@
                                 <div class="card-body">
                                     <div class="text-center pt-4">
                                         <p class="list-item-heading pt-2">{{ auth()->user()->firstName }}  {{ auth()->user()->lastName }}  {{ auth()->user()->otherName }}</p>
+                                        <p class="list-item-heading pt-2">2 / 7</p>
                                     </div>
-                                    <div class="d-flex">
-                                        <p class="mb-3">Name: &nbsp;</p>
-                                        <p class="mb-3">{{ auth()->user()->firstName }}  {{ auth()->user()->lastName }} {{ auth()->user()->otherName }} </p>
-                                    </div>
+                                    
                                     <div class="d-flex">
                                         <p class="mb-3">Email: &nbsp;</p>
                                         <p class="mb-3">{{ auth()->user()->email }}</p>
                                     </div>
                                     <div class="d-flex">
                                         <p class="mb-3">Gender: &nbsp;</p>
-                                        <p class="mb-3">Male</p>
+                                        <p class="mb-3"></p>
                                     </div>
                                     <div class="d-flex">
                                         <p class="mb-3">Phone number: &nbsp;</p>
-                                        <p class="mb-3">+233 0550746180</p>
+                                        <p class="mb-3"></p>
                                     </div>
                                     <div class="d-flex">
                                         <p class="mb-3">Program of study: &nbsp;</p>
-                                        <p class="mb-3">Computer Science</p>
+                                        <p class="mb-3"></p>
                                     </div>
                                     <div class="d-flex">
                                         <p class="mb-3">Department of study: &nbsp;</p>
-                                        <p class="mb-3">Computer Science</p>
+                                        <p class="mb-3"></p>
                                     </div>
                                     <div class="d-flex">
                                         <p class="mb-3">Year of completion: &nbsp;</p>
-                                        <p class="mb-3">2022</p>
+                                        <p class="mb-3"></p>
                                     </div>
      
                                 </div>
@@ -65,18 +67,18 @@
                             <div class="card mb-4">
                                 <div class="card-body">
                     
-                                   <ul class="nav nav-tabs separator-tabs ml-0 mb-5" role="tablist">
+                                    <ul class="nav nav-tabs separator-tabs ml-0 mb-5" role="tablist">
                                         <li class="nav-item">
-                                            <a class="nav-link active" id="first-tab" data-toggle="tab" href="#first" role="tab" aria-controls="first" aria-selected="false">UPDATE PROFILE</a>
+                                            <a class="nav-link active" id="profile-toggler">UPDATE PROFILE</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" id="second-tab" data-toggle="tab" href="#second" role="tab" aria-controls="second" aria-selected="true">CHANGE PASSWORD</a>
+                                            <a class="nav-link" id="password-toggler">CHANGE PASSWORD</a>
                                         </li>
                                 
                                     </ul>
 
                                 <div class="tab-content">
-                                    <div class="tab-pane show active" id="first" role="tabpanel" aria-labelledby="first-tab">
+                                    <div class="tab-pane show active" id="profile-content-section" role="tabpanel" aria-labelledby="first-tab">
                                         <form class="tooltip-right-bottom mob-view" novalidate method="POST" action="#">
                                                 @csrf
                                                 <div class="form-group has-float-label"><input value="{{old('firstName')}}" class="@error('firstName') border-danger @enderror form-control" name="firstName" required>
@@ -102,7 +104,7 @@
                                                     @enderror
                                                 </div>
                                                 <div class="form-group has-float-label">
-                                                    <select id="inputState" class="form-control">
+                                                    <select id="inputState" class="form-control select2-single">
                                                         <option selected="selected">Choose...</option>
                                                         <option value="Male">Male</option>
                                                         <option vlaue="Female">Female</option>
@@ -210,8 +212,15 @@
                                                 <button type="submit" class="btn btn-primary float-right">Update</button>
                                         </form>
                                     </div>
-                                    <div class="tab-pane show" id="second" role="tabpanel" aria-labelledby="second-tab">
+                                    <div class="tab-pane show" id="password-section" role="tabpanel" aria-labelledby="second-tab">
                                         <form class="tooltip-right-bottom mob-view" novalidate method="POST" action="#">
+                                            <div class="form-group has-float-label">
+                                                <input name="old-password" class="@error('old-password') border-danger @enderror form-control" type="password" required>
+                                                <span>Old Password</span>
+                                                @error('old-password')
+                                                <div class="invalid-tooltip d-block">{{$message}}</div>
+                                                @enderror
+                                            </div>
                                             <div class="form-group has-float-label">
                                                 <input name="password" class="@error('password') border-danger @enderror form-control" type="password" required>
                                                 <span>New Password</span>

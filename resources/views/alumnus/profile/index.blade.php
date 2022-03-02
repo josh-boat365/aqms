@@ -142,5 +142,27 @@
             $('#profile-section').addClass('active');
         })
     </script>
+
+<script>
+    $(function () {
+        $('#profile-section').addClass('active');
+
+        $('#password-toggler').click(function () {
+            $('#profile-toggler').removeClass('active');
+            $('#profile-content-section').removeClass('active');
+            console.log();
+            $(this).addClass('active');
+            $('#password-section').addClass('active');
+        })
+
+        $('#profile-toggler').click(function () {
+            $('#password-toggler').removeClass('active');
+            $('#password-section').removeClass('active');
+
+            $(this).addClass('active')
+            $('#profile-content-section').addClass('active')
+        })
+    })
+</script>
 </body>
 </html>
