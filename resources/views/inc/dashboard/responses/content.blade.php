@@ -54,7 +54,15 @@
                     </div>
                     {{-- Survey Level Analytics --}}
                     <div class="tab-pane show" id="fifth" role="tabpanel" aria-labelledby="fifth-tab">
+                        <div class="d-flex" style="gap: 34rem;" >
                                  <h1>Survey Level Analytics</h1>
+                                 <button type="button" id="add-new-btn" style="position: relative; bottom: 0.7rem;" class="btn btn-primary  top-right-button mr-1 dropdown-toggle" data-toggle="dropdown" >Download Survey Report</button>
+                                    <div class="dropdown-menu">
+                                        <a href="#" class="dropdown-item"> As csv file</a>
+                                        <a href="#" class="dropdown-item"> As pdf file</a>
+                                        <a href="#" class="dropdown-item"> As excel file</a>
+                                    </div>
+                        </div>
                         <div class="row">
                             <div class="col-lg-12 col-12 mb-4">
                                 @include('inc.dashboard.survey-level-analysis.survey-analysis-table')
