@@ -36,7 +36,7 @@
                                         </div>
                                         <span class="badge badge-pill badge-primary mb-1">Progress Update</span> <span class="badge badge-pill badge-success mb-1">2/7</span>
                                     </div>
-                                        <p class="list-item-heading pt-2">{{ auth()->user()->firstName }}  {{ auth()->user()->lastName }}  {{ auth()->user()->otherName }}</p>
+                                    <p class="list-item-heading pt-2">{{ auth()->user()->firstName }}  {{ auth()->user()->lastName }}  {{ auth()->user()->otherName }}</p>
                                     
                                     <div class="d-flex">
                                         <p class="mb-3">Email: &nbsp;</p>

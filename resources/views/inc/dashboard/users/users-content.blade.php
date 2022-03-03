@@ -66,18 +66,26 @@
         </div>
         <div class="separator mb-5"></div>
         {{-- Search Bar --}}
-        <div class="input-group dataTables_filter" id="DataTables_Table_0_filter">
-            <input type="text" class="form-control" aria-label="Text input with dropdown button" aria-controls="DataTables_Table_0" placeholder="Search for Alumni Info Here.....">
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="iconsminds-magnifi-glass"></i> Search</button>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Name/E-mail/Contact</a> 
-                    <a class="dropdown-item" href="#">Year Group</a> 
-                    <a class="dropdown-item" href="#">Department</a>
-                    <div role="separator" class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Program of Study</a>
+        <div style="gap: 20rem;">
+            <div class="input-group dataTables_filter " id="DataTables_Table_0_filter">
+                <input type="text" class="form-control" aria-label="Text input with dropdown button" aria-controls="DataTables_Table_0" placeholder="Search for Alumni Info Here.....">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" ><i class="iconsminds-download"></i> Download Alumnus Info</button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">As csv file</a> 
+                        <a class="dropdown-item" href="#">As pdf file</a> 
+                        <a class="dropdown-item" href="#">As excel file</a>
+                    </div>
                 </div>
             </div>
+            
+            {{-- <button type="button" class="btn btn-secondary  top-right-button mr-1 dropdown-toggle" data-toggle="dropdown" >Download Alumnus Info</button>
+            <div class="dropdown-menu">
+                <a href="#" class="dropdown-item"> As csv file</a>
+                <a href="#" class="dropdown-item"> As pdf file</a>
+                <a href="#" class="dropdown-item"> As excel file</a>
+            </div> --}}
+                        
         </div>
 
         {{-- Table --}}
