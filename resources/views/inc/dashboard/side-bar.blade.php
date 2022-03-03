@@ -7,7 +7,7 @@
                 <li id="survey-section"><a href="#surveys"><i class="iconsminds-check"></i> Surveys</a></li>
                 <li id="user-section"><a href="{{ route('users.index') }}"><i class="simple-icon-people"></i>Users</a></li>
                 <li id="submission-section"><a href="{{route('submissions.index')}}"><i class="iconsminds-bar-chart-4"></i>Submissions</a></li>
-                <li id="profile-section"><a href="{{route('dashboard.profile')}}"><i class="simple-icon-people"></i>Profile</a></li>
+                <li id=""><a href="{{route('dashboard.profile')}}"><i class="simple-icon-people"></i>Profile</a></li>
             </ul>
         </div>
     </div>
