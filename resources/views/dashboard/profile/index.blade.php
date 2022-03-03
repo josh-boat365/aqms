@@ -47,6 +47,7 @@
     <script src="{{ asset('js/vendor/mousetrap.min.js') }}"></script>
     <script src="{{ asset('js/vendor/jquery.contextMenu.min.js') }}"></script>
     <script src="{{ asset('js/vendor/baguetteBox.min.js') }}"></script>
+    <script src="{{ asset('js/vendor/progressbar.min.js') }}"></script>
     <script src="{{ asset('js/dore.script.js') }}"></script>
     <script src="{{ asset('js/scripts.js') }}"></script>
 

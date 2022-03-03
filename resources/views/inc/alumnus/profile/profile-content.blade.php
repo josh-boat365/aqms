@@ -31,9 +31,12 @@
                             <div class="card mb-4">
                                 <div class="card-body">
                                     <div class="text-center pt-4">
-                                        <p class="list-item-heading pt-2">{{ auth()->user()->firstName }}  {{ auth()->user()->lastName }}  {{ auth()->user()->otherName }}</p>
-                                        <p class="list-item-heading pt-2">2 / 7</p>
+                                        <div style=" padding: 10px" >
+                                             <div style="margin: 0 auto;"  role="progressbar" class="progress-bar-circle position-relative" data-color="#922c88" data-trailcolor="#d7d7d7" aria-valuemax="100" aria-valuenow="64" data-show-percent="true"></div>
+                                        </div>
+                                        <span class="badge badge-pill badge-primary mb-1">Progress Update</span> <span class="badge badge-pill badge-success mb-1">2/7</span>
                                     </div>
+                                        <p class="list-item-heading pt-2">{{ auth()->user()->firstName }}  {{ auth()->user()->lastName }}  {{ auth()->user()->otherName }}</p>
                                     
                                     <div class="d-flex">
                                         <p class="mb-3">Email: &nbsp;</p>

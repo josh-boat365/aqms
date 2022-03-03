@@ -48,6 +48,7 @@
     <script src="{{ asset('js/vendor/jquery.contextMenu.min.js') }}"></script>
     <script src="{{ asset('js/vendor/baguetteBox.min.js') }}"></script>
     <script src="{{ asset('js/dore.script.js') }}"></script>
+    <script src="{{ asset('js/vendor/progressbar.min.js') }}"></script>
     <script src="{{ asset('js/scripts.js') }}"></script>
 
     <script>
@@ -148,14 +149,14 @@
         $('#profile-section').addClass('active');
 
         $('#password-toggler').click(function () {
-            $('#profile-toggler').removeClass('active');
+            $('#ggler').removeClass('active');
             $('#profile-content-section').removeClass('active');
             console.log();
             $(this).addClass('active');
             $('#password-section').addClass('active');
         })
 
-        $('#profile-toggler').click(function () {
+        $('#ggler').click(function () {
             $('#password-toggler').removeClass('active');
             $('#password-section').removeClass('active');
 
