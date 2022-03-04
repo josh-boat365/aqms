@@ -86,6 +86,14 @@ class AlumnusController extends Controller
             'Science Laboratory Technology',
             'Hotel Catering and Institutional Management'
         ];
+
+        $alumnus = User::find(Auth::user()->id);
+        $updateProgress = 2;
+        if ($alumnus->gender) $updateProgress++;
+        if ($alumnus->phone) $updateProgress++;
+        if ($alumnus->program_of_study) $updateProgress++;
+        if ($alumnus->department_of_study) $updateProgress++;
+        if ($alumnus->year_of_completion) $updateProgress++;
         
         $allSurveys = Survey::all();
         $surveys = Survey::all()->where('status_id', 2);
