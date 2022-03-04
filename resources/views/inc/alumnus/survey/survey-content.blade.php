@@ -15,7 +15,7 @@
                
                 <div class="separator mb-5"></div>
                 {{-- @if (($updateProgress != 4 && auth()->user()->isAdmin) || ($updateProgress != 7 && !auth()->user()->isAdmin)) --}}
-                @if ($updateProgress != 4 && auth()->user()->isAdmin)
+                @if ($updateProgress != 7 )
                     
                 @include('welcome')
                 @endif
