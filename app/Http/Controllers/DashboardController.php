@@ -42,7 +42,10 @@ class DashboardController extends Controller
         $notifications = Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2);
         $users = User::all();
 
-        
+        $admin = User::find(Auth::user()->id);
+        $updateProgress = 2;
+        if ($admin->gender) $updateProgress++;
+        if ($admin->phone) $updateProgress++;        
         
         return view('dashboard.profile.index', compact('surveys', 'notifications', 'users', 'updateProgress'))->with('allSurveys', Survey::all());
     }
