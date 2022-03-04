@@ -72,7 +72,12 @@ class DashboardController extends Controller
 
     public function submissions()
     {
-        return view('dashboard.submissions.index')->with(['notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2), 'allSurveys' => Survey::all(), 'users' => User::all(), 'submissions' => Submission::all(), 'notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2),]);
+        $admin = User::find(Auth::user()->id);
+        $updateProgress = 2;
+        if ($admin->gender) $updateProgress++;
+        if ($admin->phone) $updateProgress++; 
+
+        return view('dashboard.submissions.index')->with(['updateProgress' => $updateProgress, 'notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2), 'allSurveys' => Survey::all(), 'users' => User::all(), 'submissions' => Submission::all(), 'notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2),]);
     }
 
     public function users()

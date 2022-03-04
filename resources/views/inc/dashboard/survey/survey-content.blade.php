@@ -169,10 +169,10 @@
                         </div>
                     </div>
                     <div class="separator mb-5"></div>
-                    @if ($updateProgress != 4)
+                    
                         
                     @include('inc.dashboard.dashboard-welcome')
-                    @endif
+                    
                     {{-- Survey Tile Header --}}
                     <div class="card mb-5 tile-header">
                         <div class=" card-body row">
