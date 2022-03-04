@@ -13,6 +13,7 @@ use App\Models\Submission;
 use App\Models\Subquestion;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -25,13 +26,45 @@ class DashboardController extends Controller
 
     public function index()
     {
+        $admin = User::find(Auth::user()->id);
+        $updateProgress = 2;
+        if ($admin->gender) $updateProgress++;
+        if ($admin->phone) $updateProgress++;
 
-        return view('dashboard.surveys.index', ['notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2), 'users' => User::all()])->with('allSurveys', Survey::all());
+        return view('dashboard.surveys.index', ['updateProgress' => $updateProgress, 'notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2), 'users' => User::all()])->with('allSurveys', Survey::all());
     }
+
+    
 
     public function profile()
     {
-        return view('dashboard.profile.index', ['surveys' => Survey::all(), 'notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2), 'users' => User::all()])->with('allSurveys', Survey::all());
+        $surveys = Survey::all();
+        $notifications = Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2);
+        $users = User::all();
+
+        
+        
+        return view('dashboard.profile.index', compact('surveys', 'notifications', 'users', 'updateProgress'))->with('allSurveys', Survey::all());
+    }
+
+    public function updateProfile(Request $request){
+        // dd($request->all());
+       
+       $setData = $this->getSetProfileData($request->all());
+
+       User::find(auth()->user()->id)->update($setData);
+
+       return redirect()->route('dashboard.profile');
+    }
+
+    public function getSetProfileData($data){
+        $record = [];
+        foreach ($data as $detail => $value) {
+            if ($value && $detail != '_token') {
+                $record[$detail] = $value;
+            }
+        }
+        return $record;
     }
 
     public function submissions()

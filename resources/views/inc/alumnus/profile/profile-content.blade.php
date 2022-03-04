@@ -32,9 +32,9 @@
                                 <div class="card-body">
                                     <div class="text-center pt-4">
                                         <div style=" padding: 10px" >
-                                             <div style="margin: 0 auto;"  role="progressbar" class="progress-bar-circle position-relative" data-color="#922c88" data-trailcolor="#d7d7d7" aria-valuemax="100" aria-valuenow="64" data-show-percent="true"></div>
+                                             <div style="margin: 0 auto;"  role="progressbar" class="progress-bar-circle position-relative" data-color="#922c88" data-trailcolor="#d7d7d7" aria-valuemax="100" aria-valuenow="{{($updateProgress / 7) * 100}}" data-show-percent="true"></div>
                                         </div>
-                                        <span class="badge badge-pill badge-primary mb-1">Progress Update</span> <span class="badge badge-pill badge-success mb-1">2/7</span>
+                                        <span class="badge badge-pill badge-primary mb-1">Progress Update</span> <span class="badge badge-pill badge-success mb-1">{{$updateProgress}}/7</span>
                                     </div>
                                     <p class="list-item-heading pt-2">{{ auth()->user()->firstName }}  {{ auth()->user()->lastName }}  {{ auth()->user()->otherName }}</p>
                                     
@@ -44,23 +44,23 @@
                                     </div>
                                     <div class="d-flex">
                                         <p class="mb-3">Gender: &nbsp;</p>
-                                        <p class="mb-3"></p>
+                                        <p class="mb-3">{{ auth()->user()->gender }}</p>
                                     </div>
                                     <div class="d-flex">
                                         <p class="mb-3">Phone number: &nbsp;</p>
-                                        <p class="mb-3"></p>
+                                        <p class="mb-3">{{ auth()->user()->phone }}</p>
                                     </div>
                                     <div class="d-flex">
                                         <p class="mb-3">Program of study: &nbsp;</p>
-                                        <p class="mb-3"></p>
+                                        <p class="mb-3">{{ auth()->user()->program_of_study }}</p>
                                     </div>
                                     <div class="d-flex">
                                         <p class="mb-3">Department of study: &nbsp;</p>
-                                        <p class="mb-3"></p>
+                                        <p class="mb-3">{{ auth()->user()->department_of_study }}</p>
                                     </div>
                                     <div class="d-flex">
                                         <p class="mb-3">Year of completion: &nbsp;</p>
-                                        <p class="mb-3"></p>
+                                        <p class="mb-3">{{ auth()->user()->year_of_completion }}</p>
                                     </div>
      
                                 </div>
@@ -84,131 +84,187 @@
                                     <div class="tab-pane show active" id="profile-content-section" role="tabpanel" aria-labelledby="first-tab">
                                         <form class="tooltip-right-bottom mob-view" novalidate method="POST" action="#">
                                                 @csrf
-                                                <div class="form-group has-float-label"><input value="{{old('firstName')}}" class="@error('firstName') border-danger @enderror form-control" name="firstName" required>
+                                                <div class="form-group has-float-label"><input  class="@error('firstName') border-danger @enderror form-control" name="firstName" placeholder="{{auth()->user()->firstName}}" autocomplete="off" >
                                                     <span>First Name</span>
                                                     @error('firstName')
                                                         <div class="invalid-tooltip d-block">{{$message}}</div>
                                                     @enderror
                                                 </div>
-                                                <div class="form-group has-float-label"><input value="{{old('lastName')}}" class="@error('lastName') border-danger @enderror form-control" name="lastName" required>
+                                                <div class="form-group has-float-label"><input  class="@error('lastName') border-danger @enderror form-control" name="lastName" placeholder="{{auth()->user()->lastName}}" autocomplete="off" >
                                                     <span>Last Name</span>
                                                     @error('lastName')
                                                         <div class="invalid-tooltip d-block">{{$message}}</div>
                                                     @enderror
                                                 </div>
-                                                <div class="form-group has-float-label"><input value="{{old('otherName')}}" class="form-control" name="otherName" required>
+                                                <div class="form-group has-float-label"><input  class="form-control" name="otherName" placeholder="{{auth()->user()->otherName}}" autocomplete="off" >
                                                     <span>Other Name (optional)</span>
                                                 </div>
                                                 <div class="form-group has-float-label">
-                                                    <input value="{{old('email')}}" class="@error('email') border-danger @enderror form-control" name="email" required>
+                                                    <input  class="@error('email') border-danger @enderror form-control" name="email" placeholder="{{auth()->user()->email}}" autocomplete="off" >
                                                     <span>E-mail</span>
                                                     @error('email')
                                                         <div class="invalid-tooltip d-block">{{$message}}</div>
                                                     @enderror
                                                 </div>
                                                 <div class="form-group has-float-label">
-                                                    <select id="inputState" class="form-control select2-single">
+                                                    <select id="inputState" class="form-control select2-single" name="gender">
                                                         <option selected="selected">Choose...</option>
-                                                        <option value="Male">Male</option>
-                                                        <option vlaue="Female">Female</option>
+                                                        <option value="Male" @if (strtolower(auth()->user()->gender) == "male")
+                                                            selected
+                                                        @endif>Male</option>
+                                                        <option value="Female" @if (strtolower(auth()->user()->gender) == "female")
+                                                            selected
+                                                        @endif>Female</option>
                                                     </select>
                                                     <span>Gender</span> 
                                                 </div>
                                                 <div class="form-group has-float-label">
-                                                    <input value="" type="tel" class="form-control" name="contact" required>
+                                                    <input  type="tel" class="form-control" name="phone" placeholder="{{auth()->user()->phone}}" autocomplete="off" >
                                                     <span>Phone number</span>
                                                 </div>
                                             {{-- Program Studied --}}
-                                                <div class="form-group has-float-label">
+                                                {{-- <div class="form-group has-float-label">
                                                     <select class="form-control select2-single" name="jQueryTopLabelsState" required data-width="100%">
                                                         <option></option>
-                                                        <option value="BTECH - Mechanical Engineering">BTECH - Mechanical Engineering</option>
-                                                        <option value="BTECH - Automobile Engineering">BTECH - Automobile Engineering</option>
-                                                        <option value="BTECH - Electrical/Electronics Engineering">BTECH - Electrical/Electronics Engineering</option>
-                                                        <option value="BTECH - Civil Engineering">BTECH - Civil Engineering</option>
-                                                        <option value="BTECH - Building Technology">BTECH - Building Technology</option>
-                                                        <option value="BTECH - Medical Laboratory Science">BTECH - Medical Laboratory Science</option>
-                                                        <option value="BTECH - Science Laboratory Science">BTECH - Science Laboratory Science</option>
-                                                        <option value="BTECH - Statistics">BTECH - Statistics</option>
-                                                        <option value="BTECH - Computer Science">BTECH - Computer Science</option>
-                                                        <option value="BTECH - Fashion Design and Textiles">BTECH - Fashion Design and Textiles</option>
-                                                        <option value="BTECH - Procurement and Supply Chain Management">BTECH - Procurement and Supply Chain Management</option>
-                                                        <option value="BTECH - Accounting">BTECH - Accounting</option>
-                                                        <option value="BTECH - Banking and Finance">BTECH - Banking and Finance</option>
-                                                        <option value="BTECH - Secretaryship and Management Studies">BTECH - Secretaryship and Management Studies</option>
-                                                        <option value="BTECH - Marketing">BTECH - Marketing</option>
-                                                        <option value="HND - Mechanical Engineering">HND - Mechanical Engineering</option>
-                                                        <option value="HND - Electrical/Electronics Engineering">HND - Electrical/Electronics Engineering</option>
-                                                        <option value="HND - Building Technology">HND - Building Technology</option>
-                                                        <option value="HND - Civil Engineering">HND - Civil Engineering</option>
-                                                        <option value="HND - Interior Design and Technology">HND - Interior Design and Technology</option>
-                                                        <option value="HND - Furniture Design and Production">HND - Furniture Design and Production</option>
-                                                        <option value="HND - Science Laboratory Technology (SLT)">HND - Science Laboratory Technology (SLT)</option>
-                                                        <option value="HND - Statistics">HND - Statistics</option>
-                                                        <option value="HND - Computer Science">HND - Computer Science</option>
-                                                        <option value="HND - Hotel, Catering and Institutional Management (HCIM)">HND - Hotel, Catering and Institutional Management (HCIM)</option>
-                                                        <option value="HND - Accountancy">HND - Accountancy</option>
-                                                        <option value="HND - Marketing">HND - Marketing</option>
-                                                        <option value="HND - Purchasing and Supply">HND - Purchasing and Supply</option>
-                                                        <option value="HND - Secretaryship and Management Studies">HND - Secretaryship and Management Studies</option>
-                                                        <option value="HND - Bilingual Secretaryship and Management Studies">HND - Bilingual Secretaryship and Management Studies</option>
-                                                        <option value="HND - Fashion Design and Textiles">HND - Fashion Design and Textiles</option>
-                                                        <option value="CERTIFICATE">CERTIFICATE</option>
+                                                        <option @if (auth()->user()->program_of_study)
+                                                            selected
+                                                        @endif value="BTECH - Mechanical Engineering">BTECH - Mechanical Engineering</option>
+                                                        <option @if (auth()->user()->program_of_study)
+                                                            selected
+                                                        @endif value="BTECH - Automobile Engineering">BTECH - Automobile Engineering</option>
+                                                        <option @if (auth()->user()->program_of_study)
+                                                            selected
+                                                        @endif value="BTECH - Electrical/Electronics Engineering">BTECH - Electrical/Electronics Engineering</option>
+                                                        <option @if (auth()->user()->program_of_study)
+                                                            selected
+                                                        @endif value="BTECH - Civil Engineering">BTECH - Civil Engineering</option>
+                                                        <option @if (auth()->user()->program_of_study)
+                                                            selected
+                                                        @endif value="BTECH - Building Technology">BTECH - Building Technology</option>
+                                                        <option @if (auth()->user()->program_of_study)
+                                                            selected
+                                                        @endif value="BTECH - Medical Laboratory Science">BTECH - Medical Laboratory Science</option>
+                                                        <option @if (auth()->user()->program_of_study)
+                                                            selected
+                                                        @endif value="BTECH - Science Laboratory Science">BTECH - Science Laboratory Science</option>
+                                                        <option @if (auth()->user()->program_of_study)
+                                                            selected
+                                                        @endif value="BTECH - Statistics">BTECH - Statistics</option>
+                                                        <option @if (auth()->user()->program_of_study)
+                                                            selected
+                                                        @endif value="BTECH - Computer Science">BTECH - Computer Science</option>
+                                                        <option @if (auth()->user()->program_of_study)
+                                                            selected
+                                                        @endif value="BTECH - Fashion Design and Textiles">BTECH - Fashion Design and Textiles</option>
+                                                        <option @if (auth()->user()->program_of_study)
+                                                            selected
+                                                        @endif value="BTECH - Procurement and Supply Chain Management">BTECH - Procurement and Supply Chain Management</option>
+                                                        <option @if (auth()->user()->program_of_study)
+                                                            selected
+                                                        @endif value="BTECH - Accounting">BTECH - Accounting</option>
+                                                        <option @if (auth()->user()->program_of_study)
+                                                            selected
+                                                        @endif value="BTECH - Banking and Finance">BTECH - Banking and Finance</option>
+                                                        <option @if (auth()->user()->program_of_study)
+                                                            selected
+                                                        @endif value="BTECH - Secretaryship and Management Studies">BTECH - Secretaryship and Management Studies</option>
+                                                        <option @if (auth()->user()->program_of_study)
+                                                            selected
+                                                        @endif value="BTECH - Marketing">BTECH - Marketing</option>
+                                                        <option @if (auth()->user()->program_of_study)
+                                                            selected
+                                                        @endif value="HND - Mechanical Engineering">HND - Mechanical Engineering</option>
+                                                        <option @if (auth()->user()->program_of_study)
+                                                            selected
+                                                        @endif value="HND - Electrical/Electronics Engineering">HND - Electrical/Electronics Engineering</option>
+                                                        <option @if (auth()->user()->program_of_study)
+                                                            selected
+                                                        @endif value="HND - Building Technology">HND - Building Technology</option>
+                                                        <option @if (auth()->user()->program_of_study)
+                                                            selected
+                                                        @endif value="HND - Civil Engineering">HND - Civil Engineering</option>
+                                                        <option @if (auth()->user()->program_of_study)
+                                                            selected
+                                                        @endif value="HND - Interior Design and Technology">HND - Civil Engineering</option>
+                                                        <option @if (auth()->user()->program_of_study)
+                                                            selected
+                                                        @endif value="HND - Furniture Design and Production">HND - Furniture Design and Production</option>
+                                                        <option @if (auth()->user()->program_of_study)
+                                                            selected
+                                                        @endif value="HND - Science Laboratory Technology (SLT)">HND - Science Laboratory Technology (SLT)</option>
+                                                        <option @if (auth()->user()->program_of_study)
+                                                            selected
+                                                        @endif value="HND - Statistics">HND - Statistics</option>
+                                                        <option @if (auth()->user()->program_of_study)
+                                                            selected
+                                                        @endif value="HND - Computer Science">HND - Computer Science</option>
+                                                        <option @if (auth()->user()->program_of_study)
+                                                            selected
+                                                        @endif value="HND - Hotel, Catering and Institutional Management (HCIM)">HND - Hotel, Catering and Institutional Management (HCIM)</option>
+                                                        <option @if (auth()->user()->program_of_study)
+                                                            selected
+                                                        @endif value="HND - Accountancy">HND - Accountancy</option>
+                                                        <option @if (auth()->user()->program_of_study)
+                                                            selected
+                                                        @endif value="HND - Marketing">HND - Marketing</option>
+                                                        <option @if (auth()->user()->program_of_study)
+                                                            selected
+                                                        @endif value="HND - Purchasing and Supply">HND - Purchasing and Supply</option>
+                                                        <option @if (auth()->user()->program_of_study)
+                                                            selected
+                                                        @endif value="HND - Secretaryship and Management Studies">HND - Secretaryship and Management Studies</option>
+                                                        <option @if (auth()->user()->program_of_study)
+                                                            selected
+                                                        @endif value="HND - Bilingual Secretaryship and Management Studies">HND - Bilingual Secretaryship and Management Studies</option>
+                                                        <option @if (auth()->user()->program_of_study)
+                                                            selected
+                                                        @endif value="HND - Fashion Design and Textiles">HND - Fashion Design and Textiles</option>
+                                                        <option @if (auth()->user()->program_of_study)
+                                                            selected
+                                                        @endif value="CERTIFICATE">CERTIFICATE</option>
+                                                    </select>
+                                                    <span>Program Studied</span>
+                                                </div> --}}
+                                                
+                                                <div class="form-group has-float-label">
+                                                    <select class="form-control select2-single" name="program_of_study" required data-width="100%">
+                                                        <option></option>
+                                                        @foreach ($all_programs_of_study as $program_of_study)
+                                                        <option @if (auth()->user()->program_of_study == $program_of_study)
+                                                            selected
+                                                        @endif value="{{$program_of_study}}">{{$program_of_study}}</option>
+                                                        @endforeach
                                                     </select>
                                                     <span>Program Studied</span>
                                                 </div>
+
                                                 {{-- Department --}}
                                                 <div class="form-group has-float-label">
-                                                    <select class="form-control select2-single" name="jQueryTopLabelsState" required data-width="100%">
+                                                    <select class="form-control select2-single" name="department_of_study" required data-width="100%">
                                                         <option></option>
-                                                        <option value="Accounting and Finance">Accounting and Finance</option>
-                                                        <option value="Applied Mathematics and Statistics">Applied Mathematics and Statistics</option>
-                                                        <option value="Building Technology">Building Technology</option>
-                                                        <option value="Civil Engineering">Civil Engineering</option>
-                                                        <option value="Electrical and Electronic Engineering">Electrical and Electronic Engineering</option>
-                                                        <option value="Fashion Design and Textiles">Fashion Design and Textiles</option>
-                                                        <option value="Interior Design and Upholstery Technology">Interior Design and Upholstery Technology</option>
-                                                        <option value="Liberal Studies and Communications Technology">Liberal Studies and Communications Technology</option>
-                                                        <option value="Management and Public Administration">Management and Public Administration</option>
-                                                        <option value="Marketing">Marketing</option>
-                                                        <option value="Medical laboratory Technology">Medical laboratory Technology</option>
-                                                        <option value="Procurement and Supply Chain Management">Procurement and Supply Chain Management</option>
-                                                        <option value="Science Laboratory Technology">Science Laboratory Technology</option>
-                                                        <option value="Hotel Catering and Institutional Management">Hotel Catering and Institutional Management</option>
+
+                                                        @foreach ($all_departments_of_study as $department_of_study)
+                                                        <option @if (auth()->user()->program_of_study == $program_of_study)
+                                                            selected
+                                                        @endif value="{{$department_of_study}}">{{$department_of_study}}</option>
+                                                        @endforeach
                                                 
                                                     </select><span>Department of study</span>
                                                 </div>
                                                 {{-- Year of completion --}}
                                                 <div class="form-group has-float-label">
-                                                    <select class="form-control select2-single" name="jQueryTopLabelsState" required data-width="100%">
+                                                    <select class="form-control select2-single" name="year_of_completion" required data-width="100%">
                                                         <option></option>
                                                         
-                                                            <option value="2020">2020</option>
-                                                            <option value="2019">2019</option>
-                                                        
-                                                    
-                                                            <option value="2018">2018</option>
-                                                            <option value="2017">2017</option>
-                                                            <option value="2016">2016</option>
-                                                            <option value="2015">2015</option>
-                                                
-                                                        
-                                                            <option value="2014">2014</option>
-                                                            <option value="2013">2013</option>
-                                                            <option value="2012">2012</option>
-                                                            <option value="2011">2011</option>
-                                                            <option value="2010">2010</option>
-                                                            <option value="2009">2009</option>
-                                                            <option value="2008">2008</option>
-                                                            <option value="2007">2007</option>
-                                                            <option value="2006">2006</option>
-                                                            <option value="2005">2005</option>
-                                                            <option value="2004">2004</option>
-                                                            <option value="2003">2003</option>
-                                                            <option value="2002">2002</option>
-                                                            <option value="2001">2001</option>
-                                                            <option value="2000">2000</option>
-                                                            <option value="Before 2000">Before 2000</option>
+                                                           @for ($year = $last_year; $year >= 2000; $year--)
+                                                           <option @if (auth()->user()->year_of_completion == $year)
+                                                            selected
+                                                        @endif value="{{$year}}">{{$year}}</option>
+                                                               
+                                                           @endfor
+                                                            <option @if (auth()->user()->year_of_completion == "Before 2000")
+                                                                selected
+                                                            @endif value="Before 2000">Before 2000</option>
                                                         
                                                     </select><span>Year of completion</span>
                                                 </div>

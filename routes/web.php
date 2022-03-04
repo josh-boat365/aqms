@@ -44,6 +44,7 @@ Route::post('/dashboard/surveys/view-response', '\App\Http\Controllers\Dashboard
 Route::post('/dashboard/surveys', '\App\Http\Controllers\DashboardController@addQuestion')->name('survey.addQuestion');
     // profile
 Route::get('/dashboard/profile/', '\App\Http\Controllers\DashboardController@profile')->name('dashboard.profile');
+Route::post('/dashboard/profile/', '\App\Http\Controllers\DashboardController@updateProfile')->name('dashboard.profile.update');
     // submission
 Route::get('/dashboard/submissions', '\App\Http\Controllers\DashboardController@submissions')->name('submissions.index');
 Route::get('/dashboard/submissions/{i}', '\App\Http\Controllers\DashboardController@showSubmissions')->name('submissions.show');
@@ -70,3 +71,4 @@ Route::post('/home/surveys/save', '\App\Http\Controllers\AlumnusController@saveS
 Route::post('/home/surveys/submit', '\App\Http\Controllers\AlumnusController@submitSurvey')->name('alumnus.survey.submit');
     // profile
 Route::get('home/profile/', '\App\Http\Controllers\AlumnusController@profile')->name('alumnus.profile');
+Route::post('home/profile/', '\App\Http\Controllers\AlumnusController@updateProfile')->name('alumnus.profile.update');

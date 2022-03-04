@@ -107,35 +107,38 @@
                                     </div>
                                 </div>
                             </div>
+                            
                             <div class="modal fade " id="deleteWarning" tabindex="-1" role="dialog"
-                                aria-hidden="true">
-                                <div class="modal-dialog bg-transparent" role="document">
-                                    <div class="modal-content" style="border-radius:1rem; ">
-                                        <div class="modal-header bg-danger text-white">
-                                            <h3 class="modal-title">WARNING!</h3><button type="button"
-                                                class="close" data-dismiss="modal" aria-label="Close"><span
-                                                    aria-hidden="true">&times;</span></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <h3>All data will be lost</h3>
-                                            <br>
-                                            
-                                        </div>
-                                        <div class="modal-footer">
-                                            <form action="{{route('survey.delete')}}" method="post" id="delete-form">
-                                                <input type="hidden" name="_method" value="DELETE">
-                                                <input type="hidden" name="survey_id" class="survey_id">
-                                                {{-- <input type="hidden" name="date" class="date"> --}}
-                                                @csrf
+                            aria-hidden="true">
+                            <div class="modal-dialog bg-transparent" role="document">
+                                <div class="modal-content" style="border-radius:1rem; ">
+                                    <div class="modal-header bg-danger text-white">
+                                        <h3 class="modal-title">WARNING!</h3><button type="button"
+                                            class="close" data-dismiss="modal" aria-label="Close"><span
+                                                aria-hidden="true">&times;</span></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h3>All data will be lost</h3>
+                                        <br>
+                                        
+                                    </div>
+                                    <div class="modal-footer">
+                                        <form action="{{route('survey.delete')}}" method="post" id="delete-form">
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <input type="hidden" name="survey_id" class="survey_id">
+                                            {{-- <input type="hidden" name="date" class="date"> --}}
+                                            @csrf
 
-                                                <input type="submit" value="Delete" class="btn btn-danger archive-btn">
-                                            </form>
-                                            <button type="button" class="btn btn-secondary"
-                                                data-dismiss="modal">Cancel</button>
-                                        </div>
+                                            <input type="submit" value="Delete" class="btn btn-danger archive-btn">
+                                        </form>
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Cancel</button>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                            
+                            
                         </div>
 
                     </div>
@@ -166,7 +169,10 @@
                         </div>
                     </div>
                     <div class="separator mb-5"></div>
+                    @if ($updateProgress != 4)
+                        
                     @include('inc.dashboard.dashboard-welcome')
+                    @endif
                     {{-- Survey Tile Header --}}
                     <div class="card mb-5 tile-header">
                         <div class=" card-body row">

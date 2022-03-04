@@ -32,9 +32,9 @@
                                 <div class="card-body">
                                     <div class="text-center pt-4">
                                         <div style=" padding: 10px" >
-                                             <div style="margin: 0 auto;"  role="progressbar" class="progress-bar-circle position-relative" data-color="#922c88" data-trailcolor="#d7d7d7" aria-valuemax="100" aria-valuenow="42" data-show-percent="true"></div>
+                                             <div style="margin: 0 auto;"  role="progressbar" class="progress-bar-circle position-relative" data-color="#922c88" data-trailcolor="#d7d7d7" aria-valuemax="100" aria-valuenow="{{($updateProgress/4) * 100}}" data-show-percent="true"></div>
                                         </div>
-                                        <span class="badge badge-pill badge-primary mb-1">Progress Update</span> <span class="badge badge-pill badge-success mb-1">2/4</span>
+                                        <span class="badge badge-pill badge-primary mb-1">Progress Update</span> <span class="badge badge-pill badge-success mb-1">{{$updateProgress}}/4</span>
                                     </div>
                                     <p class="list-item-heading pt-2">{{ auth()->user()->firstName }}  {{ auth()->user()->lastName }}  {{ auth()->user()->otherName }}</p>
                                     
@@ -44,11 +44,15 @@
                                     </div>
                                     <div class="d-flex">
                                         <p class="mb-3">Gender: &nbsp;</p>
-                                        <p class="mb-3"></p>
+                                        <p class="mb-3">@isset(auth()->user()->gender)
+                                            {{ auth()->user()->gender }}
+                                        @endisset</p>
                                     </div>
                                     <div class="d-flex">
                                         <p class="mb-3">Phone number: &nbsp;</p>
-                                        <p class="mb-3"></p>
+                                        <p class="mb-3">@isset(auth()->user()->phone)
+                                            {{ auth()->user()->phone }}
+                                        @endisset</p>
                                     </div>
                                     
      
@@ -71,40 +75,44 @@
 
                                 <div class="tab-content">
                                     <div class="tab-pane show active" id="profile-content-section">
-                                        <form class="tooltip-right-bottom mob-view" novalidate method="POST" action="#">
+                                        <form class="tooltip-right-bottom mob-view" novalidate method="POST" action="{{route('dashboard.profile.update')}}">
                                                 @csrf
-                                                <div class="form-group has-float-label"><input value="{{old('firstName')}}" class="@error('firstName') border-danger @enderror form-control" name="firstName" required>
+                                                <div class="form-group has-float-label"><input  class="@error('firstName') border-danger @enderror form-control" name="firstName" placeholder="{{auth()->user()->firstName}}" autocomplete="off" >
                                                     <span>First Name</span>
                                                     @error('firstName')
                                                         <div class="invalid-tooltip d-block">{{$message}}</div>
                                                     @enderror
                                                 </div>
-                                                <div class="form-group has-float-label"><input value="{{old('lastName')}}" class="@error('lastName') border-danger @enderror form-control" name="lastName" required>
+                                                <div class="form-group has-float-label"><input  class="@error('lastName') border-danger @enderror form-control" name="lastName" placeholder="{{auth()->user()->lastName}}" autocomplete="off" >
                                                     <span>Last Name</span>
                                                     @error('lastName')
                                                         <div class="invalid-tooltip d-block">{{$message}}</div>
                                                     @enderror
                                                 </div>
-                                                <div class="form-group has-float-label"><input value="{{old('otherName')}}" class="form-control" name="otherName" required>
+                                                <div class="form-group has-float-label"><input  class="form-control" name="otherName" placeholder="{{auth()->user()->otherName}}" autocomplete="off" >
                                                     <span>Other Name (optional)</span>
                                                 </div>
                                                 <div class="form-group has-float-label">
-                                                    <input value="{{old('email')}}" class="@error('email') border-danger @enderror form-control" name="email" required>
+                                                    <input  class="@error('email') border-danger @enderror form-control" name="email" placeholder="{{auth()->user()->email}}" autocomplete="off" >
                                                     <span>E-mail</span>
                                                     @error('email')
                                                         <div class="invalid-tooltip d-block">{{$message}}</div>
                                                     @enderror
                                                 </div>
                                                 <div class="form-group has-float-label">
-                                                    <select id="inputState" class="form-control select2-single">
+                                                    <select id="inputState" class="form-control select2-single" name="gender">
                                                         <option selected="selected">Choose...</option>
-                                                        <option value="Male">Male</option>
-                                                        <option vlaue="Female">Female</option>
+                                                        <option value="Male" @if (strtolower(auth()->user()->gender) == "male")
+                                                            selected
+                                                        @endif>Male</option>
+                                                        <option value="Female" @if (strtolower(auth()->user()->gender) == "female")
+                                                            selected
+                                                        @endif>Female</option>
                                                     </select>
                                                     <span>Gender</span> 
                                                 </div>
                                                 <div class="form-group has-float-label">
-                                                    <input value="" type="tel" class="form-control" name="contact" required>
+                                                    <input  type="tel" class="form-control" name="phone" placeholder="{{auth()->user()->phone}}" autocomplete="off" >
                                                     <span>Phone number</span>
                                                 </div>
                                             
@@ -114,21 +122,21 @@
                                     <div class="tab-pane show" id="password-section">
                                         <form class="tooltip-right-bottom mob-view" novalidate method="POST" action="#">
                                             <div class="form-group has-float-label">
-                                                <input name="old-password" class="@error('old-password') border-danger @enderror form-control" type="password" required>
+                                                <input name="old-password" class="@error('old-password') border-danger @enderror form-control" type="password" >
                                                 <span>Old Password</span>
                                                 @error('old-password')
                                                 <div class="invalid-tooltip d-block">{{$message}}</div>
                                                 @enderror
                                             </div>
                                             <div class="form-group has-float-label">
-                                                <input name="password" class="@error('password') border-danger @enderror form-control" type="password" required>
+                                                <input name="password" class="@error('password') border-danger @enderror form-control" type="password" >
                                                 <span>New Password</span>
                                                 @error('password')
                                                 <div class="invalid-tooltip d-block">{{$message}}</div>
                                                 @enderror
                                             </div>
                                             <div class="form-group has-float-label"><input name="password_confirmation" class="form-control"
-                                                type="password" required>
+                                                type="password" >
                                                 <span>Confirm new Password</span>
                                             </div>
                                             <button type="submit" class="btn btn-primary float-right">Update</button>
