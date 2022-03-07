@@ -9,6 +9,8 @@ class Survey extends Model
 {
     use HasFactory;
 
+    protected $fillable=['name', 'description'];
+
     public function status(){
         return $this->belongsTo(Status::class);
     }
