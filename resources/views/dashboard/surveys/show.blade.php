@@ -1280,7 +1280,7 @@
     <script>
         $(function() {
             $('.upd-que').click(function() {
-
+                $(this).attr("disabled", true);
                 // $('.question').each(function () {
                 //     console.log($(this));
                 // })
