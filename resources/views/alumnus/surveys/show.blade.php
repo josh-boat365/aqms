@@ -359,7 +359,7 @@
                 $(this).parent().parent().parent().parent().parent().addClass('answered')
             })
 
-
+            
             $('input').each(function() {
                 //text box
                 if ($(this).attr('type') == 'text') {
@@ -392,14 +392,15 @@
 
                         $question = $(this).parent().parent().parent().parent().parent().parent().parent()
                             .parent().parent();
-                        $column_inputs = $(this).parent().parent().children('.check-box').length;
+                        $column_inputs = $(this).parent().parent().children('.check-box');
+                        // console.log($column_inputs);
 
                         $x = 0;
                         $y = 0;
                         $answered = [];
+
                         // each column
                         $(this).parent().parent().parent().children('div').each(function() {
-
 
                             // each checkbox container
                             $(this).children('.check-box').each(function() {
