@@ -55,7 +55,7 @@
         <li><a href="#"> Archived Surveys <span
                     class="float-right">{{ $allSurveys->where('status_id', '3')->count() }}</span></a></li>
         <li><a href="#"> Submitted Surveys <span
-                    class="float-right">null</span></a></li>
+                    class="float-right">{{ $submissions->count() }}</span></a></li>
     @endsection
 
     @section('survey-form')

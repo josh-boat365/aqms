@@ -31,7 +31,12 @@ class DashboardController extends Controller
         if ($admin->gender) $updateProgress++;
         if ($admin->phone) $updateProgress++;
 
-        return view('dashboard.surveys.index', ['updateProgress' => $updateProgress, 'notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2), 'users' => User::all()])->with('allSurveys', Survey::all());
+        $notifications = Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2);
+        $allSurveys = Survey::all();
+        $users = User::all();
+        $submissions = Submission::all();
+
+        return view('dashboard.surveys.index', compact('updateProgress', 'notifications', 'allSurveys', 'users', 'submissions'));
     }
 
     
@@ -77,7 +82,12 @@ class DashboardController extends Controller
         if ($admin->gender) $updateProgress++;
         if ($admin->phone) $updateProgress++; 
 
-        return view('dashboard.submissions.index')->with(['updateProgress' => $updateProgress, 'notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2), 'allSurveys' => Survey::all(), 'users' => User::all(), 'submissions' => Submission::all(), 'notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2),]);
+        $notifications = Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2);
+        $allSurveys = Survey::all();
+        $users = User::all();
+        $submissions = Submission::all();
+
+        return view('dashboard.submissions.index', compact('updateProgress', 'notifications', 'allSurveys', 'users', 'submissions'));
     }
 
     public function users()

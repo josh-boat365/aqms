@@ -60,7 +60,7 @@
                     class="float-right">{{ $allSurveys->where('status_id', '1')->count() }}</span></a></li>
         <li><a href="#"> Archived Surveys <span
                     class="float-right">{{ $allSurveys->where('status_id', '3')->count() }}</span></a></li>
-        <li><a href="#"> Submitted Surveys <span class="float-right">null</span></a></li>
+        <li><a href="#"> Submitted Surveys <span class="float-right">{{$submissions->count()}}</span></a></li>
 
         <a class="archive-warning" style="display: none" data-toggle="modal" href="#archiveWarning">test dialog</a>
         <a class="deploy-warning" style="display: none" data-toggle="modal" href="#deployWarning">test dialog</a>
