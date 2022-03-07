@@ -64,72 +64,33 @@
                     <i class="simple-icon-bell"></i>
                     <span class="count">{{$notifications->where('notification_type_id', 3)->count()}}</span>
                 </button>
-                <div class="dropdown-menu dropdown-menu-right mt-3 position-absolute" id="notificationDropdown">
+                <div class="dropdown-menu dropdown-menu-right mt-3 position-absolute" id="notificationDropdown" style="width: 25rem">
                     <div class="scroll">
                         @foreach ($notifications->where('notification_type_id', 3) as $notification)
-                            <div class="d-flex flex-row mb-3 pb-3 border-bottom">
-                                {{-- <a href="#">
-                                    <img src="{{ asset('img/profiles/l-2.jpg') }}" alt="Notification Image"
+                            <div class="d-flex flex-row mb-2 pb-3 separator" style="background-color: #fdfdfd; padding: 0.5rem;">
+                                <a href="#">
+                                    <img src="{{ asset('img/profiles/atu-logo-round.png') }}" alt="Notification Image"
                                         class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle">
 
-                                </a> --}}
+                                </a>
                                 <div class="pl-3">
                                     <a href="{{ url('/home/surveys/' . $notification->survey_id) }}">
-                                        <p class="font-weight-medium mb-1">
-                                            new survey deploymnet
-                                        </p>
-                                        
-                                        <p class="font-weight-medium mb-1"> - @foreach ($allSurveys->where('id', $notification->survey_id) as $survey)
-                                                {{ $survey->name }}
-                                            @endforeach</p>
+                                        <div class="d-flex" style="position: relative; top: 1.2rem; gap: 4.8rem;">
+                                            {{-- <p class="font-weight-medium "> New Survey:</p> --}}
+                                            <p class="font-weight-medium text-nowrap truncate" style="margin-left: -1rem" > @foreach ($allSurveys->where('id', $notification->survey_id) as $survey)
+                                                    {{ $survey->name }} 
+                                                @endforeach
+                                            </p>
 
-                                        <p class="text-muted mb-0 text-small">
-                                            {{ $notification->created_at->format('d/m/y') }}
-                                            ({{ $notification->created_at->format(' h : s ') }})</p>
+                                            <p class="text-muted text-nowrap text-small">
+                                                {{ $notification->created_at->format('d/m/y') }}
+                                                ({{ $notification->created_at->format(' h : s ') }})
+                                            </p>
+                                        </div>
                                     </a>
                                 </div>
                             </div>
-                        @endforeach
-                        {{-- <div class="d-flex flex-row mb-3 pb-3 border-bottom">
-                            <a href="#"><img src="{{ asset('img/profiles/l-2.jpg') }}" alt="Notification Image"
-                                    class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle"></a>
-                            <div class="pl-3">
-                                <a href="#">
-                                    <p class="font-weight-medium mb-1">Joisse Kaycee just sent a new comment!</p>
-                                    <p class="text-muted mb-0 text-small">09.04.2018 - 12:45</p>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="d-flex flex-row mb-3 pb-3 border-bottom">
-                            <a href="#"><img src="{{ asset('img/notifications/1.jpg') }}" alt="Notification Image"
-                                    class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle"></a>
-                            <div class="pl-3">
-                                <a href="#">
-                                    <p class="font-weight-medium mb-1">1 item is out of stock!</p>
-                                    <p class="text-muted mb-0 text-small">09.04.2018 - 12:45</p>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="d-flex flex-row mb-3 pb-3 border-bottom">
-                            <a href="#"><img src="{{ asset('img/notifications/2.jpg') }}" alt="Notification Image"
-                                    class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle"></a>
-                            <div class="pl-3">
-                                <a href="#">
-                                    <p class="font-weight-medium mb-1">New order received! It is total $147,20.</p>
-                                    <p class="text-muted mb-0 text-small">09.04.2018 - 12:45</p>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="d-flex flex-row mb-3 pb-3">
-                            <a href="#"><img src="{{ asset('img/notifications/3.jpg') }}" alt="Notification Image')}}"
-                                    class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle"></a>
-                            <div class="pl-3">
-                                <a href="#">
-                                    <p class="font-weight-medium mb-1">3 items just added to wish list by a user!</p>
-                                    <p class="text-muted mb-0 text-small">09.04.2018 - 12:45</p>
-                                </a>
-                            </div>
-                        </div> --}}
+                        @endforeach                 
                     </div>
                 </div>
             </div>
