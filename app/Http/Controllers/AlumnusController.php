@@ -75,6 +75,7 @@ class AlumnusController extends Controller
             'Applied Mathematics and Statistics',
             'Building Technology',
             'Civil Engineering',
+            'Computer Science',
             'Electrical and Electronic Engineering',
             'Fashion Design and Textiles',
             'Interior Design and Upholstery Technology',

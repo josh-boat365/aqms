@@ -84,23 +84,23 @@
                                     <div class="tab-pane show active" id="profile-content-section" role="tabpanel" aria-labelledby="first-tab">
                                         <form class="tooltip-right-bottom mob-view" novalidate method="POST" action="#">
                                                 @csrf
-                                                <div class="form-group has-float-label"><input  class="@error('firstName') border-danger @enderror form-control" name="firstName" placeholder="{{auth()->user()->firstName}}" autocomplete="off" >
+                                                <div class="form-group has-float-label"><input  class="@error('firstName') border-danger @enderror form-control" name="firstName" value="{{auth()->user()->firstName}}" autocomplete="off" >
                                                     <span>First Name</span>
                                                     @error('firstName')
                                                         <div class="invalid-tooltip d-block">{{$message}}</div>
                                                     @enderror
                                                 </div>
-                                                <div class="form-group has-float-label"><input  class="@error('lastName') border-danger @enderror form-control" name="lastName" placeholder="{{auth()->user()->lastName}}" autocomplete="off" >
+                                                <div class="form-group has-float-label"><input  class="@error('lastName') border-danger @enderror form-control" name="lastName" value="{{auth()->user()->lastName}}" autocomplete="off" >
                                                     <span>Last Name</span>
                                                     @error('lastName')
                                                         <div class="invalid-tooltip d-block">{{$message}}</div>
                                                     @enderror
                                                 </div>
-                                                <div class="form-group has-float-label"><input  class="form-control" name="otherName" placeholder="{{auth()->user()->otherName}}" autocomplete="off" >
+                                                <div class="form-group has-float-label"><input  class="form-control" name="otherName" value="{{auth()->user()->otherName}}" autocomplete="off" >
                                                     <span>Other Name (optional)</span>
                                                 </div>
                                                 <div class="form-group has-float-label">
-                                                    <input  class="@error('email') border-danger @enderror form-control" name="email" placeholder="{{auth()->user()->email}}" autocomplete="off" >
+                                                    <input  class="@error('email') border-danger @enderror form-control" name="email" value="{{auth()->user()->email}}" autocomplete="off" >
                                                     <span>E-mail</span>
                                                     @error('email')
                                                         <div class="invalid-tooltip d-block">{{$message}}</div>
@@ -119,7 +119,7 @@
                                                     <span>Gender</span> 
                                                 </div>
                                                 <div class="form-group has-float-label">
-                                                    <input  type="tel" class="form-control" name="phone" placeholder="{{auth()->user()->phone}}" autocomplete="off" >
+                                                    <input  type="tel" class="form-control" name="phone" value="{{auth()->user()->phone}}" autocomplete="off" >
                                                     <span>Phone number</span>
                                                 </div>
                                             {{-- Program Studied --}}
