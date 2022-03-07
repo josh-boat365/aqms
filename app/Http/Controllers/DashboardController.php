@@ -141,8 +141,8 @@ class DashboardController extends Controller
 
     public function updateSurvey(Request $request)
     {
-        // dd($request);
-        //unsectiioned
+        $this->validate($request, ['description' => 'max:250']);
+
         if (isset($request['questions'])) {
 
             QuestionController::processSurveyQuestions($request);
@@ -158,8 +158,6 @@ class DashboardController extends Controller
         //      - survey updated successfully
         return redirect('/dashboard/surveys/' . $request->survey_id)->with('success', 'survey updated successfully');
     }
-
-    
 
     public function deploySurvey(Request $request)
     {

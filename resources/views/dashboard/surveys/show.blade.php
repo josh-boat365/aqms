@@ -198,6 +198,15 @@
         })
     </script>
 
+    <script>
+        $(function () {
+            @error('description')
+                console.log('desc error registered');
+                $('.card-top-buttons .desc-edit').trigger('click');
+            @enderror
+        })
+    </script>
+
     {{-- switching sections --}}
     <script>
         $(function() {
@@ -965,7 +974,7 @@
     {{-- desc-edit/save --}}
     <script>
         $(function() {
-            $('.desc-edit').on('click', function() {
+            $('.summary-edit').on('click', function() {
 
                 if ($(this).hasClass('desc-edit')) {
                     $description = $(this).parent().parent().children('.card-body').children('.desc')

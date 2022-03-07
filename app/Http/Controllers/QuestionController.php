@@ -3,14 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Models\Option;
-use App\Models\Question;
+use App\Models\Survey;
 use App\Models\Section;
+use App\Models\Question;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
 {
     public static function processSurveyQuestions($request, $is_sectioned = false)
     {
+
+        
+
+        $survey_id = $request['survey_id'];
+        $name = $request['name'];
+        $description = $request['description'];
+
+        Survey::find($survey_id)->update(compact('name', 'description'));
         
         if ($is_sectioned) {
             // dd('is sectioned');
@@ -34,6 +43,7 @@ class QuestionController extends Controller
                     if ($section_has_questions) {
                         QuestionController::storeQuestions($sectionObj, $section_id, $request['survey_id']);
                     }
+
                 }
             } else if ($has_old_section){
                 // dd('has old section');
