@@ -8,13 +8,13 @@
         margin: auto;
     }
 
-    @media (min-width: 320px) and (max-width: 656px) {
+    @media (min-width: 320px) and (max-width: 900px) {
         .dash-survey-tile {
             display: flex !important;
             flex-direction: row !important;
         }
         .tile-text{
-            font-size: 74%;
+            font-size: 80%;
         }
         .surv-name{
             white-space: normal !important;
