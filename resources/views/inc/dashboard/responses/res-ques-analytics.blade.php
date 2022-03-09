@@ -853,17 +853,17 @@
     @for ($i = 0; $i < count($survey->questions); $i++)
         @if ($survey->questions[$i]->option_type_id == 3)
             // <canvas id="radio-{{$i}}"></canvas>
-            const radioChoice = new Chart(document.getElementById('radio-{{$i}}'), config_radio);
+            new Chart(document.getElementById('radio-{{$i}}'), config_radio);
                 
         @elseif ($survey->questions[$i]->option_type_id == 4)
             // <canvas id="drop-{{$i}}"></canvas>
-            const dropdownChoice = new Chart(document.getElementById('drop-{{$i}}'), config_radio);
+            new Chart(document.getElementById('drop-{{$i}}'), config_radio);
         @elseif ($survey->questions[$i]->option_type_id == 5)
             // <canvas id="check-{{$i}}"></canvas>
-            const checkboxChoice = new Chart(document.getElementById('check-{{$i}}'), config_checkbox);
+            new Chart(document.getElementById('check-{{$i}}'), config_checkbox);
         @else
             // <canvas id="grid-{{$i}}"></canvas>
-            const matrixChoice = new Chart(document.getElementById('grid-{{$i}}'), config_matrix);
+            new Chart(document.getElementById('grid-{{$i}}'), config_matrix);
         @endif
     @endfor
     //render pie chart for radio choice types
