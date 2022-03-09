@@ -50,6 +50,26 @@
                                                                 @elseif ($survey->questions[$i]->option_type_id ==
                                                                     4)
                                                                     @foreach ($survey->options->where('question_id', $survey->questions[$i]->id) as $option)
+                                                                    <div class="custom-control ">
+                                                                        {{-- <input
+                                                                            value="{{ $option->option }}"
+                                                                            type="radio"
+                                                                            @foreach ($allResponses->where('user_id', $submission->user_id) as $response)@if ($response->response == $option->option) checked @endif @endforeach
+                                                                            id="o{{ $option->id }}"
+                                                                            name="ans[{{ $survey->questions[$i]->id }}]"
+                                                                            class="custom-control-input" disabled> --}}
+                                                                            <select   disabled="disabled">
+                                                                                <option 
+                                                                                @foreach ($allResponses->where('user_id', $submission->user_id) as $response)@if ($response->response == $option->option) selected @endif @endforeach
+                                                                                value="{{ $option->option }}">{{ $option->option }}</option>
+                                                                            </select>
+                                                                        <label class="custom-control-label"
+                                                                            for="o{{ $option->id }}">{{ $option->option }}</label>
+                                                                    </div>
+                                                                @endforeach
+                                                                @elseif ($survey->questions[$i]->option_type_id ==
+                                                                    5)
+                                                                    @foreach ($survey->options->where('question_id', $survey->questions[$i]->id) as $option)
                                                                         <div class="custom-control d-flex custom-checkbox">
                                                                             <input value="{{ $option->option }}"
                                                                                 class="custom-control-input"
