@@ -861,7 +861,7 @@
         @elseif ($survey->questions[$i]->option_type_id == 5)
             // <canvas id="check-{{$i}}"></canvas>
             new Chart(document.getElementById('check-{{$i}}'), config_checkbox);
-        @else
+        @elseif ($survey->questions[$i]->option_type_id == 6)
             // <canvas id="grid-{{$i}}"></canvas>
             new Chart(document.getElementById('grid-{{$i}}'), config_matrix);
         @endif
