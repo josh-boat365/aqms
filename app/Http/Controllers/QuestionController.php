@@ -273,10 +273,10 @@ class QuestionController extends Controller
                     }
 
                     if ($has_single_options) {
-                        dd('has single options');
-                        foreach ($questionObj['options']['new'] as $order => $option) {
-                            // $option = $optionObj['option'];
-                            // $order = $optionObj['order'];
+                        // dd()
+                        foreach ($questionObj['options']['new'] as $order => $optionObj) {
+                            $option = $optionObj['option'];
+                            $order = $optionObj['order'];
                             Option::create(compact('option', 'order', 'question_id'));
                         }
                     }
