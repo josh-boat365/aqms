@@ -45,8 +45,8 @@
                                         </div>
                                     @endforeach
                                 @elseif ($survey->questions[$i]->option_type_id == 4)
-                                        <div class="custom-control ">
-                                            <select disabled="disabled">
+                                        <div class="form-group">
+                                            <select disabled="disabled" class="form-control select2-single">
                                     @foreach ($survey->options->where('question_id', $survey->questions[$i]->id) as $option)
                                                 <option
                                                     @foreach ($allResponses->where('user_id', $submission->user_id) as $response) @if ($response->response == $option->option) selected @endif
