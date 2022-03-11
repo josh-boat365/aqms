@@ -59,57 +59,51 @@
 </style>
 
 @for ($i = 0; $i < count($survey->questions); $i++)
-                                            <div class="card question d-flex mb-4 card-style">
-                                                <div class="d-flex flex-grow-1 min-width-zero">
-                                                    <div
-                                                        class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center">
-                                                        <div class="list-item-heading mb-0 truncate w-80 mb-1 mt-1">
-                                                            <span
-                                                                class="heading-number d-inline-block">{{ $i + 1 }}
-                                                            </span></div>
-                                                    </div>
-                                                </div>
-                                                <div class="question-collapse collapse show"
-                                                    id="q{{ $survey->questions[$i]->id }}">
-                                                    <div class="card-body pt-0">
-                                                        {{-- view --}}
-                                                        <div class="edit-mode">
-                                                            <label class="preview-question">
-                                                                {{ $survey->questions[$i]->question }}
-                                                            </label>
-                                                            <div class="mb-4">
-                                                                @if ($survey->questions[$i]->option_type_id == 1 || $survey->questions[$i]->option_type_id == 2)
-                                                                <p class="list-item-heading">All Responses</p>
-                                                                    <div class="scroll h-100  mt-2" style="max-height: 500px">
-                                                                        <div class="">
-                                                                            @foreach ($allResponses->where('question_id', $survey->questions[$i]->id) as $response)
-                                                                                
-                                                                                <p class="mb-0 alumnus-hover alumnus-hover" title="something">{{$response->response}}</p>
-                                                                                <div style="background-color:white; height: 3px"></div>
-                                                                            @endforeach
-                                                                            
-                                                            
-                                                            
-                                                            
-                                                                        </div>
-                                                            
-                                                                    </div>
-                                                                {{-- @elseif ($survey->questions[$i]->option_type_id ==
+    <div class="card question d-flex mb-4 card-style">
+        <div class="d-flex flex-grow-1 min-width-zero">
+            <div
+                class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center">
+                <div class="list-item-heading mb-0 truncate w-80 mb-1 mt-1">
+                    <span class="heading-number d-inline-block">{{ $i + 1 }}
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="question-collapse collapse show" id="q{{ $survey->questions[$i]->id }}">
+            <div class="card-body pt-0">
+                {{-- view --}}
+                <div class="edit-mode">
+                    <label class="preview-question">
+                        {{ $survey->questions[$i]->question }}
+                    </label>
+                    <div class="mb-4">
+                        @if ($survey->questions[$i]->option_type_id == 1 || $survey->questions[$i]->option_type_id == 2)
+                            <p class="list-item-heading">All Responses</p>
+                            <div class="scroll h-100  mt-2" style="max-height: 500px">
+                                <div class="">
+                                    @foreach ($allResponses->where('question_id', $survey->questions[$i]->id) as $response)
+                                        <p class="mb-0 alumnus-hover alumnus-hover" title="something">
+                                            {{ $response->response }}</p>
+                                        <div style="background-color:white; height: 3px"></div>
+                                    @endforeach
+
+
+
+
+                                </div>
+
+                            </div>
+                            {{-- @elseif ($survey->questions[$i]->option_type_id ==
                                                                     2) --}}
-                                                                    
-                                                                @elseif ($survey->questions[$i]->option_type_id ==
-                                                                    3)
-                                                                    <canvas id="radio-{{$i}}"></canvas>
-                                                                    
-                                                                @elseif ($survey->questions[$i]->option_type_id ==
-                                                                    4)
-                                                                    <canvas id="drop-{{$i}}"></canvas>
-                                                                @elseif ($survey->questions[$i]->option_type_id ==
-                                                                    5)
-                                                                    <canvas id="check-{{$i}}"></canvas>
-                                                                @else
-                                                                    <canvas id="grid-{{$i}}"></canvas>
-                                                                    {{-- <div class="row col-12">
+                        @elseif ($survey->questions[$i]->option_type_id == 3)
+                            <canvas id="radio-{{ $i }}"></canvas>
+                        @elseif ($survey->questions[$i]->option_type_id == 4)
+                            <canvas id="drop-{{ $i }}"></canvas>
+                        @elseif ($survey->questions[$i]->option_type_id == 5)
+                            <canvas id="check-{{ $i }}"></canvas>
+                        @elseif ($survey->questions[$i]->option_type_id == 6)
+                            <canvas id="grid-{{ $i }}"></canvas>
+                            {{-- <div class="row col-12">
                                                                         <div class="d-flex flex-column col-2">
                                                                             <div style="height: 50px"></div>
                                                                             @foreach ($survey->options->where('question_id', $survey->questions[$i]->id) as $option)
@@ -136,13 +130,13 @@
 
                                                                         </div>
                                                                     </div> --}}
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @endfor
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endfor
 
 {{-- text (single/multi line) --}}
 {{-- <div class="card mb-4" style="top: 115px; z-index: 0">
@@ -624,22 +618,6 @@
 
 {{-- Pie chart for radio choice response type --}}
 <script>
-    @for ($i = 0; $i < count($survey->questions); $i++)
-        @if ($survey->questions[$i]->option_type_id == 3)
-            // <canvas id="radio-{{$i}}"></canvas>
-          
-                
-        @elseif ($survey->questions[$i]->option_type_id == 4)
-            // <canvas id="drop-{{$i}}"></canvas>
-
-        @elseif ($survey->questions[$i]->option_type_id == 5)
-            // <canvas id="check-{{$i}}"></canvas>
-
-        @else
-            // <canvas id="grid-{{$i}}"></canvas>
-
-        @endif
-    @endfor
     const data = {
         labels: [
             'Male', 'Female', 'Prefer Not to say', 'other', 'He', 'She', 'Him', 'With', 'Are',
@@ -850,29 +828,305 @@
         //   plugins:[ChartDataLabels]
     };
 
+    $backgroundColor = [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 205, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(201, 203, 207, 0.2)',
+                //added colors
+                'rgba(99, 225, 222, 0.2)',
+                'rgba(255, 73, 112, 0.2)',
+                'rgba(149, 149, 149, 0.2)',
+                'rgba(142, 77, 250, 0.2)',
+                'rgba(80, 19, 192, 0.2)',
+                'rgba(19, 225, 82, 0.2)',
+                'rgba(225, 69, 0, 0.2)'
+    ],
+
+    $borderColor = [
+                'rgb(255, 99, 132)',
+                'rgb(255, 159, 64)',
+                'rgb(255, 205, 86)',
+                'rgb(75, 192, 192)',
+                'rgb(54, 162, 235)',
+                'rgb(153, 102, 255)',
+                'rgb(201, 203, 207)',
+                //added colors
+                'rgb(99, 225, 222)',
+                'rgb(255, 73, 112)',
+                'rgb(149, 149, 149)',
+                'rgb(142, 77, 250)',
+                'rgb(80, 19, 192)',
+                'rgb(19, 225, 82)',
+                'rgb(225, 69, 0)'
+    ],
+
     @for ($i = 0; $i < count($survey->questions); $i++)
         @if ($survey->questions[$i]->option_type_id == 3)
-            // <canvas id="radio-{{$i}}"></canvas>
-            new Chart(document.getElementById('radio-{{$i}}'), config_radio);
-                
+            // <canvas id="radio-{{ $i }}"></canvas>
+            new Chart(document.getElementById('radio-{{ $i }}'), {
+            type: 'doughnut',
+            data: {
+                labels: [
+                    @foreach($survey->options->where('question_id', $survey->questions[$i]->id) as $option)
+                        "{{$option->option}}",
+                    @endforeach
+                ],
+                datasets: [{
+                    data: [
+                        @foreach($survey->options->where('question_id', $survey->questions[$i]->id) as $option)
+                            {{$survey->responses->where('question_id', $survey->questions[$i]->id)->where('response', $option->option)->count()}},
+                        @endforeach
+                        
+                    ],
+                    backgroundColor: $backgroundColor,
+                    borderColor: $borderColor,
+                    borderWidth: 2,
+                    hoverOffset: 5,
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: "right"
+                    },
+                    tooltip: {
+                        enabled: true
+                    },
+                    datalabels: {
+                        align: 'center',
+                        formatter: (value, context) => {
+                            //console.log(value)
+                            //console.log(context.chart.data.datasets[0].data)
+                            const datapoints = context.chart.data.datasets[0].data;
+
+                            function totalSum(total, datapoint) {
+                                return total + datapoint;
+                            }
+                            const totalValue = datapoints.reduce(totalSum, 0);
+                            const percentageValue = (value / totalValue * 100).toFixed(0);
+                            const displayData = [`${value}`, `(${percentageValue}%)`]
+                            return displayData;
+                        }
+                    }
+                },
+            },
+            plugins: [ChartDataLabels]
+        });
         @elseif ($survey->questions[$i]->option_type_id == 4)
-            // <canvas id="drop-{{$i}}"></canvas>
-            new Chart(document.getElementById('drop-{{$i}}'), config_radio);
+            // <canvas id="drop-{{ $i }}"></canvas>
+            new Chart(document.getElementById('drop-{{ $i }}'), {
+            type: 'doughnut',
+            data: {
+                labels: [
+                    @foreach($survey->options->where('question_id', $survey->questions[$i]->id) as $option)
+                        "{{$option->option}}",
+                    @endforeach
+                ],
+                datasets: [{
+                    data: [
+                        @foreach($survey->options->where('question_id', $survey->questions[$i]->id) as $option)
+                            {{$survey->responses->where('question_id', $survey->questions[$i]->id)->where('response', $option->option)->count()}},
+                        @endforeach
+                        
+                    ],
+                    backgroundColor: $backgroundColor,
+                    borderColor: $borderColor,
+                    borderWidth: 2,
+                    hoverOffset: 5,
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: "right"
+                    },
+                    tooltip: {
+                        enabled: true
+                    },
+                    datalabels: {
+                        align: 'center',
+                        formatter: (value, context) => {
+                            //console.log(value)
+                            //console.log(context.chart.data.datasets[0].data)
+                            const datapoints = context.chart.data.datasets[0].data;
+
+                            function totalSum(total, datapoint) {
+                                return total + datapoint;
+                            }
+                            const totalValue = datapoints.reduce(totalSum, 0);
+                            const percentageValue = (value / totalValue * 100).toFixed(0);
+                            const displayData = [`${value}`, `(${percentageValue}%)`]
+                            return displayData;
+                        }
+                    }
+                },
+            },
+            plugins: [ChartDataLabels]
+        });
         @elseif ($survey->questions[$i]->option_type_id == 5)
-            // <canvas id="check-{{$i}}"></canvas>
-            new Chart(document.getElementById('check-{{$i}}'), config_checkbox);
+            // <canvas id="check-{{ $i }}"></canvas>
+            new Chart(document.getElementById('check-{{ $i }}'), {
+            type: 'bar',
+            data: {
+                labels: [
+                    @foreach($survey->options->where('question_id', $survey->questions[$i]->id) as $option)
+                        "{{$option->option}}",
+                    @endforeach
+                ],
+                datasets: [{
+                    data: [
+                        @foreach($survey->options->where('question_id', $survey->questions[$i]->id) as $option)
+                            {{$survey->responses->where('question_id', $survey->questions[$i]->id)->where('response', $option->option)->count()}},
+                        @endforeach
+                    ],
+                    backgroundColor: $backgroundColor,
+                    borderColor: $borderColor,
+                    borderWidth: 2,
+                    hoverOffset: 5,
+                }, ],
+
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    labels: {
+                        render: 'percentage',
+                        showActualPercentages: true,
+                        precision: 0
+                    },
+                    legend: {
+                        display: false,
+                        position: "right"
+                    },
+                    //     datalabels:{
+                    //     formatter: (value, datainfo) =>{
+                    //     console.log(value)
+                    //     console.log(datainfo.chart.data.datasets[1].data)
+                    //     const datavalues = datainfo.chart.data.datasets[1].data;
+                    //     function totalSum( total, datavalues){
+                    //         return total + datavalues;
+                    //     }
+                    //     const totalValue1 = datavalues.reduce(totalSum, 0);
+                    //     const percentageValue1 = (value/ totalValue1 * 100).toFixed(0);
+                    //     const displayData1 = [`${value}`,`(${percentageValue1}%)`]
+                    //     return displayData;
+                    // }
+
+                    // }
+                },
+                tooltip: {
+                    enabled: true,
+                },
+
+                indexAxis: 'y',
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+
+            },
+            plugins: [ChartDataLabels]
+        });
         @elseif ($survey->questions[$i]->option_type_id == 6)
-            // <canvas id="grid-{{$i}}"></canvas>
-            new Chart(document.getElementById('grid-{{$i}}'), config_matrix);
+            // <canvas id="grid-{{ $i }}"></canvas>
+            new Chart(document.getElementById('grid-{{ $i }}'), {
+        type: 'bar',
+        data: {
+            labels: [
+                @foreach($survey->options->where('question_id', $survey->questions[$i]->id)->where('row_column', 'row') as $row)
+                    "{{$row->option}}",
+                @endforeach
+            ],
+            datasets: [
+                @foreach($survey->options->where('question_id', $survey->questions[$i]->id)->where('row_column', 'column') as $column)
+                    {
+                        label: '{{$column->option}}',
+                        data: [
+                            @foreach($survey->options->where('question_id', $survey->questions[$i]->id)->where('row_column', 'row') as $row)
+                                
+                                    {{$survey->responses->where('question_id', $survey->questions[$i]->id)->where('response', $column->option)->where('option_id', $row->id)->count()}},
+                                
+                            @endforeach
+                        ],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+
+                        ],
+                        borderColor: [
+                            'rgb(225, 99, 132)',
+
+                        ],
+                        borderWidth: 2,
+                        hoverOffset: 5,
+
+
+                    },
+                @endforeach
+                //  {
+                //     label: 'Fairly Important',
+                //     data: [10, 50, 70, 15, 13, 24, 36, 2, 63, 84, 31, 19, 73],
+                //     backgroundColor: [
+                //         'rgba(54, 162, 235, 0.2)' //blue
+
+                //     ],
+                //     borderColor: [
+                //         'rgb(54, 162, 235)'
+
+                //     ],
+                //     borderWidth: 2,
+                //     hoverOffset: 5,
+
+                // },
+                // {
+                //     label: 'Highly Important',
+                //     data: [30, 20, 19, 51, 3, 4, 6, 19, 25, 29, 1, 38, 3],
+                //     backgroundColor: [
+                //         'rgba(142, 77, 250, 0.2)', //voilet 
+                //     ],
+                //     borderColor: [
+                //         'rgb(142, 77, 250)'
+                //     ],
+                //     borderWidth: 2,
+                //     hoverOffset: 5,
+
+                // },
+
+            ]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: "top"
+                }
+            },
+            // indexAxis: 'y',    
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        },
+        //   plugins:[ChartDataLabels]
+    });
         @endif
     @endfor
     //render pie chart for radio choice types
-    
+
     //render pie chart for dropdown choice types
-    
+
 
     //render bar chart
-    
+
     //render multi-bar chart
-    
 </script>

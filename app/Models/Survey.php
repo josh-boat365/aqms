@@ -38,4 +38,8 @@ class Survey extends Model
     public function sectionQuestions(){
         return $this->hasManyThrough(Question::class, Section::class);
     }
+
+    public function responses(){
+        return $this->hasManyThrough(Response::class, Question::class);
+    }
 }
