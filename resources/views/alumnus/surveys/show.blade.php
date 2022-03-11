@@ -502,6 +502,5 @@
     </script> --}}
 
 </body>
-<!-- Mirrored from dore-jquery.coloredstrategies.com/Apps.Survey.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 06 Nov 2021 22:42:24 GMT -->
 
 </html>
