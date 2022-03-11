@@ -33,7 +33,7 @@
                             </p>
 
                             <p class="text-wrap white">
-                                In particular, the study aims at determining, from your perspective, the impact of the training received on work placement and <a style="color: white" href="{{route('admin-register')}}">career progression.</a> 
+                                In particular, the study aims at determining, from your perspective, the impact of the training received on work placement and career progression.
                             </p>
 
                             <p class="text-wrap white">
@@ -41,7 +41,7 @@
                             </p>
 
                             <p class="white">We look forward to receiving your responses.</p>
-                            <a href="{{ route('login') }}" class="white font-weight-bold h5">Login</a>.</p>
+                            <a href="{{ route('admin-login') }}" class="white font-weight-bold h5">Login</a>.</p>
                         </div>
                         <div class="form-side">
                             <div class="atu-icon" style="position: relative; top: -1rem;">
@@ -49,8 +49,8 @@
                                     <img src="/img/custom/atulogo.png" height="10%" width="35%" alt="">
                                 </a>
                             </div>
-                            <h5 class="header-title mb-3 mob-view" style="position: relative; top: 3rem;">Register</h5>
-                            <form class="tooltip-right-bottom mob-view" style="position: relative; top: 4rem;" novalidate method="GET" action="{{ route('register', 'Alumnus') }}">
+                            <h5 class="header-title mb-3 mob-view" style="position: relative; top: 3rem;">Admin-Register</h5>
+                            <form class="tooltip-right-bottom mob-view" style="position: relative; top: 4rem;" novalidate method="POST" action="{{ route('register', 'Admin') }}">
                                 @csrf
                                 <div class="form-group has-float-label"><input value="{{old('firstName')}}" class="@error('firstName') border-danger @enderror form-control" name="firstName" required>
                                     <span>First Name</span>
