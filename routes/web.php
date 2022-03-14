@@ -22,10 +22,16 @@ Route::get('/', function () {
 
 Route::get('/login', 'App\Http\Controllers\AuthController@showLogin')->name('login');
 Route::post('/login', 'App\Http\Controllers\AuthController@logIn')->name('login');
-Route::get('/register', '\App\Http\Controllers\AuthController@showRegister')->name('register');
+Route::get('/register/{type}', '\App\Http\Controllers\AuthController@showRegister')->name('register');
 Route::get('/forgotpassword', '\App\Http\Controllers\AuthController@showForgetPassword')->name('forgot-password');
-Route::post('/register', 'App\Http\Controllers\AuthController@register')->name('register');
+Route::post('/register/{type}', 'App\Http\Controllers\AuthController@register')->name('register');
 Route::post('/logout', '\App\Http\Controllers\AuthController@logout')->name('logout');
+
+//Auth for Admin
+Route::get('/admin-login', 'App\Http\Controllers\AuthController@showAdminLogin')->name('admin-login');
+Route::post('/admin-login', '\App\Http\Controllers\AuthController@admin-login')->name('admin-login');
+Route::get('/admin-register', '\App\Http\Controllers\AuthController@showAdminRegister')->name('admin-register');
+Route::post('/admin-register', '\App\Http\Controllers\AuthController@admin-register')->name('admin-register');
 
 
 // Dashboard

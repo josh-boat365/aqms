@@ -1448,8 +1448,8 @@
                                     )
                                 ),
                                 $('<div/>').attr({
-                                    'class': 'custom-control custom-checkbox pl-1 align-self-center pr-4',
-                                    'style': 'flex: 0 0 25%; max-width: 20%;'
+                                    'class': 'custom-control d-flex custom-checkbox pl-1 align-self-center pr-4',
+                                    'style': 'flex: 0 0 25%; max-width: 20%; gap: 5px'
                                 })
                                 .append(
                                     $('<div/>').addClass(

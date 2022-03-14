@@ -134,6 +134,7 @@ class AlumnusController extends Controller
 
     public function saveSurvey(Request $request)
     {
+        // dd($request);
         foreach ($request['ans'] as $que_id => $ans) {
 
             if ($ans != null) {

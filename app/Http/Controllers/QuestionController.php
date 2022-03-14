@@ -14,7 +14,7 @@ class QuestionController extends Controller
     {
 
         
-
+        // dd($request['survey_id']);
         $survey_id = $request['survey_id'];
         $name = $request['name'];
         $description = $request['description'];
@@ -65,7 +65,7 @@ class QuestionController extends Controller
                 }
             }
         } else {
-            QuestionController::storeQuestions($request);
+            QuestionController::storeQuestions($request, null, $survey_id);
         }
     }
 
@@ -213,6 +213,7 @@ class QuestionController extends Controller
                 $option_type_id = $questionObj['option_type_id'];
 
                 //create question
+                // dd(compact('question', 'order', 'option_type_id', 'survey_id', 'section_id'));
                 $question = Question::create(compact('question', 'order', 'option_type_id', 'survey_id', 'section_id'));
                 // dd($question);
                 $question_id = $question->id;
@@ -272,10 +273,10 @@ class QuestionController extends Controller
                     }
 
                     if ($has_single_options) {
-                        dd('has single options');
-                        foreach ($questionObj['options']['new'] as $order => $option) {
-                            // $option = $optionObj['option'];
-                            // $order = $optionObj['order'];
+                        // dd()
+                        foreach ($questionObj['options']['new'] as $order => $optionObj) {
+                            $option = $optionObj['option'];
+                            $order = $optionObj['order'];
                             Option::create(compact('option', 'order', 'question_id'));
                         }
                     }

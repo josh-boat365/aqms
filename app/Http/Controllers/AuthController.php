@@ -20,10 +20,26 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
-    public function showRegister()
+    public function showAdminLogin()
     {
-        return view('auth.register');
+        return view('auth.admin-login');
     }
+
+    public function showRegister($type)
+    {
+        if ($type == "Admin") {
+            return view('auth.admin-register');
+        } else{
+            return view('auth.register');
+        }
+        
+    }
+
+    public function showAdminRegister()
+    {
+        return view('auth.admin-register');
+    }
+
 
     public function showForgetPassword()
     {
@@ -48,7 +64,7 @@ class AuthController extends Controller
         }
     }
 
-    public function register(Request $request)
+    public function register(Request $request, String $type="Alumnus")
     {
         $this->validate($request, [
             'firstName' => 'required',
@@ -62,7 +78,7 @@ class AuthController extends Controller
         $user->lastName = $request->lastName;
         $user->otherName = $request->otherName;
         $user->email = $request->email;
-        $user->user_type = 'Alumnus';
+        $user->user_type = $type;
         $user->password = Hash::make($request->password);
         $user->save();
 

@@ -41,12 +41,12 @@
                     </div>
                     {{-- Analytics for Responses --}}
                     <div class="tab-pane show" id="fourth" role="tabpanel" aria-labelledby="fourth-tab">
-                        <div class="row">
-                            <div class="col-lg-4 col-12 mb-4">
+                        <div class="row justify-content-center">
+                            {{-- <div class="col-lg-4 col-12 mb-4">
 
+                            </div> --}}
+                            <div class="col-10 " >
                                 @include('inc.dashboard.responses.res-ques-list')                                                         
-                            </div>
-                            <div class="col-12 col-lg-8">
                             
                                 @include('inc.dashboard.responses.res-ques-analytics')
                             </div>

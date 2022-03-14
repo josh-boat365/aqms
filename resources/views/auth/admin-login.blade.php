@@ -32,7 +32,7 @@
                             </p>
 
                             <p class="text-wrap white">
-                                In particular, the study aims at determining, from your perspective, the impact of the training received on work placement and <a style="color: white" href="{{route('admin-login')}}">career progression.</a>
+                                In particular, the study aims at determining, from your perspective, the impact of the training received on work placement and <a style="color: white" href="{{route('admin-register')}}">career progression.</a> 
                             </p>
 
                             <p class="text-wrap white">
@@ -40,7 +40,7 @@
                             </p>
 
                             <p class="white">We look forward to receiving your responses.</p>
-                            <a href="{{ route('register', 'Alumnus') }}" class="white font-weight-bold h5">Register</a>.</p>
+                            <a href="{{ route('admin-register', 'Admin') }}" class="white font-weight-bold h5">Register</a>.</p>
                         </div>
                         <div class="form-side position-relative">
                             @if (session('error'))
@@ -57,7 +57,7 @@
                                     <img src="/img/custom/atulogo.png" height="15%" width="45%" alt="">
                                 </a>
                             </div>
-                            <h5 class="header-title mb-3" style="margin-top: 0.5rem">Login</h5>
+                            <h5 class="header-title mb-3" style="margin-top: 0.5rem">Admin-Login</h5>
 
                             {{-- <a href="{{route('login')}}"><span class="logo-single"></span></a> --}}
                             <form class="tooltip-right-bottom" novalidate method="POST" action="{{ route('login') }}">
