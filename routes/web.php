@@ -21,6 +21,7 @@ Route::get('/', function () {
 // Auth
 
 Route::get('/login', 'App\Http\Controllers\AuthController@showLogin')->name('login');
+Route::put('/login', 'App\Http\Controllers\AuthController@showLogin')->name('login');
 Route::post('/login', 'App\Http\Controllers\AuthController@logIn')->name('login');
 Route::get('/register/{type}', '\App\Http\Controllers\AuthController@showRegister')->name('register');
 Route::get('/forgotpassword', '\App\Http\Controllers\AuthController@showForgetPassword')->name('forgot-password');

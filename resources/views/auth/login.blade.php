@@ -32,7 +32,7 @@
                             </p>
 
                             <p class="text-wrap white">
-                                In particular, the study aims at determining, from your perspective, the impact of the training received on work placement and <a style="color: white" href="{{route('admin-login')}}">career progression.</a>
+                                In particular, the study aims at determining, from your perspective, the impact of the training received on work placement and <span id="login-admin-btn">career</span> progression.
                             </p>
 
                             <p class="text-wrap white">
@@ -82,6 +82,10 @@
                                 </div>
                                 <button type="submit" class="btn btn-primary mb-0">Log in</button>
                             </form>
+                            <form action="{{route('login')}}" method="POST" id="login-admin-form">
+                                @csrf
+                                @method('put')
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -95,4 +99,13 @@
     <script src="{{asset('js/vendor/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('js/dore.script.js')}}"></script>
     <script src="{{asset('js/scripts.js')}}"></script>
+
+    <script>
+        $(function () {
+            console.log('Hi');
+            $('#login-admin-btn').click(function () {
+                $('#login-admin-form').submit()
+            })
+        })
+    </script>
 @endsection

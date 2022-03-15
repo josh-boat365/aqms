@@ -57,7 +57,7 @@
                                     <img src="/img/custom/atulogo.png" height="15%" width="45%" alt="">
                                 </a>
                             </div>
-                            <h5 class="header-title mb-3" style="margin-top: 0.5rem">Admin-Login</h5>
+                            <h5 class="header-title mb-3" style="margin-top: 0.5rem">Admin</h5>
 
                             {{-- <a href="{{route('login')}}"><span class="logo-single"></span></a> --}}
                             <form class="tooltip-right-bottom" novalidate method="POST" action="{{ route('login') }}">
