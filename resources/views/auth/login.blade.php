@@ -40,7 +40,8 @@
                             </p>
 
                             <p class="white">We look forward to receiving your responses.</p>
-                            <a href="{{ route('register', 'Alumnus') }}" class="white font-weight-bold h5">Register</a>.</p>
+                            {{-- <form action="{{route('register')}}">@csrf @method('')</form> --}}
+                            <a href="{{ route('register') }}" class="white font-weight-bold h5">Register</a>.</p>
                         </div>
                         <div class="form-side position-relative">
                             @if (session('error'))

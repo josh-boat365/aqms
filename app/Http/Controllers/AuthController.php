@@ -28,13 +28,17 @@ class AuthController extends Controller
         return view('auth.admin-login');
     }
 
-    public function showRegister($type)
+    public function showRegister(Request $request)
     {
-        if ($type == "Admin") {
+        // dd($request);
+        if($request['_method'] == 'put')
             return view('auth.admin-register');
-        } else{
-            return view('auth.register');
-        }
+        return view('auth.register');
+        // if ($type == "Admin") {
+        //     return view('auth.admin-register');
+        // } else{
+        //     return view('auth.register');
+        // }
         
     }
 
@@ -67,7 +71,7 @@ class AuthController extends Controller
         }
     }
 
-    public function register(Request $request, String $type="Alumnus")
+    public function register(Request $request)
     {
         $this->validate($request, [
             'firstName' => 'required',
@@ -81,7 +85,12 @@ class AuthController extends Controller
         $user->lastName = $request->lastName;
         $user->otherName = $request->otherName;
         $user->email = $request->email;
-        $user->user_type = $type;
+        if (isset($request['is-Admin'])) {
+            $user->user_type = 'Admin';
+        } else {
+            $user->user_type = 'Alumnus';
+        }
+        
         $user->password = Hash::make($request->password);
         $user->save();
 
