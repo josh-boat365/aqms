@@ -32,7 +32,7 @@
                             </p>
 
                             <p class="text-wrap white">
-                                In particular, the study aims at determining, from your perspective, the impact of the training received on work placement and <span><form action=""><a style="color: white" href="{{route('login', "Admin")}}">career progression.</a></form></span> 
+                                In particular, the study aims at determining, from your perspective, the impact of the training received on work placement and <span id="login-admin-btn">career</span> progression.
                             </p>
 
                             <p class="text-wrap white">
@@ -40,7 +40,8 @@
                             </p>
 
                             <p class="white">We look forward to receiving your responses.</p>
-                            <a href="{{ route('register', 'Alumnus') }}" class="white font-weight-bold h5">Register</a>.</p>
+                            {{-- <form action="{{route('register')}}">@csrf @method('')</form> --}}
+                            <a href="{{ route('register') }}" class="white font-weight-bold h5">Register</a>.</p>
                         </div>
                         <div class="form-side position-relative">
                             @if (session('error'))
@@ -82,6 +83,10 @@
                                 </div>
                                 <button type="submit" class="btn btn-primary mb-0">Log in</button>
                             </form>
+                            <form action="{{route('login')}}" method="POST" id="login-admin-form">
+                                @csrf
+                                @method('put')
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -95,4 +100,13 @@
     <script src="{{asset('js/vendor/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('js/dore.script.js')}}"></script>
     <script src="{{asset('js/scripts.js')}}"></script>
+
+    <script>
+        $(function () {
+            console.log('Hi');
+            $('#login-admin-btn').click(function () {
+                $('#login-admin-form').submit()
+            })
+        })
+    </script>
 @endsection

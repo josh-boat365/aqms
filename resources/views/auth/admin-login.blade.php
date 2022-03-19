@@ -7,6 +7,12 @@
     {{-- <link rel="stylesheet" href="{{ asset('css/vendor/bootstrap.rtl.only.min.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('css/vendor/bootstrap-float-label.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+
+    <style>
+        #register-admin-btn:hover{
+        cursor: pointer;
+    }
+    </style>
 @endsection
 
 @section('body-class') class="background show-spinner no-footer" @endsection
@@ -32,7 +38,7 @@
                             </p>
 
                             <p class="text-wrap white">
-                                In particular, the study aims at determining, from your perspective, the impact of the training received on work placement and <a style="color: white" href="{{route('admin-register')}}">career progression.</a> 
+                                In particular, the study aims at determining, from your perspective, the impact of the training received on work placement and career progression.
                             </p>
 
                             <p class="text-wrap white">
@@ -40,7 +46,9 @@
                             </p>
 
                             <p class="white">We look forward to receiving your responses.</p>
-                            <a href="{{ route('admin-register', 'Admin') }}" class="white font-weight-bold h5">Register</a>.</p>
+                            {{-- <form action="{{route('register')}}">@csrf @method('put') <input class="white font-weight-bold h5" type="submit" value="Register"></form> --}}
+                            <span id="register-admin-btn" class="white font-weight-bold h5">Register</span>
+                        </p>
                         </div>
                         <div class="form-side position-relative">
                             @if (session('error'))
@@ -57,7 +65,7 @@
                                     <img src="/img/custom/atulogo.png" height="15%" width="45%" alt="">
                                 </a>
                             </div>
-                            <h5 class="header-title mb-3" style="margin-top: 0.5rem">Admin-Login</h5>
+                            <h5 class="header-title mb-3" style="margin-top: 0.5rem">Admin</h5>
 
                             {{-- <a href="{{route('login')}}"><span class="logo-single"></span></a> --}}
                             <form class="tooltip-right-bottom" novalidate method="POST" action="{{ route('login') }}">
@@ -82,6 +90,10 @@
                                 </div>
                                 <button type="submit" class="btn btn-primary mb-0">Log in</button>
                             </form>
+                            <form action="{{route('register')}}" method="POST" id="register-admin-form">
+                                @csrf
+                                @method('put')
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -95,4 +107,13 @@
     <script src="{{asset('js/vendor/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('js/dore.script.js')}}"></script>
     <script src="{{asset('js/scripts.js')}}"></script>
+
+    <script>
+        $(function () {
+            console.log('Hi');
+            $('#register-admin-btn').click(function () {
+                $('#register-admin-form').submit()
+            })
+        })
+    </script>
 @endsection

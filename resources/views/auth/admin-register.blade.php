@@ -7,6 +7,12 @@
 <link rel="stylesheet" href="{{asset('css/vendor/bootstrap.rtl.only.min.css')}}">
 <link rel="stylesheet" href="{{asset('css/vendor/bootstrap-float-label.min.css')}}">
 <link rel="stylesheet" href="{{asset('css/main.css')}}">
+
+<style>
+    #login-admin-btn:hover{
+        cursor: pointer
+    }
+</style>
     
 @endsection
 
@@ -41,7 +47,8 @@
                             </p>
 
                             <p class="white">We look forward to receiving your responses.</p>
-                            <a href="{{ route('admin-login') }}" class="white font-weight-bold h5">Login</a>.</p>
+                            <span id="login-admin-btn" class="white font-weight-bold h5">Login</span>
+                            {{-- <a href="{{ route('admin-login') }}" class="white font-weight-bold h5">Login</a>.</p> --}}
                         </div>
                         <div class="form-side">
                             <div class="atu-icon" style="position: relative; top: -1rem;">
@@ -50,8 +57,9 @@
                                 </a>
                             </div>
                             <h5 class="header-title mb-3 mob-view" style="position: relative; top: 3rem;">Admin-Register</h5>
-                            <form class="tooltip-right-bottom mob-view" style="position: relative; top: 4rem;" novalidate method="POST" action="{{ route('register', 'Admin') }}">
+                            <form class="tooltip-right-bottom mob-view" style="position: relative; top: 4rem;" novalidate method="POST" action="{{ route('register') }}">
                                 @csrf
+                                <input type="hidden" name="is-Admin" value="true">
                                 <div class="form-group has-float-label"><input value="{{old('firstName')}}" class="@error('firstName') border-danger @enderror form-control" name="firstName" required>
                                     <span>First Name</span>
                                     @error('firstName')
@@ -88,6 +96,10 @@
                                 </div>
                                 <button type="submit" class="btn btn-primary float-right">Register</button>
                             </form>
+                            <form action="{{route('login')}}" method="POST" id="login-admin-form">
+                                @csrf
+                                @method('put')
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -103,6 +115,15 @@
     {{-- <script src="{{ asset('js/vendor/jquery.validate/additional-methods.min.js') }}"></script> --}}
     <script src="{{ asset('js/dore.script.js') }}"></script>
     <script src="{{ asset('js/scripts.js') }}"></script>
+
+    <script>
+        $(function () {
+            console.log('Hi');
+            $('#login-admin-btn').click(function () {
+                $('#login-admin-form').submit()
+            })
+        })
+    </script>
 @endsection
 
 
