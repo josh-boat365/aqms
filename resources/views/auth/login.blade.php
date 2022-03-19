@@ -32,7 +32,7 @@
                             </p>
 
                             <p class="text-wrap white">
-                                In particular, the study aims at determining, from your perspective, the impact of the training received on work placement and <a style="color: white" href="{{route('admin-login')}}">career progression.</a>
+                                In particular, the study aims at determining, from your perspective, the impact of the training received on work placement and <span><form action=""><a style="color: white" href="{{route('login', "Admin")}}">career progression.</a></form></span> 
                             </p>
 
                             <p class="text-wrap white">

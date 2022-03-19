@@ -15,9 +15,14 @@ class AuthController extends Controller
         $this->middleware('guest', ['except' => ['logout']]);
     }
 
-    public function showLogin()
+    public function showLogin($mode = "Alumnus")
     {
-        return view('auth.login');
+        if ($mode == "Alumnus") {
+            return view('auth.login');
+        }else if ($mode == "Admin") {
+            dd('Admin login');
+            return view('auth.admin-login');
+        }
     }
 
     public function showAdminLogin()
