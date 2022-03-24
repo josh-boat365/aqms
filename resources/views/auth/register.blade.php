@@ -50,8 +50,9 @@
                                 </a>
                             </div>
                             <h5 class="header-title mb-3 mob-view" style="position: relative; top: 3rem;">Register</h5>
-                            <form class="tooltip-right-bottom mob-view" style="position: relative; top: 4rem;" novalidate method="GET" action="{{ route('register', 'Alumnus') }}">
+                            <form class="tooltip-right-bottom mob-view" style="position: relative; top: 4rem;" novalidate method="POST" action="{{ route('register', 'Alumnus') }}">
                                 @csrf
+
                                 <div class="form-group has-float-label"><input value="{{old('firstName')}}" class="@error('firstName') border-danger @enderror form-control" name="firstName" required>
                                     <span>First Name</span>
                                     @error('firstName')

@@ -71,7 +71,10 @@
 
                                     @endforeach
                                 @else
-                                <div class="row col-12">
+                                @foreach ($allResponses->where('user_id', $submission->user_id) as $response)
+                                    {{$response}}
+                                @endforeach
+                                {{-- <div class="row col-12">
                                     <div class="d-flex flex-column col-2">
                                         <div style="height: 50px"></div>
                                         @foreach ($survey->questions[$i]->options->where('row_column', 'row') as $option)
@@ -92,7 +95,11 @@
                                                             name="ans[{{ $survey->questions[$i]->id }}][{{ $option->id }}]"
                                                             value="{{ $columnOption->option }}"
                                                             
-                                                            @foreach ($allResponses->where('user_id', $submission->user_id) as $response) @if ($response->response == $columnOption->option) @if ($response->option_id == $option->id) checked @endif @endif @endforeach
+                                                            @foreach ($allResponses->where('user_id', $submission->user_id) as $response)
+                                                             @if ($response->response == $columnOption->option) @if ($response->option_id == $option->id)
+                                                              checked @endif @endif 
+                                                            @endforeach
+
                                                             >
                                                     </div>
                                                 @endforeach
@@ -103,36 +110,8 @@
                                         @endforeach
 
                                     </div>
-                                </div>
-                                    {{-- <div class="row col-12">
-                                        <div class="d-flex flex-column col-2">
-                                            <div style="height: 50px"></div>
-                                            @foreach ($survey->options->where('question_id', $survey->questions[$i]->id) as $option)
-                                                <div class="text-center">
-                                                    {{ $option->option }}</div>
-                                            @endforeach
-                                        </div>
-                                        <div class="col-10 row" style="flex-wrap: nowrap">
-                                            @foreach ($survey->columns->where('question_id', $survey->questions[$i]->id) as $column)
-                                                <div class="d-flex flex-column justify-content-between"
-                                                    style="width: 100px; height: 100%; min-width:100px">
-                                                    <div style="height: 50px"
-                                                        class="d-flex align-items-center justify-content-center w-100">
-                                                        {{ $column->question }}
-                                                    </div>
-                                                    @foreach ($survey->options->where('question_id', $survey->questions[$i]->id) as $option)
-                                                        <div class="d-flex justify-content-center">
-                                                            <input type="radio" id=""
-                                                                @foreach ($allResponses->where('user_id', $submission->user_id) as $response) @if ($response->response == $column->question) @if ($response->option_id == $option->id) checked @endif
-                                                                @endif
-                                                    @endforeach disabled>
-                                                            </div>
-                                                        @endforeach
-                                                    </div>
-                                            @endforeach
-
-                                        </div>
-                                    </div> --}}
+                                </div> --}}
+                                    
         @endif
     </div>
     </div>

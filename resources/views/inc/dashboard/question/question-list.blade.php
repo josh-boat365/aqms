@@ -1,5 +1,5 @@
 {{-- section wrapper --}}
-{{-- {{ $survey->sections->values()->toArray() }} --}}
+
 @empty($survey->sections->values()->toArray())
     <div class="sortable-survey col-lg-8 col-12 mb-4">
         @include('inc.dashboard.question.question-card', ['questions' => $survey->questions->toArray()])
@@ -29,7 +29,10 @@
                 </div>
             </div>
             <div class="sortable-survey">
-
+                {{-- {{ $survey->sectionQuestions->where('section_id', $survey->sections[$i-1]->id) }} --}}
+                <!-- {{ $survey->sectionQuestions }} -->
+                <!-- {{ $survey }} -->
+                <!-- {{ $survey->sections[$i-1]->id }} -->
                 @include('inc.dashboard.question.question-card', ['questions'=>
                 $survey->sectionQuestions->where('section_id', $survey->sections[$i-1]->id)->values()->toArray(),
                 'section_id' => $survey->sections[$i-1]->id,
@@ -39,6 +42,7 @@
         </div>
     @endfor
 @endempty
+
 {{-- @if ($survey->sections == null)
     empty section
     <div class="sortable-survey">
