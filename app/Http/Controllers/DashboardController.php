@@ -12,8 +12,10 @@ use App\Models\Section;
 use App\Models\Submission;
 use App\Models\Subquestion;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -39,7 +41,7 @@ class DashboardController extends Controller
         return view('dashboard.surveys.index', compact('updateProgress', 'notifications', 'allSurveys', 'users', 'submissions'));
     }
 
-    
+
 
     public function profile()
     {
@@ -50,22 +52,24 @@ class DashboardController extends Controller
         $admin = User::find(Auth::user()->id);
         $updateProgress = 2;
         if ($admin->gender) $updateProgress++;
-        if ($admin->phone) $updateProgress++;        
-        
+        if ($admin->phone) $updateProgress++;
+
         return view('dashboard.profile.index', compact('surveys', 'notifications', 'users', 'updateProgress'))->with('allSurveys', Survey::all());
     }
 
-    public function updateProfile(Request $request){
+    public function updateProfile(Request $request)
+    {
         // dd($request->all());
-       
-       $setData = $this->getSetProfileData($request->all());
 
-       User::find(auth()->user()->id)->update($setData);
+        $setData = $this->getSetProfileData($request->all());
 
-       return redirect()->route('dashboard.profile');
+        User::find(auth()->user()->id)->update($setData);
+
+        return redirect()->route('dashboard.profile');
     }
 
-    public function getSetProfileData($data){
+    public function getSetProfileData($data)
+    {
         $record = [];
         foreach ($data as $detail => $value) {
             if ($value && $detail != '_token') {
@@ -80,7 +84,7 @@ class DashboardController extends Controller
         $admin = User::find(Auth::user()->id);
         $updateProgress = 2;
         if ($admin->gender) $updateProgress++;
-        if ($admin->phone) $updateProgress++; 
+        if ($admin->phone) $updateProgress++;
 
         $notifications = Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2);
         $allSurveys = Survey::all();
@@ -92,7 +96,23 @@ class DashboardController extends Controller
 
     public function users()
     {
-        return view('dashboard.users.index')->with(['notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2), 'allSurveys' => Survey::all(), 'users' => User::all(), 'submissions' => Submission::all(), 'notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2),]);
+        $unupdatedCount = 0;
+
+        $alumni = User::all()->where('user_type', 'Alumnus');
+        foreach ($alumni as $alumnus) {
+            $updateProgress = 2;
+            if ($alumnus->gender) $updateProgress++;
+            if ($alumnus->phone) $updateProgress++;
+            if ($alumnus->program_of_study) $updateProgress++;
+            if ($alumnus->department_of_study) $updateProgress++;
+            if ($alumnus->year_of_completion) $updateProgress++;
+
+            if ($updateProgress != 7 )
+                $unupdatedCount++;
+        }
+        $alumnus = User::find(Auth::user()->id);
+
+        return view('dashboard.users.index')->with(['unupdatedCount' => $unupdatedCount, 'users' => User::all(), 'notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2), 'allSurveys' => Survey::all(), 'users' => User::all(), 'submissions' => Submission::all(), 'notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2),]);
     }
 
     public function analytics()
@@ -102,7 +122,37 @@ class DashboardController extends Controller
 
     public function showSubmissions(int $index)
     {
-        return view('dashboard.submissions.show')->with(['allSurveys', Survey::all(), 'notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2), 'allSurveys' => Survey::all(), 'users' => User::all(), 'submissions' => Submission::all()->where('survey_id', $index), 'survey' => Survey::find($index), 'allResponses' => Response::all(), 'notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2),]);
+        // dd(Carbon::now()->diffInYears(Carbon::now()->subYears(21)));
+
+        // dd(DB::table('users')->whereMonth('created_at', 1)->count());
+
+        $year_range = [];
+        $current_year = Carbon::now()->year;
+        $last_year = Carbon::now()->subYears(22)->year;
+        
+        for ($this_year=--$current_year; $this_year >= $last_year; $this_year--) { 
+            array_push($year_range, $this_year);
+        }
+
+        // dd($last_year);
+
+        return view('dashboard.submissions.show')->with(['users' => User::all(), 'allSurveys', Survey::all(), 'notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2), 'allSurveys' => Survey::all(), 'users' => User::all(), 'submissions' => Submission::all()->where('survey_id', $index), 'survey' => Survey::find($index), 'allResponses' => Response::all(), 'notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2), 'all_departments_of_study' => [
+            'Accounting and Finance',
+            'Applied Mathematics and Statistics',
+            'Building Technology',
+            'Civil Engineering',
+            'Computer Science',
+            'Electrical and Electronic Engineering',
+            'Fashion Design and Textiles',
+            'Interior Design and Upholstery Technology',
+            'Liberal Studies and Communications Technology',
+            'Management and Public Administration',
+            'Marketing',
+            'Medical laboratory Technology',
+            'Procurement and Supply Chain Management',
+            'Science Laboratory Technology',
+            'Hotel Catering and Institutional Management'
+        ], 'current_year' => $current_year, 'last_year' => $last_year, 'year_range' => $year_range, 'submissionsTable' => DB::table('submissions')]);
     }
 
     public function storeSurvey(Request $request)
@@ -147,10 +197,7 @@ class DashboardController extends Controller
         if (isset($request['questions'])) {
 
             QuestionController::processSurveyQuestions($request);
-
-        }
-
-        else if(isset($request['sections'])){
+        } else if (isset($request['sections'])) {
 
             QuestionController::processSurveyQuestions($request, true);
         }
@@ -205,7 +252,7 @@ class DashboardController extends Controller
         //grid
         Subquestion::where('question_id', $request->que_id)->delete();
 
-        return redirect('/dashboard/surveys/' . $request->survey_id)->with('success', 'Question '. $request->que_num .' Deleted Successfully');
+        return redirect('/dashboard/surveys/' . $request->survey_id)->with('success', 'Question ' . $request->que_num . ' Deleted Successfully');
     }
 
     public function viewResponse(Request $request)

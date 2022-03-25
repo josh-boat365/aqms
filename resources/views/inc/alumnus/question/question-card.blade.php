@@ -63,8 +63,8 @@
                         @elseif ($question->option_type_id == 3)
                         @foreach ($survey->options->where('question_id', $question->id) as $option)
                         <div class="custom-control custom-radio"><input value="{{ $option->option }}" type="radio" id="o{{ $option->id }}" 
-                            {{-- @foreach ($responses as $response) @if ($response->response == $option->option) checked @endif
-                            @endforeach --}}
+                            @foreach ($responses as $response) @if ($response->option_id == $option->id) checked @endif
+                            @endforeach
                             name="ans[{{ $question->id }}][{{ $option->id }}]" class="custom-control-input">
                             <label class="custom-control-label" for="o{{ $option->id }}">{{ $option->option }}</label>
                         </div>
@@ -73,17 +73,17 @@
                         <select name="ans[{{ $question->id }}]" class="form-control drop-down">
                             @foreach ($survey->options->where('question_id', $question->id) as $option)
                             <option 
-                            {{-- @foreach ($responses as $response) @if ($response->response == $option->option) selected @endif @endforeach  --}}
+                            @foreach ($responses as $response) @if ($response->question_id == $question->id && $response->response == $option->option) selected @endif @endforeach 
                                 value="{{ $option->option }}">{{ $option->option }}
                             </option>
                             @endforeach
                         </select>
                         @elseif ($question->option_type_id == 5)
                         @foreach ($survey->options->where('question_id', $question->id) as $option)
-                        
+                         
                         <div class="custom-control custom-checkbox">
                             <input value="{{ $option->option }}" class="custom-control-input" type="checkbox" 
-                            {{-- @foreach ($responses as $response) @if ($response->response == $option->option) checked @endif @endforeach --}}
+                            @foreach ($responses as $response) @if ($response->option_id == $option->id) checked @endif @endforeach
                             name="ans[{{ $question->id }}][{{ $option->id }}]"
                             id="o{{ $option->id }}">
                             <label for="o{{ $option->id }}" class="custom-control-label">{{ $option->option }}</label>

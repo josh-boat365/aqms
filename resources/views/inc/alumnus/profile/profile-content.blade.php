@@ -108,7 +108,7 @@
                                                 </div>
                                                 <div class="form-group has-float-label">
                                                     <select id="inputState" class="form-control select2-single" name="gender">
-                                                        <option selected="selected">Choose...</option>
+                                                        <option>Choose...</option>
                                                         <option value="Male" @if (strtolower(auth()->user()->gender) == "male")
                                                             selected
                                                         @endif>Male</option>

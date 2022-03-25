@@ -95,28 +95,30 @@ class AlumnusController extends Controller
         if ($alumnus->program_of_study) $updateProgress++;
         if ($alumnus->department_of_study) $updateProgress++;
         if ($alumnus->year_of_completion) $updateProgress++;
-        
+
         $allSurveys = Survey::all();
         $surveys = Survey::all()->where('status_id', 2);
         $notifications = Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2);
         $last_year = Carbon::now()->year - 1;
 
-        
+
         return view('alumnus.profile.index', compact('allSurveys', 'surveys', 'notifications', 'all_programs_of_study', 'all_departments_of_study', 'last_year', 'updateProgress'));
     }
 
-    public function updateProfile(Request $request){
+    public function updateProfile(Request $request)
+    {
         // dd($request->all());
         // dd($this->getSetProfileData($request->all()));
-       
-       $setData = $this->getSetProfileData($request->all());
 
-       User::find(auth()->user()->id)->update($setData);
+        $setData = $this->getSetProfileData($request->all());
 
-       return redirect()->route('alumnus.profile');
+        User::find(auth()->user()->id)->update($setData);
+
+        return redirect()->route('alumnus.profile');
     }
 
-    public function getSetProfileData($data){
+    public function getSetProfileData($data)
+    {
         $record = [];
         foreach ($data as $detail => $value) {
             if ($value && $detail != '_token') {
@@ -128,66 +130,68 @@ class AlumnusController extends Controller
 
     public function showSurvey(int $index)
     {
-        
+
         return view('alumnus.surveys.show')->with(['allSurveys' => Survey::all(), 'notifications' => Notification::all(), 'surveys' => Survey::all()->where('status_id', 2), 'survey' => Survey::find($index), 'optionTypes' => OptionType::all(), 'responses' => Response::all()->where('user_id', auth()->user()->id)]);
     }
 
     public function saveSurvey(Request $request)
     {
-        // dd($request);
-        foreach ($request['ans'] as $que_id => $ans) {
 
-            if ($ans != null) {
-                if (is_array($ans)) {
-                    // find all present records
-                    $response = Response::all()->where('question_id', $que_id)->where('user_id', auth()->user()->id);
+        $reqIds = array();
+        foreach ($request['ans'] as $question_id => $value) {
+            if ($value != null) {
+                array_push($reqIds, $question_id);
+            }
+        }
 
-                    //delete previous records
-                    foreach ($response as $record) {
-                        Response::find($record->id)->delete();
-                    }
-                    // $response = Response::all()->where('question_id', $que_id)->where('user_id', auth()->user()->id);
-                    // dd($response);
-                    // add new records
-                    foreach ($ans as $option_id => $value) {
-                        $record = new Response();
-                        $record->question_id = $que_id;
-                        $record->user_id = auth()->user()->id;
-                        $record->response = $value;
-                        $record->option_id = $option_id;
-                        $record->save();
-                    }
-                } else {
-                    // find all present records
-                    $response = Response::all()->where('question_id', $que_id)->where('user_id', auth()->user()->id);
-                    // $response = Response::all()->where('question_id', $que_id)->where('user_id', auth()->user()->id);
-                    // dd($response);
-                    //delete previous records
-                    foreach ($response as $record) {
-                        Response::find($record->id)->delete();
-                    }
-                    // $response = Response::all()->where('question_id', $que_id)->where('user_id', auth()->user()->id);
-                    // dd($response);
-                    // add new records
-                    $record = new Response();
-                    $record->question_id = $que_id;
-                    $record->user_id = auth()->user()->id;
-                    $record->response = $ans;
-                    $record->save();
+        // dd($reqIds);
+
+        $dbResponses = Response::all()->where('user_id', auth()->user()->id);
+
+        foreach ($dbResponses as $dbRes) {
+            for ($i = 0; $i < count($reqIds); $i++) {
+                $reqId = $reqIds[$i];
+
+                if (($i == (count($reqIds) - 1)) && ($dbRes->id != $reqId)) {
+                    $dbRes->delete();
                 }
             }
-
-            // save progress
-            Progress::where('user_id', auth()->user()->id)->where('survey_id', $request->survey_id)->delete();
-
-            $progress = new Progress();
-            $progress->user_id = auth()->user()->id;
-            $progress->survey_id = $request->survey_id;
-            $progress->progress = $request->progress;
-            $progress->save();
-
-            // }
         }
+
+
+        foreach ($request['ans'] as $question_id => $ans) {
+
+            $allRes = Response::all()->where('question_id', $question_id)->where('user_id', auth()->user()->id);
+
+            foreach ($allRes as  $res) {
+                $res->delete();
+            }
+
+            if (is_array($ans)) {
+                foreach ($ans as $option_id => $option) {
+                    $record = new Response();
+                    $record->user_id = auth()->user()->id;
+                    $record->question_id = $question_id;
+                    $record->option_id = $option_id;
+                    $record->response = $option;
+                    $record->save();
+                }
+            } else if ($ans != null) {
+                $record = new Response();
+                $record->user_id = auth()->user()->id;
+                $record->question_id = $question_id;
+                $record->response = $ans;
+                $record->save();
+            }
+        }
+
+        Progress::where('user_id', auth()->user()->id)->where('survey_id', $request->survey_id)->delete();
+        $progress = new Progress();
+        $progress->user_id = auth()->user()->id;
+        $progress->survey_id = $request->survey_id;
+        $progress->progress = $request->progress;
+        $progress->save();
+
 
         //submission
         if ($request->isSubmit == 'yes') {

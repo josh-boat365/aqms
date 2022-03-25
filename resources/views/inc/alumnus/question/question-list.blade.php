@@ -19,6 +19,10 @@
     <form action="{{route('alumnus.survey.save')}}" method="post" id="save-form" class="col d-flex flex-column align-items-center">
         @csrf
 
+        <input type="hidden" name="survey_id" value="{{$survey->id}}">
+        <input type="hidden" name="isSubmit" id="isSubmit">
+        <input type="hidden" name="progress" id="progress">
+
         @for ($i = 1; $i <= $survey->sections->count(); $i++)
 
             <div class="col-12 col-lg-8 survey-wrapper section-{{ $i }} @if ($i == 1) current @endif " style="display: none">
@@ -40,9 +44,7 @@
                 <div class="sortable-survey">
                 
                     
-                    <input type="hidden" name="survey_id" value="{{$survey->id}}">
-                    <input type="hidden" name="isSubmit" id="isSubmit">
-                    <input type="hidden" name="progress" id="progress">
+                    
                     
                     @include('inc.alumnus.question.question-card', ['questions'=>
                     $survey->sectionQuestions->where('section_id', $survey->sections[$i-1]->id),

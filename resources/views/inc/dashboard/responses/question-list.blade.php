@@ -27,16 +27,17 @@
                                         value="@foreach ($allResponses->where('user_id', $submission->user_id) as $response) @if ($response->question_id == $survey->questions[$i]->id){{ $response->response }} @endif @endforeach"
                                         disabled>
                                 @elseif ($survey->questions[$i]->option_type_id == 2)
-                                    <textarea class="form-control trim" name="ans[{{ $survey->questions[$i]->id }}]"
-                                        cols="30" rows="2" disabled>
-@foreach ($allResponses->where('user_id', $submission->user_id) as $response)@if ($response->question_id == $survey->questions[$i]->id){{ $response->response }}@endif @endforeach
+                                    <textarea class="form-control trim" name="ans[{{ $survey->questions[$i]->id }}]" cols="30" rows="2" disabled>
+@foreach ($allResponses->where('user_id', $submission->user_id) as $response)@if ($response->question_id == $survey->questions[$i]->id)
+{{ $response->response }}
+@endif @endforeach
 </textarea>
                                 @elseif ($survey->questions[$i]->option_type_id == 3)
                                     @foreach ($survey->options->where('question_id', $survey->questions[$i]->id) as $option)
                                         <div class="custom-control custom-radio"><input value="{{ $option->option }}"
                                                 type="radio"
-                                                @foreach ($allResponses->where('user_id', $submission->user_id) as $response) @if ($response->response == $option->option) checked @endif
-                                                @endforeach
+                                                @foreach ($allResponses->where('user_id', $submission->user_id) as $response) @if ($response->option_id == $option->id) checked @endif
+                            @endforeach
                                             id="o{{ $option->id }}"
                                             name="ans[{{ $survey->questions[$i]->id }}]"
                                             class="custom-control-input" disabled>
@@ -45,23 +46,21 @@
                                         </div>
                                     @endforeach
                                 @elseif ($survey->questions[$i]->option_type_id == 4)
-                                        <div class="form-group">
-                                            <select disabled="disabled" class="form-control select2-single">
-                                    @foreach ($survey->options->where('question_id', $survey->questions[$i]->id) as $option)
+                                    <div class="form-group">
+                                        <select disabled="disabled" class="form-control select2-single">
+                                            @foreach ($survey->options->where('question_id', $survey->questions[$i]->id) as $option)
                                                 <option
-                                                    @foreach ($allResponses->where('user_id', $submission->user_id) as $response) @if ($response->response == $option->option) selected @endif
-                                                    @endforeach
+                                                @foreach ($allResponses->where('user_id', $submission->user_id) as $response) @if ($response->question_id == $survey->questions[$i]->id && $response->response == $option->option) selected @endif @endforeach
                                                     value="{{ $option->option }}">{{ $option->option }}</option>
-                                    @endforeach
-                                            </select>
-                                        </div>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 @elseif ($survey->questions[$i]->option_type_id == 5)
                                     @foreach ($survey->options->where('question_id', $survey->questions[$i]->id) as $option)
                                         <div class="custom-control d-flex custom-checkbox">
                                             <input value="{{ $option->option }}" class="custom-control-input"
                                                 type="checkbox"
-                                                @foreach ($allResponses->where('user_id', $submission->user_id) as $response) @if ($response->response == $option->option) checked @endif
-                                                @endforeach
+                                                @foreach ($allResponses->where('user_id', $submission->user_id) as $response) @if ($response->option_id == $option->id) checked @endif @endforeach
                                             name="ans[{{ $survey->questions[$i]->id }}][{{ $option->id }}]"
                                             class="form-control"
                                             id="o{{ $option->id }}" disabled>
@@ -71,10 +70,10 @@
 
                                     @endforeach
                                 @else
-                                @foreach ($allResponses->where('user_id', $submission->user_id) as $response)
-                                    {{$response}}
-                                @endforeach
-                                {{-- <div class="row col-12">
+                                    {{-- @foreach ($allResponses->where('user_id', $submission->user_id) as $response)
+                                        {{ $response }}
+                                    @endforeach --}}
+                                    <div class="row col-12">
                                     <div class="d-flex flex-column col-2">
                                         <div style="height: 50px"></div>
                                         @foreach ($survey->questions[$i]->options->where('row_column', 'row') as $option)
@@ -110,16 +109,16 @@
                                         @endforeach
 
                                     </div>
-                                </div> --}}
-                                    
-        @endif
+                                </div>
+
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endfor
     </div>
-    </div>
-    </div>
-    </div>
-    </div>
-@endfor
-</div>
 
 
 @endforeach

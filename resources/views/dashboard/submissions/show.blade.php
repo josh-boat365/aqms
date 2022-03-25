@@ -190,6 +190,23 @@
         })(jQuery);
     </script>
 
+    {{-- toggle chart & table --}}
+    <script>
+        $(function () {
+            $('.chart-btn').click(function () {
+                // console.log($('#chart-' + $(this).attr('id')));
+                // console.log('#chart-' + $(this).attr('id'));
+                $('#chart-' + $(this).attr('id')).addClass('active')
+                $('#table-' + $(this).attr('id')).removeClass('active')
+            })
+            $('.table-btn').click(function () {
+                console.log($('#table-' + $(this).attr('id')));
+                $('#table-' + $(this).attr('id')).addClass('active')
+                $('#chart-' + $(this).attr('id')).removeClass('active')
+            })
+        })
+    </script>
+
     <script>
         $(function() {
             $('#submission-section').addClass('active');

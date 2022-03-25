@@ -32,7 +32,7 @@
             top: 45%;
             transform: translateY(-50%);
             left: -15px;
-            /* 
+            /*
             box-sizing: border-box; */
         }
 
@@ -90,7 +90,7 @@
         <div class="separator my-3"></div>
         @if ($survey->sections != null)
             <div class="mt-2" id="section-list" class="scroll h-100 col mt-2" style="max-height: 500px">
-                
+
                 <div class="sections">
                     @for ($i = 0; $i < $survey->sections->count(); $i++)
                         <div class="position-relative my-1 py-1 ml-4  pointer" id="section-{{ $i + 1 }}">
@@ -98,8 +98,8 @@
                     @endfor
                 </div>
                 <!-- <div class="text-center mt-2"><button type="button" class="btn btn-outline-primary btn-sm mb-2"
-                        id="add-section-button"><i class="simple-icon-plus btn-group-icon"></i> Add section</button>
-                </div> -->
+                            id="add-section-button"><i class="simple-icon-plus btn-group-icon"></i> Add section</button>
+                    </div> -->
             </div>
         @endif
         <div class="text-center mt-4">
@@ -217,7 +217,7 @@
 
     <!-- sections -->
     <script>
-        $(function () {
+        $(function() {
             $('.sections .pointer').first().addClass('dot-active')
 
             $('.sections').on('click', '.pointer', function() {
@@ -263,7 +263,9 @@
         $(function() {
             $('#save-btn').click(function() {
                 // console.log('dsv');
+                console.log($('.answered').length);
                 $('#progress').val($('.answered').length)
+                console.log($('#progress'));
                 $('#save-form').submit();
             })
         })
@@ -410,44 +412,57 @@
     {{-- check and count answered question on load --}}
     <script>
         $(function() {
-            $('.sortable-survey').each(function () {
+
+            console.log("selects");
+            $('.sortable-survey').each(function() {
+
                 $(this).find('select').each(function() {
+                    console.log($(this));
                     $(this).parent().parent().parent().parent().parent().addClass('answered')
                 })
 
-            
+
+                console.log("text");
                 $(this).find('input').each(function() {
                     //text box
                     if ($(this).attr('type') == 'text') {
-                        console.log($(this));
                         // if empty
                         if ($(this).val().trim() == "") {
-                            $(this).parent().parent().parent().parent().parent().removeClass('answered')
+                            $(this).parent().parent().parent().parent().parent().removeClass(
+                                'answered')
 
                         } else {
-                            $(this).parent().parent().parent().parent().parent().addClass('answered')
+                            console.log($(this));
+                            $(this).parent().parent().parent().parent().parent().addClass(
+                                'answered')
                         }
 
                     }
 
+
                     //radio button
-                    if ($(this).attr('type') == 'radio') {
+                    else if ($(this).attr('type') == 'radio') {
+                        console.log("radio");
                         // not grid
                         if ($(this).parent().hasClass('custom-radio')) {
                             $(this).parent().parent().children('.custom-radio').each(function() {
                                 if ($(this).children('input').is(':checked')) {
-                                    $(this).parent().parent().parent().parent().parent().parent()
+                                    $(this).parent().parent().parent().parent().parent()
+                                        .parent()
                                         .addClass('answered')
+                                    console.log($(this));
                                     return false;
                                 } else {
-                                    $(this).parent().parent().parent().parent().parent().parent()
+                                    $(this).parent().parent().parent().parent().parent()
+                                        .parent()
                                         .removeClass('answered')
                                 }
                             })
                         } else {
                             // grid
 
-                            $question = $(this).parent().parent().parent().parent().parent().parent().parent()
+                            $question = $(this).parent().parent().parent().parent().parent()
+                                .parent().parent()
                                 .parent().parent();
                             $column_inputs = $(this).parent().parent().children('.check-box');
                             // console.log($column_inputs);
@@ -463,6 +478,7 @@
                                 $(this).children('.check-box').each(function() {
                                     // console.log($(this).children('input').is(':checked'));
                                     if ($(this).children('input').is(':checked')) {
+                                        console.log($(this));
                                         $answered[$y] = true;
                                     }
                                     // console.log($(this).children('input') + ' ' + $(this).children('input').is('checked'));
@@ -478,33 +494,29 @@
                                 $y = 0;
                             })
 
-                            // check if all answered
-                            $($answered).each(function() {
-                                if (!$(this)) {
-                                    $question.removeClass('answered')
-                                } else {
-                                    $question.addClass('answered')
-                                }
-                            })
+
                         }
                     }
 
                     //check box
-                    if ($(this).attr('type') == 'checkbox') {
+                    else if ($(this).attr('type') == 'checkbox') {
                         $(this).parent().parent().children('.custom-checkbox').each(function() {
                             if ($(this).children('input').is(':checked')) {
-                                $(this).parent().parent().parent().parent().parent().addClass(
-                                    'answered')
+                                $(this).parent().parent().parent().parent().parent()
+                                    .addClass(
+                                        'answered')
                                 return false
                             } else(
-                                $(this).parent().parent().parent().parent().parent().removeClass(
+                                $(this).parent().parent().parent().parent().parent()
+                                .removeClass(
                                     'answered')
                             )
                         });
                     }
 
                     $('#progress').val($('.answered').length);
-                    $('.progress-tracker').text($('.answered').length + '/' + $('.question').length);
+                    $('.progress-tracker').text($('.answered').length + '/' + $('.question')
+                    .length);
                     if ($('.answered').length == $('.question').length) {
                         $('#submit-btn').show()
                     } else {
@@ -512,22 +524,35 @@
                     }
                 })
 
+                console.log("textarea");
                 $(this).find('textarea').each(function() {
                     // if empty
                     if ($(this).val().trim() == "") {
                         $(this).parent().parent().parent().parent().parent().removeClass('answered')
                     } else {
-                        // $(this).parent().parent().parent().parent().parent().addClass('answered')
+                        $(this).parent().parent().parent().parent().parent().addClass('answered')
+                        console.log($(this));
                     }
 
-                    $('#progress').val($('.answered').length);
-                    $('.progress-tracker').text($('.answered').length + '/' + $('.question').length);
-                    if ($('.answered').length == $('.question').length) {
-                        $('#submit-btn').show()
+
+                })
+
+                // check if all answered
+                $($answered).each(function() {
+                    if (!$(this)) {
+                        $question.removeClass('answered')
                     } else {
-                        $('#submit-btn').hide()
+                        $question.addClass('answered')
                     }
                 })
+
+                $('#progress').val($('.answered').length);
+                $('.progress-tracker').text($('.answered').length + '/' + $('.question').length);
+                if ($('.answered').length == $('.question').length) {
+                    $('#submit-btn').show()
+                } else {
+                    $('#submit-btn').hide()
+                }
             })
         })
     </script>
@@ -547,7 +572,7 @@
     </script>
 
     <script>
-        $(function(){
+        $(function() {
             $('#survey-section').addClass('active');
         })
     </script>

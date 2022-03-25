@@ -60,157 +60,22 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>admin@codehim.com Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, obcaecati eveniet eligendi molestiae ut, repudiandae tempore facilis blanditiis mollitia totam iusto minima porro in, beatae magni amet aut modi quod.</td>
-                                    <td>0123456789</td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>admin@codehim.com Lorem ipsum dolor sit amet python adipisicing elit. Consequuntur, obcaecati eveniet eligendi molestiae ut, repudiandae tempore facilis blanditiis mollitia totam iusto minima porro in, beatae magni amet aut modi quod.</td>
-                                    <td>0123456789</td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>admin@codehim.com Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, obcaecati eveniet eligendi molestiae ut, repudiandae tempore facilis blanditiis mollitia totam iusto minima porro in, beatae magni amet aut modi quod.</td>
-                                    <td>0123456789</td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>admin@codehim.com Lorem ipsum dolor sit amet consectetur joshua adipisicing elit. Consequuntur, obcaecati eveniet eligendi molestiae ut, repudiandae tempore facilis blanditiis mollitia totam iusto minima porro in, beatae magni amet aut modi quod.</td>
-                                    <td>0123456789</td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>admin@codehim.com Lorem ipsum dolor sit amet consectetur fuad adipisicing elit. Consequuntur, obcaecati eveniet eligendi molestiae ut, repudiandae tempore facilis blanditiis mollitia totam iusto minima porro in, beatae magni amet aut modi quod.</td>
-                                    <td>0123456789</td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>admin@codehim.com Lorem ipsum dolor sit amet consectetur adipisicing sammy elit. Consequuntur, obcaecati eveniet eligendi molestiae ut, repudiandae tempore facilis blanditiis mollitia totam iusto minima porro in, beatae magni amet aut modi quod.</td>
-                                    <td>0123456789</td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>admin@codehim.com Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, obcaecati eveniet eligendi molestiae ut, repudiandae tempore facilis blanditiis mollitia totam iusto minima porro in, beatae magni amet aut modi quod.</td>
-                                    <td>0123456789</td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>admin@codehim.com Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, obcaecati eveniet eligendi molestiae ut, repudiandae tempore facilis blanditiis mollitia totam iusto minima porro in, beatae magni amet aut modi quod.</td>
-                                    <td>0123456789</td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>admin@codehim.com Lorem ipsum dolor sit amet consectetur emma adipisicing elit. Consequuntur, obcaecati eveniet eligendi molestiae ut, repudiandae tempore facilis blanditiis mollitia totam iusto minima porro in, beatae magni amet aut modi quod.</td>
-                                    <td>0123456789</td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>admin@codehim.com Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, obcaecati eveniet eligendi molestiae ut, repudiandae tempore facilis blanditiis mollitia totam iusto minima porro in, beatae magni amet aut modi quod.</td>
-                                    <td>0123456789</td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>admin@codehim.com Lorem ipsum dolor sit amet consectetur java adipisicing elit. Consequuntur, obcaecati eveniet eligendi molestiae ut, repudiandae tempore facilis blanditiis mollitia totam iusto minima porro in, beatae magni amet aut modi quod.</td>
-                                    <td>0123456789</td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>admin@codehim.com Lorem ipsum dolor sit amet consectetur template adipisicing elit. Consequuntur, obcaecati eveniet eligendi molestiae ut, repudiandae tempore facilis blanditiis mollitia totam iusto minima porro in, beatae magni amet aut modi quod.</td>
-                                    <td>0123456789</td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>admin@codehim.com Lorem ipsum dolor sit amet consectetur turntabl adipisicing elit. Consequuntur, obcaecati eveniet eligendi molestiae ut, repudiandae tempore facilis blanditiis mollitia totam iusto minima porro in, beatae magni amet aut modi quod.</td>
-                                    <td>0123456789</td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>admin@codehim.com Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, obcaecati eveniet eligendi molestiae ut, repudiandae tempore facilis blanditiis mollitia totam iusto minima porro in, beatae magni amet aut modi quod.</td>
-                                    <td>0123456789</td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>admin@codehim.com Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, obcaecati eveniet eligendi molestiae ut, repudiandae tempore facilis blanditiis mollitia totam iusto minima porro in, beatae magni amet aut modi quod.</td>
-                                    <td>0123456789</td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>admin@codehim.com Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, obcaecati eveniet eligendi molestiae ut, repudiandae tempore facilis blanditiis mollitia totam iusto minima porro in, beatae magni amet aut modi quod.</td>
-                                    <td>0123456789</td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>admin@codehim.com Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, obcaecati eveniet eligendi molestiae ut, repudiandae tempore facilis blanditiis mollitia totam iusto minima porro in, beatae magni amet aut modi quod.</td>
-                                    <td>0123456789</td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>admin@codehim.com Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, obcaecati eveniet eligendi molestiae ut, repudiandae tempore facilis blanditiis mollitia totam iusto minima porro in, beatae magni amet aut modi quod.</td>
-                                    <td>0123456789</td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>admin@codehim.com Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, obcaecati eveniet eligendi molestiae ut, repudiandae tempore facilis blanditiis mollitia totam iusto minima porro in, beatae magni amet aut modi quod.</td>
-                                    <td>0123456789</td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>admin@codehim.com Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, obcaecati eveniet eligendi molestiae ut, repudiandae tempore facilis blanditiis mollitia totam iusto minima porro in, beatae magni amet aut modi quod.</td>
-                                    <td>0123456789</td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>admin@codehim.com Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, obcaecati eveniet eligendi molestiae ut, repudiandae tempore facilis blanditiis mollitia totam iusto minima porro in, beatae magni amet aut modi quod.</td>
-                                    <td>0123456789</td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>admin@codehim.com Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, obcaecati eveniet eligendi molestiae ut, repudiandae tempore facilis blanditiis mollitia totam iusto minima porro in, beatae magni amet aut modi quod.</td>
-                                    <td>0123456789</td>
-                                    
-                                </tr>
-
-                                <tr>
-                                    <td>1</td>
-                                    <td>hello@codehim.com</td>
-                                    <td>9876543210</td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>maria@example.com</td>
-                                    <td>6754328901</td>
+                                    @php
+                                        $ind = 1;
+                                    @endphp
+                                    @foreach ($survey->questions as $question)
+                                        <tr>
+                                            <td>{{$ind++}}</td>
+                                            <td>{{$question->question}}</td>
+                                            <td>
+                                                @foreach ($survey->responses->where('question_id', $question->id) as $response)
+                                                    <div>{{$response->response}}</div>
+                                                @endforeach
+                                            </td>
+                                            
+                                        </tr>
+                                    @endforeach
                                 
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>zee@example.com</td>
-                                    <td>6754328901</td>
-                                    
-                                </tr>    
                                 </tbody>
                             </table>
                         </div>
