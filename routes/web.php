@@ -38,7 +38,8 @@ Route::get('/dashboard/surveys/{i}', '\App\Http\Controllers\DashboardController@
 Route::post('/dashboard/surveys/update', '\App\Http\Controllers\DashboardController@updateSurvey')->name('survey.update');
 Route::put('/dashboard/surveys/deploy', '\App\Http\Controllers\DashboardController@deploySurvey')->name('survey.deploy');
 Route::put('/dashboard/surveys/archive', '\App\Http\Controllers\DashboardController@archiveSurvey')->name('survey.archive');
-Route::delete('/dashboard/surveys/delete', '\App\Http\Controllers\DashboardController@deleteSurvey')->name('survey.delete');
+Route::delete('/dashboard/surveys/', '\App\Http\Controllers\DashboardController@deleteSurvey')->name('survey.delete');
+Route::delete('/dashboard/surveys/delete', '\App\Http\Controllers\DashboardController@deleteQuestion')->name('survey.question.delete');
 Route::post('/dashboard/surveys/view-response', '\App\Http\Controllers\DashboardController@viewResponse')->name('survey.view-response');
 Route::post('/dashboard/surveys', '\App\Http\Controllers\DashboardController@addQuestion')->name('survey.addQuestion');
     // profile
@@ -47,7 +48,9 @@ Route::get('/dashboard/profile/', '\App\Http\Controllers\DashboardController@pro
 Route::get('/dashboard/submissions', '\App\Http\Controllers\DashboardController@submissions')->name('submissions.index');
 Route::get('/dashboard/submissions/{i}', '\App\Http\Controllers\DashboardController@showSubmissions')->name('submissions.show');
     // users
-Route::get('/dashboard/users', '\App\Http\Controllers\DashboardController@users')->name('users.index');   
+Route::get('/dashboard/users', '\App\Http\Controllers\DashboardController@users')->name('users.index');  
+    // analytics
+Route::get('/dashboard/analytics', '\App\Http\Controllers\DashboardController@analytics')->name('analytics.index');   
 
 
 

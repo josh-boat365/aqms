@@ -14,7 +14,7 @@ class AddOrderToQuestionsTable extends Migration
     public function up()
     {
         Schema::table('questions', function (Blueprint $table) {
-            $table->integer('order');
+            $table->integer('order')->default(0);
         });
     }
 
