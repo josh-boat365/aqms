@@ -50,13 +50,13 @@ class DatabaseSeeder extends Seeder
         \App\Models\OptionType::factory()->create(['type' => 'Multiple Select (Check Box)']);
         \App\Models\OptionType::factory()->create(['type' => 'Grid']);
         
-        \App\Models\Survey::factory(3)->create();
+        // \App\Models\Survey::factory(3)->create();
 
-        \App\Models\Question::factory(15)->create();
+        // \App\Models\Question::factory(15)->create();
 
-        \App\Models\Option::factory(30)->create();
+        // \App\Models\Option::factory(30)->create();
 
-        \App\Models\Subquestion::factory(20)->create();
+        // \App\Models\Subquestion::factory(20)->create();
 
         // \App\Models\Submission::factory(20)->create();
 
