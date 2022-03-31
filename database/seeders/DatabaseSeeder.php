@@ -39,16 +39,43 @@ class DatabaseSeeder extends Seeder
             'remember_token' => Str::random(10),
         ]);
 
-        \App\Models\Status::factory()->create(['status' => 'Draft']);
-        \App\Models\Status::factory()->create(['status' => 'Deployed']);
-        \App\Models\Status::factory()->create(['status' => 'Archived']);
+        \App\Models\Status::factory()->create([
+            'id' => 1,
+            'status' => 'Draft'
+        ]);
+        \App\Models\Status::factory()->create([
+            'id' => 2,
+            'status' => 'Deployed'
+        ]);
+        \App\Models\Status::factory()->create([
+            'id' => 3,
+            'status' => 'Archived'
+        ]);
 
-        \App\Models\OptionType::factory()->create(['type' => 'Text (Single Line)']);
-        \App\Models\OptionType::factory()->create(['type' => 'Text (Multiple Line)']);
-        \App\Models\OptionType::factory()->create(['type' => 'Single Select (Radio Button)']);
-        \App\Models\OptionType::factory()->create(['type' => 'Single Select (Drop down)']);
-        \App\Models\OptionType::factory()->create(['type' => 'Multiple Select (Check Box)']);
-        \App\Models\OptionType::factory()->create(['type' => 'Grid']);
+        \App\Models\OptionType::factory()->create([
+            'id' => 1,
+            'type' => 'Text (Single Line)'
+        ]);
+        \App\Models\OptionType::factory()->create([
+            'id' => 2,
+            'type' => 'Text (Multiple Line)'
+        ]);
+        \App\Models\OptionType::factory()->create([
+            'id' => 3,
+            'type' => 'Single Select (Radio Button)'
+        ]);
+        \App\Models\OptionType::factory()->create([
+            'id' => 4,
+            'type' => 'Single Select (Drop down)'
+        ]);
+        \App\Models\OptionType::factory()->create([
+            'id' => 5,
+            'type' => 'Multiple Select (Check Box)'
+        ]);
+        \App\Models\OptionType::factory()->create([
+            'id' => 6,
+            'type' => 'Grid'
+        ]);
         
         // \App\Models\Survey::factory(3)->create();
 
@@ -60,9 +87,17 @@ class DatabaseSeeder extends Seeder
 
         // \App\Models\Submission::factory(20)->create();
 
-        \App\Models\NotificationType::factory()->create(['type' => 'registration']);
-        \App\Models\NotificationType::factory()->create(['type' => 'submission']);
-        \App\Models\NotificationType::factory()->create(['type' => 'deployment']);
+        \App\Models\NotificationType::factory()->create([
+            'id' => 1,
+            'type' => 'registration'
+        ]);
+        \App\Models\NotificationType::factory()->create([
+            'id' => 2,
+            'type' => 'submission'
+        ]);
+        \App\Models\NotificationType::factory()->create([
+            'id' => 3,
+            'type' => 'deployment']);
 
         // \App\Models\Notification::factory()->create([
         //     'notification' => 'new alumnus registered',
