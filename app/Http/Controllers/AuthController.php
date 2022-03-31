@@ -98,7 +98,7 @@ class AuthController extends Controller
         //notify admin
         $notification = new Notification();
         $notification->user_id = $user->id;
-        $notification->notification_type_id = NotificationType::where('type', 'registration')->id;
+        $notification->notification_type_id = NotificationType::where('type', 'registration')->first()->id;
         $notification->save();
         
 
