@@ -47,6 +47,10 @@
                                         <p class="mb-3">{{ auth()->user()->gender }}</p>
                                     </div>
                                     <div class="d-flex">
+                                        <p class="mb-3">Session: &nbsp;</p>
+                                        <p class="mb-3">{{ auth()->user()->session }}</p>
+                                    </div>
+                                    <div class="d-flex">
                                         <p class="mb-3">Phone number: &nbsp;</p>
                                         <p class="mb-3">{{ auth()->user()->phone }}</p>
                                     </div>
@@ -117,6 +121,18 @@
                                                         @endif>Female</option>
                                                     </select>
                                                     <span>Gender</span> 
+                                                </div>
+                                                <div class="form-group has-float-label">
+                                                    <select id="inputState" class="form-control select2-single" name="gender">
+                                                        <option>Choose...</option>
+                                                        <option value="Full-time" @if (strtolower(auth()->user()->gender) == "full-time")
+                                                            selected
+                                                        @endif>Full Time</option>
+                                                        <option value="Part-time" @if (strtolower(auth()->user()->gender) == "part-time")
+                                                            selected
+                                                        @endif>Part Time</option>
+                                                    </select>
+                                                    <span>Session</span> 
                                                 </div>
                                                 <div class="form-group has-float-label">
                                                     <input  type="tel" class="form-control" name="phone" value="{{auth()->user()->phone}}" autocomplete="off" >
