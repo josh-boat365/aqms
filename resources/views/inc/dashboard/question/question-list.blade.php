@@ -2,7 +2,7 @@
 
 @empty($survey->sections->values()->toArray())
     <div class="sortable-survey col-lg-8 col-12 mb-4">
-        {{-- @include('inc.dashboard.question.question-card', ['questions' => $survey->questions->toArray()]) --}}
+        @include('inc.dashboard.question.question-card', ['questions' => $survey->questions->toArray()])
     </div>
     <div id="all-deletes" style="display: none"></div>
 @else
