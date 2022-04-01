@@ -65,7 +65,7 @@
     @endsection
 
     @section('question-list')
-        @include('inc.dashboard.question.question-list')
+        {{-- @include('inc.dashboard.question.question-list') --}}
     @endsection
 
     @section('stat')
