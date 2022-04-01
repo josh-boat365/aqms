@@ -1,5 +1,5 @@
-{{ $survey->options }}
-{{-- @for ($i = 0; $i < count($questions); $i++)
+
+@for ($i = 0; $i < count($questions); $i++)
 
     <div>
         <div class="card question d-flex mb-4 edit-quesiton">
@@ -155,4 +155,4 @@
         </div>
     </div>
 
-@endfor --}}
+@endfor
