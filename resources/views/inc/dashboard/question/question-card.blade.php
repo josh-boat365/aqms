@@ -2,7 +2,7 @@
 @for ($i = 0; $i < count($questions); $i++)
 
         question
-        {{-- <div>
+        <div>
             <div class="card question d-flex mb-4 edit-quesiton">
                 <div class="d-flex flex-grow-1 min-width-zero">
                     <div
@@ -62,7 +62,7 @@
                                         <div class="col rows">
                                             <h5>Rows</h5>
                                             <div class="sortable">
-                                                @foreach ($survey->options->where('question_id', $questions[$i]['id'])->where('row_column', 'row') as $option)
+                                                {{-- @foreach ($survey->options->where('question_id', $questions[$i]['id'])->where('row_column', 'row') as $option)
                                                     <div class="mb-1 position-relative ans">
                                                         <input class="form-control" type="text"
                                                             name="questions[old][{{ $questions[$i]['id'] }}][options][rows][old][{{ $option->id }}]"
@@ -72,13 +72,13 @@
                                                                     class="simple-icon-cursor-move"></i> </span><span
                                                                 class="badge badge-pill btn del-ans"><i class="simple-icon-trash"></i></span></div>
                                                     </div>
-                                                @endforeach
+                                                @endforeach --}}
                                             </div>
                                         </div>
                                         <div class="col columns">
                                             <h5>Columns</h5>
                                             <div class="sortable">
-                                                @foreach ($survey->options->where('question_id', $questions[$i]['id'])->where('row_column', 'column') as $option)
+                                                {{-- @foreach ($survey->options->where('question_id', $questions[$i]['id'])->where('row_column', 'column') as $option)
                                                     <div class="mb-1 position-relative ans"><input class="form-control" type="text"
                                                             name="questions[old][{{ $questions[$i]['id'] }}][options][columns][old][{{ $option->id }}]"
                                                             value="{{ $option->option }}" id="{{ $option->id }}">
@@ -87,7 +87,7 @@
                                                                     class="simple-icon-cursor-move"></i> </span><span
                                                                 class="badge badge-pill btn del-ans"><i class="simple-icon-trash"></i></span></div>
                                                     </div>
-                                                @endforeach
+                                                @endforeach --}}
                                             </div>
                                         </div>
 
@@ -112,7 +112,7 @@
                                     <label class="d-block">Answers</label>
                                     <div class="answers mb-3 sortable">
 
-                                        @foreach ($survey->options->where('question_id', $questions[$i]['id']) as $option)
+                                        {{-- @foreach ($survey->options->where('question_id', $questions[$i]['id']) as $option)
                                             <div class="mb-1 position-relative ans"><input class="form-control" type="text"
                                                     name="questions[old][{{ $questions[$i]['id'] }}][options][old][{{ $option->id }}]"
                                                     value="{{ $option->option }}" id="{{ $option->id }}">
@@ -121,7 +121,7 @@
                                                             class="simple-icon-cursor-move"></i> </span><span
                                                         class="badge badge-pill btn del-ans"><i class="simple-icon-trash"></i></span></div>
                                             </div>
-                                        @endforeach
+                                        @endforeach --}}
 
                                     </div>
                                     <div class="text-center">
@@ -145,6 +145,6 @@
                     </div>
                 </div>
             </div>
-        </div> --}}
+        </div>
 
     @endfor
