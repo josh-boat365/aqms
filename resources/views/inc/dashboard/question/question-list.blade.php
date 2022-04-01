@@ -33,10 +33,10 @@
                 <!-- {{ $survey->sectionQuestions }} -->
                 <!-- {{ $survey }} -->
                 <!-- {{ $survey->sections[$i-1]->id }} -->
-                @include('inc.dashboard.question.question-card', ['questions'=>
+                {{-- @include('inc.dashboard.question.question-card', ['questions'=>
                 $survey->sectionQuestions->where('section_id', $survey->sections[$i-1]->id)->values()->toArray(),
                 'section_id' => $survey->sections[$i-1]->id,
-                ])
+                ]) --}}
             </div>
             
         </div>
