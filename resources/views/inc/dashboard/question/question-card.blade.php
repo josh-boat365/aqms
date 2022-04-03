@@ -837,5 +837,5 @@
                 </div>
             </div>
         </div>
-    @endfor
+    @endforeach
 @endempty
