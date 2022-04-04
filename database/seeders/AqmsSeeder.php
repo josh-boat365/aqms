@@ -24,10 +24,7 @@ class AqmsSeeder extends Seeder
             'survey_id' => 1,
             'title' => 'Section A',
             'description' => 'General Information'
-        ])
-
-
-        
+        ]);  
 
 
     }
