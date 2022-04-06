@@ -343,38 +343,38 @@
 
                         $x = 0;
                         $y = 0;
-                        $answered = [];
-                        // each column
-                        $(this).parent().parent().parent().children('div').each(function() {
+                        // $answered = [];
+                        // // each column
+                        // $(this).parent().parent().parent().children('div').each(function() {
 
 
-                            // each checkbox container
-                            $(this).children('.check-box').each(function() {
-                                // console.log($(this).children('input').is(':checked'));
-                                if ($(this).children('input').is(':checked')) {
-                                    $answered[$y] = true;
-                                }
-                                // console.log($(this).children('input') + ' ' + $(this).children('input').is('checked'));
+                        //     // each checkbox container
+                        //     $(this).children('.check-box').each(function() {
+                        //         // console.log($(this).children('input').is(':checked'));
+                        //         if ($(this).children('input').is(':checked')) {
+                        //             $answered[$y] = true;
+                        //         }
+                        //         // console.log($(this).children('input') + ' ' + $(this).children('input').is('checked'));
 
-                                // if ($(this).children('input').is('checked')) {
-                                //     console.log($(this).children('input'));
-                                //     // $answered[$y] = true;
-                                // }
+                        //         // if ($(this).children('input').is('checked')) {
+                        //         //     console.log($(this).children('input'));
+                        //         //     // $answered[$y] = true;
+                        //         // }
 
-                                $y++;
-                            })
-                            $x++;
-                            $y = 0;
-                        })
+                        //         $y++;
+                        //     })
+                        //     $x++;
+                        //     $y = 0;
+                        // })
 
-                        // console.log($answered);
+                        // // console.log($answered);
 
-                        // check if all answered
-                        if ($answered.length == $column_inputs) {
-                            $question.addClass('answered')
-                        } else {
-                            $question.removeClass('answered')
-                        }
+                        // // check if all answered
+                        // if ($answered.length == $column_inputs) {
+                        //     $question.addClass('answered')
+                        // } else {
+                        //     $question.removeClass('answered')
+                        // }
                     }
                 }
 
@@ -469,30 +469,30 @@
 
                             $x = 0;
                             $y = 0;
-                            $answered = [];
+                            // $answered = [];
 
-                            // each column
-                            $(this).parent().parent().parent().children('div').each(function() {
+                            // // each column
+                            // $(this).parent().parent().parent().children('div').each(function() {
 
-                                // each checkbox container
-                                $(this).children('.check-box').each(function() {
-                                    // console.log($(this).children('input').is(':checked'));
-                                    if ($(this).children('input').is(':checked')) {
-                                        // console.log($(this));
-                                        $answered[$y] = true;
-                                    }
-                                    // console.log($(this).children('input') + ' ' + $(this).children('input').is('checked'));
+                            //     // each checkbox container
+                            //     $(this).children('.check-box').each(function() {
+                            //         // console.log($(this).children('input').is(':checked'));
+                            //         if ($(this).children('input').is(':checked')) {
+                            //             // console.log($(this));
+                            //             $answered[$y] = true;
+                            //         }
+                            //         // console.log($(this).children('input') + ' ' + $(this).children('input').is('checked'));
 
-                                    // if ($(this).children('input').is('checked')) {
-                                    //     console.log($(this).children('input'));
-                                    //     // $answered[$y] = true;
-                                    // }
+                            //         // if ($(this).children('input').is('checked')) {
+                            //         //     console.log($(this).children('input'));
+                            //         //     // $answered[$y] = true;
+                            //         // }
 
-                                    $y++;
-                                })
-                                $x++;
-                                $y = 0;
-                            })
+                            //         $y++;
+                            //     })
+                            //     $x++;
+                            //     $y = 0;
+                            // })
 
 
                         }
@@ -538,13 +538,13 @@
                 })
 
                 // check if all answered
-                $($answered).each(function() {
-                    if (!$(this)) {
-                        $question.removeClass('answered')
-                    } else {
-                        $question.addClass('answered')
-                    }
-                })
+                // $($answered).each(function() {
+                //     if (!$(this)) {
+                //         $question.removeClass('answered')
+                //     } else {
+                //         $question.addClass('answered')
+                //     }
+                // })
 
                 $('#progress').val($('.answered').length);
                 $('.progress-tracker').text($('.answered').length + '/' + $('.question').length);
