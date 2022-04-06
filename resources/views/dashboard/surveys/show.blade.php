@@ -353,7 +353,7 @@
                             // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
                             // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
                             console.log($(this).attr('name').slice($(this).attr('name').indexOf("questions") + 9, $(this).attr('name').length));
-                            $(this).attr('name', 'questions' + $(this).attr('name').slice($(this).attr('name').indexOf("questions") + 9, $(this)
+                            $(this).attr('name', 'sections[new][1000][questions]' + $(this).attr('name').slice($(this).attr('name').indexOf("questions") + 9, $(this)
                                 .attr('name').length))
                         }
                     })
