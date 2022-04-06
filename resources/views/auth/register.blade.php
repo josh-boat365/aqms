@@ -53,7 +53,7 @@
                             <form class="tooltip-right-bottom mob-view" style="position: relative; top: 4rem;" novalidate method="POST" action="{{ route('register', 'Alumnus') }}">
                                 @csrf
 
-                                <div class="form-group has-float-label"><input value="{{old('firstName')}}" class="@error('firstName') border-danger @enderror form-control" name="firstName" required>
+                                <div class="form-group has-float-label mb-2"><input value="{{old('firstName')}}" class="@error('firstName') border-danger @enderror form-control" name="firstName" required>
                                     <span>First Name</span>
                                     @error('firstName')
                                         <div class="invalid-tooltip d-block">{{$message}}</div>
