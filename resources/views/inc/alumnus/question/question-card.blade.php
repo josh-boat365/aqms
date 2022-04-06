@@ -66,7 +66,7 @@
                         <div class="custom-control custom-radio"><input value="{{ $option->option }}" type="radio" id="o{{ $option->id }}" 
                             @foreach ($responses as $response) @if ($response->option_id == $option->id) checked @endif
                             @endforeach
-                            name="ans[{{ $question->id }}][{{ $option->id }}]" class="custom-control-input">
+                            name="ans[{{ $question->id }}]" class="custom-control-input">
                             <label class="custom-control-label" for="o{{ $option->id }}">{{ $option->option }}</label>
                         </div>
                         @endforeach
