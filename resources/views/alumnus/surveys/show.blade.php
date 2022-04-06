@@ -263,9 +263,9 @@
         $(function() {
             $('#save-btn').click(function() {
                 // console.log('dsv');
-                console.log($('.answered').length);
+                console.log("answered = " + $('.answered').length);
                 $('#progress').val($('.answered').length)
-                console.log($('#progress'));
+                // console.log($('#progress'));
                 $('#save-form').submit();
             })
         })
@@ -413,16 +413,16 @@
     <script>
         $(function() {
 
-            console.log("selects");
+            // console.log("selects");
             $('.sortable-survey').each(function() {
 
                 $(this).find('select').each(function() {
-                    console.log($(this));
+                    // console.log($(this));
                     $(this).parent().parent().parent().parent().parent().addClass('answered')
                 })
 
 
-                console.log("text");
+                // console.log("text");
                 $(this).find('input').each(function() {
                     //text box
                     if ($(this).attr('type') == 'text') {
@@ -442,7 +442,7 @@
 
                     //radio button
                     else if ($(this).attr('type') == 'radio') {
-                        console.log("radio");
+                        // console.log("radio");
                         // not grid
                         if ($(this).parent().hasClass('custom-radio')) {
                             $(this).parent().parent().children('.custom-radio').each(function() {
@@ -450,7 +450,7 @@
                                     $(this).parent().parent().parent().parent().parent()
                                         .parent()
                                         .addClass('answered')
-                                    console.log($(this));
+                                    // console.log($(this));
                                     return false;
                                 } else {
                                     $(this).parent().parent().parent().parent().parent()
@@ -478,7 +478,7 @@
                                 $(this).children('.check-box').each(function() {
                                     // console.log($(this).children('input').is(':checked'));
                                     if ($(this).children('input').is(':checked')) {
-                                        console.log($(this));
+                                        // console.log($(this));
                                         $answered[$y] = true;
                                     }
                                     // console.log($(this).children('input') + ' ' + $(this).children('input').is('checked'));
@@ -524,14 +524,14 @@
                     }
                 })
 
-                console.log("textarea");
+                // console.log("textarea");
                 $(this).find('textarea').each(function() {
                     // if empty
                     if ($(this).val().trim() == "") {
                         $(this).parent().parent().parent().parent().parent().removeClass('answered')
                     } else {
                         $(this).parent().parent().parent().parent().parent().addClass('answered')
-                        console.log($(this));
+                        // console.log($(this));
                     }
 
 
