@@ -87,6 +87,10 @@
             <div class="btn btn-outline-primary btn-sm mb-2" id="save-btn"><i class="simple-icon-plus btn-group-icon"></i>
                 Save</div>
         </div>
+        <div class="text-center mt-4">
+            <div class="btn btn-outline-danger btn-sm mb-2" id="reset-btn"><i class="simple-icon-trash btn-group-icon"></i>
+                Rest</div>
+        </div>
         <div class="separator my-3"></div>
         @if ($survey->sections != null)
             <div class="mt-2" id="section-list" class="scroll h-100 col mt-2" style="max-height: 500px">
