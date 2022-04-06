@@ -235,6 +235,7 @@
 
             $('#enable-section').change(function() {
                 var $sec_num = $('.current #sec-num').val()
+                console.log($('.current'));
                 if ($(this).is(':checked')) {
                     $count = $('.survey-wrapper').length;
 
