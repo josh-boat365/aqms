@@ -589,7 +589,8 @@
         $(function () {
             for (let index = 0; index < $('.heading-number').length; index++) {
                 const element = $('.heading-number')[index];
-                element.text(index + 1)
+                // element.text(index + 1)
+                console.log(element);
             }
         })
     </script>
