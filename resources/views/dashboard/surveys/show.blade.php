@@ -319,6 +319,7 @@
                         // $str = "Hello World";
                         // console.log();
                         if ($(this).attr('name') != undefined) {
+                            
 
                             $(this).attr('name', 'sections[new][1][questions]' + $(this).attr(
                                     'name')
@@ -379,7 +380,9 @@
                         // $str = "Hello World";
                         // console.log();
                         if ($(this).attr('name') != undefined) {
+                            console.log($(this).attr('name').indexOf("questions"));
 
+                            console.log($(this).attr('name').slice(21, $(this).attr('name').length));
                             $(this).attr('name', 'ques' + $(this).attr('name').slice(21, $(this)
                                 .attr('name').length))
                         }
