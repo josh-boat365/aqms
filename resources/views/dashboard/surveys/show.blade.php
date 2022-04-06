@@ -234,8 +234,7 @@
             $('.sections .pointer').first().addClass('dot-active')
 
             $('#enable-section').change(function() {
-                var $sec_num = $('.current #sec-num').val()
-                console.log($('#update-form'));
+                
                 if ($(this).is(':checked')) {
                     $count = $('.survey-wrapper').length;
 
@@ -314,6 +313,9 @@
                     $('.section-card').slideDown(function() {
                         $(this).show();
                     })
+
+                    var $sec_num = $('.current #sec-num').val()
+                    console.log($('#update-form .current'));
 
                     $('.sortable-survey input').each(function() {
                         // console.log( $(this));
