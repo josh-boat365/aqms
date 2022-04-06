@@ -275,6 +275,19 @@
         })
     </script>
 
+    {{-- reset --}}
+    <script>
+        $(function() {
+            $('#reset-btn').click(function() {
+                // console.log('dsv');
+                // console.log("answered = " + $('.answered').length);
+                // $('#progress').val($('.answered').length)
+                // console.log($('#progress'));
+                $('#reset-form').submit();
+            })
+        })
+    </script>
+
     {{-- submit --}}
     <script>
         $(function() {
