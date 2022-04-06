@@ -234,6 +234,7 @@
             $('.sections .pointer').first().addClass('dot-active')
 
             $('#enable-section').change(function() {
+                var $sec_num = $('.current #sec-num').val()
                 if ($(this).is(':checked')) {
                     $count = $('.survey-wrapper').length;
 
@@ -322,17 +323,19 @@
                             
 
                             // console.log($(this).attr('name').slice($(this).attr('name').indexOf("questions") + 9, $(this).attr('name').length));
-                            $(this).attr('name', 'sections[new][{{$last_section_index + 1}}][questions]' + $(this).attr('name').slice($(this).attr('name').indexOf("questions") + 9, $(this).attr('name').length))
+                            $(this).attr('name', 'sections[new]['+ $sec_num +'][questions]' + $(this).attr('name').slice($(this).attr('name').indexOf("questions") + 9, $(this).attr('name').length))
                         }
                     })
 
+                    
                     $('.sortable-survey select').each(function() {
                         // console.log( $(this));
                         // console.log( $(this).attr('name'));
                         // $str = "Hello World";
                         // console.log();
                         if ($(this).attr('name') != undefined) {
-                            $(this).attr('name', 'sections[new][{{$last_section_index + 1}}][questions]' + $(this).attr('name').slice($(this).attr('name').indexOf("questions") + 9, $(this).attr('name').length))
+                            
+                            $(this).attr('name', 'sections[new]['+ $sec_num +'][questions]' + $(this).attr('name').slice($(this).attr('name').indexOf("questions") + 9, $(this).attr('name').length))
                         }
                     })
 
