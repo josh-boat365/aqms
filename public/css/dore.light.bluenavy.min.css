@@ -3979,7 +3979,7 @@ div.error::after {
     left: initial;
     right: 0;
     transform: translateX(0);
-    top: 80%
+    top: 100%
 }
 
 .tooltip-right-bottom .invalid-tooltip::after,
