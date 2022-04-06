@@ -321,7 +321,7 @@
                         if ($(this).attr('name') != undefined) {
                             
 
-                            console.log($(this).attr('name').slice($(this).attr('name').indexOf("questions") + 9, $(this).attr('name').length));
+                            // console.log($(this).attr('name').slice($(this).attr('name').indexOf("questions") + 9, $(this).attr('name').length));
                             $(this).attr('name', 'sections[new][1000][questions]' + $(this).attr('name').slice($(this).attr('name').indexOf("questions") + 9, $(this).attr('name').length))
                         }
                     })
@@ -332,8 +332,7 @@
                         // $str = "Hello World";
                         // console.log();
                         if ($(this).attr('name') != undefined) {
-                            $(this).attr('name', 'ques' + $(this).attr('name').slice(21, $(this)
-                                .attr('name').length))
+                            $(this).attr('name', 'sections[new][{{$last_section_index + 1}}][questions]' + $(this).attr('name').slice($(this).attr('name').indexOf("questions") + 9, $(this).attr('name').length))
                         }
                     })
 
@@ -379,7 +378,7 @@
                         if ($(this).attr('name') != undefined) {
                             // console.log();
 
-                            console.log($(this).attr('name').slice($(this).attr('name').indexOf("[questions]") + 11, $(this).attr('name').length));
+                            // console.log($(this).attr('name').slice($(this).attr('name').indexOf("[questions]") + 11, $(this).attr('name').length));
                             $(this).attr('name', 'questions' + $(this).attr('name').slice($(this).attr('name').indexOf("[questions]") + 11, $(this).attr('name').length))
                         }
                     })
@@ -391,8 +390,7 @@
                         // console.log();
                         if ($(this).attr('name') != undefined) {
 
-                            $(this).attr('name', 'ques' + $(this).attr('name').slice(21, $(this)
-                                .attr('name').length))
+                            $(this).attr('name', 'questions' + $(this).attr('name').slice($(this).attr('name').indexOf("[questions]") + 11, $(this).attr('name').length))
                         }
                     })
                 }
