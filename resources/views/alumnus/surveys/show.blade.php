@@ -585,6 +585,12 @@
         })
     </script> --}}
 
+    <script>
+        $(function () {
+            console.log($('.heading-number'));
+        })
+    </script>
+
 </body>
 
 </html>
