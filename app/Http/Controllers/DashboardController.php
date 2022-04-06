@@ -191,7 +191,7 @@ class DashboardController extends Controller
 
     public function updateSurvey(Request $request)
     {
-        // dd($request);
+        dd($request);
         $this->validate($request, ['description' => 'max:250']);
 
         if (isset($request['questions'])) {
