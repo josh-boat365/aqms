@@ -66,6 +66,8 @@ class QuestionController extends Controller
             }
         } else {
             QuestionController::storeQuestions($request, null, $survey_id);
+
+            Survey::find($survey_id)->sections()->delete();
         }
     }
 
