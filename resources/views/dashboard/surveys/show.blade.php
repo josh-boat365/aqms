@@ -314,8 +314,7 @@
                         $(this).show();
                     })
 
-                    var $sec_num = $('.current #sec-num').val()
-                    console.log($('#update-form .current'));
+                    var $sec_num = $('#update-form .current #sec-num').val()
 
                     $('.sortable-survey input').each(function() {
                         // console.log( $(this));
