@@ -217,7 +217,10 @@ class AlumnusController extends Controller
     {
         // User::find(auth()->user()->id)->responses->where
         Survey::find($request['survey_id'])->responses()->where('user_id', auth()->user()->id)->delete();
-        Progress::all()->where('user_id', auth()->user()->id)->where('survey_id', $request['survey_id'])->delete();
+        
+        foreach (Progress::all()->where('user_id', auth()->user()->id)->where('survey_id', $request['survey_id']) as $key => $value) {
+            Progress::find($value['id'])->delete();
+        }
 
         return $this->showSurvey($request['survey_id']);
     }
