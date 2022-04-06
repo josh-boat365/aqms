@@ -212,4 +212,12 @@ class AlumnusController extends Controller
 
         return redirect('/home/surveys/' . $request->survey_id)->with('success', 'survey saved successfully');
     }
+
+    public function resetSurvey(Request $request)
+    {
+        // User::find(auth()->user()->id)->responses->where
+        Survey::find($request['survey_id'])->responses()->where('user_id', auth()->user()->id)->delete();
+
+        $this->showSurvey($request['survey_id']);
+    }
 }

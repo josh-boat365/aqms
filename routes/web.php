@@ -76,6 +76,7 @@ Route::get('/home', '\App\Http\Controllers\AlumnusController@index')->name('home
     // surveys
 Route::get('/home/surveys/{i}', '\App\Http\Controllers\AlumnusController@showsurvey')->name('alumnus.survey.show');
 Route::post('/home/surveys/save', '\App\Http\Controllers\AlumnusController@saveSurvey')->name('alumnus.survey.save');
+Route::post('/home/surveys/reset', '\App\Http\Controllers\AlumnusController@resetSurvey')->name('alumnus.survey.reset');
 Route::post('/home/surveys/submit', '\App\Http\Controllers\AlumnusController@submitSurvey')->name('alumnus.survey.submit');
     // profile
 Route::get('home/profile/', '\App\Http\Controllers\AlumnusController@profile')->name('alumnus.profile');

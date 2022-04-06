@@ -60,6 +60,9 @@
             </div>
         @endfor
     </form>
+    <form action="{{route('alumnus.survey.reset')}}" method="post" id="reset-form" class="col d-flex flex-column align-items-center">
+        <input type="hidden" name="survey_id" value="{{$survey->id}}">
+    </form>
 
 @endempty
 

@@ -89,7 +89,7 @@
         </div>
         <div class="text-center mt-4">
             <div class="btn btn-outline-danger btn-sm mb-2" id="reset-btn"><i class="simple-icon-trash btn-group-icon"></i>
-                Rest</div>
+                Reset</div>
         </div>
         <div class="separator my-3"></div>
         @if ($survey->sections != null)
