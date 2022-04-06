@@ -32,7 +32,7 @@
             top: 45%;
             transform: translateY(-50%);
             left: -15px;
-            /* 
+            /*
             box-sizing: border-box; */
         }
 
@@ -199,7 +199,7 @@
     </script>
 
     <script>
-        $(function () {
+        $(function() {
             @error('description')
                 console.log('desc error registered');
                 $('.card-top-buttons .desc-edit').trigger('click');
@@ -234,7 +234,7 @@
             $('.sections .pointer').first().addClass('dot-active')
 
             $('#enable-section').change(function() {
-                
+
                 if ($(this).is(':checked')) {
                     $count = $('.survey-wrapper').length;
 
@@ -322,22 +322,26 @@
                         // $str = "Hello World";
                         // console.log();
                         if ($(this).attr('name') != undefined) {
-                            
+
 
                             // console.log($(this).attr('name').slice($(this).attr('name').indexOf("questions") + 9, $(this).attr('name').length));
-                            $(this).attr('name', 'sections[new]['+ $sec_num +'][questions]' + $(this).attr('name').slice($(this).attr('name').indexOf("questions") + 9, $(this).attr('name').length))
+                            $(this).attr('name', 'sections[new][' + $sec_num + '][questions]' + $(
+                                this).attr('name').slice($(this).attr('name').indexOf(
+                                "questions") + 9, $(this).attr('name').length))
                         }
                     })
 
-                    
+
                     $('.sortable-survey select').each(function() {
                         // console.log( $(this));
                         // console.log( $(this).attr('name'));
                         // $str = "Hello World";
                         // console.log();
                         if ($(this).attr('name') != undefined) {
-                            
-                            $(this).attr('name', 'sections[new]['+ $sec_num +'][questions]' + $(this).attr('name').slice($(this).attr('name').indexOf("questions") + 9, $(this).attr('name').length))
+
+                            $(this).attr('name', 'sections[new][' + $sec_num + '][questions]' + $(
+                                this).attr('name').slice($(this).attr('name').indexOf(
+                                "questions") + 9, $(this).attr('name').length))
                         }
                     })
 
@@ -384,7 +388,9 @@
                             // console.log();
 
                             // console.log($(this).attr('name').slice($(this).attr('name').indexOf("[questions]") + 11, $(this).attr('name').length));
-                            $(this).attr('name', 'questions' + $(this).attr('name').slice($(this).attr('name').indexOf("[questions]") + 11, $(this).attr('name').length))
+                            $(this).attr('name', 'questions' + $(this).attr('name').slice($(this)
+                                .attr('name').indexOf("[questions]") + 11, $(this).attr(
+                                    'name').length))
                         }
                     })
 
@@ -395,7 +401,9 @@
                         // console.log();
                         if ($(this).attr('name') != undefined) {
 
-                            $(this).attr('name', 'questions' + $(this).attr('name').slice($(this).attr('name').indexOf("[questions]") + 11, $(this).attr('name').length))
+                            $(this).attr('name', 'questions' + $(this).attr('name').slice($(this)
+                                .attr('name').indexOf("[questions]") + 11, $(this).attr(
+                                    'name').length))
                         }
                     })
                 }
@@ -632,9 +640,11 @@
                 }
 
                 if (!$('.survey-wrapper').length > 0) {
-                    $name = "questions[" + $question_state + "][" + $que_num + "][options][new][" + ($index++) + "]"
+                    $name = "questions[" + $question_state + "][" + $que_num + "][options][new][" + (
+                        $index++) + "]"
                 } else {
-                    $name = "sections[" + $section_state + "][" + $section_num + "][questions][" + $question_state + "][" + $que_num + "][options][new][" + ($index++) + "]"
+                    $name = "sections[" + $section_state + "][" + $section_num + "][questions][" +
+                        $question_state + "][" + $que_num + "][options][new][" + ($index++) + "]"
                 }
 
                 var ansBox = $('<div/>').addClass('mb-1 position-relative ans')
@@ -642,9 +652,9 @@
                         $('<input>').attr({
                             'class': 'form-control',
                             'type': 'text',
-                            
-                                // questions -> Qstate -> Qid/Qgroup_id -> options -> Ogroup_id -> option
-                                'name': $name
+
+                            // questions -> Qstate -> Qid/Qgroup_id -> options -> Ogroup_id -> option
+                            'name': $name
                         }),
 
                         $('<div/>').addClass('input-icons')
@@ -683,7 +693,7 @@
                         "[deleted]";
 
                     if ($name.indexOf('[options][new]') != -1) {
-                        
+
                     }
 
                     // console.log($(this));
@@ -721,7 +731,8 @@
                         '.card-body').children('.edit-mode').children('.que-section').children('.que-num')
                     .val()
 
-                $que_num = $(this).parent().parent().children('.card-body').children('.list-item-heading').children('.heading-number').text();
+                $que_num = $(this).parent().parent().children('.card-body').children('.list-item-heading')
+                    .children('.heading-number').text();
 
                 $('#delete-que-form').children('.que_id').val($que_id);
                 $('#delete-que-form').children('.que_num').val($que_num);
@@ -1126,9 +1137,11 @@
                 }
 
                 if (!$('.survey-wrapper').length > 0) {
-                    $name = "questions[" + $question_state + "][" + $que_num + "][options][rows][new][" + ( $index++) + "]"
+                    $name = "questions[" + $question_state + "][" + $que_num + "][options][rows][new][" + (
+                        $index++) + "]"
                 } else {
-                    $name = "sections[" + $section_state + "][" + $section_num + "][questions][" + $question_state + "][" + $que_num + "][options][rows][new][" + ($index++) + "]"
+                    $name = "sections[" + $section_state + "][" + $section_num + "][questions][" +
+                        $question_state + "][" + $que_num + "][options][rows][new][" + ($index++) + "]"
                 }
 
                 // if ($is_new_que) {
@@ -1209,9 +1222,11 @@
                         '.is-new').val();
 
                 if (!$('.survey-wrapper').length > 0) {
-                    $name = "questions[" + $question_state + "][" + $que_num + "][options][columns][new][" + ( $index++) + "]"
+                    $name = "questions[" + $question_state + "][" + $que_num + "][options][columns][new][" +
+                        ($index++) + "]"
                 } else {
-                    $name = "sections[" + $section_state + "][" + $section_num + "][questions][" + $question_state + "][" + $que_num + "][options][columns][new][" + ($index++) + "]"
+                    $name = "sections[" + $section_state + "][" + $section_num + "][questions][" +
+                        $question_state + "][" + $que_num + "][options][columns][new][" + ($index++) + "]"
                 }
 
                 // if ($is_new_que) {
@@ -1642,6 +1657,15 @@
             })
 
 
+        })
+    </script>
+
+    <script>
+        $(function() {
+            for (let index = 0; index < $('.heading-number').length; index++) {
+                const element = $('.heading-number')[index];
+                element.innerText = index + 1
+            }
         })
     </script>
 

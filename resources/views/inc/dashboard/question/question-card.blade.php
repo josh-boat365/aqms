@@ -6,7 +6,8 @@
                     <div
                         class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center">
                         <div class="list-item-heading mb-0 truncate w-80 mb-1 mt-1"><span
-                                class="heading-number d-inline-block">{{ $i + 1 }}
+                                class="heading-number d-inline-block">
+                                {{-- {{ $i + 1 }} --}}
                             </span><span class="preview-question">{{ $questions[$i]['question'] }}</span></div>
                     </div>
                     <div class="custom-control d-flex custom-checkbox pl-1 align-self-center pr-4"
@@ -237,7 +238,8 @@
                     <div
                         class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center">
                         <div class="list-item-heading mb-0 truncate w-80 mb-1 mt-1"><span
-                                class="heading-number d-inline-block">{{ $i + 1 }}
+                                class="heading-number d-inline-block">
+                                {{-- {{ $i + 1 }} --}}
                             </span><span class="preview-question">{{ $questions[$i]['question'] }}</span></div>
                     </div>
                     <div class="custom-control d-flex custom-checkbox pl-1 align-self-center pr-4"
