@@ -27,7 +27,7 @@
                 <div class="question-collapse collapse show" id="q{{ $questions[$i]['id'] }}">
                     <div class="card-body pt-0">
                         <div class="edit-mode">
-                            {{-- <input type="hidden"  ="ques[]" value="{{$i+1}}"> --}}
+                            
                             <div class="form-group mb-5 que-section"><label>Question</label>
                                 {{-- question --}}
                                 <input type="hidden" class="que-num" value="{{ $questions[$i]['id'] }}">
@@ -55,7 +55,8 @@
 
                             {{-- possible answers --}}
                             <div class="form-group ans-form">
-                                <div class="grid ans-group" @if ($questions[$i]['option_type_id'] != 5) style="display: none" @endif>
+
+                                <div class="grid ans-group" @if ($questions[$i]['option_type_id'] != 6) style="display: none" @endif>
                                     <label class="d-block">Answers</label>
                                     <div class="answers mb-3 d-flex col">
                                         <div class="col rows">
@@ -120,7 +121,7 @@
                                     </div>
                                 </div>
                                 <div class="non-grid ans-group"
-                                    @if ($questions[$i]['option_type_id'] == 5) style="display: none" @endif>
+                                    @if ($questions[$i]['option_type_id'] == 6) style="display: none" @endif>
                                     <label class="d-block">Answers</label>
                                     <div class="answers mb-3 sortable">
 
@@ -129,9 +130,6 @@
                                                     type="text"
                                                     name="questions[old][{{ $questions[$i]['id'] }}][options][old][{{ $option->id }}]"
                                                     value="{{ $option->option }}" id="{{ $option->id }}">
-                                                {{-- <input class="form-control" type="hidden" 
-                                                name="ques[old][{{ $questions[$i]['id'] }}][options][old][{{ $questions[$i]['id'] }}][id]"
-                                                value="{{ $option->id }}"> --}}
                                                 <div class="input-icons"><span
                                                         class="badge badge-pill handle pr-0 mr-0"><i
                                                             class="simple-icon-cursor-move"></i> </span><span
