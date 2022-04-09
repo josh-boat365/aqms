@@ -13,19 +13,27 @@ class AqmsSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Survey::factory()->create([
-            'id' => 1,
-            'name' => 'ATU Tracer',
-            'description' => 'The Tracer Study seeks to learn about the extent to which the educational experience at Accra Technical University (ATU) has contributed to the career developments of its alumni.',
-            'status_id'=> 1
-        ]);
+        \App\Models\Survey::factory(3)->create();
 
-        \App\Models\Section::factory()->create([
-            'survey_id' => 1,
-            'title' => 'Section A',
-            'description' => 'General Information'
-        ]);  
+        \App\Models\Question::factory(15)->create();
 
+        \App\Models\Option::factory(30)->create();
 
+        \App\Models\Subquestion::factory(20)->create();
+
+        \App\Models\Submission::factory(20)->create(); 
+
+        // \App\Models\Notification::factory()->create([
+        //     'notification' => 'new alumnus registered',
+        //     'user_id' => 1,
+        //     'notification_type_id' => 1,
+        // ]);
+
+        // \App\Models\Notification::factory()->create([
+        //     'notification' => 'new survey submitted',
+        //     'user_id' => 1,
+        //     'survey_id' => 1,
+        //     'notification_type_id' => 2,
+        // ]);
     }
 }

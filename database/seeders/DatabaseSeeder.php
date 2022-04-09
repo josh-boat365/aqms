@@ -77,15 +77,7 @@ class DatabaseSeeder extends Seeder
             'type' => 'Grid'
         ]);
         
-        // \App\Models\Survey::factory(3)->create();
-
-        // \App\Models\Question::factory(15)->create();
-
-        // \App\Models\Option::factory(30)->create();
-
-        // \App\Models\Subquestion::factory(20)->create();
-
-        // \App\Models\Submission::factory(20)->create();
+        
 
         \App\Models\NotificationType::factory()->create([
             'id' => 1,
@@ -99,17 +91,6 @@ class DatabaseSeeder extends Seeder
             'id' => 3,
             'type' => 'deployment']);
 
-        // \App\Models\Notification::factory()->create([
-        //     'notification' => 'new alumnus registered',
-        //     'user_id' => 1,
-        //     'notification_type_id' => 1,
-        // ]);
-
-        // \App\Models\Notification::factory()->create([
-        //     'notification' => 'new survey submitted',
-        //     'user_id' => 1,
-        //     'survey_id' => 1,
-        //     'notification_type_id' => 2,
-        // ]);
+        
     }
 }

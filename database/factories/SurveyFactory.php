@@ -19,7 +19,7 @@ class SurveyFactory extends Factory
 
         return [
             'name' => $this->faker->unique()->word . ' survey',
-            'description' => $this->faker->sentence(20),
+            'description' => $this->faker->sentence(10),
             'status_id' => $this->faker->randomElement($status_ids),
         ];
     }
