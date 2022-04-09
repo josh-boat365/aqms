@@ -12,8 +12,7 @@
                     </div>
                     <div class="custom-control d-flex custom-checkbox pl-1 align-self-center pr-4"
                         style="flex: 0 0 25%; max-width: 20%; gap: 5px">
-                        <div class="col btn btn-outline-theme-3 icon-button edit-button"><i
-                                class="simple-icon-pencil"></i>
+                        <div class="col btn btn-outline-theme-3 icon-button edit-button"><i class="simple-icon-pencil"></i>
                         </div>
                         <div class="col btn btn-outline-theme-3 icon-button view-button"><i class="simple-icon-eye"></i>
                         </div>
@@ -141,35 +140,35 @@
                                             </div>
                                         @endforeach
 
-                                </div>
-                                <div class="col-12 row">
-                                    <div class="col text-center row-btn">
-                                        <div class="btn btn-outline-primary btn-sm mb-2 grid-row"><i
-                                                class="simple-icon-plus btn-group-icon"></i>
-                                            Add
-                                            Row</div>
                                     </div>
-                                    <div class="text-center">
-                                        <div class="btn btn-outline-primary btn-sm mb-2 ans-btn"><i
-                                                class="simple-icon-plus btn-group-icon"></i> Add
-                                            Answer</div>
+                                    <div class="col-12 row">
+                                        <div class="col text-center row-btn">
+                                            <div class="btn btn-outline-primary btn-sm mb-2 grid-row"><i
+                                                    class="simple-icon-plus btn-group-icon"></i>
+                                                Add
+                                                Row</div>
+                                        </div>
+                                        <div class="text-center">
+                                            <div class="btn btn-outline-primary btn-sm mb-2 ans-btn"><i
+                                                    class="simple-icon-plus btn-group-icon"></i> Add
+                                                Answer</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        {{-- view --}}
-                        <div class="view-mode">
-                            <label class="preview-question">
-                                {{-- {{ $questions[$i]['question'] }} --}}
-                            </label>
-                            {{-- 1 - text (single line)
+                            {{-- view --}}
+                            <div class="view-mode">
+                                <label class="preview-question">
+                                    {{-- {{ $questions[$i]['question'] }} --}}
+                                </label>
+                                {{-- 1 - text (single line)
                                                 4 - text (multi-line)
                                                                     2 - radio
                                                                     3 - check
                                                                     5 - grid --}}
-                            <div class="mb-4">
-                                {{-- @if ($questions[$i]['option_type_id'] == 1)
+                                <div class="mb-4">
+                                    @if ($questions[$i]['option_type_id'] == 1)
                                                     <input class="form-control" type="text" name="{{ $questions[$i]['id'] }}"
                                                         id="{{ $questions[$i]['id'] }}">
                                                 @elseif ($questions[$i]['option_type_id'] == 2)
@@ -222,13 +221,13 @@
 
                                                     </div>
                                                 </div>
-                                                @endif --}}
+                                                @endif
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     @endfor
 @else
     @for ($i = 0; $i < count($questions); $i++)
@@ -244,8 +243,7 @@
                     </div>
                     <div class="custom-control d-flex custom-checkbox pl-1 align-self-center pr-4"
                         style="flex: 0 0 25%; max-width: 20%; gap: 5px">
-                        <div class="col btn btn-outline-theme-3 icon-button edit-button"><i
-                                class="simple-icon-pencil"></i>
+                        <div class="col btn btn-outline-theme-3 icon-button edit-button"><i class="simple-icon-pencil"></i>
                         </div>
                         <div class="col btn btn-outline-theme-3 icon-button view-button"><i class="simple-icon-eye"></i>
                         </div>
@@ -288,8 +286,7 @@
 
                             {{-- possible answers --}}
                             <div class="form-group ans-form">
-                                <div class="grid ans-group"
-                                    @if ($questions[$i]['option_type_id'] != 5) style="display: none" @endif>
+                                <div class="grid ans-group" @if ($questions[$i]['option_type_id'] != 5) style="display: none" @endif>
                                     <label class="d-block">Answers</label>
                                     <div class="answers mb-3 d-flex col">
                                         <div class="col rows">
@@ -332,40 +329,40 @@
                                                 @endforeach
                                             </div>
                                         </div>
-                                    {{-- @endforeach --}}
-
-                                </div>
-                                <div class="non-grid ans-group"
-                                    @if ($questions[$i]['option_type_id'] == 5) style="display: none" @endif>
-                                    <label class="d-block">Answers</label>
-                                    <div class="answers mb-3 sortable">
-
-                                        @foreach ($survey->options->where('question_id', $questions[$i]['id']) as $option)
-                                            <div class="mb-1 position-relative ans"><input class="form-control"
-                                                    type="text"
-                                                    name="sections[old][{{ $section_id }}][questions][old][{{ $questions[$i]['id'] }}][options][old][{{ $option->id }}]"
-                                                    value="{{ $option->option }}" id="{{ $option->id }}">
-                                                {{-- <input class="form-control" type="hidden" 
-                                                name="ques[old][{{ $questions[$i]['id'] }}][options][old][{{ $questions[$i]['id'] }}][id]"
-                                                value="{{ $option->id }}"> --}}
-                                                <div class="input-icons"><span
-                                                        class="badge badge-pill handle pr-0 mr-0"><i
-                                                            class="simple-icon-cursor-move"></i> </span><span
-                                                        class="badge badge-pill btn del-ans"><i
-                                                            class="simple-icon-trash"></i></span></div>
-                                            </div>
-                                        @endforeach
+                                        {{-- @endforeach --}}
 
                                     </div>
-                                    <div class="text-center">
-                                        <div class="btn btn-outline-primary btn-sm mb-2 ans-btn"><i
-                                                class="simple-icon-plus btn-group-icon"></i> Add
-                                            Answer</div>
+                                    <div class="non-grid ans-group"
+                                        @if ($questions[$i]['option_type_id'] == 5) style="display: none" @endif>
+                                        <label class="d-block">Answers</label>
+                                        <div class="answers mb-3 sortable">
+
+                                            @foreach ($survey->options->where('question_id', $questions[$i]['id']) as $option)
+                                                <div class="mb-1 position-relative ans"><input class="form-control"
+                                                        type="text"
+                                                        name="sections[old][{{ $section_id }}][questions][old][{{ $questions[$i]['id'] }}][options][old][{{ $option->id }}]"
+                                                        value="{{ $option->option }}" id="{{ $option->id }}">
+                                                    {{-- <input class="form-control" type="hidden" 
+                                                name="ques[old][{{ $questions[$i]['id'] }}][options][old][{{ $questions[$i]['id'] }}][id]"
+                                                value="{{ $option->id }}"> --}}
+                                                    <div class="input-icons"><span
+                                                            class="badge badge-pill handle pr-0 mr-0"><i
+                                                                class="simple-icon-cursor-move"></i> </span><span
+                                                            class="badge badge-pill btn del-ans"><i
+                                                                class="simple-icon-trash"></i></span></div>
+                                                </div>
+                                            @endforeach
+
+                                        </div>
+                                        <div class="text-center">
+                                            <div class="btn btn-outline-primary btn-sm mb-2 ans-btn"><i
+                                                    class="simple-icon-plus btn-group-icon"></i> Add
+                                                Answer</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
                         {{-- view --}}
                         <div class="view-mode">
