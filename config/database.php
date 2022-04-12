@@ -49,9 +49,24 @@ return [
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
 
+        // 'mysql' => [
+        //     'driver' => 'mysql',
+        //     'host' => $host,
+        //     'port' => env('DB_PORT', '3306'),
+        //     'database' => $database,
+        //     'username' => $username,
+        //     'password' => $password,
+        //     'unix_socket' => env('DB_SOCKET', ''),
+        //     'charset' => 'utf8mb4',
+        //     'collation' => 'utf8mb4_unicode_ci',
+        //     'prefix' => '',
+        //     'strict' => true,
+        //     'engine' => null,
+        // ],
+
         'mysql' => [
             'driver' => 'mysql',
-            'host' => $host,
+            'host' => env('DB_HOST', $host),
             'port' => env('DB_PORT', '3306'),
             'database' => $database,
             'username' => $username,
