@@ -3,10 +3,10 @@
 use Illuminate\Support\Str;
 
 $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-$host = $url["host"] ?? null;
-$username = $url["user"] ?? null;
-$password = $url["pass"] ?? null;
-$database = substr($url["path"], 1);
+$host = $url["host"] ?? env('DB_HOST');
+$username = $url["user"] ?? env('DB_USERNAME');
+$password = $url["pass"] ?? env('DB_PASSWORD');
+$database = substr($url["path"], 1) ?? env('DB_DATABASE');
 
 return [
 
@@ -51,11 +51,11 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => env($host, 'DB_HOST' ),
+            'host' => $host,
             'port' => env('DB_PORT', '3306'),
-            'database' => env($database, 'DB_DATABASE'),
-            'username' => env($username, 'DB_USERNAME'),
-            'password' => env($password, 'DB_PASSWORD'),
+            'database' => $database,
+            'username' => $username,
+            'password' => $password,
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
@@ -143,7 +143,7 @@ return [
 
         'options' => [
             'cluster' => env('REDIS_CLUSTER', 'redis'),
-            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_') . '_database_'),
         ],
 
         'default' => [
