@@ -6,7 +6,7 @@ $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 $host = $url["host"] ?? env('DB_HOST');
 $username = $url["user"] ?? env('DB_USERNAME');
 $password = $url["pass"] ?? env('DB_PASSWORD');
-$database = substr($url["path"], 1) ?? env('DB_DATABASE');
+$database = strlen(substr($url["path"], 1)) == 0 ? env('DB_DATABASE') : substr($url["path"], 1);
 
 return [
 

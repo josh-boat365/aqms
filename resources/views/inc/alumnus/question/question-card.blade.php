@@ -33,7 +33,10 @@
 
 </style> --}}
 
-@for ($i = 0; $i < count($questions); $i++)
+
+@php
+    $i = 0;
+@endphp
 
 @foreach ($questions as $question)
 <div class="col-12">
@@ -41,7 +44,7 @@
         <div class="d-flex flex-grow-1 min-width-zero">
             <div class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center">
                 <div class="list-item-heading mb-0 truncate w-80 mb-1 mt-1"><span class="heading-number d-inline-block">
-                    <!-- {{ ++$i }} -->
+                    
                     </span></div>
             </div>
         </div>
@@ -101,9 +104,9 @@
                                 <div class="text-center mb-2">{{ $option->option }}</div>
                                 @endforeach
                             </div>
-                            <div class="col-10 row" style="flex-wrap: nowrap">
+                            <div class="col-10 row grid-column-group" style="flex-wrap: nowrap">
                                 @foreach ($question->options->where('row_column', 'column') as $columnOption)
-                                <div class="d-flex flex-column justify-content-between" style="width: 100%; height: 100%; min-width: 100px">
+                                <div class="d-flex flex-column justify-content-between grid-column" style="width: 100%; height: 100%; min-width: 100px">
                                     <div class="d-flex align-items-center justify-content-center w-100" style="height: 50px">{{ $columnOption->option }}</div>
 
                                     @foreach ($question->options->where('row_column', 'row') as $option)
@@ -127,9 +130,3 @@
     </div>
 </div>
 @endforeach
-
-    
-    <!-- </div>
-    </div> -->
-
-@endfor

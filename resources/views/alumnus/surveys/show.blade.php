@@ -102,8 +102,8 @@
                     @endfor
                 </div>
                 <!-- <div class="text-center mt-2"><button type="button" class="btn btn-outline-primary btn-sm mb-2"
-                            id="add-section-button"><i class="simple-icon-plus btn-group-icon"></i> Add section</button>
-                    </div> -->
+                                id="add-section-button"><i class="simple-icon-plus btn-group-icon"></i> Add section</button>
+                        </div> -->
             </div>
         @endif
         <div class="text-center mt-4">
@@ -236,6 +236,7 @@
         })
     </script>
 
+    {{-- drop down theme --}}
     <script>
         $(function() {
             $('.drop-down').select2({
@@ -429,7 +430,7 @@
     {{-- check and count answered question on load --}}
     <script>
         $(function() {
-
+            console.log($('.sortable-survey'));
             // console.log("selects");
             $('.sortable-survey').each(function() {
 
@@ -439,7 +440,7 @@
                 })
 
 
-                // console.log("text");
+                //text box // radio button (not grid) // check box
                 $(this).find('input').each(function() {
                     //text box
                     if ($(this).attr('type') == 'text') {
@@ -457,7 +458,7 @@
                     }
 
 
-                    //radio button
+                    //radio button  // not grid
                     else if ($(this).attr('type') == 'radio') {
                         // console.log("radio");
                         // not grid
@@ -475,43 +476,6 @@
                                         .removeClass('answered')
                                 }
                             })
-                        } else {
-                            // grid
-
-                            $question = $(this).parent().parent().parent().parent().parent()
-                                .parent().parent()
-                                .parent().parent();
-                            $column_inputs = $(this).parent().parent().children('.check-box');
-                            // console.log($column_inputs);
-
-                            $x = 0;
-                            $y = 0;
-                            // $answered = [];
-
-                            // // each column
-                            // $(this).parent().parent().parent().children('div').each(function() {
-
-                            //     // each checkbox container
-                            //     $(this).children('.check-box').each(function() {
-                            //         // console.log($(this).children('input').is(':checked'));
-                            //         if ($(this).children('input').is(':checked')) {
-                            //             // console.log($(this));
-                            //             $answered[$y] = true;
-                            //         }
-                            //         // console.log($(this).children('input') + ' ' + $(this).children('input').is('checked'));
-
-                            //         // if ($(this).children('input').is('checked')) {
-                            //         //     console.log($(this).children('input'));
-                            //         //     // $answered[$y] = true;
-                            //         // }
-
-                            //         $y++;
-                            //     })
-                            //     $x++;
-                            //     $y = 0;
-                            // })
-
-
                         }
                     }
 
@@ -531,15 +495,53 @@
                         });
                     }
 
-                    $('#progress').val($('.answered').length);
-                    $('.progress-tracker').text($('.answered').length + '/' + $('.question')
-                    .length);
-                    if ($('.answered').length == $('.question').length) {
-                        $('#submit-btn').show()
-                    } else {
-                        $('#submit-btn').hide()
-                    }
+
                 })
+
+                // radio button (grid)
+                
+
+                $('#progress').val($('.answered').length);
+                $('.progress-tracker').text($('.answered').length + '/' + $('.question')
+                    .length);
+                if ($('.answered').length == $('.question').length) {
+                    $('#submit-btn').show()
+                } else {
+                    $('#submit-btn').hide()
+                }
+
+                // else {
+                //             // grid
+
+                //             $question = $(this).parent().parent().parent().parent().parent()
+                //                 .parent().parent()
+                //                 .parent().parent();
+                //             $column_inputs = $(this).parent().parent().children('.check-box');
+
+                //             $x = 0;
+                //             $y = 0;
+                //             $answered = [];
+
+                //             // each column
+                //             $(this).parent().parent().parent().children('div').each(function() {
+
+                //                 // each checkbox container
+                //                 $(this).children('.check-box').each(function() {
+                //                     console.log($(this));
+                //                     // console.log($(this).children('input').is(':checked'));
+                //                     // if ($(this).children('input').is(':checked')) {
+                //                     //     // console.log($(this));
+                //                     //     $answered[$y] = true;
+                //                     // }
+
+                //                     $y++;
+                //                 })
+                //                 $x++;
+                //                 $y = 0;
+                //             })
+
+
+                //         }
 
                 // console.log("textarea");
                 $(this).find('textarea').each(function() {
@@ -603,7 +605,7 @@
     </script> --}}
 
     <script>
-        $(function () {
+        $(function() {
             for (let index = 0; index < $('.heading-number').length; index++) {
                 const element = $('.heading-number')[index];
                 element.innerText = index + 1
