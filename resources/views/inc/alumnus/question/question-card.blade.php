@@ -96,12 +96,12 @@
                         @endforeach
                         @else
 
-                        <div class="row col-12">
-                            <div class="d-flex flex-column col-2">
+                        <div class="row col-12 grid-option-group">
+                            <div class="d-flex flex-column col-2 grid-row-group">
                                 <div style="height: 50px"></div>
                                 @foreach ($question->options->where('row_column', 'row') as $option)
 
-                                <div class="text-center mb-2">{{ $option->option }}</div>
+                                <div class="text-center mb-2 grid-row">{{ $option->option }}</div>
                                 @endforeach
                             </div>
                             <div class="col-10 row grid-column-group" style="flex-wrap: nowrap">

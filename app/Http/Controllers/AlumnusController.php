@@ -136,27 +136,27 @@ class AlumnusController extends Controller
 
     public function saveSurvey(Request $request)
     {
-
-        $reqIds = array();
-        foreach ($request['ans'] as $question_id => $value) {
-            if ($value != null) {
-                array_push($reqIds, $question_id);
-            }
-        }
+        // dd($request);
+        // $reqIds = array();
+        // foreach ($request['ans'] as $question_id => $value) {
+        //     if ($value != null) {
+        //         array_push($reqIds, $question_id);
+        //     }
+        // }
 
         // dd($reqIds);
 
-        $dbResponses = Response::all()->where('user_id', auth()->user()->id);
+        // $dbResponses = Response::all()->where('user_id', auth()->user()->id);
 
-        foreach ($dbResponses as $dbRes) {
-            for ($i = 0; $i < count($reqIds); $i++) {
-                $reqId = $reqIds[$i];
+        // foreach ($dbResponses as $dbRes) {
+        //     for ($i = 0; $i < count($reqIds); $i++) {
+        //         $reqId = $reqIds[$i];
 
-                if (($i == (count($reqIds) - 1)) && ($dbRes->id != $reqId)) {
-                    $dbRes->delete();
-                }
-            }
-        }
+        //         if (($i == (count($reqIds) - 1)) && ($dbRes->id != $reqId)) {
+        //             $dbRes->delete();
+        //         }
+        //     }
+        // }
 
 
         foreach ($request['ans'] as $question_id => $ans) {
