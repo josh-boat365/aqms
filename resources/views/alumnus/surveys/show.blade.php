@@ -102,8 +102,8 @@
                     @endfor
                 </div>
                 <!-- <div class="text-center mt-2"><button type="button" class="btn btn-outline-primary btn-sm mb-2"
-                                    id="add-section-button"><i class="simple-icon-plus btn-group-icon"></i> Add section</button>
-                            </div> -->
+                                                            id="add-section-button"><i class="simple-icon-plus btn-group-icon"></i> Add section</button>
+                                                    </div> -->
             </div>
         @endif
         <div class="text-center mt-4">
@@ -301,6 +301,13 @@
     <script>
         $(function() {
             $('#submit-btn').click(function() {
+                $('.custom-radio').each(function() {
+                    console.log($(this).children('input').attr('id'));
+                    $name = $(this).children('input').attr('name');
+                    $id = $(this).children('input').attr('id');
+                    $input = $(this).children('input');
+                    $input.attr('name', $name + '[' + $id.substring(1, $id.length) + ']');
+                })
                 $('#isSubmit').val('yes')
                 $('#save-form').submit();
             })
@@ -362,46 +369,47 @@
                     } else {
                         // grid
 
-                        $question = $(this).parent().parent().parent().parent().parent().parent().parent()
-                            .parent().parent();
+                        $grid_option_group = $(this).parent().parent().parent().parent();
 
-                        $column_inputs = $(this).parent().parent().children('.check-box').length;
+                        //get row count
+                        $row_count = $grid_option_group.children('.grid-row-group').children('.grid-row')
+                            .length;
 
-                        $x = 0;
-                        $y = 0;
-                        // $grid_inputs = [];
-                        // // each column
-                        // $(this).parent().parent().parent().children('div').each(function() {
+                        //input tracker array
+                        $input_track = [];
+                        for (let row_index = 0; row_index < $row_count; row_index++)
+                            $input_track[row_index] = false;
+
+                        //grid columns
+                        $grid_option_group.children('.grid-column-group').children('.grid-column').each(
+                            function() {
+                                $input_index = 0;
+                                //inputs
+                                $(this).children('.check-box').each(function() {
+                                    if (!$input_track[$input_index])
+                                        $input_track[$input_index] = $(this)
+                                        .children(
+                                            'input').is(':checked')
+                                    $input_index++;
+                                })
+                            })
 
 
-                        //     // each checkbox container
-                        //     $(this).children('.check-box').each(function() {
-                        //         // console.log($(this).children('input').is(':checked'));
-                        //         if ($(this).children('input').is(':checked')) {
-                        //             $grid_inputs[$y] = true;
-                        //         }
-                        //         // console.log($(this).children('input') + ' ' + $(this).children('input').is('checked'));
+                        $question = $grid_option_group.parent().parent().parent().parent()
+                            .parent();
 
-                        //         // if ($(this).children('input').is('checked')) {
-                        //         //     console.log($(this).children('input'));
-                        //         //     // $grid_inputs[$y] = true;
-                        //         // }
+                        $input_track.forEach(bool => {
+                            if (bool)
+                                $question.addClass('answered')
+                            else {
+                                $question.removeClass('answered')
+                                return false;
+                            }
+                        });
 
-                        //         $y++;
-                        //     })
-                        //     $x++;
-                        //     $y = 0;
-                        // })
-
-                        // // console.log($grid_inputs);
-
-                        // // check if all answered
-                        // if ($grid_inputs.length == $column_inputs) {
-                        //     $question.addClass('answered')
-                        // } else {
-                        //     $question.removeClass('answered')
-                        // }
                     }
+
+
                 }
 
                 //check box
@@ -411,15 +419,16 @@
                             $(this).parent().parent().parent().parent().parent().addClass(
                                 'answered')
                             return false
-                        } else(
-                            $(this).parent().parent().parent().parent().parent().removeClass(
-                                'answered')
-                        )
+                        } else {
+                            $(this).parent().parent().parent().parent().parent()
+                                .removeClass(
+                                    'answered')
+                        }
                     });
                 }
+
                 countAnswered();
             })
-
             // textarea
             $('textarea').on('change', function() {
                 // if empty
@@ -431,7 +440,7 @@
                 countAnswered();
             })
 
-
+            // countAnswered();
         })
     </script>
 
@@ -527,22 +536,24 @@
                         $input_track[row_index] = false;
 
                     //grid columns
-                    $(this).children('.grid-column-group').children('.grid-column').each(function() {
-                        $input_index = 0;
-                        //inputs
-                        $(this).children('.check-box').each(function() {
-                            if (!$input_track[$input_index])
-                                $input_track[$input_index] = $(this).children(
-                                    'input').is(':checked')
-                            $input_index++;
+                    $(this).children('.grid-column-group').children('.grid-column').each(
+                        function() {
+                            $input_index = 0;
+                            //inputs
+                            $(this).children('.check-box').each(function() {
+                                if (!$input_track[$input_index])
+                                    $input_track[$input_index] = $(this).children(
+                                        'input').is(':checked')
+                                $input_index++;
+                            })
                         })
-                    })
 
 
-                    $question = $('.grid-option-group').parent().parent().parent().parent().parent();
+                    $question = $('.grid-option-group').parent().parent().parent().parent()
+                        .parent();
 
                     $input_track.forEach(bool => {
-                        if (bool) 
+                        if (bool)
                             $question.addClass('answered')
                         else {
                             $question.removeClass('answered')
@@ -551,20 +562,6 @@
                     });
 
                 })
-
-
-
-                // $grid_inputs.forEach(input => {
-                //     if (input == false) {
-                //         $question.removeClass('answered');
-                //         return false;
-                //     }else{
-                //         $question.addClass('answered');
-                //     }
-
-                // });
-
-                // console.log($grid_inputs);
 
                 $('#progress').val($('.answered').length);
                 $('.progress-tracker').text($('.answered').length + '/' + $('.question')
