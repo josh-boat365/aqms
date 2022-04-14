@@ -47,7 +47,7 @@
                             </p>
 
                             <p class="white">We look forward to receiving your responses.</p>
-                            <span id="login-admin-btn" class="white font-weight-bold h5">Login</span>
+                            <span id="login-admin-btn" class="white btn btn-outline-primary font-weight-bold h5">Login</span>
                             {{-- <a href="{{ route('admin-login') }}" class="white font-weight-bold h5">Login</a>.</p> --}}
                         </div>
                         <div class="form-side">

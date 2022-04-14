@@ -41,7 +41,7 @@
                             </p>
 
                             <p class="white">We look forward to receiving your responses.</p>
-                            <a href="{{ route('login') }}" class="white font-weight-bold h5">Login</a>.</p>
+                            <a href="{{ route('login') }}" class="white btn btn-outline-primary font-weight-bold h5">Login</a>.</p>
                         </div>
                         <div class="form-side">
                             <div class="atu-icon" style="position: relative; top: -1rem;">
