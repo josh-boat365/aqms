@@ -248,7 +248,7 @@ $ind = 1;
                         <label class="preview-question">
                             {{ $survey->questions[$i]->question }}
                         </label>
-                        <div id="chart-{{$survey->questions[$i]->id}}" style="display: none" class="active mb-4">
+                        <div id="chart-{{$survey->questions[$i]->id}}" style="width: 60%; margin: 0 auto;" class="active mb-4">
                             <canvas id="drop-{{ $i }}"></canvas>
                         </div>
                         <div style="display: none" id="table-{{$survey->questions[$i]->id}}">
@@ -346,481 +346,6 @@ $ind = 1;
 
 @endfor
 
-{{-- text (single/multi line) --}}
-{{-- <div class="card mb-4" style="top: 115px; z-index: 0">
-    <div class="card-body">
-        <div class="d-flex">
-            <i class="iconsminds-repeat-2 h4"></i> &nbsp;
-            <p class="list-item-heading" style="position: relative; top:0.66rem">Textual Responses</p>
-        </div>
-        <div class="separator mb-3"></div>
-        <div>
-            <p class="list-item-heading" style="position: relative; top:0.66rem">Question 1</p>
-        </div>
-        <div class="scroll h-100  mt-2" style="max-height: 500px">
-            <div class="alumnus-hover  ">
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-
-
-
-            </div>
-
-        </div>
-        <div class="separator mb-3"></div>
-        <div>
-            <p class="list-item-heading" style="position: relative; top:0.66rem">Question 2</p>
-        </div>
-        <div class="scroll h-100  mt-2" style="max-height: 500px">
-            <div class="alumni  alumnus-hover ">
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-                <p class="mb-0">The is Lord is Goood and all the Time God is good.</p>
-                <div style="background-color:white; height: 3px"></div>
-            </div>
-
-        </div>
-
-    </div>
-</div> --}}
-
-{{-- radio --}}
-{{-- <div class="card question d-flex mb-4 edit-quesiton">
-    <div class="d-flex flex-grow-1 min-width-zero">
-        <div
-            class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center">
-            <div class="list-item-heading mb-0 truncate w-80 mb-1 mt-1">
-                <span class="heading-number d-inline-block">3 </span>Radio Choice Type
-            </div>
-        </div>
-        <!-- Toggle view for chart -->
-        <div class="custom-control toggle-chart custom-checkbox pl-1 align-self-center pr-0">
-            <button class="btn btn-outline-theme-3 icon-button" id="twelveth-tab" data-toggle="tab" href="#twelveth"
-                role="tab" aria-controls="twelveth" aria-selected="false">
-                <i class="iconsminds-pie-chart-3"></i>
-            </button>
-        </div>
-        <!-- Toggle view for table -->
-        <div class="custom-control toggle-chart custom-checkbox pl-1 align-self-center pr-0">
-            <button class="btn btn-outline-theme-3 icon-button" id="thirteenth-tab" data-toggle="tab" href="#thirteenth"
-                role="tab" aria-controls="thirteenth" aria-selected="false">
-                <i class="iconsminds-align-justify-all"></i>
-            </button>
-        </div>
-        <!-- button for copying/downloading     -->
-        <div class="custom-control custom-checkbox pl-1 align-self-center pr-4">
-            <button class="btn btn-outline-theme-3 icon-button" data-toggle="dropdown">
-                <i class="iconsminds-files"></i>
-            </button>
-            <div class="dropdown-menu">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="padding-left:20px">Download</a>
-                <div class="dropdown-menu">
-                    <a href="#" class="dropdown-item">copy chart</a>
-                    <a href="#" class="dropdown-item"> As jpeg file</a>
-                    <a href="#" class="dropdown-item"> As excel file</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="num-response">
-        <h6>20 responses</h6>
-    </div>
-    <div class="chart-radio card-body chart-body pt-0">
-        <div class="tab-content mb-4">
-            <div class="tab-pane show active" id="twelveth" role="tabpanel" aria-labelledby="twelvwth-tab">
-                <div class="row">
-                    <canvas id="radioChoice"></canvas>
-                </div>
-            </div>
-
-
-            <div class="tab-pane show" id="thirteenth" role="tabpanel" aria-labelledby="thirteenth-tab">
-                <div class=" col-12">
-                    <div class="toggled-table table-scroll-q">
-                        <table class="col-12 table table-hover alyt-table-q">
-                            <thead class="t-head-q">
-                                <tr>
-                                    <th class="col-1">#</th>
-                                    <th class="col-3">Number of respondents</th>
-                                    <th class="col-8">Answer</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>50</td>
-                                    <td>Male</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>50</td>
-                                    <td>Female</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>50</td>
-                                    <td>Prefer Not to say</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>50</td>
-                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, nisi!</td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>50</td>
-                                    <td>Lorem ipsum dolor sit amet.</td>
-                                </tr>
-                                <tr>
-                                    <td>6</td>
-                                    <td>50</td>
-                                    <td>Lorem ipsum dolor sit.</td>
-                                </tr>
-                                <tr>
-                                    <td>7</td>
-                                    <td>50</td>
-                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam quas excepturi non
-                                        fugiat quis veritatis temporibus, voluptate, nulla quam animi perspiciatis
-                                        labore eum? Tenetur voluptatibus, nobis quaerat nam accusantium delectus.</td>
-                                </tr>
-                                <tr>
-                                    <td>8</td>
-                                    <td>50</td>
-                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, explicabo.
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>9</td>
-                                    <td>50</td>
-                                    <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</td>
-                                </tr>
-                                <tr>
-                                    <td>10</td>
-                                    <td>50</td>
-                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam voluptas error
-                                        vel unde nemo vitae ipsa minima quae doloribus, et ea provident aliquid
-                                        obcaecati! Vero quae harum vitae qui non?</td>
-                                </tr>
-                                <tr>
-                                    <td>11</td>
-                                    <td>50</td>
-                                    <td>Male</td>
-                                </tr>
-                                <tr>
-                                    <td>12</td>
-                                    <td>50</td>
-                                    <td>Lorem ipsum dolor sit amet.</td>
-                                </tr>
-                                <tr>
-                                    <td>13</td>
-                                    <td>50</td>
-                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing.</td>
-                                </tr>
-                                <tr>
-                                    <td>14</td>
-                                    <td>50</td>
-                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-</div> --}}
-
-{{-- checkbox --}}
-{{-- <div class="card question d-flex mb-4 edit-quesiton">
-    <div class="d-flex flex-grow-1 min-width-zero">
-        <div
-            class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center">
-            <div class="list-item-heading mb-0 truncate w-80 mb-1 mt-1">
-                <span class="heading-number d-inline-block">5 </span>Checkbox Type
-            </div>
-        </div>
-
-        <!-- Toggle view for chart -->
-        <div class="custom-control toggle-chart custom-checkbox pl-1 align-self-center pr-0">
-            <button class="btn btn-outline-theme-3 icon-button" id="sixth-tab" data-toggle="tab" href="#sixth"
-                role="tab" aria-controls="sixth" aria-selected="false">
-                <i class="simple-icon-chart"></i>
-            </button>
-        </div>
-        <!-- Toggle view for table -->
-        <div class="custom-control toggle-chart custom-checkbox pl-1 align-self-center pr-0">
-            <button class="btn btn-outline-theme-3 icon-button" id="seventh-tab" data-toggle="tab" href="#seventh"
-                role="tab" aria-controls="seventh" aria-selected="false">
-                <i class="iconsminds-align-justify-all"></i>
-            </button>
-        </div>
-
-        <div class="custom-control custom-checkbox pl-1 align-self-center pr-4">
-            <button class="btn btn-outline-theme-3 icon-button" data-toggle="dropdown">
-                <i class="iconsminds-files"></i>
-            </button>
-            <div class="dropdown-menu">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="padding-left:20px">Download</a>
-                <div class="dropdown-menu">
-                    <a href="#" class="dropdown-item">Copy chart</a>
-                    <a href="#" class="dropdown-item">As jpeg file</a>
-                    <a href="#" class="dropdown-item">As excel file</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="num-response">
-        <h6>15 responses</h6>
-    </div>
-    <div class="chart-checkbox card-body chart-body pt-0">
-        <canvas id="checkboxChoice"></canvas>
-
-    </div>
-
-</div> --}}
-
-{{-- dropdown --}}
-{{-- <div class="card question d-flex mb-4 edit-quesiton">
-    <div class="d-flex flex-grow-1 min-width-zero">
-        <div
-            class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center">
-            <div class="list-item-heading mb-0 truncate w-80 mb-1 mt-1">
-                <span class="heading-number d-inline-block">6 </span>Dropdwon Choice Type
-            </div>
-        </div>
-
-        <!-- Toggle view for chart -->
-        <div class="custom-control toggle-chart custom-checkbox pl-1 align-self-center pr-0">
-            <button class="btn btn-outline-theme-3 icon-button" id="eighth-tab" data-toggle="tab" href="#eighth"
-                role="tab" aria-controls="eighth" aria-selected="false">
-                <i class="iconsminds-pie-chart-3"></i>
-            </button>
-        </div>
-        <!-- Toggle view for table -->
-        <div class="custom-control toggle-chart custom-checkbox pl-1 align-self-center pr-0">
-            <button class="btn btn-outline-theme-3 icon-button" id="nineth-tab" data-toggle="tab" href="#nineth"
-                role="tab" aria-controls="nineth" aria-selected="false">
-                <i class="iconsminds-align-justify-all"></i>
-            </button>
-        </div>
-
-
-        <div class="custom-control custom-checkbox pl-1 align-self-center pr-4">
-            <button class="btn btn-outline-theme-3 icon-button" data-toggle="dropdown">
-                <i class="iconsminds-files"></i>
-            </button>
-            <div class="dropdown-menu">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="padding-left:20px">Download</a>
-                <div class="dropdown-menu">
-                    <a href="#" class="dropdown-item">Copy chart</a>
-                    <a href="#" class="dropdown-item">As jpeg file</a>
-                    <a href="#" class="dropdown-item">As excel file</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="num-response">
-        <h6>10 responses</h6>
-    </div>
-    <div class="chart-radio card-body chart-body pt-0">
-        <canvas id="dropdownChoice"></canvas>
-    </div>
-
-</div> --}}
-
-{{-- Grid --}}
-{{-- <div class="card card-matrixChoice question d-flex mb-4 edit-quesiton">
-    <div class="d-flex flex-grow-1 min-width-zero">
-        <div
-            class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center">
-            <div class="list-item-heading mb-0 truncate w-80 mb-1 mt-1">
-                <span class="heading-number d-inline-block">2</span>Matrix Choice Type
-            </div>
-        </div>
-
-        <!-- Toggle view for chart -->
-        <div class="custom-control toggle-chart custom-checkbox pl-1 align-self-center pr-0">
-            <button class="btn btn-outline-theme-3 icon-button" id="tenth-tab" data-toggle="tab" href="#tenth"
-                role="tab" aria-controls="tenth" aria-selected="false">
-                <i class="simple-icon-chart"></i>
-            </button>
-        </div>
-        <!-- Toggle view for table -->
-        <div class="custom-control toggle-chart custom-checkbox pl-1 align-self-center pr-0">
-            <button class="btn btn-outline-theme-3 icon-button" id="eleventh-tab" data-toggle="tab" href="#eleventh"
-                role="tab" aria-controls="eleventh" aria-selected="false">
-                <i class="iconsminds-align-justify-all"></i>
-            </button>
-        </div>
-
-
-        <div class="custom-control custom-checkbox pl-1 align-self-center pr-4">
-            <button class="btn btn-outline-theme-3 icon-button" data-toggle="dropdown">
-                <i class="iconsminds-files"></i>
-            </button>
-            <div class="dropdown-menu">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="padding-left:20px">Download</a>
-                <div class="dropdown-menu">
-                    <a href="#" class="dropdown-item">Copy chart</a>
-                    <a href="#" class="dropdown-item">As jpeg file</a>
-                    <a href="#" class="dropdown-item">As excel file</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="num-response">
-        <h6>30 responses</h6>
-    </div>
-    <div class="chart card-body chart-body pt-0">
-        <canvas id="matrixChoice"></canvas>
-
-    </div>
-
-</div> --}}
 
 
 
@@ -882,7 +407,7 @@ $ind = 1;
 
     // //config for pie chart with radio choices
     // const config_radio = {
-    //     type: 'doughnut',
+    //     type: 'pie',
     //     data: data,
     //     options: {
     //         responsive: true,
@@ -1037,13 +562,13 @@ $ind = 1;
     // };
 
     $backgroundColor = [
+            'rgba(201, 203, 207, 0.2)',
+            'rgba(255, 205, 86, 0.2)',
             'rgba(255, 99, 132, 0.2)',
             'rgba(255, 159, 64, 0.2)',
-            'rgba(255, 205, 86, 0.2)',
             'rgba(75, 192, 192, 0.2)',
             'rgba(54, 162, 235, 0.2)',
             'rgba(153, 102, 255, 0.2)',
-            'rgba(201, 203, 207, 0.2)',
             //added colors
             'rgba(99, 225, 222, 0.2)',
             'rgba(255, 73, 112, 0.2)',
@@ -1055,13 +580,13 @@ $ind = 1;
         ],
 
         $borderColor = [
+            'rgb(201, 203, 207)',
+            'rgb(255, 205, 86)',
             'rgb(255, 99, 132)',
             'rgb(255, 159, 64)',
-            'rgb(255, 205, 86)',
             'rgb(75, 192, 192)',
             'rgb(54, 162, 235)',
             'rgb(153, 102, 255)',
-            'rgb(201, 203, 207)',
             //added colors
             'rgb(99, 225, 222)',
             'rgb(255, 73, 112)',
@@ -1076,7 +601,7 @@ $ind = 1;
             @if ($survey->questions[$i]->option_type_id == 3)
                 // <canvas id="radio-{{ $i }}"></canvas>
                 new Chart(document.getElementById('radio-{{ $i }}'), {
-                type: 'doughnut',
+                type: 'pie',
                 data: {
                 labels: [
                 @foreach ($survey->options->where('question_id', $survey->questions[$i]->id) as $option)
@@ -1129,7 +654,7 @@ $ind = 1;
             @elseif ($survey->questions[$i]->option_type_id == 4)
                 // <canvas id="drop-{{ $i }}"></canvas>
                 new Chart(document.getElementById('drop-{{ $i }}'), {
-                type: 'doughnut',
+                type: 'pie',
                 data: {
                 labels: [
                 @foreach ($survey->options->where('question_id', $survey->questions[$i]->id) as $option)
@@ -1264,9 +789,9 @@ $ind = 1;
                     @endforeach
                     ],
                     backgroundColor: [
+                        'rgba(255, 205, 86, 0.2)',
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(255, 159, 64, 0.2)',
-                        'rgba(255, 205, 86, 0.2)',
                         'rgba(75, 192, 192, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
                         'rgba(153, 102, 255, 0.2)',
@@ -1291,9 +816,9 @@ $ind = 1;
             
                     ],
                     borderColor: [
+                        'rgb(255, 205, 86)',
                         'rgb(255, 99, 132)',
                         'rgb(255, 159, 64)',
-                        'rgb(255, 205, 86)',
                         'rgb(75, 192, 192)',
                         'rgb(54, 162, 235)',
                         'rgb(153, 102, 255)',
