@@ -5,28 +5,28 @@
  * Released under the MIT license
  * https://github.com/select2/select2/blob/master/LICENSE.md
  */
-!(function (e) {
-    "function" == typeof define && define.amd
-        ? define(["jquery"], e)
-        : "object" == typeof module && module.exports
-        ? (module.exports = function (t, n) {
-              return void 0 === n && (n = "undefined" != typeof window ? require("jquery") : require("jquery")(t)), e(n), n;
-          })
-        : e(jQuery);
-})(function (e) {
-    var t = (function () {
+!(function(e) {
+    "function" == typeof define && define.amd ?
+        define(["jquery"], e) :
+        "object" == typeof module && module.exports ?
+        (module.exports = function(t, n) {
+            return void 0 === n && (n = "undefined" != typeof window ? require("jquery") : require("jquery")(t)), e(n), n;
+        }) :
+        e(jQuery);
+})(function(e) {
+    var t = (function() {
             if (e && e.fn && e.fn.select2 && e.fn.select2.amd) var t = e.fn.select2.amd;
             var n;
             return (
-                (function () {
+                (function() {
                     /**
                      * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
                      * Released under MIT license, http://github.com/requirejs/almond/LICENSE
                      */
                     var e, n, i;
                     (t && t.requirejs) ||
-                        (t ? (n = t) : (t = {}),
-                        (function (t) {
+                    (t ? (n = t) : (t = {}),
+                        (function(t) {
                             var o,
                                 r,
                                 s,
@@ -38,9 +38,11 @@
                                 p = Object.prototype.hasOwnProperty,
                                 h = [].slice,
                                 f = /\.js$/;
+
                             function g(e, t) {
                                 return p.call(e, t);
                             }
+
                             function m(e, t) {
                                 var n,
                                     i,
@@ -60,9 +62,9 @@
                                     for (s = (e = e.split("/")).length - 1, u.nodeIdCompat && f.test(e[s]) && (e[s] = e[s].replace(f, "")), "." === e[0].charAt(0) && g && (e = g.slice(0, g.length - 1).concat(e)), d = 0; d < e.length; d++)
                                         if ("." === (h = e[d])) e.splice(d, 1), (d -= 1);
                                         else if (".." === h) {
-                                            if (0 === d || (1 === d && ".." === e[2]) || ".." === e[d - 1]) continue;
-                                            d > 0 && (e.splice(d - 1, 2), (d -= 2));
-                                        }
+                                        if (0 === d || (1 === d && ".." === e[2]) || ".." === e[d - 1]) continue;
+                                        d > 0 && (e.splice(d - 1, 2), (d -= 2));
+                                    }
                                     e = e.join("/");
                                 }
                                 if ((g || v) && m) {
@@ -75,22 +77,24 @@
                                                 }
                                         if (r) break;
                                         !l && v && v[i] && ((l = v[i]), (c = d));
-                                    }
-                                    !r && l && ((r = l), (a = c)), r && (n.splice(0, a, r), (e = n.join("/")));
+                                    }!r && l && ((r = l), (a = c)), r && (n.splice(0, a, r), (e = n.join("/")));
                                 }
                                 return e;
                             }
+
                             function v(e, t) {
-                                return function () {
+                                return function() {
                                     var n = h.call(arguments, 0);
                                     return "string" != typeof n[0] && 1 === n.length && n.push(null), r.apply(void 0, n.concat([e, t]));
                                 };
                             }
+
                             function y(e) {
-                                return function (t) {
+                                return function(t) {
                                     l[e] = t;
                                 };
                             }
+
                             function w(e) {
                                 if (g(c, e)) {
                                     var t = c[e];
@@ -99,20 +103,23 @@
                                 if (!g(l, e) && !g(d, e)) throw new Error("No " + e);
                                 return l[e];
                             }
+
                             function _(e) {
                                 var t,
                                     n = e ? e.indexOf("!") : -1;
                                 return n > -1 && ((t = e.substring(0, n)), (e = e.substring(n + 1, e.length))), [t, e];
                             }
+
                             function $(e) {
                                 return e ? _(e) : [];
                             }
+
                             function b(e) {
-                                return function () {
+                                return function() {
                                     return (u && u.config && u.config[e]) || {};
                                 };
                             }
-                            (s = function (e, t) {
+                            (s = function(e, t) {
                                 var n,
                                     i,
                                     o = _(e),
@@ -121,93 +128,93 @@
                                 return (
                                     (e = o[1]),
                                     r && (n = w((r = m(r, s)))),
-                                    r
-                                        ? (e =
-                                              n && n.normalize
-                                                  ? n.normalize(
-                                                        e,
-                                                        ((i = s),
-                                                        function (e) {
-                                                            return m(e, i);
-                                                        })
-                                                    )
-                                                  : m(e, s))
-                                        : ((r = (o = _((e = m(e, s))))[0]), (e = o[1]), r && (n = w(r))),
-                                    { f: r ? r + "!" + e : e, n: e, pr: r, p: n }
+                                    r ?
+                                    (e =
+                                        n && n.normalize ?
+                                        n.normalize(
+                                            e,
+                                            ((i = s),
+                                                function(e) {
+                                                    return m(e, i);
+                                                })
+                                        ) :
+                                        m(e, s)) :
+                                    ((r = (o = _((e = m(e, s))))[0]), (e = o[1]), r && (n = w(r))), { f: r ? r + "!" + e : e, n: e, pr: r, p: n }
                                 );
                             }),
-                                (a = {
-                                    require: function (e) {
-                                        return v(e);
-                                    },
-                                    exports: function (e) {
-                                        var t = l[e];
-                                        return void 0 !== t ? t : (l[e] = {});
-                                    },
-                                    module: function (e) {
-                                        return { id: e, uri: "", exports: l[e], config: b(e) };
-                                    },
-                                }),
-                                (o = function (e, t, n, i) {
-                                    var o,
-                                        r,
-                                        u,
-                                        p,
-                                        h,
-                                        f,
-                                        m,
-                                        _ = [],
-                                        b = typeof n;
-                                    if (((f = $((i = i || e))), "undefined" === b || "function" === b)) {
-                                        for (t = !t.length && n.length ? ["require", "exports", "module"] : t, h = 0; h < t.length; h += 1)
-                                            if ("require" === (r = (p = s(t[h], f)).f)) _[h] = a.require(e);
-                                            else if ("exports" === r) (_[h] = a.exports(e)), (m = !0);
-                                            else if ("module" === r) o = _[h] = a.module(e);
-                                            else if (g(l, r) || g(c, r) || g(d, r)) _[h] = w(r);
-                                            else {
-                                                if (!p.p) throw new Error(e + " missing " + r);
-                                                p.p.load(p.n, v(i, !0), y(r), {}), (_[h] = l[r]);
-                                            }
-                                        (u = n ? n.apply(l[e], _) : void 0), e && (o && void 0 !== o.exports && o.exports !== l[e] ? (l[e] = o.exports) : (void 0 === u && m) || (l[e] = u));
-                                    } else e && (l[e] = n);
-                                }),
-                                (e = n = r = function (e, t, n, i, l) {
-                                    if ("string" == typeof e) return a[e] ? a[e](t) : w(s(e, $(t)).f);
-                                    if (!e.splice) {
-                                        if (((u = e).deps && r(u.deps, u.callback), !t)) return;
-                                        t.splice ? ((e = t), (t = n), (n = null)) : (e = void 0);
+                            (a = {
+                                require: function(e) {
+                                    return v(e);
+                                },
+                                exports: function(e) {
+                                    var t = l[e];
+                                    return void 0 !== t ? t : (l[e] = {});
+                                },
+                                module: function(e) {
+                                    return { id: e, uri: "", exports: l[e], config: b(e) };
+                                },
+                            }),
+                            (o = function(e, t, n, i) {
+                                var o,
+                                    r,
+                                    u,
+                                    p,
+                                    h,
+                                    f,
+                                    m,
+                                    _ = [],
+                                    b = typeof n;
+                                if (((f = $((i = i || e))), "undefined" === b || "function" === b)) {
+                                    for (t = !t.length && n.length ? ["require", "exports", "module"] : t, h = 0; h < t.length; h += 1)
+                                        if ("require" === (r = (p = s(t[h], f)).f)) _[h] = a.require(e);
+                                        else if ("exports" === r)(_[h] = a.exports(e)), (m = !0);
+                                    else if ("module" === r) o = _[h] = a.module(e);
+                                    else if (g(l, r) || g(c, r) || g(d, r)) _[h] = w(r);
+                                    else {
+                                        if (!p.p) throw new Error(e + " missing " + r);
+                                        p.p.load(p.n, v(i, !0), y(r), {}), (_[h] = l[r]);
                                     }
-                                    return (
-                                        (t = t || function () {}),
-                                        "function" == typeof n && ((n = i), (i = l)),
-                                        i
-                                            ? o(void 0, e, t, n)
-                                            : setTimeout(function () {
-                                                  o(void 0, e, t, n);
-                                              }, 4),
-                                        r
-                                    );
-                                }),
-                                (r.config = function (e) {
-                                    return r(e);
-                                }),
-                                (e._defined = l),
-                                ((i = function (e, t, n) {
-                                    if ("string" != typeof e) throw new Error("See almond README: incorrect module build, no module name");
-                                    t.splice || ((n = t), (t = [])), g(l, e) || g(c, e) || (c[e] = [e, t, n]);
-                                }).amd = { jQuery: !0 });
+                                    (u = n ? n.apply(l[e], _) : void 0), e && (o && void 0 !== o.exports && o.exports !== l[e] ? (l[e] = o.exports) : (void 0 === u && m) || (l[e] = u));
+                                } else e && (l[e] = n);
+                            }),
+                            (e = n = r = function(e, t, n, i, l) {
+                                if ("string" == typeof e) return a[e] ? a[e](t) : w(s(e, $(t)).f);
+                                if (!e.splice) {
+                                    if (((u = e).deps && r(u.deps, u.callback), !t)) return;
+                                    t.splice ? ((e = t), (t = n), (n = null)) : (e = void 0);
+                                }
+                                return (
+                                    (t = t || function() {}),
+                                    "function" == typeof n && ((n = i), (i = l)),
+                                    i ?
+                                    o(void 0, e, t, n) :
+                                    setTimeout(function() {
+                                        o(void 0, e, t, n);
+                                    }, 4),
+                                    r
+                                );
+                            }),
+                            (r.config = function(e) {
+                                return r(e);
+                            }),
+                            (e._defined = l),
+                            ((i = function(e, t, n) {
+                                if ("string" != typeof e) throw new Error("See almond README: incorrect module build, no module name");
+                                t.splice || ((n = t), (t = [])), g(l, e) || g(c, e) || (c[e] = [e, t, n]);
+                            }).amd = { jQuery: !0 });
                         })(),
                         (t.requirejs = e),
                         (t.require = n),
                         (t.define = i));
                 })(),
-                t.define("almond", function () {}),
-                t.define("jquery", [], function () {
+                t.define("almond", function() {}),
+                t.define("jquery", [], function() {
                     var t = e || $;
                     return null == t && console && console.error && console.error("Select2: An instance of jQuery or a jQuery-compatible library was not found. Make sure that you are including jQuery before Select2 on your web page."), t;
                 }),
-                t.define("select2/utils", ["jquery"], function (e) {
+                t.define("select2/utils", ["jquery"], function(e) {
                     var t = {};
+
                     function n(e) {
                         var t = e.prototype,
                             n = [];
@@ -216,83 +223,83 @@
                         }
                         return n;
                     }
-                    (t.Extend = function (e, t) {
+                    (t.Extend = function(e, t) {
                         var n = {}.hasOwnProperty;
+
                         function i() {
                             this.constructor = e;
                         }
                         for (var o in t) n.call(t, o) && (e[o] = t[o]);
                         return (i.prototype = t.prototype), (e.prototype = new i()), (e.__super__ = t.prototype), e;
                     }),
-                        (t.Decorate = function (e, t) {
-                            var i = n(t),
-                                o = n(e);
-                            function r() {
-                                var n = Array.prototype.unshift,
-                                    i = t.prototype.constructor.length,
-                                    o = e.prototype.constructor;
-                                i > 0 && (n.call(arguments, e.prototype.constructor), (o = t.prototype.constructor)), o.apply(this, arguments);
-                            }
-                            (t.displayName = e.displayName),
-                                (r.prototype = new (function () {
-                                    this.constructor = r;
-                                })());
-                            for (var s = 0; s < o.length; s++) {
-                                var a = o[s];
-                                r.prototype[a] = e.prototype[a];
-                            }
-                            for (
-                                var l = function (e) {
-                                        var n = function () {};
-                                        (e in r.prototype) && (n = r.prototype[e]);
-                                        var i = t.prototype[e];
-                                        return function () {
-                                            var e = Array.prototype.unshift;
-                                            return e.call(arguments, n), i.apply(this, arguments);
-                                        };
-                                    },
-                                    c = 0;
-                                c < i.length;
-                                c++
-                            ) {
-                                var u = i[c];
-                                r.prototype[u] = l(u);
-                            }
-                            return r;
-                        });
-                    var i = function () {
+                    (t.Decorate = function(e, t) {
+                        var i = n(t),
+                            o = n(e);
+
+                        function r() {
+                            var n = Array.prototype.unshift,
+                                i = t.prototype.constructor.length,
+                                o = e.prototype.constructor;
+                            i > 0 && (n.call(arguments, e.prototype.constructor), (o = t.prototype.constructor)), o.apply(this, arguments);
+                        }
+                        (t.displayName = e.displayName),
+                        (r.prototype = new(function() {
+                            this.constructor = r;
+                        })());
+                        for (var s = 0; s < o.length; s++) {
+                            var a = o[s];
+                            r.prototype[a] = e.prototype[a];
+                        }
+                        for (
+                            var l = function(e) {
+                                    var n = function() {};
+                                    (e in r.prototype) && (n = r.prototype[e]);
+                                    var i = t.prototype[e];
+                                    return function() {
+                                        var e = Array.prototype.unshift;
+                                        return e.call(arguments, n), i.apply(this, arguments);
+                                    };
+                                },
+                                c = 0; c < i.length; c++
+                        ) {
+                            var u = i[c];
+                            r.prototype[u] = l(u);
+                        }
+                        return r;
+                    });
+                    var i = function() {
                         this.listeners = {};
                     };
                     return (
-                        (i.prototype.on = function (e, t) {
+                        (i.prototype.on = function(e, t) {
                             (this.listeners = this.listeners || {}), e in this.listeners ? this.listeners[e].push(t) : (this.listeners[e] = [t]);
                         }),
-                        (i.prototype.trigger = function (e) {
+                        (i.prototype.trigger = function(e) {
                             var t = Array.prototype.slice,
                                 n = t.call(arguments, 1);
                             (this.listeners = this.listeners || {}),
-                                null == n && (n = []),
+                            null == n && (n = []),
                                 0 === n.length && n.push({}),
                                 (n[0]._type = e),
                                 e in this.listeners && this.invoke(this.listeners[e], t.call(arguments, 1)),
                                 "*" in this.listeners && this.invoke(this.listeners["*"], arguments);
                         }),
-                        (i.prototype.invoke = function (e, t) {
+                        (i.prototype.invoke = function(e, t) {
                             for (var n = 0, i = e.length; n < i; n++) e[n].apply(this, t);
                         }),
                         (t.Observable = i),
-                        (t.generateChars = function (e) {
+                        (t.generateChars = function(e) {
                             for (var t = "", n = 0; n < e; n++) {
                                 t += Math.floor(36 * Math.random()).toString(36);
                             }
                             return t;
                         }),
-                        (t.bind = function (e, t) {
-                            return function () {
+                        (t.bind = function(e, t) {
+                            return function() {
                                 e.apply(t, arguments);
                             };
                         }),
-                        (t._convertData = function (e) {
+                        (t._convertData = function(e) {
                             for (var t in e) {
                                 var n = t.split("-"),
                                     i = e;
@@ -306,26 +313,26 @@
                             }
                             return e;
                         }),
-                        (t.hasScroll = function (t, n) {
+                        (t.hasScroll = function(t, n) {
                             var i = e(n),
                                 o = n.style.overflowX,
                                 r = n.style.overflowY;
                             return (o !== r || ("hidden" !== r && "visible" !== r)) && ("scroll" === o || "scroll" === r || i.innerHeight() < n.scrollHeight || i.innerWidth() < n.scrollWidth);
                         }),
-                        (t.escapeMarkup = function (e) {
+                        (t.escapeMarkup = function(e) {
                             var t = { "\\": "&#92;", "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;", "/": "&#47;" };
-                            return "string" != typeof e
-                                ? e
-                                : String(e).replace(/[&<>"'\/\\]/g, function (e) {
-                                      return t[e];
-                                  });
+                            return "string" != typeof e ?
+                                e :
+                                String(e).replace(/[&<>"'\/\\]/g, function(e) {
+                                    return t[e];
+                                });
                         }),
-                        (t.appendMany = function (t, n) {
+                        (t.appendMany = function(t, n) {
                             if ("1.7" === e.fn.jquery.substr(0, 3)) {
                                 var i = e();
-                                e.map(n, function (e) {
-                                    i = i.add(e);
-                                }),
+                                e.map(n, function(e) {
+                                        i = i.add(e);
+                                    }),
                                     (n = i);
                             }
                             t.append(n);
@@ -333,30 +340,30 @@
                         t
                     );
                 }),
-                t.define("select2/results", ["jquery", "./utils"], function (e, t) {
+                t.define("select2/results", ["jquery", "./utils"], function(e, t) {
                     function n(e, t, i) {
                         (this.$element = e), (this.data = i), (this.options = t), n.__super__.constructor.call(this);
                     }
                     return (
                         t.Extend(n, t.Observable),
-                        (n.prototype.render = function () {
+                        (n.prototype.render = function() {
                             var t = e('<ul class="select2-results__options" role="tree"></ul>');
                             return this.options.get("multiple") && t.attr("aria-multiselectable", "true"), (this.$results = t), t;
                         }),
-                        (n.prototype.clear = function () {
+                        (n.prototype.clear = function() {
                             this.$results.empty();
                         }),
-                        (n.prototype.displayMessage = function (t) {
+                        (n.prototype.displayMessage = function(t) {
                             var n = this.options.get("escapeMarkup");
                             this.clear(), this.hideLoading();
                             var i = e('<li role="treeitem" aria-live="assertive" class="select2-results__option"></li>'),
                                 o = this.options.get("translations").get(t.message);
                             i.append(n(o(t.args))), (i[0].className += " select2-results__message"), this.$results.append(i);
                         }),
-                        (n.prototype.hideMessages = function () {
+                        (n.prototype.hideMessages = function() {
                             this.$results.find(".select2-results__message").remove();
                         }),
-                        (n.prototype.append = function (e) {
+                        (n.prototype.append = function(e) {
                             this.hideLoading();
                             var t = [];
                             if (null != e.results && 0 !== e.results.length) {
@@ -369,50 +376,50 @@
                                 this.$results.append(t);
                             } else 0 === this.$results.children().length && this.trigger("results:message", { message: "noResults" });
                         }),
-                        (n.prototype.position = function (e, t) {
+                        (n.prototype.position = function(e, t) {
                             t.find(".select2-results").append(e);
                         }),
-                        (n.prototype.sort = function (e) {
+                        (n.prototype.sort = function(e) {
                             return this.options.get("sorter")(e);
                         }),
-                        (n.prototype.highlightFirstItem = function () {
+                        (n.prototype.highlightFirstItem = function() {
                             var e = this.$results.find(".select2-results__option[aria-selected]"),
                                 t = e.filter("[aria-selected=true]");
                             t.length > 0 ? t.first().trigger("mouseenter") : e.first().trigger("mouseenter"), this.ensureHighlightVisible();
                         }),
-                        (n.prototype.setClasses = function () {
+                        (n.prototype.setClasses = function() {
                             var t = this;
-                            this.data.current(function (n) {
-                                var i = e.map(n, function (e) {
+                            this.data.current(function(n) {
+                                var i = e.map(n, function(e) {
                                     return e.id.toString();
                                 });
-                                t.$results.find(".select2-results__option[aria-selected]").each(function () {
+                                t.$results.find(".select2-results__option[aria-selected]").each(function() {
                                     var t = e(this),
                                         n = e.data(this, "data"),
                                         o = "" + n.id;
-                                    (null != n.element && n.element.selected) || (null == n.element && e.inArray(o, i) > -1) ? t.attr("aria-selected", "true") : t.attr("aria-selected", "false");
+                                    (null != n.element && n.element.selected) || (null == n.element && e.inArray(o, i) > -1) ? t.attr("aria-selected", "true"): t.attr("aria-selected", "false");
                                 });
                             });
                         }),
-                        (n.prototype.showLoading = function (e) {
+                        (n.prototype.showLoading = function(e) {
                             this.hideLoading();
                             var t = { disabled: !0, loading: !0, text: this.options.get("translations").get("searching")(e) },
                                 n = this.option(t);
                             (n.className += " loading-results"), this.$results.prepend(n);
                         }),
-                        (n.prototype.hideLoading = function () {
+                        (n.prototype.hideLoading = function() {
                             this.$results.find(".loading-results").remove();
                         }),
-                        (n.prototype.option = function (t) {
+                        (n.prototype.option = function(t) {
                             var n = document.createElement("li");
                             n.className = "select2-results__option";
                             var i = { role: "treeitem", "aria-selected": "false" };
                             for (var o in (t.disabled && (delete i["aria-selected"], (i["aria-disabled"] = "true")),
-                            null == t.id && delete i["aria-selected"],
-                            null != t._resultId && (n.id = t._resultId),
-                            t.title && (n.title = t.title),
-                            t.children && ((i.role = "group"), (i["aria-label"] = t.text), delete i["aria-selected"]),
-                            i)) {
+                                    null == t.id && delete i["aria-selected"],
+                                    null != t._resultId && (n.id = t._resultId),
+                                    t.title && (n.title = t.title),
+                                    t.children && ((i.role = "group"), (i["aria-label"] = t.text), delete i["aria-selected"]),
+                                    i)) {
                                 var r = i[o];
                                 n.setAttribute(o, r);
                             }
@@ -432,43 +439,43 @@
                             } else this.template(t, n);
                             return e.data(n, "data", t), n;
                         }),
-                        (n.prototype.bind = function (t, n) {
+                        (n.prototype.bind = function(t, n) {
                             var i = this,
                                 o = t.id + "-results";
                             this.$results.attr("id", o),
-                                t.on("results:all", function (e) {
+                                t.on("results:all", function(e) {
                                     i.clear(), i.append(e.data), t.isOpen() && (i.setClasses(), i.highlightFirstItem());
                                 }),
-                                t.on("results:append", function (e) {
+                                t.on("results:append", function(e) {
                                     i.append(e.data), t.isOpen() && i.setClasses();
                                 }),
-                                t.on("query", function (e) {
+                                t.on("query", function(e) {
                                     i.hideMessages(), i.showLoading(e);
                                 }),
-                                t.on("select", function () {
+                                t.on("select", function() {
                                     t.isOpen() && (i.setClasses(), i.highlightFirstItem());
                                 }),
-                                t.on("unselect", function () {
+                                t.on("unselect", function() {
                                     t.isOpen() && (i.setClasses(), i.highlightFirstItem());
                                 }),
-                                t.on("open", function () {
+                                t.on("open", function() {
                                     i.$results.attr("aria-expanded", "true"), i.$results.attr("aria-hidden", "false"), i.setClasses(), i.ensureHighlightVisible();
                                 }),
-                                t.on("close", function () {
+                                t.on("close", function() {
                                     i.$results.attr("aria-expanded", "false"), i.$results.attr("aria-hidden", "true"), i.$results.removeAttr("aria-activedescendant");
                                 }),
-                                t.on("results:toggle", function () {
+                                t.on("results:toggle", function() {
                                     var e = i.getHighlightedResults();
                                     0 !== e.length && e.trigger("mouseup");
                                 }),
-                                t.on("results:select", function () {
+                                t.on("results:select", function() {
                                     var e = i.getHighlightedResults();
                                     if (0 !== e.length) {
                                         var t = e.data("data");
                                         "true" == e.attr("aria-selected") ? i.trigger("close", {}) : i.trigger("select", { data: t });
                                     }
                                 }),
-                                t.on("results:previous", function () {
+                                t.on("results:previous", function() {
                                     var e = i.getHighlightedResults(),
                                         t = i.$results.find("[aria-selected]"),
                                         n = t.index(e);
@@ -483,7 +490,7 @@
                                         0 === o ? i.$results.scrollTop(0) : a - s < 0 && i.$results.scrollTop(l);
                                     }
                                 }),
-                                t.on("results:next", function () {
+                                t.on("results:next", function() {
                                     var e = i.getHighlightedResults(),
                                         t = i.$results.find("[aria-selected]"),
                                         n = t.index(e) + 1;
@@ -496,37 +503,37 @@
                                         0 === n ? i.$results.scrollTop(0) : s > r && i.$results.scrollTop(a);
                                     }
                                 }),
-                                t.on("results:focus", function (e) {
+                                t.on("results:focus", function(e) {
                                     e.element.addClass("select2-results__option--highlighted");
                                 }),
-                                t.on("results:message", function (e) {
+                                t.on("results:message", function(e) {
                                     i.displayMessage(e);
                                 }),
                                 e.fn.mousewheel &&
-                                    this.$results.on("mousewheel", function (e) {
-                                        var t = i.$results.scrollTop(),
-                                            n = i.$results.get(0).scrollHeight - t + e.deltaY,
-                                            o = e.deltaY > 0 && t - e.deltaY <= 0,
-                                            r = e.deltaY < 0 && n <= i.$results.height();
-                                        o ? (i.$results.scrollTop(0), e.preventDefault(), e.stopPropagation()) : r && (i.$results.scrollTop(i.$results.get(0).scrollHeight - i.$results.height()), e.preventDefault(), e.stopPropagation());
-                                    }),
-                                this.$results.on("mouseup", ".select2-results__option[aria-selected]", function (t) {
+                                this.$results.on("mousewheel", function(e) {
+                                    var t = i.$results.scrollTop(),
+                                        n = i.$results.get(0).scrollHeight - t + e.deltaY,
+                                        o = e.deltaY > 0 && t - e.deltaY <= 0,
+                                        r = e.deltaY < 0 && n <= i.$results.height();
+                                    o ? (i.$results.scrollTop(0), e.preventDefault(), e.stopPropagation()) : r && (i.$results.scrollTop(i.$results.get(0).scrollHeight - i.$results.height()), e.preventDefault(), e.stopPropagation());
+                                }),
+                                this.$results.on("mouseup", ".select2-results__option[aria-selected]", function(t) {
                                     var n = e(this),
                                         o = n.data("data");
                                     "true" !== n.attr("aria-selected") ? i.trigger("select", { originalEvent: t, data: o }) : i.options.get("multiple") ? i.trigger("unselect", { originalEvent: t, data: o }) : i.trigger("close", {});
                                 }),
-                                this.$results.on("mouseenter", ".select2-results__option[aria-selected]", function (t) {
+                                this.$results.on("mouseenter", ".select2-results__option[aria-selected]", function(t) {
                                     var n = e(this).data("data");
                                     i.getHighlightedResults().removeClass("select2-results__option--highlighted"), i.trigger("results:focus", { data: n, element: e(this) });
                                 });
                         }),
-                        (n.prototype.getHighlightedResults = function () {
+                        (n.prototype.getHighlightedResults = function() {
                             return this.$results.find(".select2-results__option--highlighted");
                         }),
-                        (n.prototype.destroy = function () {
+                        (n.prototype.destroy = function() {
                             this.$results.remove();
                         }),
-                        (n.prototype.ensureHighlightVisible = function () {
+                        (n.prototype.ensureHighlightVisible = function() {
                             var e = this.getHighlightedResults();
                             if (0 !== e.length) {
                                 var t = this.$results.find("[aria-selected]").index(e),
@@ -537,7 +544,7 @@
                                 (o -= 2 * e.outerHeight(!1)), t <= 2 ? this.$results.scrollTop(0) : (r > this.$results.outerHeight() || r < 0) && this.$results.scrollTop(o);
                             }
                         }),
-                        (n.prototype.template = function (t, n) {
+                        (n.prototype.template = function(t, n) {
                             var i = this.options.get("templateResult"),
                                 o = this.options.get("escapeMarkup"),
                                 r = i(t, n);
@@ -546,16 +553,16 @@
                         n
                     );
                 }),
-                t.define("select2/keys", [], function () {
+                t.define("select2/keys", [], function() {
                     return { BACKSPACE: 8, TAB: 9, ENTER: 13, SHIFT: 16, CTRL: 17, ALT: 18, ESC: 27, SPACE: 32, PAGE_UP: 33, PAGE_DOWN: 34, END: 35, HOME: 36, LEFT: 37, UP: 38, RIGHT: 39, DOWN: 40, DELETE: 46 };
                 }),
-                t.define("select2/selection/base", ["jquery", "../utils", "../keys"], function (e, t, n) {
+                t.define("select2/selection/base", ["jquery", "../utils", "../keys"], function(e, t, n) {
                     function i(e, t) {
                         (this.$element = e), (this.options = t), i.__super__.constructor.call(this);
                     }
                     return (
                         t.Extend(i, t.Observable),
-                        (i.prototype.render = function () {
+                        (i.prototype.render = function() {
                             var t = e('<span class="select2-selection" role="combobox"  aria-haspopup="true" aria-expanded="false"></span>');
                             return (
                                 (this._tabindex = 0),
@@ -566,107 +573,107 @@
                                 t
                             );
                         }),
-                        (i.prototype.bind = function (e, t) {
+                        (i.prototype.bind = function(e, t) {
                             var i = this,
                                 o = (e.id, e.id + "-results");
                             (this.container = e),
-                                this.$selection.on("focus", function (e) {
+                            this.$selection.on("focus", function(e) {
                                     i.trigger("focus", e);
                                 }),
-                                this.$selection.on("blur", function (e) {
+                                this.$selection.on("blur", function(e) {
                                     i._handleBlur(e);
                                 }),
-                                this.$selection.on("keydown", function (e) {
+                                this.$selection.on("keydown", function(e) {
                                     i.trigger("keypress", e), e.which === n.SPACE && e.preventDefault();
                                 }),
-                                e.on("results:focus", function (e) {
+                                e.on("results:focus", function(e) {
                                     i.$selection.attr("aria-activedescendant", e.data._resultId);
                                 }),
-                                e.on("selection:update", function (e) {
+                                e.on("selection:update", function(e) {
                                     i.update(e.data);
                                 }),
-                                e.on("open", function () {
+                                e.on("open", function() {
                                     i.$selection.attr("aria-expanded", "true"), i.$selection.attr("aria-owns", o), i._attachCloseHandler(e);
                                 }),
-                                e.on("close", function () {
+                                e.on("close", function() {
                                     i.$selection.attr("aria-expanded", "false"), i.$selection.removeAttr("aria-activedescendant"), i.$selection.removeAttr("aria-owns"), i.$selection.focus(), i._detachCloseHandler(e);
                                 }),
-                                e.on("enable", function () {
+                                e.on("enable", function() {
                                     i.$selection.attr("tabindex", i._tabindex);
                                 }),
-                                e.on("disable", function () {
+                                e.on("disable", function() {
                                     i.$selection.attr("tabindex", "-1");
                                 });
                         }),
-                        (i.prototype._handleBlur = function (t) {
+                        (i.prototype._handleBlur = function(t) {
                             var n = this;
-                            window.setTimeout(function () {
+                            window.setTimeout(function() {
                                 document.activeElement == n.$selection[0] || e.contains(n.$selection[0], document.activeElement) || n.trigger("blur", t);
                             }, 1);
                         }),
-                        (i.prototype._attachCloseHandler = function (t) {
-                            e(document.body).on("mousedown.select2." + t.id, function (t) {
+                        (i.prototype._attachCloseHandler = function(t) {
+                            e(document.body).on("mousedown.select2." + t.id, function(t) {
                                 var n = e(t.target).closest(".select2");
-                                e(".select2.select2-container--open").each(function () {
+                                e(".select2.select2-container--open").each(function() {
                                     var t = e(this);
                                     this != n[0] && t.data("element").select2("close");
                                 });
                             });
                         }),
-                        (i.prototype._detachCloseHandler = function (t) {
+                        (i.prototype._detachCloseHandler = function(t) {
                             e(document.body).off("mousedown.select2." + t.id);
                         }),
-                        (i.prototype.position = function (e, t) {
+                        (i.prototype.position = function(e, t) {
                             t.find(".selection").append(e);
                         }),
-                        (i.prototype.destroy = function () {
+                        (i.prototype.destroy = function() {
                             this._detachCloseHandler(this.container);
                         }),
-                        (i.prototype.update = function (e) {
+                        (i.prototype.update = function(e) {
                             throw new Error("The `update` method must be defined in child classes.");
                         }),
                         i
                     );
                 }),
-                t.define("select2/selection/single", ["jquery", "./base", "../utils", "../keys"], function (e, t, n, i) {
+                t.define("select2/selection/single", ["jquery", "./base", "../utils", "../keys"], function(e, t, n, i) {
                     function o() {
                         o.__super__.constructor.apply(this, arguments);
                     }
                     return (
                         n.Extend(o, t),
-                        (o.prototype.render = function () {
+                        (o.prototype.render = function() {
                             var e = o.__super__.render.call(this);
                             return e.addClass("select2-selection--single"), e.html('<span class="select2-selection__rendered"></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span>'), e;
                         }),
-                        (o.prototype.bind = function (e, t) {
+                        (o.prototype.bind = function(e, t) {
                             var n = this;
                             o.__super__.bind.apply(this, arguments);
                             var i = e.id + "-container";
                             this.$selection.find(".select2-selection__rendered").attr("id", i),
                                 this.$selection.attr("aria-labelledby", i),
-                                this.$selection.on("mousedown", function (e) {
+                                this.$selection.on("mousedown", function(e) {
                                     1 === e.which && n.trigger("toggle", { originalEvent: e });
                                 }),
-                                this.$selection.on("focus", function (e) {}),
-                                this.$selection.on("blur", function (e) {}),
-                                e.on("focus", function (t) {
+                                this.$selection.on("focus", function(e) {}),
+                                this.$selection.on("blur", function(e) {}),
+                                e.on("focus", function(t) {
                                     e.isOpen() || n.$selection.focus();
                                 }),
-                                e.on("selection:update", function (e) {
+                                e.on("selection:update", function(e) {
                                     n.update(e.data);
                                 });
                         }),
-                        (o.prototype.clear = function () {
+                        (o.prototype.clear = function() {
                             this.$selection.find(".select2-selection__rendered").empty();
                         }),
-                        (o.prototype.display = function (e, t) {
+                        (o.prototype.display = function(e, t) {
                             var n = this.options.get("templateSelection");
                             return this.options.get("escapeMarkup")(n(e, t));
                         }),
-                        (o.prototype.selectionContainer = function () {
+                        (o.prototype.selectionContainer = function() {
                             return e("<span></span>");
                         }),
-                        (o.prototype.update = function (e) {
+                        (o.prototype.update = function(e) {
                             if (0 !== e.length) {
                                 var t = e[0],
                                     n = this.$selection.find(".select2-selection__rendered"),
@@ -677,40 +684,40 @@
                         o
                     );
                 }),
-                t.define("select2/selection/multiple", ["jquery", "./base", "../utils"], function (e, t, n) {
+                t.define("select2/selection/multiple", ["jquery", "./base", "../utils"], function(e, t, n) {
                     function i(e, t) {
                         i.__super__.constructor.apply(this, arguments);
                     }
                     return (
                         n.Extend(i, t),
-                        (i.prototype.render = function () {
+                        (i.prototype.render = function() {
                             var e = i.__super__.render.call(this);
                             return e.addClass("select2-selection--multiple"), e.html('<ul class="select2-selection__rendered"></ul>'), e;
                         }),
-                        (i.prototype.bind = function (t, n) {
+                        (i.prototype.bind = function(t, n) {
                             var o = this;
                             i.__super__.bind.apply(this, arguments),
-                                this.$selection.on("click", function (e) {
+                                this.$selection.on("click", function(e) {
                                     o.trigger("toggle", { originalEvent: e });
                                 }),
-                                this.$selection.on("click", ".select2-selection__choice__remove", function (t) {
+                                this.$selection.on("click", ".select2-selection__choice__remove", function(t) {
                                     if (!o.options.get("disabled")) {
                                         var n = e(this).parent().data("data");
                                         o.trigger("unselect", { originalEvent: t, data: n });
                                     }
                                 });
                         }),
-                        (i.prototype.clear = function () {
+                        (i.prototype.clear = function() {
                             this.$selection.find(".select2-selection__rendered").empty();
                         }),
-                        (i.prototype.display = function (e, t) {
+                        (i.prototype.display = function(e, t) {
                             var n = this.options.get("templateSelection");
                             return this.options.get("escapeMarkup")(n(e, t));
                         }),
-                        (i.prototype.selectionContainer = function () {
+                        (i.prototype.selectionContainer = function() {
                             return e('<li class="select2-selection__choice"><span class="select2-selection__choice__remove" role="presentation">&times;</span></li>');
                         }),
-                        (i.prototype.update = function (e) {
+                        (i.prototype.update = function(e) {
                             if ((this.clear(), 0 !== e.length)) {
                                 for (var t = [], i = 0; i < e.length; i++) {
                                     var o = e[i],
@@ -725,19 +732,19 @@
                         i
                     );
                 }),
-                t.define("select2/selection/placeholder", ["../utils"], function (e) {
+                t.define("select2/selection/placeholder", ["../utils"], function(e) {
                     function t(e, t, n) {
                         (this.placeholder = this.normalizePlaceholder(n.get("placeholder"))), e.call(this, t, n);
                     }
                     return (
-                        (t.prototype.normalizePlaceholder = function (e, t) {
+                        (t.prototype.normalizePlaceholder = function(e, t) {
                             return "string" == typeof t && (t = { id: "", text: t }), t;
                         }),
-                        (t.prototype.createPlaceholder = function (e, t) {
+                        (t.prototype.createPlaceholder = function(e, t) {
                             var n = this.selectionContainer();
                             return n.html(this.display(t)), n.addClass("select2-selection__placeholder").removeClass("select2-selection__choice"), n;
                         }),
-                        (t.prototype.update = function (e, t) {
+                        (t.prototype.update = function(e, t) {
                             var n = 1 == t.length && t[0].id != this.placeholder.id;
                             if (t.length > 1 || n) return e.call(this, t);
                             this.clear();
@@ -747,21 +754,21 @@
                         t
                     );
                 }),
-                t.define("select2/selection/allowClear", ["jquery", "../keys"], function (e, t) {
+                t.define("select2/selection/allowClear", ["jquery", "../keys"], function(e, t) {
                     function n() {}
                     return (
-                        (n.prototype.bind = function (e, t, n) {
+                        (n.prototype.bind = function(e, t, n) {
                             var i = this;
                             e.call(this, t, n),
                                 null == this.placeholder && this.options.get("debug") && window.console && console.error && console.error("Select2: The `allowClear` option should be used in combination with the `placeholder` option."),
-                                this.$selection.on("mousedown", ".select2-selection__clear", function (e) {
+                                this.$selection.on("mousedown", ".select2-selection__clear", function(e) {
                                     i._handleClear(e);
                                 }),
-                                t.on("keypress", function (e) {
+                                t.on("keypress", function(e) {
                                     i._handleKeyboardClear(e, t);
                                 });
                         }),
-                        (n.prototype._handleClear = function (e, t) {
+                        (n.prototype._handleClear = function(e, t) {
                             if (!this.options.get("disabled")) {
                                 var n = this.$selection.find(".select2-selection__clear");
                                 if (0 !== n.length) {
@@ -774,10 +781,10 @@
                                 }
                             }
                         }),
-                        (n.prototype._handleKeyboardClear = function (e, n, i) {
+                        (n.prototype._handleKeyboardClear = function(e, n, i) {
                             i.isOpen() || (n.which != t.DELETE && n.which != t.BACKSPACE) || this._handleClear(n);
                         }),
-                        (n.prototype.update = function (t, n) {
+                        (n.prototype.update = function(t, n) {
                             if ((t.call(this, n), !(this.$selection.find(".select2-selection__placeholder").length > 0 || 0 === n.length))) {
                                 var i = e('<span class="select2-selection__clear">&times;</span>');
                                 i.data("data", n), this.$selection.find(".select2-selection__rendered").prepend(i);
@@ -786,12 +793,12 @@
                         n
                     );
                 }),
-                t.define("select2/selection/search", ["jquery", "../utils", "../keys"], function (e, t, n) {
+                t.define("select2/selection/search", ["jquery", "../utils", "../keys"], function(e, t, n) {
                     function i(e, t, n) {
                         e.call(this, t, n);
                     }
                     return (
-                        (i.prototype.render = function (t) {
+                        (i.prototype.render = function(t) {
                             var n = e(
                                 '<li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="-1" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" role="textbox" aria-autocomplete="list" /></li>'
                             );
@@ -799,34 +806,34 @@
                             var i = t.call(this);
                             return this._transferTabIndex(), i;
                         }),
-                        (i.prototype.bind = function (e, t, i) {
+                        (i.prototype.bind = function(e, t, i) {
                             var o = this;
                             e.call(this, t, i),
-                                t.on("open", function () {
+                                t.on("open", function() {
                                     o.$search.trigger("focus");
                                 }),
-                                t.on("close", function () {
+                                t.on("close", function() {
                                     o.$search.val(""), o.$search.removeAttr("aria-activedescendant"), o.$search.trigger("focus");
                                 }),
-                                t.on("enable", function () {
+                                t.on("enable", function() {
                                     o.$search.prop("disabled", !1), o._transferTabIndex();
                                 }),
-                                t.on("disable", function () {
+                                t.on("disable", function() {
                                     o.$search.prop("disabled", !0);
                                 }),
-                                t.on("focus", function (e) {
+                                t.on("focus", function(e) {
                                     o.$search.trigger("focus");
                                 }),
-                                t.on("results:focus", function (e) {
+                                t.on("results:focus", function(e) {
                                     o.$search.attr("aria-activedescendant", e.id);
                                 }),
-                                this.$selection.on("focusin", ".select2-search--inline", function (e) {
+                                this.$selection.on("focusin", ".select2-search--inline", function(e) {
                                     o.trigger("focus", e);
                                 }),
-                                this.$selection.on("focusout", ".select2-search--inline", function (e) {
+                                this.$selection.on("focusout", ".select2-search--inline", function(e) {
                                     o._handleBlur(e);
                                 }),
-                                this.$selection.on("keydown", ".select2-search--inline", function (e) {
+                                this.$selection.on("keydown", ".select2-search--inline", function(e) {
                                     if ((e.stopPropagation(), o.trigger("keypress", e), (o._keyUpPrevented = e.isDefaultPrevented()), e.which === n.BACKSPACE && "" === o.$search.val())) {
                                         var t = o.$searchContainer.prev(".select2-selection__choice");
                                         if (t.length > 0) {
@@ -837,10 +844,10 @@
                                 });
                             var r = document.documentMode,
                                 s = r && r <= 11;
-                            this.$selection.on("input.searchcheck", ".select2-search--inline", function (e) {
-                                s ? o.$selection.off("input.search input.searchcheck") : o.$selection.off("keyup.search");
-                            }),
-                                this.$selection.on("keyup.search input.search", ".select2-search--inline", function (e) {
+                            this.$selection.on("input.searchcheck", ".select2-search--inline", function(e) {
+                                    s ? o.$selection.off("input.search input.searchcheck") : o.$selection.off("keyup.search");
+                                }),
+                                this.$selection.on("keyup.search input.search", ".select2-search--inline", function(e) {
                                     if (s && "input" === e.type) o.$selection.off("input.search input.searchcheck");
                                     else {
                                         var t = e.which;
@@ -848,27 +855,27 @@
                                     }
                                 });
                         }),
-                        (i.prototype._transferTabIndex = function (e) {
+                        (i.prototype._transferTabIndex = function(e) {
                             this.$search.attr("tabindex", this.$selection.attr("tabindex")), this.$selection.attr("tabindex", "-1");
                         }),
-                        (i.prototype.createPlaceholder = function (e, t) {
+                        (i.prototype.createPlaceholder = function(e, t) {
                             this.$search.attr("placeholder", t.text);
                         }),
-                        (i.prototype.update = function (e, t) {
+                        (i.prototype.update = function(e, t) {
                             var n = this.$search[0] == document.activeElement;
                             this.$search.attr("placeholder", ""), e.call(this, t), this.$selection.find(".select2-selection__rendered").append(this.$searchContainer), this.resizeSearch(), n && this.$search.focus();
                         }),
-                        (i.prototype.handleSearch = function () {
+                        (i.prototype.handleSearch = function() {
                             if ((this.resizeSearch(), !this._keyUpPrevented)) {
                                 var e = this.$search.val();
                                 this.trigger("query", { term: e });
                             }
                             this._keyUpPrevented = !1;
                         }),
-                        (i.prototype.searchRemoveChoice = function (e, t) {
+                        (i.prototype.searchRemoveChoice = function(e, t) {
                             this.trigger("unselect", { data: t }), this.$search.val(t.text), this.handleSearch();
                         }),
-                        (i.prototype.resizeSearch = function () {
+                        (i.prototype.resizeSearch = function() {
                             this.$search.css("width", "25px");
                             var e = "";
                             "" !== this.$search.attr("placeholder") ? (e = this.$selection.find(".select2-selection__rendered").innerWidth()) : (e = 0.75 * (this.$search.val().length + 1) + "em");
@@ -877,15 +884,15 @@
                         i
                     );
                 }),
-                t.define("select2/selection/eventRelay", ["jquery"], function (e) {
+                t.define("select2/selection/eventRelay", ["jquery"], function(e) {
                     function t() {}
                     return (
-                        (t.prototype.bind = function (t, n, i) {
+                        (t.prototype.bind = function(t, n, i) {
                             var o = this,
                                 r = ["open", "opening", "close", "closing", "select", "selecting", "unselect", "unselecting"],
                                 s = ["opening", "closing", "selecting", "unselecting"];
                             t.call(this, n, i),
-                                n.on("*", function (t, n) {
+                                n.on("*", function(t, n) {
                                     if (-1 !== e.inArray(t, r)) {
                                         n = n || {};
                                         var i = e.Event("select2:" + t, { params: n });
@@ -896,22 +903,22 @@
                         t
                     );
                 }),
-                t.define("select2/translation", ["jquery", "require"], function (e, t) {
+                t.define("select2/translation", ["jquery", "require"], function(e, t) {
                     function n(e) {
                         this.dict = e || {};
                     }
                     return (
-                        (n.prototype.all = function () {
+                        (n.prototype.all = function() {
                             return this.dict;
                         }),
-                        (n.prototype.get = function (e) {
+                        (n.prototype.get = function(e) {
                             return this.dict[e];
                         }),
-                        (n.prototype.extend = function (t) {
+                        (n.prototype.extend = function(t) {
                             this.dict = e.extend({}, t.all(), this.dict);
                         }),
                         (n._cache = {}),
-                        (n.loadPath = function (e) {
+                        (n.loadPath = function(e) {
                             if (!(e in n._cache)) {
                                 var i = t(e);
                                 n._cache[e] = i;
@@ -921,7 +928,7 @@
                         n
                     );
                 }),
-                t.define("select2/diacritics", [], function () {
+                t.define("select2/diacritics", [], function() {
                     return {
                         "Ⓐ": "A",
                         Ａ: "A",
@@ -1764,53 +1771,53 @@
                         ς: "σ",
                     };
                 }),
-                t.define("select2/data/base", ["../utils"], function (e) {
+                t.define("select2/data/base", ["../utils"], function(e) {
                     function t(e, n) {
                         t.__super__.constructor.call(this);
                     }
                     return (
                         e.Extend(t, e.Observable),
-                        (t.prototype.current = function (e) {
+                        (t.prototype.current = function(e) {
                             throw new Error("The `current` method must be defined in child classes.");
                         }),
-                        (t.prototype.query = function (e, t) {
+                        (t.prototype.query = function(e, t) {
                             throw new Error("The `query` method must be defined in child classes.");
                         }),
-                        (t.prototype.bind = function (e, t) {}),
-                        (t.prototype.destroy = function () {}),
-                        (t.prototype.generateResultId = function (t, n) {
+                        (t.prototype.bind = function(e, t) {}),
+                        (t.prototype.destroy = function() {}),
+                        (t.prototype.generateResultId = function(t, n) {
                             var i = t.id + "-result-";
                             return (i += e.generateChars(4)), null != n.id ? (i += "-" + n.id.toString()) : (i += "-" + e.generateChars(4)), i;
                         }),
                         t
                     );
                 }),
-                t.define("select2/data/select", ["./base", "../utils", "jquery"], function (e, t, n) {
+                t.define("select2/data/select", ["./base", "../utils", "jquery"], function(e, t, n) {
                     function i(e, t) {
                         (this.$element = e), (this.options = t), i.__super__.constructor.call(this);
                     }
                     return (
                         t.Extend(i, e),
-                        (i.prototype.current = function (e) {
+                        (i.prototype.current = function(e) {
                             var t = [],
                                 i = this;
-                            this.$element.find(":selected").each(function () {
-                                var e = n(this),
-                                    o = i.item(e);
-                                t.push(o);
-                            }),
+                            this.$element.find(":selected").each(function() {
+                                    var e = n(this),
+                                        o = i.item(e);
+                                    t.push(o);
+                                }),
                                 e(t);
                         }),
-                        (i.prototype.select = function (e) {
+                        (i.prototype.select = function(e) {
                             var t = this;
                             if (((e.selected = !0), n(e.element).is("option"))) return (e.element.selected = !0), void this.$element.trigger("change");
                             if (this.$element.prop("multiple"))
-                                this.current(function (i) {
+                                this.current(function(i) {
                                     var o = [];
                                     (e = [e]).push.apply(e, i);
                                     for (var r = 0; r < e.length; r++) {
-                                        var s = e[r].id;
-                                        -1 === n.inArray(s, o) && o.push(s);
+                                        var s = e[r].id; -
+                                        1 === n.inArray(s, o) && o.push(s);
                                     }
                                     t.$element.val(o), t.$element.trigger("change");
                                 });
@@ -1819,11 +1826,11 @@
                                 this.$element.val(i), this.$element.trigger("change");
                             }
                         }),
-                        (i.prototype.unselect = function (e) {
+                        (i.prototype.unselect = function(e) {
                             var t = this;
                             if (this.$element.prop("multiple")) {
                                 if (((e.selected = !1), n(e.element).is("option"))) return (e.element.selected = !1), void this.$element.trigger("change");
-                                this.current(function (i) {
+                                this.current(function(i) {
                                     for (var o = [], r = 0; r < i.length; r++) {
                                         var s = i[r].id;
                                         s !== e.id && -1 === n.inArray(s, o) && o.push(s);
@@ -1832,38 +1839,38 @@
                                 });
                             }
                         }),
-                        (i.prototype.bind = function (e, t) {
+                        (i.prototype.bind = function(e, t) {
                             var n = this;
                             (this.container = e),
-                                e.on("select", function (e) {
+                            e.on("select", function(e) {
                                     n.select(e.data);
                                 }),
-                                e.on("unselect", function (e) {
+                                e.on("unselect", function(e) {
                                     n.unselect(e.data);
                                 });
                         }),
-                        (i.prototype.destroy = function () {
-                            this.$element.find("*").each(function () {
+                        (i.prototype.destroy = function() {
+                            this.$element.find("*").each(function() {
                                 n.removeData(this, "data");
                             });
                         }),
-                        (i.prototype.query = function (e, t) {
+                        (i.prototype.query = function(e, t) {
                             var i = [],
                                 o = this;
-                            this.$element.children().each(function () {
-                                var t = n(this);
-                                if (t.is("option") || t.is("optgroup")) {
-                                    var r = o.item(t),
-                                        s = o.matches(e, r);
-                                    null !== s && i.push(s);
-                                }
-                            }),
+                            this.$element.children().each(function() {
+                                    var t = n(this);
+                                    if (t.is("option") || t.is("optgroup")) {
+                                        var r = o.item(t),
+                                            s = o.matches(e, r);
+                                        null !== s && i.push(s);
+                                    }
+                                }),
                                 t({ results: i });
                         }),
-                        (i.prototype.addOptions = function (e) {
+                        (i.prototype.addOptions = function(e) {
                             t.appendMany(this.$element, e);
                         }),
-                        (i.prototype.option = function (e) {
+                        (i.prototype.option = function(e) {
                             var t;
                             e.children ? ((t = document.createElement("optgroup")).label = e.text) : void 0 !== (t = document.createElement("option")).textContent ? (t.textContent = e.text) : (t.innerText = e.text),
                                 void 0 !== e.id && (t.value = e.id),
@@ -1874,7 +1881,7 @@
                                 o = this._normalizeItem(e);
                             return (o.element = t), n.data(t, "data", o), i;
                         }),
-                        (i.prototype.item = function (e) {
+                        (i.prototype.item = function(e) {
                             var t = {};
                             if (null != (t = n.data(e[0], "data"))) return t;
                             if (e.is("option")) t = { id: e.val(), text: e.text(), disabled: e.prop("disabled"), selected: e.prop("selected"), title: e.prop("title") };
@@ -1889,7 +1896,7 @@
                             }
                             return ((t = this._normalizeItem(t)).element = e[0]), n.data(e[0], "data", t), t;
                         }),
-                        (i.prototype._normalizeItem = function (e) {
+                        (i.prototype._normalizeItem = function(e) {
                             n.isPlainObject(e) || (e = { id: e, text: e });
                             return (
                                 null != (e = n.extend({}, { text: "" }, e)).id && (e.id = e.id.toString()),
@@ -1898,36 +1905,37 @@
                                 n.extend({}, { selected: !1, disabled: !1 }, e)
                             );
                         }),
-                        (i.prototype.matches = function (e, t) {
+                        (i.prototype.matches = function(e, t) {
                             return this.options.get("matcher")(e, t);
                         }),
                         i
                     );
                 }),
-                t.define("select2/data/array", ["./select", "../utils", "jquery"], function (e, t, n) {
+                t.define("select2/data/array", ["./select", "../utils", "jquery"], function(e, t, n) {
                     function i(e, t) {
                         var n = t.get("data") || [];
                         i.__super__.constructor.call(this, e, t), this.addOptions(this.convertToOptions(n));
                     }
                     return (
                         t.Extend(i, e),
-                        (i.prototype.select = function (e) {
-                            var t = this.$element.find("option").filter(function (t, n) {
+                        (i.prototype.select = function(e) {
+                            var t = this.$element.find("option").filter(function(t, n) {
                                 return n.value == e.id.toString();
                             });
                             0 === t.length && ((t = this.option(e)), this.addOptions(t)), i.__super__.select.call(this, e);
                         }),
-                        (i.prototype.convertToOptions = function (e) {
+                        (i.prototype.convertToOptions = function(e) {
                             var i = this,
                                 o = this.$element.find("option"),
                                 r = o
-                                    .map(function () {
-                                        return i.item(n(this)).id;
-                                    })
-                                    .get(),
+                                .map(function() {
+                                    return i.item(n(this)).id;
+                                })
+                                .get(),
                                 s = [];
+
                             function a(e) {
-                                return function () {
+                                return function() {
                                     return n(this).val() == e.id;
                                 };
                             }
@@ -1953,35 +1961,36 @@
                         i
                     );
                 }),
-                t.define("select2/data/ajax", ["./array", "../utils", "jquery"], function (e, t, n) {
+                t.define("select2/data/ajax", ["./array", "../utils", "jquery"], function(e, t, n) {
                     function i(e, t) {
                         (this.ajaxOptions = this._applyDefaults(t.get("ajax"))), null != this.ajaxOptions.processResults && (this.processResults = this.ajaxOptions.processResults), i.__super__.constructor.call(this, e, t);
                     }
                     return (
                         t.Extend(i, e),
-                        (i.prototype._applyDefaults = function (e) {
+                        (i.prototype._applyDefaults = function(e) {
                             var t = {
-                                data: function (e) {
+                                data: function(e) {
                                     return n.extend({}, e, { q: e.term });
                                 },
-                                transport: function (e, t, i) {
+                                transport: function(e, t, i) {
                                     var o = n.ajax(e);
                                     return o.then(t), o.fail(i), o;
                                 },
                             };
                             return n.extend({}, t, e, !0);
                         }),
-                        (i.prototype.processResults = function (e) {
+                        (i.prototype.processResults = function(e) {
                             return e;
                         }),
-                        (i.prototype.query = function (e, t) {
+                        (i.prototype.query = function(e, t) {
                             var i = this;
                             null != this._request && (n.isFunction(this._request.abort) && this._request.abort(), (this._request = null));
                             var o = n.extend({ type: "GET" }, this.ajaxOptions);
+
                             function r() {
                                 var r = o.transport(
                                     o,
-                                    function (o) {
+                                    function(o) {
                                         var r = i.processResults(o, e);
                                         i.options.get("debug") &&
                                             window.console &&
@@ -1989,7 +1998,7 @@
                                             ((r && r.results && n.isArray(r.results)) || console.error("Select2: The AJAX results did not return an array in the `results` key of the response.")),
                                             t(r);
                                     },
-                                    function () {
+                                    function() {
                                         (r.status && "0" === r.status) || i.trigger("results:message", { message: "errorLoading" });
                                     }
                                 );
@@ -2002,7 +2011,7 @@
                         i
                     );
                 }),
-                t.define("select2/data/tags", ["jquery"], function (e) {
+                t.define("select2/data/tags", ["jquery"], function(e) {
                     function t(t, n, i) {
                         var o = i.get("tags"),
                             r = i.get("createTag");
@@ -2017,81 +2026,77 @@
                             }
                     }
                     return (
-                        (t.prototype.query = function (e, t, n) {
+                        (t.prototype.query = function(e, t, n) {
                             var i = this;
                             this._removeOldTags(),
-                                null != t.term && null == t.page
-                                    ? e.call(this, t, function e(o, r) {
-                                          for (var s = o.results, a = 0; a < s.length; a++) {
-                                              var l = s[a],
-                                                  c = null != l.children && !e({ results: l.children }, !0);
-                                              if ((l.text || "").toUpperCase() === (t.term || "").toUpperCase() || c) return !r && ((o.data = s), void n(o));
-                                          }
-                                          if (r) return !0;
-                                          var u = i.createTag(t);
-                                          if (null != u) {
-                                              var d = i.option(u);
-                                              d.attr("data-select2-tag", !0), i.addOptions([d]), i.insertTag(s, u);
-                                          }
-                                          (o.results = s), n(o);
-                                      })
-                                    : e.call(this, t, n);
+                                null != t.term && null == t.page ?
+                                e.call(this, t, function e(o, r) {
+                                    for (var s = o.results, a = 0; a < s.length; a++) {
+                                        var l = s[a],
+                                            c = null != l.children && !e({ results: l.children }, !0);
+                                        if ((l.text || "").toUpperCase() === (t.term || "").toUpperCase() || c) return !r && ((o.data = s), void n(o));
+                                    }
+                                    if (r) return !0;
+                                    var u = i.createTag(t);
+                                    if (null != u) {
+                                        var d = i.option(u);
+                                        d.attr("data-select2-tag", !0), i.addOptions([d]), i.insertTag(s, u);
+                                    }
+                                    (o.results = s), n(o);
+                                }) :
+                                e.call(this, t, n);
                         }),
-                        (t.prototype.createTag = function (t, n) {
+                        (t.prototype.createTag = function(t, n) {
                             var i = e.trim(n.term);
                             return "" === i ? null : { id: i, text: i };
                         }),
-                        (t.prototype.insertTag = function (e, t, n) {
+                        (t.prototype.insertTag = function(e, t, n) {
                             t.unshift(n);
                         }),
-                        (t.prototype._removeOldTags = function (t) {
+                        (t.prototype._removeOldTags = function(t) {
                             this._lastTag;
-                            this.$element.find("option[data-select2-tag]").each(function () {
+                            this.$element.find("option[data-select2-tag]").each(function() {
                                 this.selected || e(this).remove();
                             });
                         }),
                         t
                     );
                 }),
-                t.define("select2/data/tokenizer", ["jquery"], function (e) {
+                t.define("select2/data/tokenizer", ["jquery"], function(e) {
                     function t(e, t, n) {
                         var i = n.get("tokenizer");
                         void 0 !== i && (this.tokenizer = i), e.call(this, t, n);
                     }
                     return (
-                        (t.prototype.bind = function (e, t, n) {
+                        (t.prototype.bind = function(e, t, n) {
                             e.call(this, t, n), (this.$search = t.dropdown.$search || t.selection.$search || n.find(".select2-search__field"));
                         }),
-                        (t.prototype.query = function (t, n, i) {
+                        (t.prototype.query = function(t, n, i) {
                             var o = this;
                             n.term = n.term || "";
-                            var r = this.tokenizer(n, this.options, function (t) {
+                            var r = this.tokenizer(n, this.options, function(t) {
                                 var n = o._normalizeItem(t);
-                                if (
-                                    !o.$element.find("option").filter(function () {
+                                if (!o.$element.find("option").filter(function() {
                                         return e(this).val() === n.id;
-                                    }).length
-                                ) {
+                                    }).length) {
                                     var i = o.option(n);
                                     i.attr("data-select2-tag", !0), o._removeOldTags(), o.addOptions([i]);
-                                }
-                                !(function (e) {
+                                }!(function(e) {
                                     o.trigger("select", { data: e });
                                 })(n);
                             });
                             r.term !== n.term && (this.$search.length && (this.$search.val(r.term), this.$search.focus()), (n.term = r.term)), t.call(this, n, i);
                         }),
-                        (t.prototype.tokenizer = function (t, n, i, o) {
+                        (t.prototype.tokenizer = function(t, n, i, o) {
                             for (
                                 var r = i.get("tokenSeparators") || [],
                                     s = n.term,
                                     a = 0,
                                     l =
-                                        this.createTag ||
-                                        function (e) {
-                                            return { id: e.term, text: e.term };
-                                        };
-                                a < s.length;
+                                    this.createTag ||
+                                    function(e) {
+                                        return { id: e.term, text: e.term };
+                                    }; a < s.length;
 
                             ) {
                                 var c = s[a];
@@ -2106,40 +2111,40 @@
                         t
                     );
                 }),
-                t.define("select2/data/minimumInputLength", [], function () {
+                t.define("select2/data/minimumInputLength", [], function() {
                     function e(e, t, n) {
                         (this.minimumInputLength = n.get("minimumInputLength")), e.call(this, t, n);
                     }
                     return (
-                        (e.prototype.query = function (e, t, n) {
+                        (e.prototype.query = function(e, t, n) {
                             (t.term = t.term || ""),
-                                t.term.length < this.minimumInputLength ? this.trigger("results:message", { message: "inputTooShort", args: { minimum: this.minimumInputLength, input: t.term, params: t } }) : e.call(this, t, n);
+                            t.term.length < this.minimumInputLength ? this.trigger("results:message", { message: "inputTooShort", args: { minimum: this.minimumInputLength, input: t.term, params: t } }) : e.call(this, t, n);
                         }),
                         e
                     );
                 }),
-                t.define("select2/data/maximumInputLength", [], function () {
+                t.define("select2/data/maximumInputLength", [], function() {
                     function e(e, t, n) {
                         (this.maximumInputLength = n.get("maximumInputLength")), e.call(this, t, n);
                     }
                     return (
-                        (e.prototype.query = function (e, t, n) {
+                        (e.prototype.query = function(e, t, n) {
                             (t.term = t.term || ""),
-                                this.maximumInputLength > 0 && t.term.length > this.maximumInputLength
-                                    ? this.trigger("results:message", { message: "inputTooLong", args: { maximum: this.maximumInputLength, input: t.term, params: t } })
-                                    : e.call(this, t, n);
+                            this.maximumInputLength > 0 && t.term.length > this.maximumInputLength ?
+                                this.trigger("results:message", { message: "inputTooLong", args: { maximum: this.maximumInputLength, input: t.term, params: t } }) :
+                                e.call(this, t, n);
                         }),
                         e
                     );
                 }),
-                t.define("select2/data/maximumSelectionLength", [], function () {
+                t.define("select2/data/maximumSelectionLength", [], function() {
                     function e(e, t, n) {
                         (this.maximumSelectionLength = n.get("maximumSelectionLength")), e.call(this, t, n);
                     }
                     return (
-                        (e.prototype.query = function (e, t, n) {
+                        (e.prototype.query = function(e, t, n) {
                             var i = this;
-                            this.current(function (o) {
+                            this.current(function(o) {
                                 var r = null != o ? o.length : 0;
                                 i.maximumSelectionLength > 0 && r >= i.maximumSelectionLength ? i.trigger("results:message", { message: "maximumSelected", args: { maximum: i.maximumSelectionLength } }) : e.call(i, t, n);
                             });
@@ -2147,88 +2152,88 @@
                         e
                     );
                 }),
-                t.define("select2/dropdown", ["jquery", "./utils"], function (e, t) {
+                t.define("select2/dropdown", ["jquery", "./utils"], function(e, t) {
                     function n(e, t) {
                         (this.$element = e), (this.options = t), n.__super__.constructor.call(this);
                     }
                     return (
                         t.Extend(n, t.Observable),
-                        (n.prototype.render = function () {
+                        (n.prototype.render = function() {
                             var t = e('<span class="select2-dropdown"><span class="select2-results"></span></span>');
                             return t.attr("dir", this.options.get("dir")), (this.$dropdown = t), t;
                         }),
-                        (n.prototype.bind = function () {}),
-                        (n.prototype.position = function (e, t) {}),
-                        (n.prototype.destroy = function () {
+                        (n.prototype.bind = function() {}),
+                        (n.prototype.position = function(e, t) {}),
+                        (n.prototype.destroy = function() {
                             this.$dropdown.remove();
                         }),
                         n
                     );
                 }),
-                t.define("select2/dropdown/search", ["jquery", "../utils"], function (e, t) {
+                t.define("select2/dropdown/search", ["jquery", "../utils"], function(e, t) {
                     function n() {}
                     return (
-                        (n.prototype.render = function (t) {
+                        (n.prototype.render = function(t) {
                             var n = t.call(this),
                                 i = e(
                                     '<span class="select2-search select2-search--dropdown"><input class="select2-search__field" type="search" tabindex="-1" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" role="textbox" /></span>'
                                 );
                             return (this.$searchContainer = i), (this.$search = i.find("input")), n.prepend(i), n;
                         }),
-                        (n.prototype.bind = function (t, n, i) {
+                        (n.prototype.bind = function(t, n, i) {
                             var o = this;
                             t.call(this, n, i),
-                                this.$search.on("keydown", function (e) {
+                                this.$search.on("keydown", function(e) {
                                     o.trigger("keypress", e), (o._keyUpPrevented = e.isDefaultPrevented());
                                 }),
-                                this.$search.on("input", function (t) {
+                                this.$search.on("input", function(t) {
                                     e(this).off("keyup");
                                 }),
-                                this.$search.on("keyup input", function (e) {
+                                this.$search.on("keyup input", function(e) {
                                     o.handleSearch(e);
                                 }),
-                                n.on("open", function () {
+                                n.on("open", function() {
                                     o.$search.attr("tabindex", 0),
                                         o.$search.focus(),
-                                        window.setTimeout(function () {
+                                        window.setTimeout(function() {
                                             o.$search.focus();
                                         }, 0);
                                 }),
-                                n.on("close", function () {
+                                n.on("close", function() {
                                     o.$search.attr("tabindex", -1), o.$search.val("");
                                 }),
-                                n.on("focus", function () {
+                                n.on("focus", function() {
                                     n.isOpen() || o.$search.focus();
                                 }),
-                                n.on("results:all", function (e) {
+                                n.on("results:all", function(e) {
                                     (null != e.query.term && "" !== e.query.term) || (o.showSearch(e) ? o.$searchContainer.removeClass("select2-search--hide") : o.$searchContainer.addClass("select2-search--hide"));
                                 });
                         }),
-                        (n.prototype.handleSearch = function (e) {
+                        (n.prototype.handleSearch = function(e) {
                             if (!this._keyUpPrevented) {
                                 var t = this.$search.val();
                                 this.trigger("query", { term: t });
                             }
                             this._keyUpPrevented = !1;
                         }),
-                        (n.prototype.showSearch = function (e, t) {
+                        (n.prototype.showSearch = function(e, t) {
                             return !0;
                         }),
                         n
                     );
                 }),
-                t.define("select2/dropdown/hidePlaceholder", [], function () {
+                t.define("select2/dropdown/hidePlaceholder", [], function() {
                     function e(e, t, n, i) {
                         (this.placeholder = this.normalizePlaceholder(n.get("placeholder"))), e.call(this, t, n, i);
                     }
                     return (
-                        (e.prototype.append = function (e, t) {
+                        (e.prototype.append = function(e, t) {
                             (t.results = this.removePlaceholder(t.results)), e.call(this, t);
                         }),
-                        (e.prototype.normalizePlaceholder = function (e, t) {
+                        (e.prototype.normalizePlaceholder = function(e, t) {
                             return "string" == typeof t && (t = { id: "", text: t }), t;
                         }),
-                        (e.prototype.removePlaceholder = function (e, t) {
+                        (e.prototype.removePlaceholder = function(e, t) {
                             for (var n = t.slice(0), i = t.length - 1; i >= 0; i--) {
                                 var o = t[i];
                                 this.placeholder.id === o.id && n.splice(i, 1);
@@ -2238,37 +2243,37 @@
                         e
                     );
                 }),
-                t.define("select2/dropdown/infiniteScroll", ["jquery"], function (e) {
+                t.define("select2/dropdown/infiniteScroll", ["jquery"], function(e) {
                     function t(e, t, n, i) {
                         (this.lastParams = {}), e.call(this, t, n, i), (this.$loadingMore = this.createLoadingMore()), (this.loading = !1);
                     }
                     return (
-                        (t.prototype.append = function (e, t) {
+                        (t.prototype.append = function(e, t) {
                             this.$loadingMore.remove(), (this.loading = !1), e.call(this, t), this.showLoadingMore(t) && this.$results.append(this.$loadingMore);
                         }),
-                        (t.prototype.bind = function (t, n, i) {
+                        (t.prototype.bind = function(t, n, i) {
                             var o = this;
                             t.call(this, n, i),
-                                n.on("query", function (e) {
+                                n.on("query", function(e) {
                                     (o.lastParams = e), (o.loading = !0);
                                 }),
-                                n.on("query:append", function (e) {
+                                n.on("query:append", function(e) {
                                     (o.lastParams = e), (o.loading = !0);
                                 }),
-                                this.$results.on("scroll", function () {
+                                this.$results.on("scroll", function() {
                                     var t = e.contains(document.documentElement, o.$loadingMore[0]);
                                     !o.loading && t && o.$results.offset().top + o.$results.outerHeight(!1) + 50 >= o.$loadingMore.offset().top + o.$loadingMore.outerHeight(!1) && o.loadMore();
                                 });
                         }),
-                        (t.prototype.loadMore = function () {
+                        (t.prototype.loadMore = function() {
                             this.loading = !0;
                             var t = e.extend({}, { page: 1 }, this.lastParams);
                             t.page++, this.trigger("query:append", t);
                         }),
-                        (t.prototype.showLoadingMore = function (e, t) {
+                        (t.prototype.showLoadingMore = function(e, t) {
                             return t.pagination && t.pagination.more;
                         }),
-                        (t.prototype.createLoadingMore = function () {
+                        (t.prototype.createLoadingMore = function() {
                             var t = e('<li class="select2-results__option select2-results__option--load-more"role="treeitem" aria-disabled="true"></li>'),
                                 n = this.options.get("translations").get("loadingMore");
                             return t.html(n(this.lastParams)), t;
@@ -2276,72 +2281,72 @@
                         t
                     );
                 }),
-                t.define("select2/dropdown/attachBody", ["jquery", "../utils"], function (e, t) {
+                t.define("select2/dropdown/attachBody", ["jquery", "../utils"], function(e, t) {
                     function n(t, n, i) {
                         (this.$dropdownParent = i.get("dropdownParent") || e(document.body)), t.call(this, n, i);
                     }
                     return (
-                        (n.prototype.bind = function (e, t, n) {
+                        (n.prototype.bind = function(e, t, n) {
                             var i = this,
                                 o = !1;
                             e.call(this, t, n),
-                                t.on("open", function () {
+                                t.on("open", function() {
                                     i._showDropdown(),
                                         i._attachPositioningHandler(t),
                                         o ||
-                                            ((o = !0),
-                                            t.on("results:all", function () {
+                                        ((o = !0),
+                                            t.on("results:all", function() {
                                                 i._positionDropdown(), i._resizeDropdown();
                                             }),
-                                            t.on("results:append", function () {
+                                            t.on("results:append", function() {
                                                 i._positionDropdown(), i._resizeDropdown();
                                             }));
                                 }),
-                                t.on("close", function () {
+                                t.on("close", function() {
                                     i._hideDropdown(), i._detachPositioningHandler(t);
                                 }),
-                                this.$dropdownContainer.on("mousedown", function (e) {
+                                this.$dropdownContainer.on("mousedown", function(e) {
                                     e.stopPropagation();
                                 });
                         }),
-                        (n.prototype.destroy = function (e) {
+                        (n.prototype.destroy = function(e) {
                             e.call(this), this.$dropdownContainer.remove();
                         }),
-                        (n.prototype.position = function (e, t, n) {
+                        (n.prototype.position = function(e, t, n) {
                             t.attr("class", n.attr("class")), t.removeClass("select2"), t.addClass("select2-container--open"), t.css({ position: "absolute", top: -999999 }), (this.$container = n);
                         }),
-                        (n.prototype.render = function (t) {
+                        (n.prototype.render = function(t) {
                             var n = e("<span></span>"),
                                 i = t.call(this);
                             return n.append(i), (this.$dropdownContainer = n), n;
                         }),
-                        (n.prototype._hideDropdown = function (e) {
+                        (n.prototype._hideDropdown = function(e) {
                             this.$dropdownContainer.detach();
                         }),
-                        (n.prototype._attachPositioningHandler = function (n, i) {
+                        (n.prototype._attachPositioningHandler = function(n, i) {
                             var o = this,
                                 r = "scroll.select2." + i.id,
                                 s = "resize.select2." + i.id,
                                 a = "orientationchange.select2." + i.id,
                                 l = this.$container.parents().filter(t.hasScroll);
-                            l.each(function () {
-                                e(this).data("select2-scroll-position", { x: e(this).scrollLeft(), y: e(this).scrollTop() });
-                            }),
-                                l.on(r, function (t) {
+                            l.each(function() {
+                                    e(this).data("select2-scroll-position", { x: e(this).scrollLeft(), y: e(this).scrollTop() });
+                                }),
+                                l.on(r, function(t) {
                                     var n = e(this).data("select2-scroll-position");
                                     e(this).scrollTop(n.y);
                                 }),
-                                e(window).on(r + " " + s + " " + a, function (e) {
+                                e(window).on(r + " " + s + " " + a, function(e) {
                                     o._positionDropdown(), o._resizeDropdown();
                                 });
                         }),
-                        (n.prototype._detachPositioningHandler = function (n, i) {
+                        (n.prototype._detachPositioningHandler = function(n, i) {
                             var o = "scroll.select2." + i.id,
                                 r = "resize.select2." + i.id,
                                 s = "orientationchange.select2." + i.id;
                             this.$container.parents().filter(t.hasScroll).off(o), e(window).off(o + " " + r + " " + s);
                         }),
-                        (n.prototype._positionDropdown = function () {
+                        (n.prototype._positionDropdown = function() {
                             var t = e(window),
                                 n = this.$dropdown.hasClass("select2-dropdown--above"),
                                 i = this.$dropdown.hasClass("select2-dropdown--below"),
@@ -2360,57 +2365,55 @@
                             "static" === h.css("position") && (h = h.offsetParent());
                             var f = h.offset();
                             (p.top -= f.top),
-                                (p.left -= f.left),
-                                n || i || (o = "below"),
+                            (p.left -= f.left),
+                            n || i || (o = "below"),
                                 d || !u || n ? !u && d && n && (o = "below") : (o = "above"),
                                 ("above" == o || (n && "below" !== o)) && (p.top = s.top - f.top - a),
                                 null != o &&
-                                    (this.$dropdown.removeClass("select2-dropdown--below select2-dropdown--above").addClass("select2-dropdown--" + o),
+                                (this.$dropdown.removeClass("select2-dropdown--below select2-dropdown--above").addClass("select2-dropdown--" + o),
                                     this.$container.removeClass("select2-container--below select2-container--above").addClass("select2-container--" + o)),
                                 this.$dropdownContainer.css(p);
                         }),
-                        (n.prototype._resizeDropdown = function () {
+                        (n.prototype._resizeDropdown = function() {
                             var e = { width: this.$container.outerWidth(!1) + "px" };
                             this.options.get("dropdownAutoWidth") && ((e.minWidth = e.width), (e.position = "relative"), (e.width = "auto")), this.$dropdown.css(e);
                         }),
-                        (n.prototype._showDropdown = function (e) {
+                        (n.prototype._showDropdown = function(e) {
                             this.$dropdownContainer.appendTo(this.$dropdownParent), this._positionDropdown(), this._resizeDropdown();
                         }),
                         n
                     );
                 }),
-                t.define("select2/dropdown/minimumResultsForSearch", [], function () {
+                t.define("select2/dropdown/minimumResultsForSearch", [], function() {
                     function e(e, t, n, i) {
                         (this.minimumResultsForSearch = n.get("minimumResultsForSearch")), this.minimumResultsForSearch < 0 && (this.minimumResultsForSearch = 1 / 0), e.call(this, t, n, i);
                     }
                     return (
-                        (e.prototype.showSearch = function (e, t) {
-                            return (
-                                !(
-                                    (function e(t) {
-                                        for (var n = 0, i = 0; i < t.length; i++) {
-                                            var o = t[i];
-                                            o.children ? (n += e(o.children)) : n++;
-                                        }
-                                        return n;
-                                    })(t.data.results) < this.minimumResultsForSearch
-                                ) && e.call(this, t)
-                            );
+                        (e.prototype.showSearch = function(e, t) {
+                            return (!(
+                                (function e(t) {
+                                    for (var n = 0, i = 0; i < t.length; i++) {
+                                        var o = t[i];
+                                        o.children ? (n += e(o.children)) : n++;
+                                    }
+                                    return n;
+                                })(t.data.results) < this.minimumResultsForSearch
+                            ) && e.call(this, t));
                         }),
                         e
                     );
                 }),
-                t.define("select2/dropdown/selectOnClose", [], function () {
+                t.define("select2/dropdown/selectOnClose", [], function() {
                     function e() {}
                     return (
-                        (e.prototype.bind = function (e, t, n) {
+                        (e.prototype.bind = function(e, t, n) {
                             var i = this;
                             e.call(this, t, n),
-                                t.on("close", function (e) {
+                                t.on("close", function(e) {
                                     i._handleSelectOnClose(e);
                                 });
                         }),
-                        (e.prototype._handleSelectOnClose = function (e, t) {
+                        (e.prototype._handleSelectOnClose = function(e, t) {
                             if (t && null != t.originalSelect2Event) {
                                 var n = t.originalSelect2Event;
                                 if ("select" === n._type || "unselect" === n._type) return;
@@ -2424,57 +2427,56 @@
                         e
                     );
                 }),
-                t.define("select2/dropdown/closeOnSelect", [], function () {
+                t.define("select2/dropdown/closeOnSelect", [], function() {
                     function e() {}
                     return (
-                        (e.prototype.bind = function (e, t, n) {
+                        (e.prototype.bind = function(e, t, n) {
                             var i = this;
                             e.call(this, t, n),
-                                t.on("select", function (e) {
+                                t.on("select", function(e) {
                                     i._selectTriggered(e);
                                 }),
-                                t.on("unselect", function (e) {
+                                t.on("unselect", function(e) {
                                     i._selectTriggered(e);
                                 });
                         }),
-                        (e.prototype._selectTriggered = function (e, t) {
+                        (e.prototype._selectTriggered = function(e, t) {
                             var n = t.originalEvent;
                             (n && n.ctrlKey) || this.trigger("close", { originalEvent: n, originalSelect2Event: t });
                         }),
                         e
                     );
                 }),
-                t.define("select2/i18n/en", [], function () {
+                t.define("select2/i18n/en", [], function() {
                     return {
-                        errorLoading: function () {
+                        errorLoading: function() {
                             return "The results could not be loaded.";
                         },
-                        inputTooLong: function (e) {
+                        inputTooLong: function(e) {
                             var t = e.input.length - e.maximum,
                                 n = "Please delete " + t + " character";
                             return 1 != t && (n += "s"), n;
                         },
-                        inputTooShort: function (e) {
+                        inputTooShort: function(e) {
                             return "Please enter " + (e.minimum - e.input.length) + " or more characters";
                         },
-                        loadingMore: function () {
+                        loadingMore: function() {
                             return "Loading more results…";
                         },
-                        maximumSelected: function (e) {
+                        maximumSelected: function(e) {
                             var t = "You can only select " + e.maximum + " item";
                             return 1 != e.maximum && (t += "s"), t;
                         },
-                        noResults: function () {
+                        noResults: function() {
                             return "No results found";
                         },
-                        searching: function () {
+                        searching: function() {
                             return "Searching…";
                         },
                     };
                 }),
                 t.define(
-                    "select2/defaults",
-                    [
+                    "select2/defaults", [
                         "jquery",
                         "require",
                         "./results",
@@ -2505,21 +2507,21 @@
                         "./dropdown/closeOnSelect",
                         "./i18n/en",
                     ],
-                    function (e, t, n, i, o, r, s, a, l, c, u, d, p, h, f, g, m, v, y, w, _, $, b, x, A, C, S, O, E) {
+                    function(e, t, n, i, o, r, s, a, l, c, u, d, p, h, f, g, m, v, y, w, _, $, b, x, A, C, S, O, E) {
                         function D() {
                             this.reset();
                         }
                         return (
-                            (D.prototype.apply = function (d) {
+                            (D.prototype.apply = function(d) {
                                 if (null == (d = e.extend(!0, {}, this.defaults, d)).dataAdapter) {
                                     if (
                                         (null != d.ajax ? (d.dataAdapter = f) : null != d.data ? (d.dataAdapter = h) : (d.dataAdapter = p),
-                                        d.minimumInputLength > 0 && (d.dataAdapter = c.Decorate(d.dataAdapter, v)),
-                                        d.maximumInputLength > 0 && (d.dataAdapter = c.Decorate(d.dataAdapter, y)),
-                                        d.maximumSelectionLength > 0 && (d.dataAdapter = c.Decorate(d.dataAdapter, w)),
-                                        d.tags && (d.dataAdapter = c.Decorate(d.dataAdapter, g)),
-                                        (null == d.tokenSeparators && null == d.tokenizer) || (d.dataAdapter = c.Decorate(d.dataAdapter, m)),
-                                        null != d.query)
+                                            d.minimumInputLength > 0 && (d.dataAdapter = c.Decorate(d.dataAdapter, v)),
+                                            d.maximumInputLength > 0 && (d.dataAdapter = c.Decorate(d.dataAdapter, y)),
+                                            d.maximumSelectionLength > 0 && (d.dataAdapter = c.Decorate(d.dataAdapter, w)),
+                                            d.tags && (d.dataAdapter = c.Decorate(d.dataAdapter, g)),
+                                            (null == d.tokenSeparators && null == d.tokenizer) || (d.dataAdapter = c.Decorate(d.dataAdapter, m)),
+                                            null != d.query)
                                     ) {
                                         var E = t(d.amdBase + "compat/query");
                                         d.dataAdapter = c.Decorate(d.dataAdapter, E);
@@ -2532,10 +2534,10 @@
                                 if (
                                     (null == d.resultsAdapter &&
                                         ((d.resultsAdapter = n),
-                                        null != d.ajax && (d.resultsAdapter = c.Decorate(d.resultsAdapter, x)),
-                                        null != d.placeholder && (d.resultsAdapter = c.Decorate(d.resultsAdapter, b)),
-                                        d.selectOnClose && (d.resultsAdapter = c.Decorate(d.resultsAdapter, S))),
-                                    null == d.dropdownAdapter)
+                                            null != d.ajax && (d.resultsAdapter = c.Decorate(d.resultsAdapter, x)),
+                                            null != d.placeholder && (d.resultsAdapter = c.Decorate(d.resultsAdapter, b)),
+                                            d.selectOnClose && (d.resultsAdapter = c.Decorate(d.resultsAdapter, S))),
+                                        null == d.dropdownAdapter)
                                 ) {
                                     if (d.multiple) d.dropdownAdapter = _;
                                     else {
@@ -2544,8 +2546,8 @@
                                     }
                                     if (
                                         (0 !== d.minimumResultsForSearch && (d.dropdownAdapter = c.Decorate(d.dropdownAdapter, C)),
-                                        d.closeOnSelect && (d.dropdownAdapter = c.Decorate(d.dropdownAdapter, O)),
-                                        null != d.dropdownCssClass || null != d.dropdownCss || null != d.adaptDropdownCssClass)
+                                            d.closeOnSelect && (d.dropdownAdapter = c.Decorate(d.dropdownAdapter, O)),
+                                            null != d.dropdownCssClass || null != d.dropdownCss || null != d.adaptDropdownCssClass)
                                     ) {
                                         var q = t(d.amdBase + "compat/dropdownCss");
                                         d.dropdownAdapter = c.Decorate(d.dropdownAdapter, q);
@@ -2555,10 +2557,10 @@
                                 if (null == d.selectionAdapter) {
                                     if (
                                         (d.multiple ? (d.selectionAdapter = o) : (d.selectionAdapter = i),
-                                        null != d.placeholder && (d.selectionAdapter = c.Decorate(d.selectionAdapter, r)),
-                                        d.allowClear && (d.selectionAdapter = c.Decorate(d.selectionAdapter, s)),
-                                        d.multiple && (d.selectionAdapter = c.Decorate(d.selectionAdapter, a)),
-                                        null != d.containerCssClass || null != d.containerCss || null != d.adaptContainerCssClass)
+                                            null != d.placeholder && (d.selectionAdapter = c.Decorate(d.selectionAdapter, r)),
+                                            d.allowClear && (d.selectionAdapter = c.Decorate(d.selectionAdapter, s)),
+                                            d.multiple && (d.selectionAdapter = c.Decorate(d.selectionAdapter, a)),
+                                            null != d.containerCssClass || null != d.containerCss || null != d.adaptContainerCssClass)
                                     ) {
                                         var j = t(d.amdBase + "compat/containerCss");
                                         d.selectionAdapter = c.Decorate(d.selectionAdapter, j);
@@ -2596,9 +2598,9 @@
                                 }
                                 return d;
                             }),
-                            (D.prototype.reset = function () {
+                            (D.prototype.reset = function() {
                                 function t(e) {
-                                    return e.replace(/[^\u0000-\u007E]/g, function (e) {
+                                    return e.replace(/[^\u0000-\u007E]/g, function(e) {
                                         return d[e] || e;
                                     });
                                 }
@@ -2627,20 +2629,20 @@
                                     maximumSelectionLength: 0,
                                     minimumResultsForSearch: 0,
                                     selectOnClose: !1,
-                                    sorter: function (e) {
+                                    sorter: function(e) {
                                         return e;
                                     },
-                                    templateResult: function (e) {
+                                    templateResult: function(e) {
                                         return e.text;
                                     },
-                                    templateSelection: function (e) {
+                                    templateSelection: function(e) {
                                         return e.text;
                                     },
                                     theme: "default",
                                     width: "resolve",
                                 };
                             }),
-                            (D.prototype.set = function (t, n) {
+                            (D.prototype.set = function(t, n) {
                                 var i = {};
                                 i[e.camelCase(t)] = n;
                                 var o = c._convertData(i);
@@ -2650,7 +2652,7 @@
                         );
                     }
                 ),
-                t.define("select2/options", ["require", "jquery", "./defaults", "./utils"], function (e, t, n, i) {
+                t.define("select2/options", ["require", "jquery", "./defaults", "./utils"], function(e, t, n, i) {
                     function o(t, o) {
                         if (((this.options = t), null != o && this.fromElement(o), (this.options = n.apply(this.options)), o && o.is("input"))) {
                             var r = e(this.get("amdBase") + "compat/inputData");
@@ -2658,7 +2660,7 @@
                         }
                     }
                     return (
-                        (o.prototype.fromElement = function (e) {
+                        (o.prototype.fromElement = function(e) {
                             var n = ["select2"];
                             null == this.options.multiple && (this.options.multiple = e.prop("multiple")),
                                 null == this.options.disabled && (this.options.disabled = e.prop("disabled")),
@@ -2667,17 +2669,17 @@
                                 e.prop("disabled", this.options.disabled),
                                 e.prop("multiple", this.options.multiple),
                                 e.data("select2Tags") &&
-                                    (this.options.debug &&
-                                        window.console &&
-                                        console.warn &&
-                                        console.warn('Select2: The `data-select2-tags` attribute has been changed to use the `data-data` and `data-tags="true"` attributes and will be removed in future versions of Select2.'),
+                                (this.options.debug &&
+                                    window.console &&
+                                    console.warn &&
+                                    console.warn('Select2: The `data-select2-tags` attribute has been changed to use the `data-data` and `data-tags="true"` attributes and will be removed in future versions of Select2.'),
                                     e.data("data", e.data("select2Tags")),
                                     e.data("tags", !0)),
                                 e.data("ajaxUrl") &&
-                                    (this.options.debug &&
-                                        window.console &&
-                                        console.warn &&
-                                        console.warn("Select2: The `data-ajax-url` attribute has been changed to `data-ajax--url` and support for the old attribute will be removed in future versions of Select2."),
+                                (this.options.debug &&
+                                    window.console &&
+                                    console.warn &&
+                                    console.warn("Select2: The `data-ajax-url` attribute has been changed to `data-ajax--url` and support for the old attribute will be removed in future versions of Select2."),
                                     e.attr("ajax--url", e.data("ajaxUrl")),
                                     e.data("ajax--url", e.data("ajaxUrl")));
                             var o = {};
@@ -2686,17 +2688,17 @@
                             for (var s in (r = i._convertData(r))) t.inArray(s, n) > -1 || (t.isPlainObject(this.options[s]) ? t.extend(this.options[s], r[s]) : (this.options[s] = r[s]));
                             return this;
                         }),
-                        (o.prototype.get = function (e) {
+                        (o.prototype.get = function(e) {
                             return this.options[e];
                         }),
-                        (o.prototype.set = function (e, t) {
+                        (o.prototype.set = function(e, t) {
                             this.options[e] = t;
                         }),
                         o
                     );
                 }),
-                t.define("select2/core", ["jquery", "./options", "./utils", "./keys"], function (e, t, n, i) {
-                    var o = function (e, n) {
+                t.define("select2/core", ["jquery", "./options", "./utils", "./keys"], function(e, t, n, i) {
+                    var o = function(e, n) {
                         null != e.data("select2") && e.data("select2").destroy(), (this.$element = e), (this.id = this._generateId(e)), (n = n || {}), (this.options = new t(n, e)), o.__super__.constructor.call(this);
                         var i = e.attr("tabindex") || 0;
                         e.data("old-tabindex", i), e.attr("tabindex", "-1");
@@ -2718,7 +2720,7 @@
                             this._registerDropdownEvents(),
                             this._registerResultsEvents(),
                             this._registerEvents(),
-                            this.dataAdapter.current(function (e) {
+                            this.dataAdapter.current(function(e) {
                                 u.trigger("selection:update", { data: e });
                             }),
                             e.addClass("select2-hidden-accessible"),
@@ -2728,15 +2730,15 @@
                     };
                     return (
                         n.Extend(o, n.Observable),
-                        (o.prototype._generateId = function (e) {
+                        (o.prototype._generateId = function(e) {
                             return "select2-" + (null != e.attr("id") ? e.attr("id") : null != e.attr("name") ? e.attr("name") + "-" + n.generateChars(2) : n.generateChars(4)).replace(/(:|\.|\[|\]|,)/g, "");
                         }),
-                        (o.prototype._placeContainer = function (e) {
+                        (o.prototype._placeContainer = function(e) {
                             e.insertAfter(this.$element);
                             var t = this._resolveWidth(this.$element, this.options.get("width"));
                             null != t && e.css("width", t);
                         }),
-                        (o.prototype._resolveWidth = function (e, t) {
+                        (o.prototype._resolveWidth = function(e, t) {
                             var n = /^width:(([-+]?([0-9]*\.)?[0-9]+)(px|em|ex|%|in|cm|mm|pt|pc))/i;
                             if ("resolve" == t) {
                                 var i = this._resolveWidth(e, "style");
@@ -2757,109 +2759,109 @@
                             }
                             return t;
                         }),
-                        (o.prototype._bindAdapters = function () {
+                        (o.prototype._bindAdapters = function() {
                             this.dataAdapter.bind(this, this.$container), this.selection.bind(this, this.$container), this.dropdown.bind(this, this.$container), this.results.bind(this, this.$container);
                         }),
-                        (o.prototype._registerDomEvents = function () {
+                        (o.prototype._registerDomEvents = function() {
                             var t = this;
-                            this.$element.on("change.select2", function () {
-                                t.dataAdapter.current(function (e) {
-                                    t.trigger("selection:update", { data: e });
-                                });
-                            }),
-                                this.$element.on("focus.select2", function (e) {
+                            this.$element.on("change.select2", function() {
+                                    t.dataAdapter.current(function(e) {
+                                        t.trigger("selection:update", { data: e });
+                                    });
+                                }),
+                                this.$element.on("focus.select2", function(e) {
                                     t.trigger("focus", e);
                                 }),
                                 (this._syncA = n.bind(this._syncAttributes, this)),
                                 (this._syncS = n.bind(this._syncSubtree, this)),
                                 this.$element[0].attachEvent && this.$element[0].attachEvent("onpropertychange", this._syncA);
                             var i = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
-                            null != i
-                                ? ((this._observer = new i(function (n) {
-                                      e.each(n, t._syncA), e.each(n, t._syncS);
-                                  })),
-                                  this._observer.observe(this.$element[0], { attributes: !0, childList: !0, subtree: !1 }))
-                                : this.$element[0].addEventListener &&
-                                  (this.$element[0].addEventListener("DOMAttrModified", t._syncA, !1), this.$element[0].addEventListener("DOMNodeInserted", t._syncS, !1), this.$element[0].addEventListener("DOMNodeRemoved", t._syncS, !1));
+                            null != i ?
+                                ((this._observer = new i(function(n) {
+                                        e.each(n, t._syncA), e.each(n, t._syncS);
+                                    })),
+                                    this._observer.observe(this.$element[0], { attributes: !0, childList: !0, subtree: !1 })) :
+                                this.$element[0].addEventListener &&
+                                (this.$element[0].addEventListener("DOMAttrModified", t._syncA, !1), this.$element[0].addEventListener("DOMNodeInserted", t._syncS, !1), this.$element[0].addEventListener("DOMNodeRemoved", t._syncS, !1));
                         }),
-                        (o.prototype._registerDataEvents = function () {
+                        (o.prototype._registerDataEvents = function() {
                             var e = this;
-                            this.dataAdapter.on("*", function (t, n) {
+                            this.dataAdapter.on("*", function(t, n) {
                                 e.trigger(t, n);
                             });
                         }),
-                        (o.prototype._registerSelectionEvents = function () {
+                        (o.prototype._registerSelectionEvents = function() {
                             var t = this,
                                 n = ["toggle", "focus"];
-                            this.selection.on("toggle", function () {
-                                t.toggleDropdown();
-                            }),
-                                this.selection.on("focus", function (e) {
+                            this.selection.on("toggle", function() {
+                                    t.toggleDropdown();
+                                }),
+                                this.selection.on("focus", function(e) {
                                     t.focus(e);
                                 }),
-                                this.selection.on("*", function (i, o) {
+                                this.selection.on("*", function(i, o) {
                                     -1 === e.inArray(i, n) && t.trigger(i, o);
                                 });
                         }),
-                        (o.prototype._registerDropdownEvents = function () {
+                        (o.prototype._registerDropdownEvents = function() {
                             var e = this;
-                            this.dropdown.on("*", function (t, n) {
+                            this.dropdown.on("*", function(t, n) {
                                 e.trigger(t, n);
                             });
                         }),
-                        (o.prototype._registerResultsEvents = function () {
+                        (o.prototype._registerResultsEvents = function() {
                             var e = this;
-                            this.results.on("*", function (t, n) {
+                            this.results.on("*", function(t, n) {
                                 e.trigger(t, n);
                             });
                         }),
-                        (o.prototype._registerEvents = function () {
+                        (o.prototype._registerEvents = function() {
                             var e = this;
-                            this.on("open", function () {
-                                e.$container.addClass("select2-container--open");
-                            }),
-                                this.on("close", function () {
+                            this.on("open", function() {
+                                    e.$container.addClass("select2-container--open");
+                                }),
+                                this.on("close", function() {
                                     e.$container.removeClass("select2-container--open");
                                 }),
-                                this.on("enable", function () {
+                                this.on("enable", function() {
                                     e.$container.removeClass("select2-container--disabled");
                                 }),
-                                this.on("disable", function () {
+                                this.on("disable", function() {
                                     e.$container.addClass("select2-container--disabled");
                                 }),
-                                this.on("blur", function () {
+                                this.on("blur", function() {
                                     e.$container.removeClass("select2-container--focus");
                                 }),
-                                this.on("query", function (t) {
+                                this.on("query", function(t) {
                                     e.isOpen() || e.trigger("open", {}),
-                                        this.dataAdapter.query(t, function (n) {
+                                        this.dataAdapter.query(t, function(n) {
                                             e.trigger("results:all", { data: n, query: t });
                                         });
                                 }),
-                                this.on("query:append", function (t) {
-                                    this.dataAdapter.query(t, function (n) {
+                                this.on("query:append", function(t) {
+                                    this.dataAdapter.query(t, function(n) {
                                         e.trigger("results:append", { data: n, query: t });
                                     });
                                 }),
-                                this.on("keypress", function (t) {
+                                this.on("keypress", function(t) {
                                     var n = t.which;
-                                    e.isOpen()
-                                        ? n === i.ESC || n === i.TAB || (n === i.UP && t.altKey)
-                                            ? (e.close(), t.preventDefault())
-                                            : n === i.ENTER
-                                            ? (e.trigger("results:select", {}), t.preventDefault())
-                                            : n === i.SPACE && t.ctrlKey
-                                            ? (e.trigger("results:toggle", {}), t.preventDefault())
-                                            : n === i.UP
-                                            ? (e.trigger("results:previous", {}), t.preventDefault())
-                                            : n === i.DOWN && (e.trigger("results:next", {}), t.preventDefault())
-                                        : (n === i.ENTER || n === i.SPACE || (n === i.DOWN && t.altKey)) && (e.open(), t.preventDefault());
+                                    e.isOpen() ?
+                                        n === i.ESC || n === i.TAB || (n === i.UP && t.altKey) ?
+                                        (e.close(), t.preventDefault()) :
+                                        n === i.ENTER ?
+                                        (e.trigger("results:select", {}), t.preventDefault()) :
+                                        n === i.SPACE && t.ctrlKey ?
+                                        (e.trigger("results:toggle", {}), t.preventDefault()) :
+                                        n === i.UP ?
+                                        (e.trigger("results:previous", {}), t.preventDefault()) :
+                                        n === i.DOWN && (e.trigger("results:next", {}), t.preventDefault()) :
+                                        (n === i.ENTER || n === i.SPACE || (n === i.DOWN && t.altKey)) && (e.open(), t.preventDefault());
                                 });
                         }),
-                        (o.prototype._syncAttributes = function () {
+                        (o.prototype._syncAttributes = function() {
                             this.options.set("disabled", this.$element.prop("disabled")), this.options.get("disabled") ? (this.isOpen() && this.close(), this.trigger("disable", {})) : this.trigger("enable", {});
                         }),
-                        (o.prototype._syncSubtree = function (e, t) {
+                        (o.prototype._syncSubtree = function(e, t) {
                             var n = !1,
                                 i = this;
                             if (!e || !e.target || "OPTION" === e.target.nodeName || "OPTGROUP" === e.target.nodeName) {
@@ -2871,40 +2873,40 @@
                                     else t.removedNodes && t.removedNodes.length > 0 && (n = !0);
                                 else n = !0;
                                 n &&
-                                    this.dataAdapter.current(function (e) {
+                                    this.dataAdapter.current(function(e) {
                                         i.trigger("selection:update", { data: e });
                                     });
                             }
                         }),
-                        (o.prototype.trigger = function (e, t) {
+                        (o.prototype.trigger = function(e, t) {
                             var n = o.__super__.trigger,
                                 i = { open: "opening", close: "closing", select: "selecting", unselect: "unselecting" };
                             if ((void 0 === t && (t = {}), e in i)) {
                                 var r = i[e],
                                     s = { prevented: !1, name: e, args: t };
-                                if ((n.call(this, r, s), s.prevented)) return void (t.prevented = !0);
+                                if ((n.call(this, r, s), s.prevented)) return void(t.prevented = !0);
                             }
                             n.call(this, e, t);
                         }),
-                        (o.prototype.toggleDropdown = function () {
+                        (o.prototype.toggleDropdown = function() {
                             this.options.get("disabled") || (this.isOpen() ? this.close() : this.open());
                         }),
-                        (o.prototype.open = function () {
+                        (o.prototype.open = function() {
                             this.isOpen() || this.trigger("query", {});
                         }),
-                        (o.prototype.close = function () {
+                        (o.prototype.close = function() {
                             this.isOpen() && this.trigger("close", {});
                         }),
-                        (o.prototype.isOpen = function () {
+                        (o.prototype.isOpen = function() {
                             return this.$container.hasClass("select2-container--open");
                         }),
-                        (o.prototype.hasFocus = function () {
+                        (o.prototype.hasFocus = function() {
                             return this.$container.hasClass("select2-container--focus");
                         }),
-                        (o.prototype.focus = function (e) {
+                        (o.prototype.focus = function(e) {
                             this.hasFocus() || (this.$container.addClass("select2-container--focus"), this.trigger("focus", {}));
                         }),
-                        (o.prototype.enable = function (e) {
+                        (o.prototype.enable = function(e) {
                             this.options.get("debug") &&
                                 window.console &&
                                 console.warn &&
@@ -2913,7 +2915,7 @@
                             var t = !e[0];
                             this.$element.prop("disabled", t);
                         }),
-                        (o.prototype.data = function () {
+                        (o.prototype.data = function() {
                             this.options.get("debug") &&
                                 arguments.length > 0 &&
                                 window.console &&
@@ -2921,37 +2923,37 @@
                                 console.warn('Select2: Data can no longer be set using `select2("data")`. You should consider setting the value instead using `$element.val()`.');
                             var e = [];
                             return (
-                                this.dataAdapter.current(function (t) {
+                                this.dataAdapter.current(function(t) {
                                     e = t;
                                 }),
                                 e
                             );
                         }),
-                        (o.prototype.val = function (t) {
+                        (o.prototype.val = function(t) {
                             if (
                                 (this.options.get("debug") &&
                                     window.console &&
                                     console.warn &&
                                     console.warn('Select2: The `select2("val")` method has been deprecated and will be removed in later Select2 versions. Use $element.val() instead.'),
-                                null == t || 0 === t.length)
+                                    null == t || 0 === t.length)
                             )
                                 return this.$element.val();
                             var n = t[0];
                             e.isArray(n) &&
-                                (n = e.map(n, function (e) {
+                                (n = e.map(n, function(e) {
                                     return e.toString();
                                 })),
                                 this.$element.val(n).trigger("change");
                         }),
-                        (o.prototype.destroy = function () {
+                        (o.prototype.destroy = function() {
                             this.$container.remove(),
                                 this.$element[0].detachEvent && this.$element[0].detachEvent("onpropertychange", this._syncA),
-                                null != this._observer
-                                    ? (this._observer.disconnect(), (this._observer = null))
-                                    : this.$element[0].removeEventListener &&
-                                      (this.$element[0].removeEventListener("DOMAttrModified", this._syncA, !1),
-                                      this.$element[0].removeEventListener("DOMNodeInserted", this._syncS, !1),
-                                      this.$element[0].removeEventListener("DOMNodeRemoved", this._syncS, !1)),
+                                null != this._observer ?
+                                (this._observer.disconnect(), (this._observer = null)) :
+                                this.$element[0].removeEventListener &&
+                                (this.$element[0].removeEventListener("DOMAttrModified", this._syncA, !1),
+                                    this.$element[0].removeEventListener("DOMNodeInserted", this._syncS, !1),
+                                    this.$element[0].removeEventListener("DOMNodeRemoved", this._syncS, !1)),
                                 (this._syncA = null),
                                 (this._syncS = null),
                                 this.$element.off(".select2"),
@@ -2968,38 +2970,39 @@
                                 (this.dropdown = null),
                                 (this.results = null);
                         }),
-                        (o.prototype.render = function () {
+                        (o.prototype.render = function() {
                             var t = e('<span class="select2 select2-container"><span class="selection"></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>');
                             return t.attr("dir", this.options.get("dir")), (this.$container = t), this.$container.addClass("select2-container--" + this.options.get("theme")), t.data("element", this.$element), t;
                         }),
                         o
                     );
                 }),
-                t.define("select2/compat/utils", ["jquery"], function (e) {
+                t.define("select2/compat/utils", ["jquery"], function(e) {
                     return {
-                        syncCssClasses: function (t, n, i) {
+                        syncCssClasses: function(t, n, i) {
                             var o,
                                 r,
                                 s = [];
                             (o = e.trim(t.attr("class"))) &&
-                                e((o = "" + o).split(/\s+/)).each(function () {
+                            e((o = "" + o).split(/\s+/)).each(function() {
                                     0 === this.indexOf("select2-") && s.push(this);
                                 }),
                                 (o = e.trim(n.attr("class"))) &&
-                                    e((o = "" + o).split(/\s+/)).each(function () {
-                                        0 !== this.indexOf("select2-") && null != (r = i(this)) && s.push(r);
-                                    }),
+                                e((o = "" + o).split(/\s+/)).each(function() {
+                                    0 !== this.indexOf("select2-") && null != (r = i(this)) && s.push(r);
+                                }),
                                 t.attr("class", s.join(" "));
                         },
                     };
                 }),
-                t.define("select2/compat/containerCss", ["jquery", "./utils"], function (e, t) {
+                t.define("select2/compat/containerCss", ["jquery", "./utils"], function(e, t) {
                     function n(e) {
                         return null;
                     }
+
                     function i() {}
                     return (
-                        (i.prototype.render = function (i) {
+                        (i.prototype.render = function(i) {
                             var o = i.call(this),
                                 r = this.options.get("containerCssClass") || "";
                             e.isFunction(r) && (r = r(this.$element));
@@ -3007,7 +3010,7 @@
                             if (((s = s || n), -1 !== r.indexOf(":all:"))) {
                                 r = r.replace(":all:", "");
                                 var a = s;
-                                s = function (e) {
+                                s = function(e) {
                                     var t = a(e);
                                     return null != t ? t + " " + e : e;
                                 };
@@ -3018,13 +3021,14 @@
                         i
                     );
                 }),
-                t.define("select2/compat/dropdownCss", ["jquery", "./utils"], function (e, t) {
+                t.define("select2/compat/dropdownCss", ["jquery", "./utils"], function(e, t) {
                     function n(e) {
                         return null;
                     }
+
                     function i() {}
                     return (
-                        (i.prototype.render = function (i) {
+                        (i.prototype.render = function(i) {
                             var o = i.call(this),
                                 r = this.options.get("dropdownCssClass") || "";
                             e.isFunction(r) && (r = r(this.$element));
@@ -3032,7 +3036,7 @@
                             if (((s = s || n), -1 !== r.indexOf(":all:"))) {
                                 r = r.replace(":all:", "");
                                 var a = s;
-                                s = function (e) {
+                                s = function(e) {
                                     var t = a(e);
                                     return null != t ? t + " " + e : e;
                                 };
@@ -3043,7 +3047,7 @@
                         i
                     );
                 }),
-                t.define("select2/compat/initSelection", ["jquery"], function (e) {
+                t.define("select2/compat/initSelection", ["jquery"], function(e) {
                     function t(e, t, n) {
                         n.get("debug") &&
                             window.console &&
@@ -3056,30 +3060,30 @@
                             e.call(this, t, n);
                     }
                     return (
-                        (t.prototype.current = function (t, n) {
+                        (t.prototype.current = function(t, n) {
                             var i = this;
-                            this._isInitialized
-                                ? t.call(this, n)
-                                : this.initSelection.call(null, this.$element, function (t) {
-                                      (i._isInitialized = !0), e.isArray(t) || (t = [t]), n(t);
-                                  });
+                            this._isInitialized ?
+                                t.call(this, n) :
+                                this.initSelection.call(null, this.$element, function(t) {
+                                    (i._isInitialized = !0), e.isArray(t) || (t = [t]), n(t);
+                                });
                         }),
                         t
                     );
                 }),
-                t.define("select2/compat/inputData", ["jquery"], function (e) {
+                t.define("select2/compat/inputData", ["jquery"], function(e) {
                     function t(e, t, n) {
                         (this._currentData = []),
-                            (this._valueSeparator = n.get("valueSeparator") || ","),
-                            "hidden" === t.prop("type") &&
-                                n.get("debug") &&
-                                console &&
-                                console.warn &&
-                                console.warn("Select2: Using a hidden input with Select2 is no longer supported and may stop working in the future. It is recommended to use a `<select>` element instead."),
+                        (this._valueSeparator = n.get("valueSeparator") || ","),
+                        "hidden" === t.prop("type") &&
+                            n.get("debug") &&
+                            console &&
+                            console.warn &&
+                            console.warn("Select2: Using a hidden input with Select2 is no longer supported and may stop working in the future. It is recommended to use a `<select>` element instead."),
                             e.call(this, t, n);
                     }
                     return (
-                        (t.prototype.current = function (t, n) {
+                        (t.prototype.current = function(t, n) {
                             function i(t, n) {
                                 var o = [];
                                 return t.selected || -1 !== e.inArray(t.id, n) ? ((t.selected = !0), o.push(t)) : (t.selected = !1), t.children && o.push.apply(o, i(t.children, n)), o;
@@ -3090,31 +3094,31 @@
                             }
                             n(o);
                         }),
-                        (t.prototype.select = function (t, n) {
+                        (t.prototype.select = function(t, n) {
                             if (this.options.get("multiple")) {
                                 var i = this.$element.val();
                                 (i += this._valueSeparator + n.id), this.$element.val(i), this.$element.trigger("change");
                             } else
-                                this.current(function (t) {
-                                    e.map(t, function (e) {
+                                this.current(function(t) {
+                                    e.map(t, function(e) {
                                         e.selected = !1;
                                     });
                                 }),
-                                    this.$element.val(n.id),
-                                    this.$element.trigger("change");
+                                this.$element.val(n.id),
+                                this.$element.trigger("change");
                         }),
-                        (t.prototype.unselect = function (e, t) {
+                        (t.prototype.unselect = function(e, t) {
                             var n = this;
                             (t.selected = !1),
-                                this.current(function (e) {
-                                    for (var i = [], o = 0; o < e.length; o++) {
-                                        var r = e[o];
-                                        t.id != r.id && i.push(r.id);
-                                    }
-                                    n.$element.val(i.join(n._valueSeparator)), n.$element.trigger("change");
-                                });
+                            this.current(function(e) {
+                                for (var i = [], o = 0; o < e.length; o++) {
+                                    var r = e[o];
+                                    t.id != r.id && i.push(r.id);
+                                }
+                                n.$element.val(i.join(n._valueSeparator)), n.$element.trigger("change");
+                            });
                         }),
-                        (t.prototype.query = function (e, t, n) {
+                        (t.prototype.query = function(e, t, n) {
                             for (var i = [], o = 0; o < this._currentData.length; o++) {
                                 var r = this._currentData[o],
                                     s = this.matches(t, r);
@@ -3122,8 +3126,8 @@
                             }
                             n({ results: i });
                         }),
-                        (t.prototype.addOptions = function (t, n) {
-                            var i = e.map(n, function (t) {
+                        (t.prototype.addOptions = function(t, n) {
+                            var i = e.map(n, function(t) {
                                 return e.data(t[0], "data");
                             });
                             this._currentData.push.apply(this._currentData, i);
@@ -3131,9 +3135,9 @@
                         t
                     );
                 }),
-                t.define("select2/compat/matcher", ["jquery"], function (e) {
-                    return function (t) {
-                        return function (n, i) {
+                t.define("select2/compat/matcher", ["jquery"], function(e) {
+                    return function(t) {
+                        return function(n, i) {
                             var o = e.extend(!0, {}, i);
                             if (null == n.term || "" === e.trim(n.term)) return o;
                             if (i.children) {
@@ -3147,7 +3151,7 @@
                         };
                     };
                 }),
-                t.define("select2/compat/query", [], function () {
+                t.define("select2/compat/query", [], function() {
                     function e(e, t, n) {
                         n.get("debug") &&
                             window.console &&
@@ -3156,27 +3160,27 @@
                             e.call(this, t, n);
                     }
                     return (
-                        (e.prototype.query = function (e, t, n) {
+                        (e.prototype.query = function(e, t, n) {
                             (t.callback = n), this.options.get("query").call(null, t);
                         }),
                         e
                     );
                 }),
-                t.define("select2/dropdown/attachContainer", [], function () {
+                t.define("select2/dropdown/attachContainer", [], function() {
                     function e(e, t, n) {
                         e.call(this, t, n);
                     }
                     return (
-                        (e.prototype.position = function (e, t, n) {
+                        (e.prototype.position = function(e, t, n) {
                             n.find(".dropdown-wrapper").append(t), t.addClass("select2-dropdown--below"), n.addClass("select2-container--below");
                         }),
                         e
                     );
                 }),
-                t.define("select2/dropdown/stopPropagation", [], function () {
+                t.define("select2/dropdown/stopPropagation", [], function() {
                     function e() {}
                     return (
-                        (e.prototype.bind = function (e, t, n) {
+                        (e.prototype.bind = function(e, t, n) {
                             e.call(this, t, n);
                             this.$dropdown.on(
                                 [
@@ -3201,7 +3205,7 @@
                                     "touchend",
                                     "touchstart",
                                 ].join(" "),
-                                function (e) {
+                                function(e) {
                                     e.stopPropagation();
                                 }
                             );
@@ -3209,10 +3213,10 @@
                         e
                     );
                 }),
-                t.define("select2/selection/stopPropagation", [], function () {
+                t.define("select2/selection/stopPropagation", [], function() {
                     function e() {}
                     return (
-                        (e.prototype.bind = function (e, t, n) {
+                        (e.prototype.bind = function(e, t, n) {
                             e.call(this, t, n);
                             this.$selection.on(
                                 [
@@ -3237,7 +3241,7 @@
                                     "touchend",
                                     "touchstart",
                                 ].join(" "),
-                                function (e) {
+                                function(e) {
                                     e.stopPropagation();
                                 }
                             );
@@ -3252,35 +3256,39 @@
                  * Released under the MIT license
                  * http://jquery.org/license
                  */
-                (n = function (e) {
+                (n = function(e) {
                     var t,
                         n,
                         i = ["wheel", "mousewheel", "DOMMouseScroll", "MozMousePixelScroll"],
                         o = "onwheel" in document || document.documentMode >= 9 ? ["wheel"] : ["mousewheel", "DomMouseScroll", "MozMousePixelScroll"],
                         r = Array.prototype.slice;
-                    if (e.event.fixHooks) for (var s = i.length; s; ) e.event.fixHooks[i[--s]] = e.event.mouseHooks;
+                    if (e.event.fixHooks)
+                        for (var s = i.length; s;) e.event.fixHooks[i[--s]] = e.event.mouseHooks;
                     var a = (e.event.special.mousewheel = {
                         version: "3.1.12",
-                        setup: function () {
-                            if (this.addEventListener) for (var t = o.length; t; ) this.addEventListener(o[--t], l, !1);
+                        setup: function() {
+                            if (this.addEventListener)
+                                for (var t = o.length; t;) this.addEventListener(o[--t], l, !1);
                             else this.onmousewheel = l;
                             e.data(this, "mousewheel-line-height", a.getLineHeight(this)), e.data(this, "mousewheel-page-height", a.getPageHeight(this));
                         },
-                        teardown: function () {
-                            if (this.removeEventListener) for (var t = o.length; t; ) this.removeEventListener(o[--t], l, !1);
+                        teardown: function() {
+                            if (this.removeEventListener)
+                                for (var t = o.length; t;) this.removeEventListener(o[--t], l, !1);
                             else this.onmousewheel = null;
                             e.removeData(this, "mousewheel-line-height"), e.removeData(this, "mousewheel-page-height");
                         },
-                        getLineHeight: function (t) {
+                        getLineHeight: function(t) {
                             var n = e(t),
                                 i = n["offsetParent" in e.fn ? "offsetParent" : "parent"]();
                             return i.length || (i = e("body")), parseInt(i.css("fontSize"), 10) || parseInt(n.css("fontSize"), 10) || 16;
                         },
-                        getPageHeight: function (t) {
+                        getPageHeight: function(t) {
                             return e(t).height();
                         },
                         settings: { adjustOldDeltas: !0, normalizeOffset: !0 },
                     });
+
                     function l(i) {
                         var o = i || window.event,
                             s = r.call(arguments, 1),
@@ -3292,15 +3300,15 @@
                             g = 0;
                         if (
                             (((i = e.event.fix(o)).type = "mousewheel"),
-                            "detail" in o && (p = -1 * o.detail),
-                            "wheelDelta" in o && (p = o.wheelDelta),
-                            "wheelDeltaY" in o && (p = o.wheelDeltaY),
-                            "wheelDeltaX" in o && (d = -1 * o.wheelDeltaX),
-                            "axis" in o && o.axis === o.HORIZONTAL_AXIS && ((d = -1 * p), (p = 0)),
-                            (l = 0 === p ? d : p),
-                            "deltaY" in o && (l = p = -1 * o.deltaY),
-                            "deltaX" in o && ((d = o.deltaX), 0 === p && (l = -1 * d)),
-                            0 !== p || 0 !== d)
+                                "detail" in o && (p = -1 * o.detail),
+                                "wheelDelta" in o && (p = o.wheelDelta),
+                                "wheelDeltaY" in o && (p = o.wheelDeltaY),
+                                "wheelDeltaX" in o && (d = -1 * o.wheelDeltaX),
+                                "axis" in o && o.axis === o.HORIZONTAL_AXIS && ((d = -1 * p), (p = 0)),
+                                (l = 0 === p ? d : p),
+                                "deltaY" in o && (l = p = -1 * o.deltaY),
+                                "deltaX" in o && ((d = o.deltaX), 0 === p && (l = -1 * d)),
+                                0 !== p || 0 !== d)
                         ) {
                             if (1 === o.deltaMode) {
                                 var m = e.data(this, "mousewheel-line-height");
@@ -3311,12 +3319,12 @@
                             }
                             if (
                                 ((h = Math.max(Math.abs(p), Math.abs(d))),
-                                (!n || h < n) && ((n = h), u(o, h) && (n /= 40)),
-                                u(o, h) && ((l /= 40), (d /= 40), (p /= 40)),
-                                (l = Math[l >= 1 ? "floor" : "ceil"](l / n)),
-                                (d = Math[d >= 1 ? "floor" : "ceil"](d / n)),
-                                (p = Math[p >= 1 ? "floor" : "ceil"](p / n)),
-                                a.settings.normalizeOffset && this.getBoundingClientRect)
+                                    (!n || h < n) && ((n = h), u(o, h) && (n /= 40)),
+                                    u(o, h) && ((l /= 40), (d /= 40), (p /= 40)),
+                                    (l = Math[l >= 1 ? "floor" : "ceil"](l / n)),
+                                    (d = Math[d >= 1 ? "floor" : "ceil"](d / n)),
+                                    (p = Math[p >= 1 ? "floor" : "ceil"](p / n)),
+                                    a.settings.normalizeOffset && this.getBoundingClientRect)
                             ) {
                                 var y = this.getBoundingClientRect();
                                 (f = i.clientX - y.left), (g = i.clientY - y.top);
@@ -3335,29 +3343,31 @@
                             );
                         }
                     }
+
                     function c() {
                         n = null;
                     }
+
                     function u(e, t) {
                         return a.settings.adjustOldDeltas && "mousewheel" === e.type && t % 120 == 0;
                     }
                     e.fn.extend({
-                        mousewheel: function (e) {
+                        mousewheel: function(e) {
                             return e ? this.bind("mousewheel", e) : this.trigger("mousewheel");
                         },
-                        unmousewheel: function (e) {
+                        unmousewheel: function(e) {
                             return this.unbind("mousewheel", e);
                         },
                     });
                 }),
                 "function" == typeof t.define && t.define.amd ? t.define("jquery-mousewheel", ["jquery"], n) : "object" == typeof exports ? (module.exports = n) : n(e),
-                t.define("jquery.select2", ["jquery", "jquery-mousewheel", "./select2/core", "./select2/defaults"], function (e, t, n, i) {
+                t.define("jquery.select2", ["jquery", "jquery-mousewheel", "./select2/core", "./select2/defaults"], function(e, t, n, i) {
                     if (null == e.fn.select2) {
                         var o = ["open", "close", "destroy"];
-                        e.fn.select2 = function (t) {
-                            if ("object" == typeof (t = t || {}))
+                        e.fn.select2 = function(t) {
+                            if ("object" == typeof(t = t || {}))
                                 return (
-                                    this.each(function () {
+                                    this.each(function() {
                                         var i = e.extend(!0, {}, t);
                                         new n(e(this), i);
                                     }),
@@ -3367,7 +3377,7 @@
                                 var i,
                                     r = Array.prototype.slice.call(arguments, 1);
                                 return (
-                                    this.each(function () {
+                                    this.each(function() {
                                         var n = e(this).data("select2");
                                         null == n && window.console && console.error && console.error("The select2('" + t + "') method was called on an element that is not using Select2."), (i = n[t].apply(n, r));
                                     }),
@@ -3378,8 +3388,7 @@
                         };
                     }
                     return null == e.fn.select2.defaults && (e.fn.select2.defaults = i), n;
-                }),
-                { define: t.define, require: t.require }
+                }), { define: t.define, require: t.require }
             );
         })(),
         n = t.require("jquery.select2");
