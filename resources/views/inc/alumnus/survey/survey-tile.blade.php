@@ -55,7 +55,7 @@
 
             <div class="col-3 title-info">
                 <div class="w-15 w-xs-100">
-                    <p class="mb-0 text-muted tile-text font-weight-bold  text-medium">
+                    <p class="mb-0 text-muted tile-text font-weight-bold  text-medium" style="width: fit-content">
                         {{-- {{$survey->questions->count()}} --}}
                         @if ($progresses->where('user_id', auth()->user()->id)->where('survey_id', $survey->id)->count() > 0)
                             @foreach ($progresses->where('user_id', auth()->user()->id)->where('survey_id', $survey->id) as $progress)

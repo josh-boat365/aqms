@@ -1,14 +1,18 @@
 {{-- style for question cards --}}
 
-{{-- <style type="text/css">
+<style type="text/css">
     .card-style {
         width: 100% !important;
         margin: 0 auto;
     }
 
-    /* .grid-contents{
+    .grid-contents{
         width: 50%;
-    } */
+    }
+
+   span[class="select2 select2-container select2-container--bootstrap"]{
+       width: 100% !important;
+   }
 
     @media (min-width: 320px) and (max-width: 672px) {
         .card-style {
@@ -31,7 +35,7 @@
 
     }
 
-</style> --}}
+</style>
 
 
 @php
@@ -74,7 +78,7 @@
                         </div>
                         @endforeach
                         @elseif ($question->option_type_id == 4 && $survey->options->where('question_id', $question->id)->count() > 0)
-                        <select name="ans[{{ $question->id }}]" class="form-control drop-down">
+                        <select name="ans[{{ $question->id }}]" class="form-control drop-down ">
                             @foreach ($survey->options->where('question_id', $question->id) as $option)
                             <option 
                             @foreach ($responses as $response) @if ($response->question_id == $question->id && $response->response == $option->option) selected @endif @endforeach 
