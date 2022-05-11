@@ -28,6 +28,7 @@ class User extends Authenticatable
         'department_of_study',
         'year_of_completion',
         'password',
+        'session'
     ];
 
     /**

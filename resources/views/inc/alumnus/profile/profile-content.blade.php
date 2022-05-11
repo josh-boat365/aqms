@@ -76,17 +76,17 @@
                     
                                     <ul class="nav nav-tabs separator-tabs ml-0 mb-5" role="tablist">
                                         <li class="nav-item">
-                                            <a class="nav-link active" id="profile-toggler">UPDATE PROFILE</a>
+                                            <a class="nav-link @if(session()->has('profile_update')) active @elseif(!session()->has('error')) active @endif" id="profile-toggler">UPDATE PROFILE</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" id="password-toggler">CHANGE PASSWORD</a>
+                                            <a class="nav-link @error('old_password') active @enderror @error('password') active @enderror  @if(session()->has('error')) active @endif" id="password-toggler">CHANGE PASSWORD</a>
                                         </li>
                                 
                                     </ul>
 
                                 <div class="tab-content">
-                                    <div class="tab-pane show active" id="profile-content-section" role="tabpanel" aria-labelledby="first-tab">
-                                        <form class="tooltip-right-bottom mob-view" novalidate method="POST" action="#">
+                                    <div class="tab-pane show @if(session()->has('profile_update')) active @elseif(!session()->has('error')) active @endif" id="profile-content-section" role="tabpanel" aria-labelledby="first-tab">
+                                        <form class="tooltip-right-bottom mob-view" novalidate method="POST" action="{{route('alumnus.profile.update')}}">
                                                 @csrf
                                                 <div class="form-group has-float-label"><input  class="@error('firstName') border-danger @enderror form-control" name="firstName" value="{{auth()->user()->firstName}}" autocomplete="off" >
                                                     <span>First Name</span>
@@ -123,12 +123,12 @@
                                                     <span>Gender</span> 
                                                 </div>
                                                 <div class="form-group has-float-label">
-                                                    <select id="inputState" class="form-control select2-single" name="gender">
+                                                    <select id="inputState" class="form-control select2-single" name="session">
                                                         <option>Choose...</option>
-                                                        <option value="Full-time" @if (strtolower(auth()->user()->gender) == "full-time")
+                                                        <option value="Full-time" @if (strtolower(auth()->user()->session) == "full-time")
                                                             selected
                                                         @endif>Full Time</option>
-                                                        <option value="Part-time" @if (strtolower(auth()->user()->gender) == "part-time")
+                                                        <option value="Part-time" @if (strtolower(auth()->user()->session) == "part-time")
                                                             selected
                                                         @endif>Part Time</option>
                                                     </select>
@@ -138,109 +138,6 @@
                                                     <input  type="tel" class="form-control" name="phone" value="{{auth()->user()->phone}}" autocomplete="off" >
                                                     <span>Phone number</span>
                                                 </div>
-                                            {{-- Program Studied --}}
-                                                {{-- <div class="form-group has-float-label">
-                                                    <select class="form-control select2-single" name="jQueryTopLabelsState" required data-width="100%">
-                                                        <option></option>
-                                                        <option @if (auth()->user()->program_of_study)
-                                                            selected
-                                                        @endif value="BTECH - Mechanical Engineering">BTECH - Mechanical Engineering</option>
-                                                        <option @if (auth()->user()->program_of_study)
-                                                            selected
-                                                        @endif value="BTECH - Automobile Engineering">BTECH - Automobile Engineering</option>
-                                                        <option @if (auth()->user()->program_of_study)
-                                                            selected
-                                                        @endif value="BTECH - Electrical/Electronics Engineering">BTECH - Electrical/Electronics Engineering</option>
-                                                        <option @if (auth()->user()->program_of_study)
-                                                            selected
-                                                        @endif value="BTECH - Civil Engineering">BTECH - Civil Engineering</option>
-                                                        <option @if (auth()->user()->program_of_study)
-                                                            selected
-                                                        @endif value="BTECH - Building Technology">BTECH - Building Technology</option>
-                                                        <option @if (auth()->user()->program_of_study)
-                                                            selected
-                                                        @endif value="BTECH - Medical Laboratory Science">BTECH - Medical Laboratory Science</option>
-                                                        <option @if (auth()->user()->program_of_study)
-                                                            selected
-                                                        @endif value="BTECH - Science Laboratory Science">BTECH - Science Laboratory Science</option>
-                                                        <option @if (auth()->user()->program_of_study)
-                                                            selected
-                                                        @endif value="BTECH - Statistics">BTECH - Statistics</option>
-                                                        <option @if (auth()->user()->program_of_study)
-                                                            selected
-                                                        @endif value="BTECH - Computer Science">BTECH - Computer Science</option>
-                                                        <option @if (auth()->user()->program_of_study)
-                                                            selected
-                                                        @endif value="BTECH - Fashion Design and Textiles">BTECH - Fashion Design and Textiles</option>
-                                                        <option @if (auth()->user()->program_of_study)
-                                                            selected
-                                                        @endif value="BTECH - Procurement and Supply Chain Management">BTECH - Procurement and Supply Chain Management</option>
-                                                        <option @if (auth()->user()->program_of_study)
-                                                            selected
-                                                        @endif value="BTECH - Accounting">BTECH - Accounting</option>
-                                                        <option @if (auth()->user()->program_of_study)
-                                                            selected
-                                                        @endif value="BTECH - Banking and Finance">BTECH - Banking and Finance</option>
-                                                        <option @if (auth()->user()->program_of_study)
-                                                            selected
-                                                        @endif value="BTECH - Secretaryship and Management Studies">BTECH - Secretaryship and Management Studies</option>
-                                                        <option @if (auth()->user()->program_of_study)
-                                                            selected
-                                                        @endif value="BTECH - Marketing">BTECH - Marketing</option>
-                                                        <option @if (auth()->user()->program_of_study)
-                                                            selected
-                                                        @endif value="HND - Mechanical Engineering">HND - Mechanical Engineering</option>
-                                                        <option @if (auth()->user()->program_of_study)
-                                                            selected
-                                                        @endif value="HND - Electrical/Electronics Engineering">HND - Electrical/Electronics Engineering</option>
-                                                        <option @if (auth()->user()->program_of_study)
-                                                            selected
-                                                        @endif value="HND - Building Technology">HND - Building Technology</option>
-                                                        <option @if (auth()->user()->program_of_study)
-                                                            selected
-                                                        @endif value="HND - Civil Engineering">HND - Civil Engineering</option>
-                                                        <option @if (auth()->user()->program_of_study)
-                                                            selected
-                                                        @endif value="HND - Interior Design and Technology">HND - Civil Engineering</option>
-                                                        <option @if (auth()->user()->program_of_study)
-                                                            selected
-                                                        @endif value="HND - Furniture Design and Production">HND - Furniture Design and Production</option>
-                                                        <option @if (auth()->user()->program_of_study)
-                                                            selected
-                                                        @endif value="HND - Science Laboratory Technology (SLT)">HND - Science Laboratory Technology (SLT)</option>
-                                                        <option @if (auth()->user()->program_of_study)
-                                                            selected
-                                                        @endif value="HND - Statistics">HND - Statistics</option>
-                                                        <option @if (auth()->user()->program_of_study)
-                                                            selected
-                                                        @endif value="HND - Computer Science">HND - Computer Science</option>
-                                                        <option @if (auth()->user()->program_of_study)
-                                                            selected
-                                                        @endif value="HND - Hotel, Catering and Institutional Management (HCIM)">HND - Hotel, Catering and Institutional Management (HCIM)</option>
-                                                        <option @if (auth()->user()->program_of_study)
-                                                            selected
-                                                        @endif value="HND - Accountancy">HND - Accountancy</option>
-                                                        <option @if (auth()->user()->program_of_study)
-                                                            selected
-                                                        @endif value="HND - Marketing">HND - Marketing</option>
-                                                        <option @if (auth()->user()->program_of_study)
-                                                            selected
-                                                        @endif value="HND - Purchasing and Supply">HND - Purchasing and Supply</option>
-                                                        <option @if (auth()->user()->program_of_study)
-                                                            selected
-                                                        @endif value="HND - Secretaryship and Management Studies">HND - Secretaryship and Management Studies</option>
-                                                        <option @if (auth()->user()->program_of_study)
-                                                            selected
-                                                        @endif value="HND - Bilingual Secretaryship and Management Studies">HND - Bilingual Secretaryship and Management Studies</option>
-                                                        <option @if (auth()->user()->program_of_study)
-                                                            selected
-                                                        @endif value="HND - Fashion Design and Textiles">HND - Fashion Design and Textiles</option>
-                                                        <option @if (auth()->user()->program_of_study)
-                                                            selected
-                                                        @endif value="CERTIFICATE">CERTIFICATE</option>
-                                                    </select>
-                                                    <span>Program Studied</span>
-                                                </div> --}}
                                                 
                                                 <div class="form-group has-float-label">
                                                     <select class="form-control select2-single" name="program_of_study" required data-width="100%">
@@ -260,7 +157,7 @@
                                                         <option></option>
 
                                                         @foreach ($all_departments_of_study as $department_of_study)
-                                                        <option @if (auth()->user()->program_of_study == $program_of_study)
+                                                        <option @if (auth()->user()->department_of_study == $department_of_study)
                                                             selected
                                                         @endif value="{{$department_of_study}}">{{$department_of_study}}</option>
                                                         @endforeach
@@ -287,12 +184,13 @@
                                                 <button type="submit" class="btn btn-primary float-right">Update</button>
                                         </form>
                                     </div>
-                                    <div class="tab-pane show" id="password-section" role="tabpanel" aria-labelledby="second-tab">
-                                        <form class="tooltip-right-bottom mob-view" novalidate method="POST" action="#">
+                                    <div class="tab-pane show  @error('old_password') active @enderror @error('password') active @enderror  @if(session()->has('error')) active @endif" id="password-section" role="tabpanel" aria-labelledby="second-tab">
+                                        <form class="tooltip-right-bottom mob-view" novalidate method="POST" action="{{route('alumnus.password.update')}}">
+                                            @csrf
                                             <div class="form-group has-float-label">
-                                                <input name="old-password" class="@error('old-password') border-danger @enderror form-control" type="password" required>
+                                                <input name="old_password" class="@error('old_password') border-danger @enderror form-control" type="password" required>
                                                 <span>Old Password</span>
-                                                @error('old-password')
+                                                @error('old_password')
                                                 <div class="invalid-tooltip d-block">{{$message}}</div>
                                                 @enderror
                                             </div>

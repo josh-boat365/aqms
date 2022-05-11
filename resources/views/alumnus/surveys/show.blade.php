@@ -102,8 +102,8 @@
                     @endfor
                 </div>
                 <!-- <div class="text-center mt-2"><button type="button" class="btn btn-outline-primary btn-sm mb-2"
-                                                            id="add-section-button"><i class="simple-icon-plus btn-group-icon"></i> Add section</button>
-                                                    </div> -->
+                                                                                            id="add-section-button"><i class="simple-icon-plus btn-group-icon"></i> Add section</button>
+                                                                                    </div> -->
             </div>
         @endif
         <div class="text-center mt-4">
@@ -222,7 +222,7 @@
     <!-- sections -->
     <script>
         $(function() {
-            $('.sections .pointer').first().addClass('dot-active')
+            $('#section-' + $('.current').children('#sec-num').val()).addClass('dot-active')
 
             $('.sections').on('click', '.pointer', function() {
                 $('.dot-active').removeClass('dot-active')
@@ -231,7 +231,7 @@
                 $('.current').removeClass('current')
                 $('.' + $target_section).addClass('current')
 
-                // console.log($('.current #sec-num').val());
+                // // console.log($('.current #sec-num').val());
             })
         })
     </script>
@@ -252,7 +252,7 @@
             // }, 5000);
 
             $('form').on('click', '.select2-selection__rendered', function() {
-                // console.log($(this).parent().parent().parent().parent().children('select'));
+                // // console.log($(this).parent().parent().parent().parent().children('select'));
                 if ($(this).parent().parent().parent().parent().children('select').hasClass('drop-down')) {
                     $('.select2-search--dropdown').hide()
                 } else {
@@ -267,18 +267,58 @@
     <script>
         $(function() {
             $('#save-btn').click(function() {
-                // console.log('save');
-                // console.log("answered = " + $('.answered').length);
+                // // console.log('save');
+                // // console.log("answered = " + $('.answered').length);
                 $('#progress').val($('.answered').length)
-                // console.log($('#progress'));
+                // // console.log($('#progress'));
 
                 $('.custom-radio').each(function() {
-                    console.log($(this).children('input').attr('id'));
+                    // console.log($(this).children('input').attr('id'));
                     $name = $(this).children('input').attr('name');
                     $id = $(this).children('input').attr('id');
                     $input = $(this).children('input');
                     $input.attr('name', $name + '[' + $id.substring(1, $id.length) + ']');
                 })
+
+                if ($('.survey-wrapper')) {
+                    $question_group = $('.sortable-survey');
+
+                    $answered_sections = $('.fully-answered')
+
+                    if ($('.current').children('.sortable-survey').hasClass('fully-answered') &&
+                        $answered_sections.length != $question_group.length) {
+                        $current_section_number = $('.current').children('#sec-num').val();
+
+                        $arr = []
+                        for (let sec_num = 1; sec_num <= $('.sortable-survey').length; sec_num++) {
+                            $arr.push(sec_num);
+                        }
+
+                        $section_check_order = [].concat($arr.slice(($current_section_number), $arr
+                                .length), $arr
+                            .slice(0, $current_section_number - 1));
+
+
+                        for (let index = 0; index < $section_check_order.length; index++) {
+                            const number = $section_check_order[index];
+                            //  section
+                            $question_group = $('.section-' + number).children('.sortable-survey');
+                            // console.log($section);
+                            if (!$question_group.hasClass('fully-answered')) {
+                                // console.log('next unanswered section');
+                                // console.log($question_group);
+                                $('#section_check_point').val(number)
+                                break;
+                            }
+                        }
+
+                    } else if (!$('.current').children('.sortable-survey').hasClass('fully-answered')) {
+                        $('#section_check_point').val($('.current').children('#sec-num').val())
+                    }
+
+                }
+
+
                 $('#save-form').submit();
             })
         })
@@ -288,10 +328,10 @@
     <script>
         $(function() {
             $('#reset-btn').click(function() {
-                // console.log('dsv');
-                // console.log("answered = " + $('.answered').length);
+                // // console.log('dsv');
+                // // console.log("answered = " + $('.answered').length);
                 // $('#progress').val($('.answered').length)
-                // console.log($('#progress'));
+                // // console.log($('#progress'));
                 $('#reset-form').submit();
             })
         })
@@ -302,7 +342,7 @@
         $(function() {
             $('#submit-btn').click(function() {
                 $('.custom-radio').each(function() {
-                    console.log($(this).children('input').attr('id'));
+                    // console.log($(this).children('input').attr('id'));
                     $name = $(this).children('input').attr('name');
                     $id = $(this).children('input').attr('id');
                     $input = $(this).children('input');
@@ -337,6 +377,15 @@
                 } else {
                     $('#submit-btn').hide()
                 }
+
+                $('.sortable-survey').each(function() {
+                    $ques_num = $(this).find('.question').length;
+                    $ans_num = $(this).find('.answered').length
+
+                    if ($ques_num == $ans_num)
+                        $(this).addClass('fully-answered')
+                })
+
             }
 
             $('input').on('change', function() {
@@ -398,14 +447,17 @@
                         $question = $grid_option_group.parent().parent().parent().parent()
                             .parent();
 
-                        $input_track.forEach(bool => {
-                            if (bool)
+                        console.log($input_track);
+                        for (let index = 0; index < $input_track.length; index++) {
+                            const bool = $input_track[index];
+                            if (bool) {
                                 $question.addClass('answered')
-                            else {
+
+                            } else {
                                 $question.removeClass('answered')
-                                return false;
+                                break;
                             }
-                        });
+                        }
 
                     }
 
@@ -452,7 +504,7 @@
 
                 // drop downs
                 $(this).find('select').each(function() {
-                    // console.log($(this));
+                    // // console.log($(this));
                     $(this).parent().parent().parent().parent().parent().addClass('answered')
                 })
 
@@ -466,7 +518,7 @@
                                 'answered')
 
                         } else {
-                            console.log($(this));
+                            // console.log($(this));
                             $(this).parent().parent().parent().parent().parent().addClass(
                                 'answered')
                         }
@@ -476,15 +528,14 @@
 
                     //radio button  // not grid
                     else if ($(this).attr('type') == 'radio') {
-                        // console.log("radio");
+                        // // console.log("radio");
                         // not grid
                         if ($(this).parent().hasClass('custom-radio')) {
                             $(this).parent().parent().children('.custom-radio').each(function() {
                                 if ($(this).children('input').is(':checked')) {
                                     $(this).parent().parent().parent().parent().parent()
-                                        .parent()
                                         .addClass('answered')
-                                    // console.log($(this));
+                                    // // console.log($(this));
                                     return false;
                                 } else {
                                     $(this).parent().parent().parent().parent().parent()
@@ -546,32 +597,62 @@
                                         'input').is(':checked')
                                 $input_index++;
                             })
-                        })
+                        }
+                    )
 
 
-                    $question = $('.grid-option-group').parent().parent().parent().parent()
+                    $question = $(this).parent().parent().parent().parent()
                         .parent();
 
-                    $input_track.forEach(bool => {
-                        if (bool)
+                    // $question.addClass('answered')
+
+                    console.log($input_track);
+                    for (let index = 0; index < $input_track.length; index++) {
+                        const bool = $input_track[index];
+                        if (bool) {
                             $question.addClass('answered')
-                        else {
+                        } else {
                             $question.removeClass('answered')
-                            return false;
+                            break;
                         }
-                    });
+                    }
 
                 })
 
-                $('#progress').val($('.answered').length);
-                $('.progress-tracker').text($('.answered').length + '/' + $('.question')
-                    .length);
+                //check if section is fully answered
+                // $ques_num = $(this).find('.question').length;
+                // $ans_num = $(this).find('.answered').length
 
-                if ($('.answered').length == $('.question').length) {
-                    $('#submit-btn').show()
-                } else {
-                    $('#submit-btn').hide()
-                }
+                // if ($ques_num == $ans_num)
+                //     $(this).addClass('fully-answered')
+
+
+            })
+
+            // $('#progress').val($('.answered').length);
+            // $('.progress-tracker').text($('.answered').length + '/' + $('.question')
+            //     .length);
+
+            // if ($('.answered').length == $('.question').length) {
+            //     $('#submit-btn').show()
+            // } else {
+            //     $('#submit-btn').hide()
+            // }
+
+            $('#progress').val($('.answered').length);
+            $('.progress-tracker').text($('.answered').length + '/' + $('.question').length);
+            if ($('.answered').length == $('.question').length) {
+                $('#submit-btn').show()
+            } else {
+                $('#submit-btn').hide()
+            }
+
+            $('.sortable-survey').each(function() {
+                $ques_num = $(this).find('.question').length;
+                $ans_num = $(this).find('.answered').length
+
+                if ($ques_num == $ans_num)
+                    $(this).addClass('fully-answered')
             })
         })
     </script>

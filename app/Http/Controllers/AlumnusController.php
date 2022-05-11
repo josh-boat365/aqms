@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Survey;
 use App\Models\Progress;
@@ -9,9 +10,9 @@ use App\Models\Response;
 use App\Models\OptionType;
 use App\Models\Submission;
 use App\Models\Notification;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AlumnusController extends Controller
 {
@@ -111,10 +112,30 @@ class AlumnusController extends Controller
         // dd($this->getSetProfileData($request->all()));
 
         $setData = $this->getSetProfileData($request->all());
+        // dd($setData);
+        $user = User::find(auth()->user()->id)->update($setData);
+        return redirect()->route('alumnus.profile')->with('profile_update', 'profile updated successfully');
+    }
 
-        User::find(auth()->user()->id)->update($setData);
+    public function updatePassword(Request $request)
+    {
+        // dd($request->all());
+        // dd($this->getSetProfileData($request->all()));
 
-        return redirect()->route('alumnus.profile');
+        $this->validate($request, [
+            'old_password' => 'required',
+            'password' => 'required|confirmed'
+        ]);
+
+        if (Hash::check($request->old_password, auth()->user()->password)) {
+            $password = Hash::make($request->password);
+            User::find(auth()->user()->id)->update(compact('password'));
+            return redirect()->route('alumnus.profile')->with('success', 'password changed successfully');
+            
+        } else {
+            
+            return redirect()->route('alumnus.profile')->with('error', 'invalid password');
+        }
     }
 
     public function getSetProfileData($data)
@@ -131,7 +152,8 @@ class AlumnusController extends Controller
     public function showSurvey(int $index)
     {
 
-        return view('alumnus.surveys.show')->with(['allSurveys' => Survey::all(), 'notifications' => Notification::all(), 'surveys' => Survey::all()->where('status_id', 2), 'survey' => Survey::find($index), 'optionTypes' => OptionType::all(), 'responses' => Response::all()->where('user_id', auth()->user()->id)]);
+        $section_check_point = Progress::where('user_id', auth()->user()->id)->first()->section_check_point ?? 1;
+        return view('alumnus.surveys.show')->with(['allSurveys' => Survey::all(), 'notifications' => Notification::all(), 'surveys' => Survey::all()->where('status_id', 2), 'survey' => Survey::find($index), 'optionTypes' => OptionType::all(), 'responses' => Response::all()->where('user_id', auth()->user()->id), 'sectionCheckPoint' => Progress::where('user_id', auth()->user()->id)->first()->section_check_point ?? 1]);
     }
 
     public function saveSurvey(Request $request)
@@ -190,6 +212,7 @@ class AlumnusController extends Controller
         $progress->user_id = auth()->user()->id;
         $progress->survey_id = $request->survey_id;
         $progress->progress = $request->progress;
+        $progress->section_check_point = $request->section_check_point;
         $progress->save();
 
 
@@ -222,6 +245,6 @@ class AlumnusController extends Controller
             Progress::find($value['id'])->delete();
         }
 
-        return $this->showSurvey($request['survey_id']);
+        return redirect()->route('alumnus.survey.show', $request['survey_id']);
     }
 }
