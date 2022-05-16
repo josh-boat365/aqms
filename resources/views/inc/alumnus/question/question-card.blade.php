@@ -17,10 +17,10 @@
     @media (min-width: 320px) and (max-width: 672px) {
         .card-style {
             position: relative;
-            left: -11%;
+            left: -22%;
             max-width: 100%;
-            min-width: 18rem;
-            font-size: 75%;
+            min-width: 24rem;
+            /* font-size: 50%;*/
 
         }
 
