@@ -129,16 +129,16 @@ $ind = 1;
                     <!-- button for copying/downloading     -->
                     <div class="custom-control custom-checkbox pl-1 align-self-center pr-4">
                         <button class="btn btn-outline-theme-3 icon-button" data-toggle="dropdown">
-                            <i class="iconsminds-files"></i>
+                            <i class="iconsminds-download"></i>
                         </button>
                         <div class="dropdown-menu">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#"
+                            {{-- <a class="dropdown-toggle" data-toggle="dropdown" href="#"
                                 style="padding-left:20px">Download</a>
-                            <div class="dropdown-menu">
-                                <a href="#" class="dropdown-item">copy chart</a>
-                                <a href="#" class="dropdown-item"> As jpeg file</a>
-                                <a href="#" class="dropdown-item"> As excel file</a>
-                            </div>
+                            <div class="dropdown-menu"> --}}
+                                <a href="#" class="dropdown-item">chart</a>
+                                <a href="#" class="dropdown-item export-btn" >table</a>
+                                {{-- <a href="#" class="dropdown-item"> As excel file</a> --}}
+                            {{-- </div> --}}
                         </div>
                     </div>
                 </div>
@@ -162,7 +162,7 @@ $ind = 1;
                             <canvas id="radio-{{ $i }}"></canvas>
                         </div>
                         <div style="display: none" id="table-{{$survey->questions[$i]->id}}">
-                            <table class="col-12 table table-hover alyt-table-q">
+                            <table class="col-12 table table-hover alyt-table-q exportTable">
                                 <thead class="t-head-q">
                                     <tr>
                                         <th class="col-1">#</th>
@@ -227,16 +227,16 @@ $ind = 1;
                     <!-- button for copying/downloading     -->
                     <div class="custom-control custom-checkbox pl-1 align-self-center pr-4">
                         <button class="btn btn-outline-theme-3 icon-button" data-toggle="dropdown">
-                            <i class="iconsminds-files"></i>
+                            <i class="iconsminds-download"></i>
                         </button>
                         <div class="dropdown-menu">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#"
+                            {{-- <a class="dropdown-toggle" data-toggle="dropdown" href="#"
                                 style="padding-left:20px">Download</a>
-                            <div class="dropdown-menu">
-                                <a href="#" class="dropdown-item">copy chart</a>
-                                <a href="#" class="dropdown-item"> As jpeg file</a>
-                                <a href="#" class="dropdown-item"> As excel file</a>
-                            </div>
+                            <div class="dropdown-menu"> --}}
+                                <a href="#" class="dropdown-item">chart</a>
+                                <a href="#" class="dropdown-item export-btn" >table</a>
+                                {{-- <a href="#" class="dropdown-item"> As excel file</a> --}}
+                            {{-- </div> --}}
                         </div>
                     </div>
                 </div>
@@ -252,7 +252,7 @@ $ind = 1;
                             <canvas id="drop-{{ $i }}"></canvas>
                         </div>
                         <div style="display: none" id="table-{{$survey->questions[$i]->id}}">
-                            <table class="col-12 table table-hover alyt-table-q">
+                            <table class="col-12 table table-hover alyt-table-q exportTable">
                                 <thead class="t-head-q">
                                     <tr>
                                         <th class="col-1">#</th>

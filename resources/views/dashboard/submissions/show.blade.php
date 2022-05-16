@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ asset('font/simple-line-icons/css/simple-line-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor/bootstrap.rtl.only.min.css') }}">
-     <link rel="stylesheet" href="{{ asset('css/vendor/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/vendor/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor/datatables.responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor/perfect-scrollbar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor/select2.min.css') }}">
@@ -36,7 +36,7 @@
             top: 50%;
             transform: translateY(-50%);
             left: -5px;
-            /* 
+            /*
             box-sizing: border-box; */
         }
 
@@ -102,7 +102,7 @@
     <script src="{{ asset('js/vendor/jquery.contextMenu.min.js') }}"></script>
     <script src="{{ asset('js/dore.script.js') }}"></script>
     {{-- <script src="{{ asset('js/custom-chart.js') }}"></script> --}}
-    
+
     <script>
         function loadStyle(e, t) {
             for (var o = 0; o < document.styleSheets.length; o++)
@@ -192,14 +192,14 @@
 
     {{-- toggle chart & table --}}
     <script>
-        $(function () {
-            $('.chart-btn').click(function () {
+        $(function() {
+            $('.chart-btn').click(function() {
                 // console.log($('#chart-' + $(this).attr('id')));
                 // console.log('#chart-' + $(this).attr('id'));
                 $('#chart-' + $(this).attr('id')).addClass('active')
                 $('#table-' + $(this).attr('id')).removeClass('active')
             })
-            $('.table-btn').click(function () {
+            $('.table-btn').click(function() {
                 console.log($('#table-' + $(this).attr('id')));
                 $('#table-' + $(this).attr('id')).addClass('active')
                 $('#chart-' + $(this).attr('id')).removeClass('active')
@@ -249,7 +249,34 @@
 
         })
     </script>
-   
+
+    <script src="{{asset('js/jquery.table2excel.js')}}"></script>
+    <script>
+        $(function() {
+            $(".export-btn").click(function() {
+                $table = $(this).parent().parent().parent().parent().parent().find('.exportTable')
+                // console.log($table);
+                $table.table2excel({
+                    exclude: ".noExl",
+                    name: "aqms_report",
+                    filename: "stat sheet",
+                    fileext: ".xls",
+                    exclude_img: true,
+                    exclude_links: true,
+                    exclude_inputs: true
+                });
+                // console.log($(this));
+                // $(".exportTable").table2excel({
+                //     // exclude CSS class
+                //     exclude: ".noExl",
+                //     name: "aqms_report",
+                //     filename: "stat", //do not include extension
+                //     fileext: ".xls" // file extension
+                // });
+            });
+        })
+    </script>
+
 
 </body>
 
