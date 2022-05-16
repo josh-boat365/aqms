@@ -53,6 +53,7 @@
 <body id="app-container" class="menu-sub-hidden  right-menu show-spinner">
 
     @include('inc.alumnus.navbar')
+    
 
     {{-- <div class="tab-pane show active" id="first" role="tabpanel" aria-labelledby="first-tab">
         <div class="py-4 px-3 bg-success container col-5 text-white text-center d-absolute"> Saved Successfully </div>

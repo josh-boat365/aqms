@@ -89,18 +89,18 @@
 
                                         <ul class="nav nav-tabs separator-tabs ml-0 mb-5" role="tablist">
                                             <li class="nav-item">
-                                                <a class="nav-link active"
+                                                <a class="nav-link" href="{{route('alumnus.profile')}}"
                                                     id="profile-toggler">UPDATE PROFILE</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" id="password-toggler" href="{{route('alumnus.password')}}">CHANGE PASSWORD</a>
+                                                <a class="nav-link active" id="password-toggler">CHANGE PASSWORD</a>
                                             </li>
 
                                         </ul>
 
                                         <div class="tab-content">
                                             
-                                            <div class="tab-pane show active" id="profile-content-section"
+                                            {{-- <div class="tab-pane show active" id="profile-content-section"
                                                 role="tabpanel" aria-labelledby="first-tab">
                                                 <form class="tooltip-right-bottom mob-view" novalidate method="POST"
                                                     action="{{ route('alumnus.profile.update') }}">
@@ -184,7 +184,7 @@
                                                         <span>Program Studied</span>
                                                     </div>
 
-                                                    {{-- Department --}}
+                                                    
                                                     <div class="form-group has-float-label">
                                                         <select class="form-control select2-single"
                                                             name="department_of_study" required data-width="100%">
@@ -199,7 +199,7 @@
 
                                                         </select><span>Department of study</span>
                                                     </div>
-                                                    {{-- Year of completion --}}
+                                                    
                                                     <div class="form-group has-float-label">
                                                         <select class="form-control select2-single"
                                                             name="year_of_completion" required data-width="100%">
@@ -220,8 +220,9 @@
                                                         class="btn btn-primary float-right">Update</button>
                                                     
                                                 </form>
-                                            </div>
-                                            {{-- <div class="tab-pane show" id="password-section" role="tabpanel"
+                                            </div> --}}
+
+                                            <div class="tab-pane show active" id="password-section" role="tabpanel"
                                                 aria-labelledby="second-tab">
                                                 <form class="tooltip-right-bottom mob-view" novalidate method="POST"
                                                     action="{{ route('alumnus.password.update') }}">
@@ -252,7 +253,7 @@
                                                     <button type="submit"
                                                         class="btn btn-primary float-right">Update</button>
                                                 </form>
-                                            </div> --}}
+                                            </div>
                                         </div>
 
                                     </div>

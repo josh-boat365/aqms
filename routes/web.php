@@ -80,5 +80,6 @@ Route::post('/home/surveys/reset', '\App\Http\Controllers\AlumnusController@rese
 Route::post('/home/surveys/submit', '\App\Http\Controllers\AlumnusController@submitSurvey')->name('alumnus.survey.submit');
     // profile
 Route::get('home/profile/', '\App\Http\Controllers\AlumnusController@profile')->name('alumnus.profile');
+Route::get('home/profile/password', '\App\Http\Controllers\AlumnusController@password')->name('alumnus.password');
 Route::post('home/profile/update', '\App\Http\Controllers\AlumnusController@updateProfile')->name('alumnus.profile.update');
 Route::post('home/password/update', '\App\Http\Controllers\AlumnusController@updatePassword')->name('alumnus.password.update');

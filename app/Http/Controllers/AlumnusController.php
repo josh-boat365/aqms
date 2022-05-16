@@ -37,6 +37,7 @@ class AlumnusController extends Controller
 
     public function profile()
     {
+        // dd($section);
         $all_programs_of_study = [
             'BTECH - Mechanical Engineering',
             'BTECH - Automobile Engineering',
@@ -102,26 +103,100 @@ class AlumnusController extends Controller
         $notifications = Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2);
         $last_year = Carbon::now()->year - 1;
 
-
+        // dd("sddas");
+        
         return view('alumnus.profile.index', compact('allSurveys', 'surveys', 'notifications', 'all_programs_of_study', 'all_departments_of_study', 'last_year', 'updateProgress'));
     }
 
     public function updateProfile(Request $request)
     {
-        // dd($request->all());
-        // dd($this->getSetProfileData($request->all()));
+        
+        $this->validate($request, [
+            'firstName' => 'required',
+            'lastName' => 'required',
+            'email' => 'required|email'
+        ]);
 
         $setData = $this->getSetProfileData($request->all());
         // dd($setData);
-        $user = User::find(auth()->user()->id)->update($setData);
-        return redirect()->route('alumnus.profile')->with('profile_update', 'profile updated successfully');
+        User::find(auth()->user()->id)->update($setData);
+
+        return redirect()->route('alumnus.profile')->with('success', 'Profile updated successfully');
+    }
+
+    public function password(){
+        $all_programs_of_study = [
+            'BTECH - Mechanical Engineering',
+            'BTECH - Automobile Engineering',
+            'BTECH - Electrical/Electronics Engineering',
+            'BTECH - Civil Engineering',
+            'BTECH - Building Technology',
+            'BTECH - Medical Laboratory Science',
+            'BTECH - Science Laboratory Science',
+            'BTECH - Statistics',
+            'BTECH - Computer Science',
+            'BTECH - Fashion Design and Textiles',
+            'BTECH - Procurement and Supply Chain Management',
+            'BTECH - Accounting',
+            'BTECH - Banking and Finance',
+            'BTECH - Secretaryship and Management Studies',
+            'BTECH - Marketing',
+            'HND - Mechanical Engineering',
+            'HND - Building Technology',
+            'HND - Civil Engineering',
+            'HND - Civil Engineering',
+            'HND - Furniture Design and Production',
+            'HND - Science Laboratory Technology (SLT)',
+            'HND - Statistics',
+            'HND - Computer Science',
+            'HND - Hotel, Catering and Institutional Management (HCIM)',
+            'HND - Accountancy',
+            'HND - Marketing',
+            'HND - Purchasing and Supply',
+            'HND - Secretaryship and Management Studies',
+            'HND - Bilingual Secretaryship and Management Studies',
+            'HND - Fashion Design and Textiles',
+            'CERTIFICATE'
+        ];
+
+        $all_departments_of_study = [
+            'Accounting and Finance',
+            'Applied Mathematics and Statistics',
+            'Building Technology',
+            'Civil Engineering',
+            'Computer Science',
+            'Electrical and Electronic Engineering',
+            'Fashion Design and Textiles',
+            'Interior Design and Upholstery Technology',
+            'Liberal Studies and Communications Technology',
+            'Management and Public Administration',
+            'Marketing',
+            'Medical laboratory Technology',
+            'Procurement and Supply Chain Management',
+            'Science Laboratory Technology',
+            'Hotel Catering and Institutional Management'
+        ];
+
+        $alumnus = User::find(Auth::user()->id);
+        $updateProgress = 2;
+        if ($alumnus->gender) $updateProgress++;
+        if ($alumnus->phone) $updateProgress++;
+        if ($alumnus->program_of_study) $updateProgress++;
+        if ($alumnus->department_of_study) $updateProgress++;
+        if ($alumnus->year_of_completion) $updateProgress++;
+
+        $allSurveys = Survey::all();
+        $surveys = Survey::all()->where('status_id', 2);
+        $notifications = Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2);
+        $last_year = Carbon::now()->year - 1;
+
+        return view('alumnus.profile.password', compact('allSurveys', 'surveys', 'notifications', 'all_programs_of_study', 'all_departments_of_study', 'last_year', 'updateProgress'));
     }
 
     public function updatePassword(Request $request)
     {
-        // dd($request->all());
         // dd($this->getSetProfileData($request->all()));
-
+        
         $this->validate($request, [
             'old_password' => 'required',
             'password' => 'required|confirmed'
@@ -130,11 +205,11 @@ class AlumnusController extends Controller
         if (Hash::check($request->old_password, auth()->user()->password)) {
             $password = Hash::make($request->password);
             User::find(auth()->user()->id)->update(compact('password'));
-            return redirect()->route('alumnus.profile')->with('success', 'password changed successfully');
+            return redirect()->route('alumnus.password')->with('success', 'Password updated successfully');
             
         } else {
             
-            return redirect()->route('alumnus.profile')->with('error', 'invalid password');
+            return redirect()->route('alumnus.password')->with('error', 'Old password is incorrect');
         }
     }
 
