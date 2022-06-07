@@ -40,6 +40,10 @@
             box-sizing: border-box; */
         }
 
+        .dropdown-item:hover {
+            cursor: pointer;
+        }
+
     </style>
     <style>
         /* .alumnus-hover:hover a{
@@ -193,6 +197,14 @@
     {{-- toggle chart & table --}}
     <script>
         $(function() {
+            $('.table-chart-btn').click(function () {
+                
+                $('#chart-' + $(this).attr('id')).toggleClass('active')
+                $('#table-' + $(this).attr('id')).toggleClass('active')
+
+                $(this).children('.table-icon').toggleClass('d-none');
+                $(this).children('.chart-icon').toggleClass('d-none');
+            })
             $('.chart-btn').click(function() {
                 // console.log($('#chart-' + $(this).attr('id')));
                 // console.log('#chart-' + $(this).attr('id'));
@@ -260,7 +272,7 @@
                     exclude: ".noExl",
                     name: "aqms_report",
                     filename: "stat sheet",
-                    fileext: ".xls",
+                    fileext: ".xlsx",
                     exclude_img: true,
                     exclude_links: true,
                     exclude_inputs: true

@@ -49,7 +49,7 @@
                 Gender
             </div>
         </div>
-        <div class="custom-control custom-checkbox pl-1 align-self-center pr-4">
+        {{-- <div class="custom-control custom-checkbox pl-1 align-self-center pr-4">
             <button class="btn btn-outline-theme-3 icon-button" data-toggle="dropdown">
                 <i class="iconsminds-files"></i>
             </button>
@@ -61,7 +61,7 @@
                     <a href="#" class="dropdown-item">As excel file</a>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
     <div class="num-response">
         <h6>{{ $survey->submissions->count() }} @if ($survey->submissions->count() == 1)
@@ -85,7 +85,7 @@
                 Sessions
             </div>
         </div>
-        <div class="custom-control custom-checkbox pl-1 align-self-center pr-4">
+        {{-- <div class="custom-control custom-checkbox pl-1 align-self-center pr-4">
             <button class="btn btn-outline-theme-3 icon-button" data-toggle="dropdown">
                 <i class="iconsminds-files"></i>
             </button>
@@ -97,7 +97,7 @@
                     <a href="#" class="dropdown-item">As excel file</a>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
     <div class="num-response">
         <h6>{{ $survey->submissions->count() }} @if ($survey->submissions->count() == 1)
@@ -122,7 +122,7 @@
                 Departments
             </div>
         </div>
-        <div class="custom-control custom-checkbox pl-1 align-self-center pr-4">
+        {{-- <div class="custom-control custom-checkbox pl-1 align-self-center pr-4">
             <button class="btn btn-outline-theme-3 icon-button" data-toggle="dropdown">
                 <i class="iconsminds-files"></i>
             </button>
@@ -134,7 +134,7 @@
                     <a href="#" class="dropdown-item">As excel file</a>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
     <div class="num-response">
         {{-- // TODO: --}}
@@ -154,7 +154,7 @@
                 Year Group
             </div>
         </div>
-        <div class="custom-control custom-checkbox pl-1 align-self-center pr-4">
+        {{-- <div class="custom-control custom-checkbox pl-1 align-self-center pr-4">
             <button class="btn btn-outline-theme-3 icon-button" data-toggle="dropdown">
                 <i class="iconsminds-files"></i>
             </button>
@@ -167,7 +167,7 @@
                 </div>
             </div>
 
-        </div>
+        </div> --}}
     </div>
     <div class="num-response">
         <h6>XX Participants</h6>
@@ -185,7 +185,7 @@
                 Survey TimeLine
             </div>
         </div>
-        <div class="custom-control custom-checkbox pl-1 align-self-center pr-4">
+        {{-- <div class="custom-control custom-checkbox pl-1 align-self-center pr-4">
             <button class="btn btn-outline-theme-3 icon-button" data-toggle="dropdown">
                 <i class="iconsminds-files"></i>
             </button>
@@ -198,7 +198,7 @@
                 </div>
             </div>
 
-        </div>
+        </div> --}}
     </div>
     <!-- <div class="num-response">
         <h6>64 Participants</h6>

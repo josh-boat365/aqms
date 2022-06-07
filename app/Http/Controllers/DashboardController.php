@@ -111,8 +111,13 @@ class DashboardController extends Controller
                 $unupdatedCount++;
         }
         $alumnus = User::find(Auth::user()->id);
+        // $unupdatedCount
+        $users = User::all()->where('user_type', 'Alumnus');
+        $notifications = Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2);
+        $allSurveys = Survey::all();
+        $submissions = Submission::all();
 
-        return view('dashboard.users.index')->with(['unupdatedCount' => $unupdatedCount, 'users' => User::all(), 'notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2), 'allSurveys' => Survey::all(), 'users' => User::all(), 'submissions' => Submission::all(), 'notifications' => Notification::where('notification_type_id', 1)->orWhere('notification_type_id', 2),]);
+        return view('dashboard.users.index', compact('users', 'notifications', 'allSurveys', 'submissions', 'unupdatedCount'));
     }
 
     public function analytics()

@@ -114,16 +114,10 @@ $ind = 1;
                         <span class="heading-number d-inline-block">{{ $i + 1 }}
                         </span>
                     </div>
-                    <!-- Toggle view for chart -->
                     <div class="custom-control toggle-chart custom-checkbox pl-1 align-self-center pr-0">
-                        <button class="btn btn-outline-theme-3 icon-button chart-btn" id="{{$survey->questions[$i]->id}}">
-                            <i class="iconsminds-pie-chart-3"></i>
-                        </button>
-                    </div>
-                    <!-- Toggle view for table -->
-                    <div class="custom-control toggle-chart custom-checkbox pl-1 align-self-center pr-0">
-                        <button class="btn btn-outline-theme-3 icon-button table-btn" id="{{$survey->questions[$i]->id}}">
-                            <i class="iconsminds-align-justify-all"></i>
+                        <button class="btn btn-outline-theme-3 icon-button table-chart-btn" id="{{$survey->questions[$i]->id}}">
+                            <i class="iconsminds-align-justify-all table-icon"></i>
+                            <i class="iconsminds-pie-chart-3 d-none chart-icon"></i>
                         </button>
                     </div>
                     <!-- button for copying/downloading     -->
@@ -135,8 +129,8 @@ $ind = 1;
                             {{-- <a class="dropdown-toggle" data-toggle="dropdown" href="#"
                                 style="padding-left:20px">Download</a>
                             <div class="dropdown-menu"> --}}
-                                <a href="#" class="dropdown-item">chart</a>
-                                <a href="#" class="dropdown-item export-btn" >table</a>
+                                {{-- <a href="#" class="dropdown-item">chart</a> --}}
+                                <a class="dropdown-item export-btn" >table</a>
                                 {{-- <a href="#" class="dropdown-item"> As excel file</a> --}}
                             {{-- </div> --}}
                         </div>
@@ -212,18 +206,14 @@ $ind = 1;
                         <span class="heading-number d-inline-block">{{ $i + 1 }}
                         </span>
                     </div>
-                    <!-- Toggle view for chart -->
+
                     <div class="custom-control toggle-chart custom-checkbox pl-1 align-self-center pr-0">
-                        <button class="btn btn-outline-theme-3 icon-button chart-btn" id="{{$survey->questions[$i]->id}}">
-                            <i class="iconsminds-pie-chart-3"></i>
+                        <button class="btn btn-outline-theme-3 icon-button table-chart-btn" id="{{$survey->questions[$i]->id}}">
+                            <i class="iconsminds-align-justify-all table-icon"></i>
+                            <i class="iconsminds-pie-chart-3 d-none chart-icon"></i>
                         </button>
                     </div>
-                    <!-- Toggle view for table -->
-                    <div class="custom-control toggle-chart custom-checkbox pl-1 align-self-center pr-0">
-                        <button class="btn btn-outline-theme-3 icon-button table-btn" id="{{$survey->questions[$i]->id}}">
-                            <i class="iconsminds-align-justify-all"></i>
-                        </button>
-                    </div>
+
                     <!-- button for copying/downloading     -->
                     <div class="custom-control custom-checkbox pl-1 align-self-center pr-4">
                         <button class="btn btn-outline-theme-3 icon-button" data-toggle="dropdown">
@@ -233,8 +223,8 @@ $ind = 1;
                             {{-- <a class="dropdown-toggle" data-toggle="dropdown" href="#"
                                 style="padding-left:20px">Download</a>
                             <div class="dropdown-menu"> --}}
-                                <a href="#" class="dropdown-item">chart</a>
-                                <a href="#" class="dropdown-item export-btn" >table</a>
+                                {{-- <a href="#" class="dropdown-item">chart</a> --}}
+                                <a class="dropdown-item export-btn" >table</a>
                                 {{-- <a href="#" class="dropdown-item"> As excel file</a> --}}
                             {{-- </div> --}}
                         </div>
@@ -248,10 +238,10 @@ $ind = 1;
                         <label class="preview-question">
                             {{ $survey->questions[$i]->question }}
                         </label>
-                        <div id="chart-{{$survey->questions[$i]->id}}" style="width: 60%; margin: 0 auto;" class="active mb-4">
+                        <div id="chart-{{$survey->questions[$i]->id}}" style="width: 60%; margin: 0 auto; display: none" class="active mb-4 chart">
                             <canvas id="drop-{{ $i }}"></canvas>
                         </div>
-                        <div style="display: none" id="table-{{$survey->questions[$i]->id}}">
+                        <div style="display: none" id="table-{{$survey->questions[$i]->id}}" >
                             <table class="col-12 table table-hover alyt-table-q exportTable">
                                 <thead class="t-head-q">
                                     <tr>

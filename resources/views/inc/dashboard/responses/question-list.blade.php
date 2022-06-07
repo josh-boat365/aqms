@@ -36,10 +36,11 @@
                                     @foreach ($survey->options->where('question_id', $survey->questions[$i]->id) as $option)
                                         <div class="custom-control custom-radio"><input value="{{ $option->option }}"
                                                 type="radio"
-                                                @foreach ($allResponses->where('user_id', $submission->user_id) as $response) @if ($response->option_id == $option->id) checked @endif @endforeach
-                                                id="o{{ $option->id }}"
-                                                name="ans[{{ $survey->questions[$i]->id }}]"
-                                                class="custom-control-input" disabled>
+                                                @foreach ($allResponses->where('user_id', $submission->user_id) as $response) @if ($response->option_id == $option->id) checked @endif
+                                                @endforeach
+                                            id="o{{ $option->id }}"
+                                            name="ans[{{ $survey->questions[$i]->id }}]"
+                                            class="custom-control-input" disabled>
                                             <label class="custom-control-label"
                                                 for="o{{ $option->id }}">{{ $option->option }}</label>
                                         </div>
@@ -49,7 +50,8 @@
                                         <select disabled="disabled" class="form-control select2-single">
                                             @foreach ($survey->options->where('question_id', $survey->questions[$i]->id) as $option)
                                                 <option
-                                                    @foreach ($allResponses->where('user_id', $submission->user_id) as $response) @if ($response->question_id == $survey->questions[$i]->id && $response->response == $option->option) selected @endif @endforeach
+                                                    @foreach ($allResponses->where('user_id', $submission->user_id) as $response) @if ($response->question_id == $survey->questions[$i]->id && $response->response == $option->option) selected @endif
+                                                    @endforeach
                                                     value="{{ $option->option }}">{{ $option->option }}</option>
                                             @endforeach
                                         </select>
@@ -59,9 +61,10 @@
                                         <div class="custom-control d-flex custom-checkbox">
                                             <input value="{{ $option->option }}" class="custom-control-input"
                                                 type="checkbox"
-                                                @foreach ($allResponses->where('user_id', $submission->user_id) as $response) @if ($response->option_id == $option->id) checked @endif @endforeach
-                                                name="ans[{{ $survey->questions[$i]->id }}][{{ $option->id }}]"
-                                                class="form-control" id="o{{ $option->id }}" disabled>
+                                                @foreach ($allResponses->where('user_id', $submission->user_id) as $response) @if ($response->option_id == $option->id) checked @endif
+                                                @endforeach
+                                            name="ans[{{ $survey->questions[$i]->id }}][{{ $option->id }}]"
+                                            class="form-control" id="o{{ $option->id }}" disabled>
                                             <label for="o{{ $option->id }}"
                                                 class="custom-control-label">{{ $option->option }}</label>
                                         </div>
@@ -92,27 +95,25 @@
                                                                 @foreach ($allResponses->where('user_id', $submission->user_id) as $response) 
                                                                     @if ($response->response == $columnOption->option) 
                                                                         @if ($response->option_id == $option->id)
-                                                                            checked 
-                                                                        @endif 
-
-                                                                    @endif 
-                                                              @endforeach>
-                                                        </div>
-                                                    @endforeach
-
-
-
+                                                                            checked @endif
+                                                                @endif
+                                                    @endforeach>
                                                 </div>
                                             @endforeach
 
+
+
                                         </div>
-                                    </div>
-                                @endif
+                                @endforeach
+
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        @endfor
+        @endif
     </div>
+    </div>
+    </div>
+    </div>
+    </div>
+@endfor
+</div>
 @endforeach

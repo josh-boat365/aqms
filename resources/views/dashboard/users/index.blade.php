@@ -38,9 +38,9 @@
     @include('inc.dashboard.side-bar', ['surveys' => $allSurveys])
 
 
-    
+
     @extends('inc.dashboard.users.users-content')
-    
+
 
 
     {{-- @section('submission-tiles')
@@ -62,7 +62,7 @@
                     class="float-right">null</span></a></li>
     @endsection --}}
 
-  
+
 
 
     <script src="{{ asset('js/vendor/jquery-3.3.1.min.js') }}"></script>
@@ -163,10 +163,38 @@
     </script>
 
     <script>
-        $(function () {
+        $(function() {
             $('#user-section').addClass('active');
         })
     </script>
+
+<script src="{{asset('js/jquery.table2excel.js')}}"></script>
+    <script>
+        $(function() {
+            $(".export-btn").click(function() {
+                $table = $(this).parent().parent().parent().parent().parent().find('#usersTable')
+                // console.log($table);
+                $table.table2excel({
+                    exclude: ".noExl",
+                    name: "aqms_report",
+                    filename: "users sheet",
+                    fileext: ".xlsx",
+                    exclude_img: true,
+                    exclude_links: true,
+                    exclude_inputs: true
+                });
+                // console.log($(this));
+                // $(".exportTable").table2excel({
+                //     // exclude CSS class
+                //     exclude: ".noExl",
+                //     name: "aqms_report",
+                //     filename: "stat", //do not include extension
+                //     fileext: ".xls" // file extension
+                // });
+            });
+        })
+    </script>
+
     @include('footer')
 </body>
 
