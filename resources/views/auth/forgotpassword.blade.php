@@ -40,7 +40,7 @@
                             </p>
 
                             <p class="white">We look forward to receiving your responses.</p>
-                            <a href="{{ route('login') }}" class="white btn btn-outline-primary font-weight-bold h5">Login</a>.</p>
+                            <a href="{{ route('login') }}" class="white btn btn-primary font-weight-bold h5">Login</a>.</p>
                         </div>
                         <div class="form-side position-relative">
                             @if (session('error'))

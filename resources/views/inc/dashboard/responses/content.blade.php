@@ -56,7 +56,7 @@
                     <div class="tab-pane show" id="fifth" role="tabpanel" aria-labelledby="fifth-tab">
                         <div class="d-flex" style="gap: 34rem;" >
                                  <h1>Survey Level Analytics</h1>
-                                 <button type="button" id="add-new-btn" style="position: relative; bottom: 0.7rem;" class="btn btn-primary  top-right-button mr-1 dropdown-toggle" data-toggle="dropdown" >Download Survey Report</button>
+                                 <button type="button" id="add-new-btn" style="position: relative; bottom: 0.7rem; padding: 1rem !impoart; width: 18%; height: 20%;" class="btn btn-primary  top-right-button mr-1 dropdown-toggle" data-toggle="dropdown" >Download Survey Report</button>
                                     <div class="dropdown-menu">
                                         <a href="#" class="dropdown-item"> As csv file</a>
                                         <a href="#" class="dropdown-item"> As pdf file</a>
