@@ -40,7 +40,7 @@
                                     <a href="#" class="card">
                                         <div class="card-body text-center"><i class="iconsminds-student-hat"></i>
                                             <p class="card-text mb-0">Full-Time Session</p>
-                                            <p class="lead text-center">XX</p>
+                                            <p class="lead text-center">{{ $users->where('session', 'Full-time')->count()}}</p>
                                         </div>
                                     </a>
                                 </li>
@@ -48,7 +48,7 @@
                                     <a href="#" class="card">
                                         <div class="card-body text-center"><i class="iconsminds-diploma-2"></i>
                                             <p class="card-text mb-0">Part-Time Session</p>
-                                            <p class="lead text-center">XX</p>
+                                            <p class="lead text-center">{{ $users->where('session', 'Part-time')->count()}}</p>
                                         </div>
                                     </a>
                                 </li>
@@ -117,22 +117,22 @@
                                         <td>{{ $user->firstName }} {{ $user->lastName }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>
-                                            @isset($user->contact)
-                                                {{ $user->contact }}
+                                            @isset($user->phone)
+                                                {{ $user->phone }}
                                                 @else
                                                 ---
                                                 @endisset
                                             </td>
                                             <td>
-                                                @isset($user->$user->department_of_study)
-                                                {{ $user->$user->department_of_study }}
+                                                @isset($user->department_of_study)
+                                                {{ $user->department_of_study }}
                                                 @else
                                                 ---
                                                 @endisset
                                             </td>
                                             <td>
-                                                @isset($user->$user->program_of_study)
-                                                {{ $user->$user->program_of_study }}
+                                                @isset($user->program_of_study)
+                                                {{ $user->program_of_study }}
                                                 @else
                                                 ---
                                                 @endisset

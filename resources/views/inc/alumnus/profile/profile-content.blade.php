@@ -32,7 +32,7 @@
                                     src="{{ asset('img/profiles/atulogo.png') }}"></div>
                             <div class="col-12 col-lg-5 col-xl-4 col-left">
                                 <a href="#" class="lightbox"><img alt="Profile"
-                                        src="{{ asset('img/profiles/p-a1.png') }}"
+                                        src="{{ asset('img/profiles/profile-icon-atu.png') }}"
                                         class="img-thumbnail card-img social-profile-img img-border"></a>
                                 <div class="card mb-4">
                                     <div class="card-body">
