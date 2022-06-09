@@ -47,7 +47,7 @@
 
                             <p class="white">We look forward to receiving your responses.</p>
                             {{-- <form action="{{route('register')}}">@csrf @method('put') <input class="white font-weight-bold h5" type="submit" value="Register"></form> --}}
-                            <span id="register-admin-btn" class="white btn btn-outline-primary font-weight-bold h5">Register</span>
+                            <span id="register-admin-btn" class="white btn btn-primary font-weight-bold h5">Register</span>
                         </p>
                         </div>
                         <div class="form-side position-relative">

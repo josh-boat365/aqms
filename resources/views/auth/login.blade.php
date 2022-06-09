@@ -41,7 +41,7 @@
 
                             <p class="white">We look forward to receiving your responses.</p>
                             {{-- <form action="{{route('register')}}">@csrf @method('')</form> --}}
-                            <a href="{{ route('register') }}" class="white btn btn-outline-primary font-weight-bold h4">Register</a>.</p>
+                            <a href="{{ route('register') }}" class="white btn btn-primary font-weight-bold h4">Register</a>.</p>
                         </div>
                         <div class="form-side position-relative">
                             @if (session('error'))
