@@ -42,4 +42,10 @@ class Survey extends Model
     public function responses(){
         return $this->hasManyThrough(Response::class, Question::class);
     }
+
+    // public function respondent(){
+    //     return $this->
+    // }
+
+    
 }

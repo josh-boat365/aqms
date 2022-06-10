@@ -63,6 +63,7 @@
                          <thead class="t-head">
                              <tr>
                                  <th class="col-1">#</th>
+                                 <th class="col-1">Alumni</th>
                                  <th class="col-5">Questions</th>
                                  <th class="col-6">Responses</th>
                              </tr>
@@ -71,9 +72,10 @@
                              @php
                                  $ind = 1;
                              @endphp
-                             @foreach ($survey->questions as $question)
+                             {{-- @foreach ($survey->questions as $question)
                                  <tr>
                                      <td>{{ $ind++ }}</td>
+                                     
                                      <td>{{ $question->question }}</td>
                                      <td>
                                          @foreach ($survey->responses->where('question_id', $question->id) as $response)
@@ -81,6 +83,15 @@
                                          @endforeach
                                      </td>
 
+                                 </tr>
+                             @endforeach --}}
+
+                             @foreach ($survey->responses as $response)
+                                 <tr>
+                                    <td>{{ $ind++ }}</td>
+                                    <td>{{ $users->where('id', $response->user_id)->first()->firstName }}</td>
+                                    <td>{{ $response->question->question }}</td>
+                                    <td>{{ $response->response }}</td>
                                  </tr>
                              @endforeach
 
