@@ -13,7 +13,5 @@ class Response extends Model
         return $this->belongsTo(Question::class);
     }
 
-    public function respondent(){
-        return $this->belongsTo(User::class);
-    }
+    
 }
