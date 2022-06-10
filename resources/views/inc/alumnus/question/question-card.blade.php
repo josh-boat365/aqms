@@ -10,7 +10,8 @@
         width: 50%;
     }
 
-   span[class="select2 select2-container select2-container--bootstrap"]{
+   span[class="select2 select2-container select2-container--bootstrap"],
+   span[class="select2 select2-container select2-container--bootstrap select2-container--above"]{
        width: 100% !important;
    }
 
@@ -19,9 +20,15 @@
             position: relative;
             left: -22%;
             max-width: 100%;
-            min-width: 24rem;
-            /* font-size: 50%;*/
+            min-width: 28rem;
+            /* font-size: 50%; */
 
+        }
+        .col-font,
+        .row-font{
+            font-size:70%;
+            width: 4rem;
+            font-weight: 800;
         }
 
         .f2 {
@@ -105,13 +112,13 @@
                                 <div style="height: 50px"></div>
                                 @foreach ($question->options->where('row_column', 'row') as $option)
 
-                                <div class="text-center mb-2 grid-row">{{ $option->option }}</div>
+                                <div class="text-center mb-2 grid- row-font">{{ $option->option }}</div>
                                 @endforeach
                             </div>
                             <div class="col-10 row grid-column-group" style="flex-wrap: nowrap">
                                 @foreach ($question->options->where('row_column', 'column') as $columnOption)
                                 <div class="d-flex flex-column justify-content-between grid-column" style="width: 100%; height: 100%; min-width: 100px">
-                                    <div class="d-flex align-items-center justify-content-center w-100" style="height: 50px">{{ $columnOption->option }}</div>
+                                    <div class="d-flex align-items-center justify-content-center w-100 col-font" style="height: 50px">{{ $columnOption->option }}</div>
 
                                     @foreach ($question->options->where('row_column', 'row') as $option)
                                     <div class="d-flex justify-content-center mb-2 check-box">

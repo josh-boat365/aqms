@@ -1,4 +1,7 @@
 <style>
+    span[class="select2 select2-container select2-container--bootstrap select2-container--below select2-container--open"]{
+        width: 100% !important;
+    }
     .profile-banner {
         width: 100% !important;
         height: 450px;
@@ -14,6 +17,19 @@
 
     .nav-link:hover {
         cursor: pointer;
+    }
+    @media (min-width: 320px) and (max-width: 672px){
+        .profile-banner{
+            width: 100% !important;
+            height: auto;
+        }
+        .img-border {
+            position: absolute;
+            top: -3rem;
+            width: 30%;
+            height: 20%;
+        }
+
     }
 
 </style>

@@ -1,5 +1,6 @@
 <style type="text/css">
-    @media (min-width: 320px)and (max-width: 639px) {
+
+    @media (min-width: 320px)and (max-width: 672px) {
         .navbar {
             width: 100%;
             justify-content: space-between;
@@ -18,6 +19,13 @@
 
         nav .atu-icon a img {
             width: 45%;
+        }
+        .dropdown-menu{
+            width: 23.4rem !important;
+        }
+        .notification-tab{
+            position: relative;
+            right: 1.5rem;
         }
     }
 
@@ -67,7 +75,7 @@
                 <div class="dropdown-menu dropdown-menu-right mt-3 position-absolute" id="notificationDropdown" style="width: 25rem">
                     <div class="scroll">
                         @foreach ($notifications->where('notification_type_id', 3) as $notification)
-                            <div class="d-flex flex-row mb-2 pb-3 separator" style="background-color: #fdfdfd; padding: 0.5rem;">
+                            <div class="d-flex flex-row mb-2 pb-3 separator notification-tab" style="background-color: #fdfdfd; padding: 0.5rem;">
                                 <a href="#">
                                     <img src="{{ asset('img/profiles/atu-logo-round.png') }}" alt="Notification Image"
                                         class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle">
