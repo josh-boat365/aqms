@@ -138,7 +138,13 @@
     </div>
     <div class="num-response">
         {{-- // TODO: --}}
-        <h6>XX Participants</h6>
+        {{-- <h6>XX Participants</h6> --}}
+        <h6>{{ $survey->submissions->count() }} @if ($survey->submissions->count() == 1)
+                Participant
+            @else
+                Participant
+            @endif
+        </h6>
     </div>
     <div class="department-chart card-body chart-body pt-0">
         <canvas id="departmentsChart"></canvas>
@@ -170,7 +176,13 @@
         </div> --}}
     </div>
     <div class="num-response">
-        <h6>XX Participants</h6>
+        {{-- <h6>XX Participants</h6> --}}
+        <h6>{{ $survey->submissions->count() }} @if ($survey->submissions->count() == 1)
+                Participant
+            @else
+                Participant
+            @endif
+        </h6>
     </div>
     <div class="chart department-chart card-body chart-body pt-0">
         <canvas id="yearGroupChart"></canvas>

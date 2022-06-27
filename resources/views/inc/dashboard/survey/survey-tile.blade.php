@@ -47,8 +47,15 @@
                 </div>
                 
                <div class="col-3 title-info">
-                <div class="w-15  w-xs-100"><span class="badge badge-pill badge-secondary" style="position: relative; left: 3.2rem;">{{ $status->status }}</span>
-                </div>
+                @if ($status->status == 'Draft')
+                <div class="w-15  w-xs-100"><span class="badge badge-pill badge-secondary" style="position: relative; left: 3.2rem;">Draft</span></div>
+                @elseif ($status->status == 'Archived')
+                <div class="w-15  w-xs-100"><span class="badge badge-pill badge-danger" style="position: relative; left: 3.2rem;">Archived</span></div>
+                @elseif ($status->status == 'Deployed')
+                <div class="w-15  w-xs-100"><span class="badge badge-pill badge-success" style="position: relative; left: 3.2rem;">Deployed</span></div>
+                @endif
+                {{-- <div class="w-15  w-xs-100"><span class="badge badge-pill badge-secondary" style="position: relative; left: 3.2rem;">{{ $status->status }}</span>
+                </div> --}}
                </div>
     
             </div><label class="custom-control custom-checkbox mb-1 align-self-center mr-4"><input type="checkbox"

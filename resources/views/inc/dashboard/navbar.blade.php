@@ -65,18 +65,18 @@
 
                         @foreach ($notifications->get() as $notification)
                             <div class="d-flex flex-row mb-2 pb-3 separator" style="background-color: #fdfdfd; padding: 0.5rem;">
-                                <a href="#">
+                                {{-- <a href="#">
                                     <img src="{{ asset('img/profiles/atu-logo-round.png') }}" alt="Notification Image"
                                         class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle">
 
-                                </a>
+                                </a> --}}
                                 <div class="pl-3">
                                     @if ($notification->notification_type_id == 2)
                                         <a href="{{url('/dashboard/submissions/' . $notification->survey_id )}}">
                                         @else
                                             <a href="">
                                     @endif
-                                    <div class="d-flex" style="position: relative; top: 1.2rem; right: 1rem; gap: 0.8rem;">
+                                    <div class="d-flex" style="position: relative; top: 0.7rem; right: 1rem; gap: 0.8rem;">
                                         @if ($notification->notification_type_id == 1)
                                         <p class="font-weight-medium badge badge-pill badge-secondary">
                                             New user:
@@ -96,8 +96,10 @@
                                             @endforeach</p>
                                     @endif
                                     <p class="text-muted  text-small">
-                                        {{ $notification->created_at->format('d/m/y') }}
-                                        ({{ $notification->created_at->format(' h : s ') }})</p>
+                                        {{-- {{ $notification->created_at->format('d/m/y') }} --}}
+                                        {{ $notification->created_at->format('l jS \of F Y h:i:s A') }}
+                                        {{-- ({{ $notification->created_at->format(' h : s ') }})</p> --}}
+                                        {{-- format('l jS \of F Y h:i:s A') --}}
                                     </div>
                                     
                                     </a>

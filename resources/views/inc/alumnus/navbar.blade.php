@@ -57,11 +57,11 @@
             href="https://1.envato.market/5kAb">&nbsp;BUY&nbsp;</a> --}}
     </div>
     {{-- logo --}}
-    <div class="atu-icon" style=" width:8rem">
+    {{-- <div class="atu-icon" style=" width:8rem">
         <a href="">
             <img src="/img/custom/atulogo.png" height="100%" width="90%" alt="">
         </a>
-    </div>
+    </div> --}}
     {{-- <h1>{{$survey->name}}</h1> --}}
     <div class="navbar-right">
         <div class="header-icons d-inline-block align-middle">
@@ -76,23 +76,24 @@
                     <div class="scroll">
                         @foreach ($notifications->where('notification_type_id', 3) as $notification)
                             <div class="d-flex flex-row mb-2 pb-3 separator notification-tab" style="background-color: #fdfdfd; padding: 0.5rem;">
-                                <a href="#">
+                                {{-- <a href="#">
                                     <img src="{{ asset('img/profiles/atu-logo-round.png') }}" alt="Notification Image"
                                         class="img-thumbnail list-thumbnail xsmall border-0 rounded-circle">
 
-                                </a>
+                                </a> --}}
                                 <div class="pl-3">
                                     <a href="{{ url('/home/surveys/' . $notification->survey_id) }}">
                                         <div class="d-flex" style="position: relative; top: 1.2rem; gap: 4.8rem;">
                                             {{-- <p class="font-weight-medium "> New Survey:</p> --}}
-                                            <p class="font-weight-medium text-nowrap truncate" style="margin-left: -1rem" > @foreach ($allSurveys->where('id', $notification->survey_id) as $survey)
+                                            <p class="font-weight-medium text-nowrap " style="margin-left: -1rem" > @foreach ($allSurveys->where('id', $notification->survey_id) as $survey)
                                                     {{ $survey->name }} 
                                                 @endforeach
                                             </p>
 
-                                            <p class="text-muted text-nowrap text-small">
-                                                {{ $notification->created_at->format('d/m/y') }}
-                                                ({{ $notification->created_at->format(' h : s ') }})
+                                            <p class="text-muted text-wrap text-small">
+                                                {{-- {{ $notification->created_at->format('d/m/y') }} --}}
+                                                {{ $notification->created_at->format('l jS \of F Y h:i:s A') }}
+                                                {{-- ({{ $notification->created_at->format(' h : s ') }}) --}}
                                             </p>
                                         </div>
                                     </a>

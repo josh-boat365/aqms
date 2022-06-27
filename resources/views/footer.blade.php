@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 col-sm-6">
-                    <p class="mb-0 text-muted">&copy; Copyright 2021 - <script type="text/javascript"> document.write( new Date().getFullYear()) </script> <a href="https://atu.edu.gh" target="_blank" rel="noopener noreferrer">Accra  Technical University</a> </p>
+                    <p class="mb-0 text-muted">&copy; Copyright <script type="text/javascript"> document.write( new Date().getFullYear()) </script> <a href="https://atu.edu.gh" target="_blank" rel="noopener noreferrer">Accra  Technical University</a> </p>
                 </div>
                 <div class="col-sm-6 d-none d-sm-block">
                     <ul class="breadcrumb pt-0 pr-0 float-right">

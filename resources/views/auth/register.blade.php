@@ -87,7 +87,8 @@
                                         type="password" required>
                                     <span>Confirm Password</span>
                                 </div>
-                                <button type="submit" class="btn btn-primary float-right">Register</button>
+                                
+                                <button type="submit" data-toggle="modal" data-target="#checkEmailModal" class="btn btn-primary float-right">Register</button>
                             </form>
                             <form action="{{route('login')}}" method="POST" id="login-admin-form">
                                 @csrf
@@ -97,6 +98,7 @@
                     </div>
                 </div>
             </div>
+           
         </div>
     </main>
 @endsection

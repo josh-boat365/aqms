@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{{ asset('css/vendor/baguetteBox.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dore.light.bluenavy.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('img/profiles/profile-icon-atu.png') }}">
 
     <style>
         .theme-colors {
@@ -143,7 +144,7 @@
         $(function() {
             setTimeout(() => {
                 $('#notification').fadeIn('slow')
-            }, 1500);
+            }, 2500);
         })
         $(function() {
             setTimeout(() => {

@@ -105,6 +105,7 @@ $ind = 1;
                 </div>
             </div>
         </div>
+        {{-- Option type for single select - radio button --}}
     @elseif ($survey->questions[$i]->option_type_id == 3)
         <div class="card question d-flex mb-4 card-style">
             <div class="d-flex flex-grow-1 min-width-zero">
@@ -282,6 +283,7 @@ $ind = 1;
                 </div>
             </div>
         </div>
+        {{-- Option type for multiple select - checkbox --}}
     @elseif ($survey->questions[$i]->option_type_id == 5)
         <div class="card question d-flex mb-4 card-style">
             <div class="d-flex flex-grow-1 min-width-zero">
@@ -290,6 +292,28 @@ $ind = 1;
                     <div class="list-item-heading mb-0 truncate w-80 mb-1 mt-1">
                         <span class="heading-number d-inline-block">{{ $i + 1 }}
                         </span>
+                    </div>
+                    {{-- toggle chart and download button --}}
+                     <div class="custom-control toggle-chart custom-checkbox pl-1 align-self-center pr-0">
+                        <button class="btn btn-outline-theme-3 icon-button table-chart-btn" id="{{$survey->questions[$i]->id}}">
+                            <i class="iconsminds-align-justify-all table-icon"></i>
+                            <i class="iconsminds-bar-chart-4 d-none chart-icon"></i>
+                        </button>
+                    </div>
+                    <!-- button for copying/downloading     -->
+                    <div class="custom-control custom-checkbox pl-1 align-self-center pr-4">
+                        <button class="btn btn-outline-theme-3 icon-button" data-toggle="dropdown">
+                            <i class="iconsminds-download"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            {{-- <a class="dropdown-toggle" data-toggle="dropdown" href="#"
+                                style="padding-left:20px">Download</a>
+                            <div class="dropdown-menu"> --}}
+                                {{-- <a href="#" class="dropdown-item">chart</a> --}}
+                                <a class="dropdown-item export-btn" >table</a>
+                                {{-- <a href="#" class="dropdown-item"> As excel file</a> --}}
+                            {{-- </div> --}}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -302,6 +326,43 @@ $ind = 1;
                         </label>
                         <div class="mb-4">
                             <canvas id="check-{{ $i }}"></canvas>
+                        </div>
+                        <div style="display: none" id="table-{{$survey->questions[$i]->id}}">
+                            <table class="col-12 table table-hover alyt-table-q exportTable">
+                                <thead class="t-head-q">
+                                    <tr>
+                                        <th class="col-1">#</th>
+                                        <th class="col-3">Number of respondents</th>
+                                        <th class="col-8">Answer</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach ($survey->questions[$i]->options as $option)
+                                        <tr>
+                                            <td>{{$ind++}}</td>
+                                            <td>{{$survey->responses->where('question_id', $survey->questions[$i]->id)->where('option_id', $option->id)->count()}}</td>
+                                            <td>{{$option->option}}</td>
+                                        </tr>
+                                     @endforeach
+
+
+                                </tbody>
+                                {{-- <tbody> --}}
+                                {{-- <tr>
+                                        <td>1</td>
+                                        <td>50</td>
+                                        <td>Male</td>
+                                    </tr> --}}
+                                {{-- @for ($s = 1; $s <= $survey->options->where('question_id', $survey->questions[$i]->id)->count(); $s++)
+                                        <tr>
+                                        <td>{{$s}}</td>
+                                        <td>{{$survey->responses->where('question_id', $survey->questions[$i]->id)->where('response', $survey->options->where('question_id', $survey->questions[$i]->id))->count()}}</td>
+                                    </tr>
+                                    @endfor --}}
+
+                                {{-- </tbody> --}}
+                            </table>
                         </div>
                     </div>
                 </div>

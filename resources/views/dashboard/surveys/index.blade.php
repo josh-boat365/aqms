@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{{ asset('css/vendor/component-custom-switch.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dore.light.bluenavy.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('img/profiles/profile-icon-atu.png') }}">
 
     <style>
         .theme-colors {

@@ -108,7 +108,6 @@
                                     <th>Department</th>
                                     <th>Program of Study</th>
                                     <th>Year of Completion</th>
-                                    {{-- <th>Gender</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
@@ -144,7 +143,6 @@
                                                     ---
                                                 @endisset
                                             </td>
-                                        {{-- <td>{{$user->year_of_completion}}</td> --}}
                                     </tr>
                                 @endforeach
 
