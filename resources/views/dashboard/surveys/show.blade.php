@@ -43,7 +43,6 @@
         .current {
             display: block !important;
         }
-
     </style>
 
 
@@ -72,20 +71,21 @@
         <li class="active"><a href="#"> Questions <span
                     class="float-right">{{ $survey->questions->count() }}</span></a></li>
 
+        @if ($survey->status_id == 1)
+            <div class="text-center mt-4"><button type="button" class="btn btn-outline-primary btn-sm mb-2 add-que"><i
+                        class="simple-icon-plus btn-group-icon"></i> Add Question</button></div>
+            <div class="text-center mt-4"><button type="button" class="btn btn-outline-success btn-sm mb-2 upd-que"><i
+                        class="simple-icon-plus btn-group-icon"></i> Update</button></div>
+        @endif
 
-        <div class="text-center mt-4"><button type="button" class="btn btn-outline-primary btn-sm mb-2 add-que"><i
-                    class="simple-icon-plus btn-group-icon"></i> Add Question</button></div>
-        <div class="text-center mt-4"><button type="button" class="btn btn-outline-success btn-sm mb-2 upd-que"><i
-                    class="simple-icon-plus btn-group-icon"></i> Update</button></div>
 
         <div class="separator my-3"></div>
         @if ($survey->sections == null)
             <div class="mt-4">
-                <input type="checkbox" name="enable-section" id="enable-section"> <label for="enable-section">Enable
+                <input type="checkbox" name="enable-section" id="enable-section" @if ($survey->status_id != 1) disabled @endif> <label for="enable-section">nable
                     Sections</label>
             </div>
-            <div class="mt-2" id="section-list" class="scroll h-100 col mt-2"
-                style="max-height: 500px; display: none">
+            <div class="mt-2" id="section-list" class="scroll h-100 col mt-2" style="max-height: 500px; display: none">
                 <div class="sections">
                     <div class="position-relative my-1 py-1 ml-4 dot-active pointer" id="section-1">Untitiled~1</div>
                     {{-- <div class="position-relative my-1 py-1 ml-4">Section Two</div>
@@ -97,7 +97,7 @@
             </div>
         @else
             <div class="mt-4">
-                <input type="checkbox" name="enable-section" id="enable-section"
+                <input type="checkbox" name="enable-section" id="enable-section" @if ($survey->status_id != 1) disabled @endif
                     @if ($survey->sections->count() > 0) checked @endif> <label for="enable-section">Enable
                     Sections</label>
             </div>
@@ -1614,7 +1614,10 @@
 
                 var $options = [
                     @foreach ($optionTypes as $optionType)
-                        { id: {{ $optionType->id }}, text:'{{ $optionType->type }}' },
+                        {
+                            id: {{ $optionType->id }},
+                            text: '{{ $optionType->type }}'
+                        },
                     @endforeach
                 ]
 

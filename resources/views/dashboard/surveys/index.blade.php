@@ -43,7 +43,9 @@
 
     {{-- should be included in survey content --}}
     @extends('inc.dashboard.survey.survey-content')
-
+    @section('exp-date-input')
+        <input type="date" id="exp_date_field" name="datemin" min="{{$min_exp_day}}">
+    @endsection
 
 
     @section('survey-tiles')
@@ -178,6 +180,15 @@
     <script>
         $(function() {
             $('#survey-section').addClass('active');
+        })
+    </script>
+
+    <script>
+        $(function () {
+            $('#exp_date_field').change(function () {
+                $('#date_input_submit').val($(this).val())
+                $('#dep_btn').show();
+            })
         })
     </script>
 

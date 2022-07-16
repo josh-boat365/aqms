@@ -58,8 +58,9 @@
                                             <br>
                                             {{-- <h6>Click on date field to set date.</h6> --}}
                                             <label class="form-group has-float-label">
-                                                <input class="form-control datepicker exp-date"
-                                                    placeholder=" enter expiration date">
+                                                @yield('exp-date-input')
+                                                {{-- <input class="form-control datepicker exp-date"
+                                                    placeholder=" enter expiration date"> --}}
                                                 <span>Expiration Date</span>
                                             </label>
                                         </div>
@@ -67,12 +68,12 @@
                                             <form action="{{route('survey.deploy')}}" method="post" id="deploy-form">
                                                 <input type="hidden" name="_method" value="PUT">
                                                 <input type="hidden" name="survey_id" class="survey_id">
-                                                <input type="hidden" name="date" class="date">
+                                                <input type="hidden" name="date" id="date_input_submit" class="date">
                                                 @csrf
 
-                                                <input style="display: none" type="submit" value="Deploy" class="btn btn-secondary deploy-btn">
+                                                <input style="display: none" id="dep_btn" type="submit" value="Deploy" class="btn btn-secondary deploy-btn">
                                             </form>
-                                            <button type="button" class="btn btn-secondary"
+                                            <button type="button" class="btn btn-danger"
                                                 data-dismiss="modal">Cancel</button>
                                         </div>
                                     </div>

@@ -38,7 +38,10 @@ class DashboardController extends Controller
         $users = User::all();
         $submissions = Submission::all();
 
-        return view('dashboard.surveys.index', compact('updateProgress', 'notifications', 'allSurveys', 'users', 'submissions'));
+        
+        $min_exp_day = Carbon::now()->addDays(1)->format('Y-m-d');
+
+        return view('dashboard.surveys.index', compact('updateProgress', 'notifications', 'allSurveys', 'users', 'submissions', 'min_exp_day'));
     }
 
 
@@ -214,6 +217,7 @@ class DashboardController extends Controller
 
     public function deploySurvey(Request $request)
     {
+        // dd($request);
         $record = Survey::find($request->survey_id);
         $record->expiration_date = date('Y-m-d', strtotime($request->date));
         $record->status_id = 2;
