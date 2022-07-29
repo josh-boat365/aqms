@@ -178,6 +178,24 @@
     </script>
 
     <script>
+        $(function () {
+            $('#add_survey').click(function () {
+                $form = $(this).parent().parent();
+                $title = $form.find('#title');
+                $description = $form.find('#details');
+
+                // console.log($title.val());
+                // console.log($description.val());
+
+                if ($title.val().trim() != "" || $description.val().trim() != "") {
+                    
+                    $form.submit();
+                }
+            })
+        })
+    </script>
+
+    <script>
         $(function() {
             $('#survey-section').addClass('active');
         })

@@ -10,13 +10,13 @@
                 @csrf
                 {{-- {{ $errors }} --}}
                 <div class="form-group has-float-label position-relative"><label class="font-weight-bold">Title</label>
-                    <input type="text" class="form-control rounded" value="{{old('title')}}" name="title">
+                    <input type="text" id="title" class="form-control rounded" value="{{ old('title') }}" name="title">
                     @error('title')
                         <div class="invalid-tooltip d-block">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="form-group"><label class="font-weight-bold">Details</label>
-                    <textarea placeholder="" class="form-control rounded" rows="2" name="details">{{old('details')}}</textarea>
+                    <textarea placeholder="" id="details" class="form-control rounded" rows="2" name="details">{{ old('details') }}</textarea>
                 </div>
                 {{-- <div class="form-group"><label>Category</label> <select
                         class="form-control">
@@ -31,9 +31,9 @@
                             class="custom-control-label"
                             for="customCheck1">Completed</label></div>
                 </div> --}}
-                <div class="modal-footer"><button type="button" class="btn btn-outline-primary"
-                        data-dismiss="modal">Cancel</button>
-                    <input type="submit" class="btn btn-primary" value="Add">
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
+                    <div id="add_survey" class="btn btn-primary"> Add </div>
                 </div>
             </form>
         </div>
