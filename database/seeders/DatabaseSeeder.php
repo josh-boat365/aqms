@@ -17,27 +17,27 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        \App\Models\User::factory()->create([
-            'firstName' => "Admin",
-            'lastName' => "Muhammed",
-            'otherName' => "Code",
-            'user_type' => 'Admin',
-            'email' => "admin@gmail.com",
-            'email_verified_at' => now(),
-            'password' => Hash::make("123"), // password
-            'remember_token' => Str::random(10),
-        ]);
+        // \App\Models\User::factory()->create([
+        //     'firstName' => "Admin",
+        //     'lastName' => "Muhammed",
+        //     'otherName' => "Code",
+        //     'user_type' => 'Admin',
+        //     'email' => "admin@gmail.com",
+        //     'email_verified_at' => now(),
+        //     'password' => Hash::make("123"), // password
+        //     'remember_token' => Str::random(10),
+        // ]);
 
-        \App\Models\User::factory()->create([
-            'firstName' => "User",
-            'lastName' => "Muhammed",
-            'otherName' => "Senpai",
-            'user_type' => 'Alumnus',
-            'email' => "user1@gmail.com",
-            'email_verified_at' => now(),
-            'password' => Hash::make("123"), // password
-            'remember_token' => Str::random(10),
-        ]);
+        // \App\Models\User::factory()->create([
+        //     'firstName' => "User",
+        //     'lastName' => "Muhammed",
+        //     'otherName' => "Senpai",
+        //     'user_type' => 'Alumnus',
+        //     'email' => "user1@gmail.com",
+        //     'email_verified_at' => now(),
+        //     'password' => Hash::make("123"), // password
+        //     'remember_token' => Str::random(10),
+        // ]);
 
         \App\Models\Status::factory()->create([
             'id' => 1,
