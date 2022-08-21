@@ -43,7 +43,7 @@
                 </div>
     
                 <div class="col-3 tile-info ">
-                    <p class="mb-0 tile-x text-muted text-center text-small w-8 w-xs-100"> @if($survey->status_id == 2) {{ $survey->expiration_date }} @else --- @endif</p>
+                    <p class="mb-0 tile-x text-muted text-center text-small w-8 w-xs-100" @if($survey->status_id == 2) style="color: green !important;" @endif> @if($survey->status_id != 1) {{ $survey->expire_at->format('d-m') }} @else --- @endif</p>
                 </div>
                 
                <div class="col-3 title-info">

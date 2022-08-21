@@ -14,7 +14,7 @@ class AddExpirationDateToSurveysTable extends Migration
     public function up()
     {
         Schema::table('surveys', function (Blueprint $table) {
-            $table->date('expiration_date')->nullable();
+            $table->date('expire_at')->nullable();
         });
     }
 

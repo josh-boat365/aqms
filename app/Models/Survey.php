@@ -9,7 +9,9 @@ class Survey extends Model
 {
     use HasFactory;
 
-    protected $fillable=['name', 'description'];
+    protected $fillable=['name', 'description', 'status_id'];
+
+    protected $dates = ['created_at', 'updated_at', 'expire_at'];
 
     public function status(){
         return $this->belongsTo(Status::class);

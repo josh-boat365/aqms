@@ -227,7 +227,8 @@ class DashboardController extends Controller
     {
         // dd($request);
         $record = Survey::find($request->survey_id);
-        $record->expiration_date = date('Y-m-d', strtotime($request->date));
+        // $record->expire_at = date('Y-m-d', strtotime($request->date));
+        $record->expire_at = Carbon::parse($request->date);
         $record->status_id = 2;
         $record->save();
 
