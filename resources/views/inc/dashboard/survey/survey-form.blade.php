@@ -15,8 +15,11 @@
                         <div class="invalid-tooltip d-block">{{ $message }}</div>
                     @enderror
                 </div>
-                <div class="form-group"><label class="font-weight-bold">Details</label>
-                    <textarea placeholder="" id="details" class="form-control rounded" rows="2" name="details">{{ old('details') }}</textarea>
+                <div class="form-group has-float-label position-relative"><label class="font-weight-bold">Description</label>
+                    <textarea placeholder="" id="description" class="form-control rounded" rows="2" name="description">{{ old('description') }}</textarea>
+                    @error('description')
+                        <div class="invalid-tooltip d-block">{{ $message }}</div>
+                    @enderror
                 </div>
                 {{-- <div class="form-group"><label>Category</label> <select
                         class="form-control">
@@ -33,7 +36,8 @@
                 </div> --}}
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
-                    <div id="add_survey" class="btn btn-primary"> Add </div>
+                    <input type="submit" value="Add" class="btn btn-primary">
+                    {{-- <div id="add_survey" class="btn btn-primary"> Add </div> --}}
                 </div>
             </form>
         </div>

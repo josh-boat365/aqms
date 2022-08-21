@@ -96,10 +96,10 @@ class AuthController extends Controller
         $user->save();
 
         //notify admin
-        $notification = new Notification();
-        $notification->user_id = $user->id;
-        $notification->notification_type_id = NotificationType::where('type', 'registration')->first()->id;
-        $notification->save();
+        // $notification = new Notification();
+        // $notification->user_id = $user->id;
+        // $notification->notification_type_id = NotificationType::where('type', 'registration')->first()->id;
+        // $notification->save();
         
 
         return redirect()->route('dashboard.index');

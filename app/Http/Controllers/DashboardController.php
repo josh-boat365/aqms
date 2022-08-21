@@ -16,6 +16,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class DashboardController extends Controller
 {
@@ -165,17 +166,24 @@ class DashboardController extends Controller
 
     public function storeSurvey(Request $request)
     {
-        $this->validate($request, [
+        $validator = Validator::make($request->all(), [
             'title' => 'required|unique:App\Models\Survey,name',
+            'description' => 'required|max:150',
+        ], [
+            'required' => 'required'
         ]);
+
+        if($validator->fails()){
+            return redirect()->route('dashboard.index')->withErrors($validator)->with('error', 'failed to create survey');
+        }
 
         $survey = new Survey();
         $survey->name = $request->title;
-        $survey->description = $request->details;
+        $survey->description = $request->description;
         $survey->status_id = 1;
         $survey->save();
 
-        return redirect()->route('dashboard.index');
+        return redirect()->route('dashboard.index')->with('success', 'survey created successfully');
     }
 
     public function showSurvey(int $index)
@@ -200,7 +208,7 @@ class DashboardController extends Controller
     public function updateSurvey(Request $request)
     {
         // dd($request);
-        $this->validate($request, ['description' => 'max:250']);
+        $this->validate($request, ['description' => 'required|max:150']);
 
         if (isset($request['questions'])) {
 

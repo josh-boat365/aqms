@@ -28,12 +28,10 @@
         .survey-filter:hover {
             cursor: pointer;
         }
-
     </style>
 </head>
 
 <body id="app-container" class="menu-sub-hidden show-spinner right-menu">
-
 
     @include('inc.dashboard.navbar')
 
@@ -44,26 +42,29 @@
     {{-- should be included in survey content --}}
     @extends('inc.dashboard.survey.survey-content')
     @section('exp-date-input')
-        <input type="date" id="exp_date_field" name="datemin" min="{{$min_exp_day}}">
+        <input type="date" id="exp_date_field" name="datemin" min="{{ $min_exp_day }}">
     @endsection
 
 
     @section('survey-tiles')
         @foreach ($allSurveys as $survey)
-            @include('inc.dashboard.survey.survey-tile', ['survey' => $survey, 'status' => $survey->status])
+            @include('inc.dashboard.survey.survey-tile', [
+                'survey' => $survey,
+                'status' => $survey->status,
+            ])
         @endforeach
     @endsection
 
     @section('stat')
-        <li class="active"><a href="#"> All Surveys <span
-                    class="float-right">{{ $allSurveys->count() }}</span></a></li>
+        <li class="active"><a href="#"> All Surveys <span class="float-right">{{ $allSurveys->count() }}</span></a>
+        </li>
         <li><a href="#"> Deployed Surveys <span
                     class="float-right">{{ $allSurveys->where('status_id', '2')->count() }}</span></a></li>
         <li><a href="#"> Drafted Surveys <span
                     class="float-right">{{ $allSurveys->where('status_id', '1')->count() }}</span></a></li>
         <li><a href="#"> Archived Surveys <span
                     class="float-right">{{ $allSurveys->where('status_id', '3')->count() }}</span></a></li>
-        <li><a href="#"> Submitted Surveys <span class="float-right">{{$submissions->count()}}</span></a></li>
+        <li><a href="#"> Submitted Surveys <span class="float-right">{{ $submissions->count() }}</span></a></li>
 
         <a class="archive-warning" style="display: none" data-toggle="modal" href="#archiveWarning">test dialog</a>
         <a class="deploy-warning" style="display: none" data-toggle="modal" href="#deployWarning">test dialog</a>
@@ -177,7 +178,7 @@
         })(jQuery);
     </script>
 
-    <script>
+    {{-- <script>
         $(function () {
             $('#add_survey').click(function () {
                 $form = $(this).parent().parent();
@@ -193,6 +194,23 @@
                 }
             })
         })
+    </script> --}}
+
+    <script>
+        // $(document).ready(function() {
+        //     $('#admin_welcome_prompt_close_btn') click(function() {
+        //         // 'this' is not a jQuery object, so it will use the default click() function
+        //         this.click();
+        //     }).click();
+        // });
+        $(function() {
+            // console.log($('#admin_welcome_prompt_close_btn')[0].trigger('click'));
+            // jQuery('body').on('click', function() {
+            //     jQuery('#admin_welcome_prompt_close_btn')[0].click();
+            // });
+            // $('#admin_welcome_prompt_close_btn')[0].click();
+            // console.log($('#admin_welcome_prompt_close_btn').text());
+        })
     </script>
 
     <script>
@@ -202,8 +220,8 @@
     </script>
 
     <script>
-        $(function () {
-            $('#exp_date_field').change(function () {
+        $(function() {
+            $('#exp_date_field').change(function() {
                 $('#date_input_submit').val($(this).val())
                 $('#dep_btn').show();
             })
@@ -219,7 +237,10 @@
         })
         $(function() {
             setTimeout(() => {
-                $('#notification').fadeTo('slow', 0)
+                $('#notification').fadeTo('slow',0, function () {
+                    
+                    $('#notification').remove()
+                })
             }, 3000);
         })
     </script>

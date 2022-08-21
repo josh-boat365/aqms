@@ -82,7 +82,8 @@
         <div class="separator my-3"></div>
         @if ($survey->sections == null)
             <div class="mt-4">
-                <input type="checkbox" name="enable-section" id="enable-section" @if ($survey->status_id != 1) disabled @endif> <label for="enable-section">nable
+                <input type="checkbox" name="enable-section" id="enable-section"
+                    @if ($survey->status_id != 1) disabled @endif> <label for="enable-section">nable
                     Sections</label>
             </div>
             <div class="mt-2" id="section-list" class="scroll h-100 col mt-2" style="max-height: 500px; display: none">
@@ -97,8 +98,9 @@
             </div>
         @else
             <div class="mt-4">
-                <input type="checkbox" name="enable-section" id="enable-section" @if ($survey->status_id != 1) disabled @endif
-                    @if ($survey->sections->count() > 0) checked @endif> <label for="enable-section">Enable
+                <input type="checkbox" name="enable-section" id="enable-section"
+                    @if ($survey->status_id != 1) disabled @endif @if ($survey->sections->count() > 0) checked @endif>
+                <label for="enable-section">Enable
                     Sections</label>
             </div>
             <div class="mt-2" id="section-list" class="scroll h-100 col mt-2" style="max-height: 500px">
@@ -247,7 +249,8 @@
                         $('<input>').attr({
                             'type': 'hidden',
                             'id': 'sec-num',
-                            'value': ($count + 1)
+                            'value': ($count + 1),
+
                         })
                     );
 
@@ -274,7 +277,9 @@
                                 'id': 'section-header-input',
                                 'style': 'display: none',
                                 'class': 'form-control col-11 mb-3',
-                                'placeholder': 'section-description (optional)'
+                                'placeholder': 'section name    ',
+                                'value': 'Untitled~' + ($count +
+                                    1)
                             }),
                             $('<input>').attr({
                                 'type': 'hidden',
@@ -453,7 +458,9 @@
                             'id': 'section-header-input',
                             'style': 'display: none',
                             'class': 'form-control col-11 mb-3',
-                            'placeholder': 'section-description (optional)'
+                            'placeholder': 'section name',
+                            'value': 'Untitled~' + ($count + 1)
+
                         }),
                         $('<input>').attr({
                             'type': 'hidden',

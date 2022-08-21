@@ -10,7 +10,7 @@
     <div class="modal-dialog bg-transparent" role="document">
         <div class="modal-content" style="border-radius:1rem; ">
             <div class="modal-header">
-                <h5 class="modal-title">Welcome Admin</h5><button type="button" class="close"
+                <h5 class="modal-title">Welcome Admin</h5><button id="admin_welcome_prompt_close_btn" type="button" class="close"
                     data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">

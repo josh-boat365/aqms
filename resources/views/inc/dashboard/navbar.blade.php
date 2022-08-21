@@ -134,4 +134,12 @@
             </h3>
         </div>
     @endif
+    @if (session()->has('error'))
+        <div style="left: 50%; transform: translate(-50%); top: 110%; display:none; z-index: 99999" id="notification"
+            class="position-absolute py-4 px-3 bg-danger container col-5 text-white text-center justify-content-center rounded">
+            <h3 class="m-0">
+                {{ session('error') }}
+            </h3>
+        </div>
+    @endif
 </nav>

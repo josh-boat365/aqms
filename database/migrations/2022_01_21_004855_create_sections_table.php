@@ -17,7 +17,7 @@ class CreateSectionsTable extends Migration
             $table->id();
             $table->foreignId('survey_id')->constrained()->onDelete('cascade');
             $table->string('title');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->timestamps();
         });
     }
