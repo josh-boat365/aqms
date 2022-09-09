@@ -14,7 +14,7 @@ class UpdateQuestionColumnOnQuestionsTable extends Migration
     public function up()
     {
         Schema::table('questions', function (Blueprint $table) {
-            $table->longText('question');
+            $table->longText('question')->change();
         });
     }
 
