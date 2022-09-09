@@ -13,7 +13,7 @@ class UpdateQuestionColumnOnQuestionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('questions', function (Blueprint $table) {
+        Schema::table('questions', function (Blueprint $table) {
             $table->longText('question');
         });
     }
