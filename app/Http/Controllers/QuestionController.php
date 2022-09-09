@@ -13,14 +13,14 @@ class QuestionController extends Controller
     public static function processSurveyQuestions($request, $is_sectioned = false)
     {
 
-        
+
         // dd($request['survey_id']);
         $survey_id = $request['survey_id'];
         $name = $request['name'];
         $description = $request['description'];
 
         Survey::find($survey_id)->update(compact('name', 'description'));
-        
+
         if ($is_sectioned) {
             // dd('is sectioned');
             $has_new_section = isset($request['sections']['new']);
@@ -43,9 +43,8 @@ class QuestionController extends Controller
                     if ($section_has_questions) {
                         QuestionController::storeQuestions($sectionObj, $section_id, $request['survey_id']);
                     }
-
                 }
-            } else if ($has_old_section){
+            } else if ($has_old_section) {
                 // dd('has old section');
                 // for each old section
                 foreach ($request['sections']['old'] as $section_id => $sectionObj) {
@@ -87,118 +86,114 @@ class QuestionController extends Controller
                 $option_type_id = $questionObj['option_type_id'];
 
                 //update question
-                Question::find($question_id)->update(compact('question', 'order', 'option_type_id', 'section_id'));
+                if (isset($question)) {
+                    # code...
 
-                //unsectioned old qestion option
-                // *****************
-                if (isset($questionObj['options'])) {
+                    Question::find($question_id)->update(compact('question', 'order', 'option_type_id', 'section_id'));
 
-                    $has_old_row_options = isset($questionObj['options']['rows']['old']);
-                    $has_new_row_options = isset($questionObj['options']['rows']['new']);
-                    $has_row_options = $has_new_row_options || $has_old_row_options;
+                    //unsectioned old qestion option
+                    // *****************
+                    if (isset($questionObj['options'])) {
 
-                    $has_old_column_options = isset($questionObj['options']['columns']['old']);
-                    $has_new_column_options = isset($questionObj['options']['columns']['new']);
-                    $has_column_options = $has_old_column_options || $has_new_column_options;
+                        $has_old_row_options = isset($questionObj['options']['rows']['old']);
+                        $has_new_row_options = isset($questionObj['options']['rows']['new']);
+                        $has_row_options = $has_new_row_options || $has_old_row_options;
 
-                    $has_old_single_options = !$has_row_options && !$has_column_options && isset($questionObj['options']['old']);
-                    $has_new_single_options = !$has_row_options && !$has_column_options && isset($questionObj['options']['new']);
+                        $has_old_column_options = isset($questionObj['options']['columns']['old']);
+                        $has_new_column_options = isset($questionObj['options']['columns']['new']);
+                        $has_column_options = $has_old_column_options || $has_new_column_options;
 
-                    // new column option ✔
-                    if ($has_new_column_options) {
+                        $has_old_single_options = !$has_row_options && !$has_column_options && isset($questionObj['options']['old']);
+                        $has_new_single_options = !$has_row_options && !$has_column_options && isset($questionObj['options']['new']);
 
-                        foreach ($questionObj['options']['columns']['new'] as $option_id => $optionObj) {
-                            $option = $optionObj['option'];
-                            $order = $optionObj['order'];
-                            $row_column = 'column';
+                        // new column option ✔
+                        if ($has_new_column_options) {
 
-                            if (!isset($optionObj['deleted'])) {
-                                Option::create(compact('option', 'order', 'row_column', 'question_id'));
+                            foreach ($questionObj['options']['columns']['new'] as $option_id => $optionObj) {
+                                $option = $optionObj['option'];
+                                $order = $optionObj['order'];
+                                $row_column = 'column';
+
+                                if (!isset($optionObj['deleted'])) {
+                                    Option::create(compact('option', 'order', 'row_column', 'question_id'));
+                                }
                             }
-                            
+                        }
+
+                        // old column option 
+                        if ($has_old_column_options) {
+
+                            foreach ($questionObj['options']['columns']['old'] as $option_id => $optionObj) {
+                                $option = $optionObj['option'];
+                                $order = $optionObj['order'];
+                                $row_column = 'column';
+
+                                if (isset($optionObj['deleted'])) {
+                                    Option::find($option_id)->delete();
+                                } else {
+                                    Option::find($option_id)->update(compact('option', 'order', 'row_column'));
+                                }
+                            }
+                        }
+
+                        // new row option ✔
+                        if ($has_new_row_options) {
+
+                            foreach ($questionObj['options']['rows']['new'] as $group_id => $optionObj) {
+                                $option = $optionObj['option'];
+                                $order = $optionObj['order'];
+                                $row_column = 'row';
+
+                                if (!isset($optionObj['deleted'])) {
+                                    Option::create(compact('option', 'order', 'row_column', 'question_id'));
+                                }
+                            }
+                        }
+
+                        // old row option ✔
+                        if ($has_old_row_options) {
+
+                            foreach ($questionObj['options']['rows']['old'] as $option_id => $optionObj) {
+                                $option = $optionObj['option'];
+                                $order = $optionObj['order'];
+                                $row_column = 'row';
+
+                                if (isset($optionObj['deleted'])) {
+                                    Option::find($option_id)->delete();
+                                } else {
+                                    Option::find($option_id)->update(compact('option', 'order', 'row_column'));
+                                }
+                            }
+                        }
+
+                        // old single option ✔
+                        if ($has_old_single_options) {
+
+                            foreach ($questionObj['options']['old'] as $option_id => $optionObj) {
+                                $option = $optionObj['option'];
+                                $order = $optionObj['order'];
+
+                                if (isset($optionObj['deleted'])) {
+                                    Option::find($option_id)->delete();
+                                } else {
+                                    Option::find($option_id)->update(compact('option', 'order'));
+                                }
+                            }
+                        }
+
+                        // new single option ✔
+                        if ($has_new_single_options) {
+                            foreach ($questionObj['options']['new'] as $group_id => $optionObj) {
+                                // dd($optionObj);
+                                $option = $optionObj['option'];
+                                $order = $optionObj['order'];
+
+                                if (!isset($optionObj['deleted'])) {
+                                    Option::create(compact('option', 'order', 'question_id'));
+                                }
+                            }
                         }
                     }
-
-                    // old column option 
-                    if ($has_old_column_options) {
-
-                        foreach ($questionObj['options']['columns']['old'] as $option_id => $optionObj) {
-                            $option = $optionObj['option'];
-                            $order = $optionObj['order'];
-                            $row_column = 'column';
-
-                            if (isset($optionObj['deleted'])) {
-                                Option::find($option_id)->delete();
-                            } else {
-                                Option::find($option_id)->update(compact('option', 'order', 'row_column'));
-                            }
-                            
-                        }
-                    }
-
-                    // new row option ✔
-                    if ($has_new_row_options) {
-
-                        foreach ($questionObj['options']['rows']['new'] as $group_id => $optionObj) {
-                            $option = $optionObj['option'];
-                            $order = $optionObj['order'];
-                            $row_column = 'row';
-                            
-                            if (!isset($optionObj['deleted'])) {
-                                Option::create(compact('option', 'order', 'row_column', 'question_id'));
-                            }
-                            
-                        }
-                    }
-
-                    // old row option ✔
-                    if ($has_old_row_options) {
-
-                        foreach ($questionObj['options']['rows']['old'] as $option_id => $optionObj) {
-                            $option = $optionObj['option'];
-                            $order = $optionObj['order'];
-                            $row_column = 'row';
-                            
-                            if (isset($optionObj['deleted'])) {
-                                Option::find($option_id)->delete();
-                            } else {
-                                Option::find($option_id)->update(compact('option', 'order', 'row_column'));
-                            }
-                            
-                        }
-                    }
-
-                    // old single option ✔
-                    if ($has_old_single_options) {
-
-                        foreach ($questionObj['options']['old'] as $option_id => $optionObj) {
-                            $option = $optionObj['option'];
-                            $order = $optionObj['order'];
-                            
-                            if (isset($optionObj['deleted'])) {
-                                Option::find($option_id)->delete();
-                            } else {
-                                Option::find($option_id)->update(compact('option', 'order'));
-                            }
-                            
-                        }
-                    }
-
-                    // new single option ✔
-                    if ($has_new_single_options) {
-                        foreach ($questionObj['options']['new'] as $group_id => $optionObj) {
-                            // dd($optionObj);
-                            $option = $optionObj['option'];
-                            $order = $optionObj['order'];
-                            
-                            if (!isset($optionObj['deleted'])) {
-                                Option::create(compact('option', 'order', 'question_id'));
-                            }
-                            
-                        }
-                    }
-
-                    
                 }
             }
 
@@ -216,70 +211,73 @@ class QuestionController extends Controller
 
                 //create question
                 // dd(compact('question', 'order', 'option_type_id', 'survey_id', 'section_id'));
-                $question = Question::create(compact('question', 'order', 'option_type_id', 'survey_id', 'section_id'));
-                // dd($question);
-                $question_id = $question->id;
+                if (isset($question)) {
+                    # code...
+                    $question = Question::create(compact('question', 'order', 'option_type_id', 'survey_id', 'section_id'));
+                    // dd($question);
+                    $question_id = $question->id;
 
-                if (isset($questionObj['options'])) {
+                    if (isset($questionObj['options'])) {
 
-                    $has_new_row_options = isset($questionObj['options']['rows']['new']);
-                    $has_old_row_options = isset($questionObj['options']['rows']['old']);
+                        $has_new_row_options = isset($questionObj['options']['rows']['new']);
+                        $has_old_row_options = isset($questionObj['options']['rows']['old']);
 
-                    $has_new_column_options = isset($questionObj['options']['columns']['new']);
-                    $has_old_column_options = isset($questionObj['options']['columns']['old']);
+                        $has_new_column_options = isset($questionObj['options']['columns']['new']);
+                        $has_old_column_options = isset($questionObj['options']['columns']['old']);
 
-                    $has_row_options = isset($questionObj['options']['rows']);
-                    $has_column_options = isset($questionObj['options']['columns']);
+                        $has_row_options = isset($questionObj['options']['rows']);
+                        $has_column_options = isset($questionObj['options']['columns']);
 
-                    $has_single_options = !$has_row_options && !$has_column_options && !empty($questionObj['options']);
+                        $has_single_options = !$has_row_options && !$has_column_options && !empty($questionObj['options']);
 
-                    if ($has_new_row_options) {
-                        foreach ($questionObj['options']['rows']['new'] as $group_id => $optionObj) {
-                            $option = $optionObj['option'];
-                            $order = $optionObj['order'];
-                            $row_column = 'row';
+                        if ($has_new_row_options) {
+                            foreach ($questionObj['options']['rows']['new'] as $group_id => $optionObj) {
+                                $option = $optionObj['option'];
+                                $order = $optionObj['order'];
+                                $row_column = 'row';
 
-                            Option::create(compact('option', 'order', 'row_column', 'question_id'));
+                                Option::create(compact('option', 'order', 'row_column', 'question_id'));
+                            }
                         }
-                    }
 
-                    if ($has_old_row_options) {
-                        foreach ($questionObj['options']['rows']['old'] as $option_id => $optionObj) {
-                            $option = $optionObj['option'];
-                            $order = $optionObj['order'];
+                        if ($has_old_row_options) {
+                            foreach ($questionObj['options']['rows']['old'] as $option_id => $optionObj) {
+                                $option = $optionObj['option'];
+                                $order = $optionObj['order'];
 
-                            Option::find($option_id)->update(compact('option', 'order'));
+                                Option::find($option_id)->update(compact('option', 'order'));
+                            }
                         }
-                    }
 
 
-                    if ($has_new_column_options) {
+                        if ($has_new_column_options) {
 
-                        foreach ($questionObj['options']['columns']['new'] as $group_id => $optionObj) {
-                            $option = $optionObj['option'];
-                            $order = $optionObj['order'];
-                            $row_column = 'column';
+                            foreach ($questionObj['options']['columns']['new'] as $group_id => $optionObj) {
+                                $option = $optionObj['option'];
+                                $order = $optionObj['order'];
+                                $row_column = 'column';
 
-                            Option::create(compact('option', 'order', 'row_column', 'question_id'));
+                                Option::create(compact('option', 'order', 'row_column', 'question_id'));
+                            }
                         }
-                    }
 
-                    if ($has_old_column_options) {
+                        if ($has_old_column_options) {
 
-                        foreach ($questionObj['options']['columns']['old'] as $option_id => $optionObj) {
-                            $option = $optionObj['option'];
-                            $order = $optionObj['order'];
+                            foreach ($questionObj['options']['columns']['old'] as $option_id => $optionObj) {
+                                $option = $optionObj['option'];
+                                $order = $optionObj['order'];
 
-                            Option::find($option_id)->update(compact('option', 'order'));
+                                Option::find($option_id)->update(compact('option', 'order'));
+                            }
                         }
-                    }
 
-                    if ($has_single_options) {
-                        // dd()
-                        foreach ($questionObj['options']['new'] as $order => $optionObj) {
-                            $option = $optionObj['option'];
-                            $order = $optionObj['order'];
-                            Option::create(compact('option', 'order', 'question_id'));
+                        if ($has_single_options) {
+                            // dd()
+                            foreach ($questionObj['options']['new'] as $order => $optionObj) {
+                                $option = $optionObj['option'];
+                                $order = $optionObj['order'];
+                                Option::create(compact('option', 'order', 'question_id'));
+                            }
                         }
                     }
                 }
