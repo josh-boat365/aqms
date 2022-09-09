@@ -10,23 +10,30 @@
                 @csrf
                 {{-- {{ $errors }} --}}
                 <div class="form-group has-float-label position-relative"><label class="font-weight-bold">Title</label>
-                    <input type="text" id="title" class="form-control rounded" value="{{ old('title') }}"
-                        name="title">
-                    <h6 class="text-muted" style="font-size: 0.65rem;float: right;">Title must be unique</h6>
+                    <input type="text" id="title" class="form-control rounded" value="{{ old('title') }}" name="title">
                     @error('title')
                         <div class="invalid-tooltip d-block">{{ $message }}</div>
                     @enderror
                 </div>
-                <div class="form-group has-float-label position-relative"><label
-                        class="font-weight-bold">Description</label>
+                <div class="form-group has-float-label position-relative"><label class="font-weight-bold">Description</label>
                     <textarea placeholder="" id="description" class="form-control rounded" rows="2" name="description">{{ old('description') }}</textarea>
-                    <h6 class="text-muted" style="font-size: 0.65rem;float: right;">Description must be greater
-                        than 150 characters</h6>
                     @error('description')
                         <div class="invalid-tooltip d-block">{{ $message }}</div>
                     @enderror
                 </div>
-
+                {{-- <div class="form-group"><label>Category</label> <select
+                        class="form-control">
+                        <option label="&nbsp;">&nbsp;</option>
+                        <option value="Flexbox">Flexbox</option>
+                        <option value="Sass">Sass</option>
+                        <option value="React">React</option>
+                    </select></div> --}}
+                {{-- <div class="form-group"><label>Status</label>
+                    <div class="custom-control custom-checkbox"><input type="checkbox"
+                            class="custom-control-input" id="customCheck1"> <label
+                            class="custom-control-label"
+                            for="customCheck1">Completed</label></div>
+                </div> --}}
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
                     <input type="submit" value="Add" class="btn btn-primary">
