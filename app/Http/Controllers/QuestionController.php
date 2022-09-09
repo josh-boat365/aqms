@@ -80,14 +80,15 @@ class QuestionController extends Controller
             //each unsectioned old question
             foreach ($request['questions']['old'] as $question_id => $questionObj) {
 
-                //get question level variables
-                $question = $questionObj['question'];
-                $order = $questionObj['order'];
-                $option_type_id = $questionObj['option_type_id'];
+
 
                 //update question
-                if (isset($question)) {
+                if (isset($questionObj['question'])) {
                     # code...
+                    //get question level variables
+                    $question = $questionObj['question'];
+                    $order = $questionObj['order'];
+                    $option_type_id = $questionObj['option_type_id'];
 
                     Question::find($question_id)->update(compact('question', 'order', 'option_type_id', 'section_id'));
 
@@ -204,15 +205,20 @@ class QuestionController extends Controller
             // $section_id == 2 ? dd('new question detected in section 2'): ' ';
             foreach ($request['questions']['new'] as $group_id => $questionObj) {
 
-                //get question level variables
-                $question = $questionObj['question'];
-                $order = $questionObj['order'];
-                $option_type_id = $questionObj['option_type_id'];
+
 
                 //create question
                 // dd(compact('question', 'order', 'option_type_id', 'survey_id', 'section_id'));
-                if (isset($question)) {
+                if (isset($questionObj['question'])) {
                     # code...
+                    //get question level variables
+                    $question = $questionObj['question'];
+                    $order = $questionObj['order'];
+                    $option_type_id = $questionObj['option_type_id'];
+
+
+
+
                     $question = Question::create(compact('question', 'order', 'option_type_id', 'survey_id', 'section_id'));
                     // dd($question);
                     $question_id = $question->id;
