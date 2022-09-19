@@ -10,16 +10,22 @@
                 @csrf
                 {{-- {{ $errors }} --}}
                 <div class="form-group has-float-label position-relative"><label class="font-weight-bold">Title</label>
-                    <input type="text" id="title" class="form-control rounded" value="{{ old('title') }}" name="title">
+                    <input type="text" id="title" class="form-control rounded" value="{{ old('title') }}"
+                        name="title">
                     @error('title')
                         <div class="invalid-tooltip d-block">{{ $message }}</div>
                     @enderror
+                    <div class="text-muted float-right" style="font-size: 10px">Survey title must be unique</div>
                 </div>
-                <div class="form-group has-float-label position-relative"><label class="font-weight-bold">Description</label>
+
+                <div class="form-group has-float-label position-relative"><label
+                        class="font-weight-bold">Description</label>
                     <textarea placeholder="" id="description" class="form-control rounded" rows="2" name="description">{{ old('description') }}</textarea>
                     @error('description')
                         <div class="invalid-tooltip d-block">{{ $message }}</div>
                     @enderror
+                    <div class="text-muted float-right"style="font-size: 10px">Survey description must me at 150
+                        characters</div>
                 </div>
                 {{-- <div class="form-group"><label>Category</label> <select
                         class="form-control">
