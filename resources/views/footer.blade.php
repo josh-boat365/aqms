@@ -17,8 +17,14 @@
                                     rel="noopener noreferrer" class="btn-link">Joshua</a></li>
                             <li class="breadcrumb-item mb-0"><a href="https://twitter.com/FuadCodes" target="_blank"
                                     rel="noopener noreferrer" class="btn-link">Fuad</a></li>
-                            <li class="breadcrumb-item mb-0"><a href="#" target="_blank" rel="noopener noreferrer"
-                                    class="btn-link">Docs</a></li>
+                            @if (URL::current() == route('home'))
+                                <li class=""><a href="#" target="_blank" rel="noopener noreferrer"
+                                        class="btn-link"></a></li>
+                            @else
+                                <li class="breadcrumb-item mb-0"><a href="#" target="_blank"
+                                        rel="noopener noreferrer" class="btn-link">Docs</a></li>
+                            @endif
+
                         </ul>
                     </div>
 
