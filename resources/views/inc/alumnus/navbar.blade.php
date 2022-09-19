@@ -21,7 +21,7 @@
         }
 
         .dropdown-menu {
-            width: 23.4rem !important;
+            width: 9.4rem !important;
         }
 
         .notification-tab {
