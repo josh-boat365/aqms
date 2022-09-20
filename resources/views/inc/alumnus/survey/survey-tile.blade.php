@@ -81,7 +81,8 @@
             <div class="col-3 tile-info">
                 <div class="w-8 w-xs-100">
                     <p class="mb-0 tile-x tile-text text-muted font-weight-bold text-medium">
-                        {{ $survey->expiration_date }}</p>
+                        {{-- {{ $survey->expire_at->format('d-m') }} --}}
+                        {{ $survey->expire_at->format('d-m-y') }} </p>
                 </div>
             </div>
 
@@ -98,6 +99,6 @@
         </div>
     </div>
 </div>
-   @if ($submissions->where('user_id', auth()->user()->id)->where('survey_id', $survey->id)->count() == 0)
+          @if ($submissions->where('user_id', auth()->user()->id)->where('survey_id', $survey->id)->count() == 0)
                         </a>
                         @endif
