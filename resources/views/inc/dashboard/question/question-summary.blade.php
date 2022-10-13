@@ -90,7 +90,7 @@
                         <span>Expiration Date</span>
                     </label>
                     <a href="#editEpirationDateModal" id="editEpirationDateModalBtn">
-                        <div class="btn btn-header-light icon-button" style="position: relative;left: 2rem;"><i
+                        <div class="btn btn-header-light icon-button" style="position: relative;left: 90%;"><i
                                 class="simple-icon-pencil"></i>
                         </div>
                     </a>
@@ -98,7 +98,7 @@
 
 
                 <label for="" class="form-group has-float-label"
-                    style="border: #c8d2dc solid 1px;border-radius: 20px;">
+                    style="border: #c8d2dc solid 1px;border-radius: 20px; max-width:100%">
                     <div style="padding: 1rem">
                         <button class="btn btn-outline-secondary" style="width: 10rem">Draft</button><br>
                         <button class="btn btn-outline-success" style="width: 10rem">Deploy</button><br>
