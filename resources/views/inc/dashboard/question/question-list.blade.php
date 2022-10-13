@@ -24,21 +24,20 @@
                     <input type="hidden" class="section-name" value="section-1">
                     <p class="col-12 section-description">{{ $survey->sections[$i - 1]->description }}</p>
                     <textarea name="sections[old][{{ $survey->sections[$i - 1]->id }}][section_description]" id="section-description-input"
-                        style="display: none"
-                        class="form-control col-12">{{ $survey->sections[$i - 1]->description }}</textarea>
+                        style="display: none" class="form-control col-12">{{ $survey->sections[$i - 1]->description }}</textarea>
                 </div>
             </div>
             <div class="sortable-survey">
                 {{-- {{ $survey->sectionQuestions->where('section_id', $survey->sections[$i-1]->id) }} --}}
                 <!-- {{ $survey->sectionQuestions }} -->
                 <!-- {{ $survey }} -->
-                <!-- {{ $survey->sections[$i-1]->id }} -->
-                @include('inc.dashboard.question.question-card', ['questions'=>
-                $survey->sectionQuestions->where('section_id', $survey->sections[$i-1]->id)->values()->toArray(),
-                'section_id' => $survey->sections[$i-1]->id,
+                <!-- {{ $survey->sections[$i - 1]->id }} -->
+                @include('inc.dashboard.question.question-card', [
+                    'questions' => $survey->sectionQuestions->where('section_id', $survey->sections[$i - 1]->id)->values()->toArray(),
+                    'section_id' => $survey->sections[$i - 1]->id,
                 ])
             </div>
-            
+
         </div>
     @endfor
 @endempty

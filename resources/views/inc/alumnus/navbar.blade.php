@@ -1,5 +1,5 @@
 <style type="text/css">
-    @media (min-width: 320px)and (max-width: 672px) {
+    @media (min-width: 280px)and (max-width: 900px) {
         .navbar {
             width: 100%;
             justify-content: space-between;

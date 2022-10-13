@@ -15,11 +15,13 @@
     .nav-link:hover {
         cursor: pointer;
     }
-        @media (min-width: 320px) and (max-width: 672px){
-        .profile-banner{
+
+    @media (min-width: 280px) and (max-width: 900px) {
+        .profile-banner {
             width: 100% !important;
             height: auto;
         }
+
         .img-border {
             position: absolute;
             top: -3rem;
@@ -28,7 +30,6 @@
         }
 
     }
-
 </style>
 <main>
     <div class="container-fluid">
@@ -102,7 +103,7 @@
 
                                         <ul class="nav nav-tabs separator-tabs ml-0 mb-5" role="tablist">
                                             <li class="nav-item">
-                                                <a class="nav-link" href="{{route('alumnus.profile')}}"
+                                                <a class="nav-link" href="{{ route('alumnus.profile') }}"
                                                     id="profile-toggler">UPDATE PROFILE</a>
                                             </li>
                                             <li class="nav-item">
@@ -112,7 +113,7 @@
                                         </ul>
 
                                         <div class="tab-content">
-                                            
+
                                             {{-- <div class="tab-pane show active" id="profile-content-section"
                                                 role="tabpanel" aria-labelledby="first-tab">
                                                 <form class="tooltip-right-bottom mob-view" novalidate method="POST"

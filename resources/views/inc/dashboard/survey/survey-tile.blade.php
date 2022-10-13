@@ -8,7 +8,7 @@
         margin: auto;
     }
 
-    @media (min-width: 320px) and (max-width: 656px) {
+    @media (min-width: 280px) and (max-width: 900px) {
         .dash-survey-tile {
             display: flex !important;
             flex-direction: column !important;
