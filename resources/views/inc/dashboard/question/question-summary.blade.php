@@ -2,6 +2,44 @@
 {{-- swap colors --}}
 {{-- css for bootstrap floating labels --}}
 <link rel="stylesheet" href="{{ asset('css/vendor/bootstrap-float-label.min.css') }}">
+
+{{-- Message for Warnings --}}
+<div class="modal fade " id="editEpirationDateModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog bg-transparent" role="document">
+        <div class="modal-content" style="border-radius:1rem; ">
+            <div class="modal-header bg-danger text-white">
+                <h3 class="modal-title">WARNING!</h3><button type="button" class="close" data-dismiss="modal"
+                    aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <h3>Deployed surveys can't be further edited</h3>
+                <br>
+                <br>
+                {{-- <h6>Click on date field to set date.</h6> --}}
+                <label class="form-group has-float-label">
+                    <input type="date" id="exp_date_field">
+                    {{-- @yield('exp-date-input') --}}
+                    {{-- <input class="form-control datepicker exp-date"
+                                                    placeholder=" enter expiration date"> --}}
+                    <span>Expiration Date</span>
+                </label>
+            </div>
+            <div class="modal-footer">
+                <form action="{{ route('survey.deploy') }}" method="post" id="deploy-form">
+                    <input type="hidden" name="_method" value="PUT">
+                    <input type="hidden" name="survey_id" class="survey_id">
+                    <input type="hidden" name="date" id="date_input_submit" class="date">
+                    @csrf
+
+                    <input style="display: none" id="dep_btn" type="submit" value="Deploy"
+                        class="btn btn-secondary deploy-btn">
+                </form>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <form action="{{ route('survey.update') }}" method="post" id="update-form" class="row col">
     @csrf
     <input type="hidden" name="survey_id" value="{{ $survey->id }}">
@@ -45,11 +83,18 @@
 
                 <p class="text-muted text-small mb-2">Date Created</p>
                 <p class="mb-3">{{ $survey->created_at->format('Y-m-d') }} </p>
-                <label class="form-group has-float-label">
-                    <input type="date" id="exp_date_field">
-                    {{-- <input type="date" id="exp_date_field" > --}}
-                    <span>Expiration Date</span>
-                </label>
+                <div class="d-flex">
+                    <label class="form-group has-float-label">
+                        <input type="date" id="exp_date_field">
+                        {{-- <input type="date" id="exp_date_field" > --}}
+                        <span>Expiration Date</span>
+                    </label>
+                    <a href="#editEpirationDateModal" id="editEpirationDateModalBtn">
+                        <div class="btn btn-header-light icon-button" style="position: relative;left: 2rem;"><i
+                                class="simple-icon-pencil"></i>
+                        </div>
+                    </a>
+                </div>
 
 
                 <label for="" class="form-group has-float-label"
@@ -62,7 +107,15 @@
                     <span>Set Survey Status </span>
                 </label>
             </div>
+
+
         </div>
     </div>
     {{-- date picker js  --}}
     <script src="{{ asset('js/vendor/bootstrap-datepicker.js') }}"></script>
+    <script>
+        // $('#editEpirationDateModalBtn').on('click', );
+        $('#editEpirationDateModalBtn').on('click', function() {
+            $('#editEpirationDateModal').modal('show');
+        });
+    </script>
