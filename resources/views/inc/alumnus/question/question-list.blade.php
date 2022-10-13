@@ -1,3 +1,23 @@
+<style>
+    @media (min-width: 300px) and (max-width: 900px) {
+        .section-card {
+            position: relative;
+            left: -1.2rem;
+            width: 23rem;
+        }
+
+        .card {
+            width: 23rem;
+        }
+
+        .section-header,
+        .section-description {
+            font-size: 12px;
+        }
+
+    }
+</style>
+
 @empty($survey->sections->values()->toArray())
 
     <div class="col">
@@ -34,10 +54,6 @@
                 style="display: none">
                 <input type="hidden" id="sec-num" value="{{ $i }}">
                 <div class=" mb-3  border-primary card section-card" style="border-top: 7px solid #f3f3f3">
-                    <div class="position-absolute card-top-buttons">
-                        <div class="btn icon-button btn-header-light sec-desc sec-edit"><i class="simple-icon-pencil"></i>
-                        </div>
-                    </div>
 
                     <div class="card-body">
                         <h1 class="col-11 section-header">{{ $survey->sections[$i - 1]->title }}</h1>
@@ -46,8 +62,7 @@
                             placeholder="section-description (optional)">
                         <input type="hidden" class="section-name" value="section-1">
                         <p class="col-12 section-description">{{ $survey->sections[$i - 1]->description }}</p>
-                        <textarea id="section-description-input" style="display: none"
-                            class="form-control col-12">{{ $survey->sections[$i - 1]->description }}</textarea>
+                        <textarea id="section-description-input" style="display: none" class="form-control col-12">{{ $survey->sections[$i - 1]->description }}</textarea>
                     </div>
                 </div>
                 <div class="sortable-survey">

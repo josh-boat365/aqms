@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{ asset('css/vendor/component-custom-switch.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dore.dark.bluenavy.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-     <link rel="icon" type="image/x-icon" href="{{ asset('img/profiles/profile-icon-atu.png') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('img/profiles/profile-icon-atu.png') }}">
 
     <style>
         .theme-colors {
@@ -44,7 +44,6 @@
         .current {
             display: block !important;
         }
-
     </style>
 
 
@@ -54,25 +53,13 @@
 <body id="app-container" class="menu-sub-hidden  right-menu show-spinner">
 
     @include('inc.alumnus.navbar')
-    
 
-    {{-- <div class="tab-pane show active" id="first" role="tabpanel" aria-labelledby="first-tab">
-        <div class="py-4 px-3 bg-success container col-5 text-white text-center d-absolute"> Saved Successfully </div>
-        <div class="row">
-            @yield('question-summary')
-            @yield('question-list')
-        </div>
-    </div> --}}
 
     @include('inc.alumnus.side-bar')
 
 
     @extends('inc.alumnus.question.question-content')
 
-
-    {{-- @section('question-summary')
-            @include('inc.dashboard.question.question-summary')
-        @endsection --}}
 
     @section('question-list')
         @include('inc.alumnus.question.question-list', ['responses', $responses])
@@ -103,9 +90,7 @@
                             {{ $survey->sections[$i]->title }}</div>
                     @endfor
                 </div>
-                <!-- <div class="text-center mt-2"><button type="button" class="btn btn-outline-primary btn-sm mb-2"
-                                                                                            id="add-section-button"><i class="simple-icon-plus btn-group-icon"></i> Add section</button>
-                                                                                    </div> -->
+
             </div>
         @endif
         <div class="text-center mt-4">
@@ -118,8 +103,7 @@
                     class="simple-icon-plus btn-group-icon"></i>
                 Sumbit</div>
         </div>
-        {{-- <div class="text-center mt-4"><button type="button" class="btn btn-outline-success btn-sm mb-2 upd-que"><i
-                    class="simple-icon-plus btn-group-icon"></i> Update</button></div> --}}
+
     @endsection
 
 
