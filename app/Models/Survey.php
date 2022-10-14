@@ -9,7 +9,7 @@ class Survey extends Model
 {
     use HasFactory;
 
-    protected $fillable=['name', 'description', 'status_id'];
+    protected $fillable=['name', 'description', 'status_id', 'expire_at'];
 
     protected $dates = ['created_at', 'updated_at', 'expire_at'];
 

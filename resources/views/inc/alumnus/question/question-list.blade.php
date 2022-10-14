@@ -1,5 +1,5 @@
 <style>
-    @media (min-width: 300px) and (max-width: 900px) {
+    @media (min-width: 280px) and (max-width: 900px) {
         .section-card {
             position: relative;
             left: -1.2rem;
@@ -15,29 +15,35 @@
             font-size: 12px;
         }
 
+        .custom-container {
+            width: auto !important;
+            min-width: auto !important;
+            /* max-width: auto !important; */
+        }
+
+
     }
 </style>
 
 @empty($survey->sections->values()->toArray())
 
-    <div class="col">
-        <div class="container">
-            <form action="{{ route('alumnus.survey.save') }}" method="post" id="save-form"
-                class="d-flex flex-column align-items-center">
-                @csrf
-                <input type="hidden" name="survey_id" value="{{ $survey->id }}">
-                <input type="hidden" name="isSubmit" id="isSubmit">
-                <input type="hidden" name="progress" id="progress">
-                <div class="sortable-survey col-12 col-lg-8">
-                    @include('inc.alumnus.question.question-card', [
-                        'questions' => $survey->questions,
-                        'responses' => $responses,
-                    ])
-                </div>
 
-            </form>
+    <div class="container custom-container">
+        <form action="{{ route('alumnus.survey.save') }}" method="post" id="save-form"
+            class="d-flex flex-column align-items-center">
+            @csrf
+            <input type="hidden" name="survey_id" value="{{ $survey->id }}">
+            <input type="hidden" name="isSubmit" id="isSubmit">
+            <input type="hidden" name="progress" id="progress">
+            <div class="sortable-survey col-12">
+                @include('inc.alumnus.question.question-card', [
+                    'questions' => $survey->questions,
+                    'responses' => $responses,
+                ])
+            </div>
 
-        </div>
+        </form>
+
     </div>
 @else
     <form action="{{ route('alumnus.survey.save') }}" method="post" id="save-form"

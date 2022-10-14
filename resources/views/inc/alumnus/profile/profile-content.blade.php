@@ -1,7 +1,8 @@
 <style>
-    span[class="select2 select2-container select2-container--bootstrap select2-container--below select2-container--open"]{
+    span[class="select2 select2-container select2-container--bootstrap select2-container--below select2-container--open"] {
         width: 100% !important;
     }
+
     .profile-banner {
         width: 100% !important;
         height: 450px;
@@ -18,11 +19,13 @@
     .nav-link:hover {
         cursor: pointer;
     }
-    @media (min-width: 320px) and (max-width: 672px){
-        .profile-banner{
+
+    @media (min-width: 280px) and (max-width: 900px) {
+        .profile-banner {
             width: 100% !important;
             height: auto;
         }
+
         .img-border {
             position: absolute;
             top: -3rem;
@@ -31,7 +34,6 @@
         }
 
     }
-
 </style>
 <main>
     <div class="container-fluid">
@@ -105,17 +107,17 @@
 
                                         <ul class="nav nav-tabs separator-tabs ml-0 mb-5" role="tablist">
                                             <li class="nav-item">
-                                                <a class="nav-link active"
-                                                    id="profile-toggler">UPDATE PROFILE</a>
+                                                <a class="nav-link active" id="profile-toggler">UPDATE PROFILE</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" id="password-toggler" href="{{route('alumnus.password')}}">CHANGE PASSWORD</a>
+                                                <a class="nav-link" id="password-toggler"
+                                                    href="{{ route('alumnus.password') }}">CHANGE PASSWORD</a>
                                             </li>
 
                                         </ul>
 
                                         <div class="tab-content">
-                                            
+
                                             <div class="tab-pane show active" id="profile-content-section"
                                                 role="tabpanel" aria-labelledby="first-tab">
                                                 <form class="tooltip-right-bottom mob-view" novalidate method="POST"
@@ -139,9 +141,9 @@
                                                             <div class="invalid-tooltip d-block">{{ $message }}</div>
                                                         @enderror
                                                     </div>
-                                                    <div class="form-group has-float-label"><input
-                                                            class="form-control" name="otherName"
-                                                            value="{{ auth()->user()->otherName }}" autocomplete="off">
+                                                    <div class="form-group has-float-label"><input class="form-control"
+                                                            name="otherName" value="{{ auth()->user()->otherName }}"
+                                                            autocomplete="off">
                                                         <span>Other Name (optional)</span>
                                                     </div>
                                                     <div class="form-group has-float-label">
@@ -234,7 +236,7 @@
                                                     </div>
                                                     <button type="submit"
                                                         class="btn btn-primary float-right">Update</button>
-                                                    
+
                                                 </form>
                                             </div>
                                             {{-- <div class="tab-pane show" id="password-section" role="tabpanel"

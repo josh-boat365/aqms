@@ -8,7 +8,7 @@
         margin: auto;
     }
 
-    @media (min-width: 320px) and (max-width: 656px) {
+    @media (min-width: 280px) and (max-width: 900px) {
         .dash-survey-tile {
             display: flex !important;
             flex-direction: column !important;
@@ -24,9 +24,8 @@
         }
 
     }
-
 </style>
-<a href=" {{url('/dashboard/submissions/' . $survey->id)}} ">
+<a href=" {{ url('/dashboard/submissions/' . $survey->id) }} ">
     <div class=" card d-flex flex-row mb-3">
         <div class="d-flex flex-grow-1 min-width-zero">
             <div
