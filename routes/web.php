@@ -45,6 +45,7 @@ Route::middleware('checkExpired')->group(function () {
     Route::post('/dashboard/survey/store', '\App\Http\Controllers\DashboardController@storeSurvey')->name('survey.store');
     Route::get('/dashboard/surveys/{i}', '\App\Http\Controllers\DashboardController@showsurvey')->name('survey.show');
     Route::put('/dashboard/surveys/{survey}/updateExpirationDate', '\App\Http\Controllers\DashboardController@updateExpirationDate')->name('survey.show.updateExpirationDate');
+    Route::put('/dashboard/surveys/{survey}/archive', '\App\Http\Controllers\DashboardController@archive')->name('survey.show.archive');
     Route::post('/dashboard/surveys/update', '\App\Http\Controllers\DashboardController@updateSurvey')->name('survey.update');
     Route::put('/dashboard/surveys/deploy', '\App\Http\Controllers\DashboardController@deploySurvey')->name('survey.deploy');
     Route::put('/dashboard/surveys/archive', '\App\Http\Controllers\DashboardController@archiveSurvey')->name('survey.archive');
