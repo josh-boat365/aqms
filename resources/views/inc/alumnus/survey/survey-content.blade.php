@@ -5,7 +5,7 @@
         margin: 0;
     }
 
-    @media (min-width: 300px) and (max-width: 900px) {
+    @media (min-width: 280px) and (max-width: 900px) {
 
         .h5 {
             font-size: 11px !important;

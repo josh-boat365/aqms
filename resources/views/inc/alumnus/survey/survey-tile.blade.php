@@ -8,7 +8,7 @@
         margin: auto;
     }
 
-    @media (min-width: 300px) and (max-width: 900px) {
+    @media (min-width: 280px) and (max-width: 900px) {
         .dash-survey-tile {
             display: flex !important;
             flex-direction: row !important;
@@ -99,6 +99,6 @@
         </div>
     </div>
 </div>
-          @if ($submissions->where('user_id', auth()->user()->id)->where('survey_id', $survey->id)->count() == 0)
+            @if ($submissions->where('user_id', auth()->user()->id)->where('survey_id', $survey->id)->count() == 0)
                         </a>
                         @endif

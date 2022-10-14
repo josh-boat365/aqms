@@ -1,5 +1,5 @@
 <style type="text/css">
-    @media (min-width: 320px)and (max-width: 672px) {
+    @media (min-width: 280px)and (max-width: 900px) {
         .navbar {
             width: 100%;
             justify-content: space-between;
@@ -52,17 +52,9 @@
         <div class="search" data-search-path="Pages.Search03d2.html?q="><input placeholder="Search..."> <span
                 class="search-icon"><i class="simple-icon-magnifier"></i></span>
         </div>
-        {{-- buy btn --}}
-        {{-- <a class="btn btn-sm btn-outline-primary ml-3 d-none d-md-inline-block"
-            href="https://1.envato.market/5kAb">&nbsp;BUY&nbsp;</a> --}}
+
     </div>
-    {{-- logo --}}
-    {{-- <div class="atu-icon" style=" width:8rem">
-        <a href="">
-            <img src="/img/custom/atulogo.png" height="100%" width="90%" alt="">
-        </a>
-    </div> --}}
-    {{-- <h1>{{$survey->name}}</h1> --}}
+
     <div class="navbar-right">
         <div class="header-icons d-inline-block align-middle">
 
