@@ -17,7 +17,7 @@
                 <br>
                 {{-- <h6>Click on date field to set date.</h6> --}}
                 <label class="form-group has-float-label">
-                    <input type="date" id="exp_date_field">
+                    <input id="exp-date" type="date" id="exp_date_field" value="{{$survey->expire_at->format('Y-m-d')}}">
                     {{-- @yield('exp-date-input') --}}
                     {{-- <input class="form-control datepicker exp-date"
                                                     placeholder=" enter expiration date"> --}}
@@ -25,9 +25,8 @@
                 </label>
             </div>
             <div class="modal-footer">
-                <form action="{{ route('survey.deploy') }}" method="post" id="deploy-form">
+                <form action="{{ route('survey.show.updateExpirationDate', $survey) }}" method="post" id="deploy-form">
                     <input type="hidden" name="_method" value="PUT">
-                    <input type="hidden" name="survey_id" class="survey_id">
                     <input type="hidden" name="date" id="date_input_submit" class="date">
                     @csrf
 
@@ -87,7 +86,7 @@
                 <div class="d-flex justify-content-between position-relative mb-3">
                     <p class="m-0">
                         @if ($survey->expire_at != null)
-                            {{ $survey->created_at->format('Y-m-d') }}
+                            {{ $survey->expire_at->format('Y-m-d') }}
                         @else
                             ----:--:--
                         @endif

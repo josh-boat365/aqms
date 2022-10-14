@@ -143,6 +143,20 @@
     <script src="{{ asset('js/vendor/select2.full.js') }}"></script>
     <script src="{{ asset('js/dore.script.js') }}"></script>
 
+    <script>
+        $(function() {
+            $('#exp-date').on('change', function() {
+                if ($(this).val() == "{{ $survey->expire_at->format('Y-m-d') }}") {
+                    $('.deploy-btn').hide()
+                } else {
+                    console.log($(this).val());
+                    $('#deploy-form').children('.date').val($(this).val())
+                    $('.deploy-btn').show()
+                }
+            })
+        })
+    </script>
+
     {{-- section edit --}}
     <script>
         $(function() {

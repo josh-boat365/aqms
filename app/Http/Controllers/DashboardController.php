@@ -278,4 +278,11 @@ class DashboardController extends Controller
         // dd($request);
         return redirect('/dashboard/responses/' . $request->survey_id);
     }
+
+    public function updateExpirationDate(Request $request, Survey $survey){
+        // dd($request);
+        $survey->update(['expire_at' => $request->date]);
+
+        return redirect()->route('survey.show', $survey->id);
+    }
 }
