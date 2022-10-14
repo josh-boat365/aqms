@@ -83,17 +83,28 @@
 
                 <p class="text-muted text-small mb-2">Date Created</p>
                 <p class="mb-3">{{ $survey->created_at->format('Y-m-d') }} </p>
-                <div class="d-flex">
-                    <label class="form-group has-float-label">
-                        <input type="date" id="exp_date_field">
-                        {{-- <input type="date" id="exp_date_field" > --}}
-                        <span>Expiration Date</span>
-                    </label>
-                    <a href="#editEpirationDateModal" id="editEpirationDateModalBtn">
+                <p class="text-muted text-small mb-2">Expiration Date</p>
+                <div class="d-flex justify-content-between position-relative mb-3">
+                    <p class="m-0">
+                        @if ($survey->expire_at != null)
+                            {{ $survey->created_at->format('Y-m-d') }}
+                        @else
+                            ----:--:--
+                        @endif
+                    </p>
+
+                    <div class="position-absolute" style="right: 0; top: -7px">
+                        <a href="#editEpirationDateModal" id="editEpirationDateModalBtn">
+                            <div class="btn btn-header-light icon-button"><i class="simple-icon-pencil"></i>
+                            </div>
+                        </a>
+                    </div>
+
+                    {{-- <a href="#editEpirationDateModal" id="editEpirationDateModalBtn">
                         <div class="btn btn-header-light icon-button" style="position: relative;left: 90%;"><i
                                 class="simple-icon-pencil"></i>
                         </div>
-                    </a>
+                    </a> --}}
                 </div>
 
 
