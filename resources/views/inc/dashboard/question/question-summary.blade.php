@@ -128,16 +128,16 @@
                     style="border: #c8d2dc solid 1px;border-radius: 20px; max-width:100%">
                     <div style="padding: 1rem">
                         {{-- @if ($survey->status_id == 2)
-                        <button class="btn btn-outline-secondary" style="width: 10rem">Draft</button><br>
+                        <button class="btn btn-outline-secondary" style="width: 100%">Draft</button><br>
                         @endif --}}
                         @if ($survey->status_id == 1)
-                        <a id="editEpirationDateModalBtn" class="btn btn-outline-success" style="width: 10rem">Deploy</a><br>
+                        <a id="editEpirationDateModalBtn" class="btn btn-outline-success" style="width: 100%">Deploy</a><br>
                         @endif
                         @if ($survey->status_id == 2)
-                        <div id="archive-btn"  class="btn btn-outline-danger" style="width: 10rem">Archive</div>
+                        <div id="archive-btn"  class="btn btn-outline-danger" style="width: 100%">Archive</div>
                         @endif
                         @if ($survey->status_id == 3)
-                        <div id="response-btn"  class="btn btn-outline-info" style="width: 10rem">View Responses</div>
+                        <div id="response-btn"  class="btn btn-outline-info" style="width: 100%">View Responses</div>
                         @endif
                         
                         
