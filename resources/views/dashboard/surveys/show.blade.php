@@ -143,6 +143,31 @@
     <script src="{{ asset('js/vendor/select2.full.js') }}"></script>
     <script src="{{ asset('js/dore.script.js') }}"></script>
 
+
+    <script>
+        $(function () {
+            $('#archive-btn').click(function () {
+                $('#archive-form').submit()
+            })
+        })
+    </script>
+    
+        <script>
+            $(function() {
+                $old_value = $('#exp-date').val();
+                $('#exp-date').on('change', function() {
+                    if ($(this).val() == $old_value) {
+                        $('.deploy-btn').hide()
+                    } else {
+                        console.log($(this).val());
+                        $('#deploy-form').children('.date').val($(this).val())
+                        $('.deploy-btn').show()
+                    }
+                })
+            })
+        </script>
+
+
     {{-- section edit --}}
     <script>
         $(function() {
