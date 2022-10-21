@@ -49,9 +49,7 @@
                 <rect x="0.5" y="7.5" width="25" height="1" />
                 <rect x="0.5" y="15.5" width="25" height="1" />
             </svg></a>
-        <div class="search" data-search-path="Pages.Search03d2.html?q="><input placeholder="Search..."> <span
-                class="search-icon"><i class="simple-icon-magnifier"></i></span>
-        </div>
+
 
     </div>
 

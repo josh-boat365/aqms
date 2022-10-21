@@ -1,11 +1,15 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <!-- Mirrored from dore-jquery.coloredstrategies.com/Apps.Survey.List.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 06 Nov 2021 22:42:02 GMT -->
 
 <head>
     <meta charset="UTF-8">
-    <title>Alumni Dashboard | ATU Tracer</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="An Alumni Tracer Portal (ATP) Designed For Engaging in Surveys at Accra Technical University. Developed for Graduate Evaluation and Quality Assurance. The ATP seeks to learn about the extent to which the educational experience at Accra Technical University (ATU) has contributed to the career developments of its alumni. In particular, studies conducted through the ATP aim at determining the impact of training received at ATU on work placement and career progression of graduates. Your feedback, processed confidentially, will inform institutional policy on improving academic programmes and practical training, for quality service delivery to current students, prospective admissions, and industry.">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Alumni Dashboard | Alumni Tracer Portal (ATP) | Accra Technical University (ATU)</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <link rel="stylesheet" href="{{ asset('font/iconsmind-s/css/iconsminds.css') }}">
     <link rel="stylesheet" href="{{ asset('font/simple-line-icons/css/simple-line-icons.css') }}">
@@ -18,13 +22,12 @@
     <link rel="stylesheet" href="{{ asset('css/vendor/component-custom-switch.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dore.dark.bluenavy.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-     <link rel="icon" type="image/x-icon" href="{{ asset('img/profiles/profile-icon-atu.png') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('img/profiles/profile-icon-atu.png') }}">
 
     <style>
         .theme-colors {
             display: none;
         }
-
     </style>
 </head>
 
@@ -41,19 +44,16 @@
     @extends('inc.alumnus.survey.survey-content')
 
     @section('survey-tiles')
-    {{-- @include('inc.alumnus.survey.survey-tile') --}}
+        {{-- @include('inc.alumnus.survey.survey-tile') --}}
         @foreach ($surveys as $survey)
             @include('inc.alumnus.survey.survey-tile', ['survey' => $survey, 'status' => $survey->status])
         @endforeach
     @endsection
 
     @section('stat')
-        <li class="active"><a href="#"> All Surveys <span
-                    class="float-right"></span></a></li>
-        <li><a href="#"> Completed Surveys <span
-                    class="float-right"></span></a></li>
-        <li><a href="#"> Uncompleted Surveys <span
-                    class="float-right"></span></a></li>
+        <li class="active"><a href="#"> All Surveys <span class="float-right"></span></a></li>
+        <li><a href="#"> Completed Surveys <span class="float-right"></span></a></li>
+        <li><a href="#"> Uncompleted Surveys <span class="float-right"></span></a></li>
         {{-- <li><a href="#"> Archived Surveys <span
                     class="float-right">{{ $allSurveys->where('status_id', '3')->count() }}</span></a></li> --}}
     @endsection
@@ -160,12 +160,12 @@
 
     {{-- notification --}}
     <script>
-        $(function () {
+        $(function() {
             setTimeout(() => {
                 $('#notification').fadeIn('slow')
             }, 1500);
         })
-        $(function () {
+        $(function() {
             setTimeout(() => {
                 $('#notification').fadeTo('slow', 0)
             }, 3000);
@@ -173,7 +173,7 @@
     </script>
 
     <script>
-        $(function(){
+        $(function() {
             $('#survey-section').addClass('active');
         })
     </script>

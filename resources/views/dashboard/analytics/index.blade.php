@@ -4,7 +4,12 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Analytics | ATU Tracer</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="An Alumni Tracer Portal (ATP) Designed For Engaging in Surveys at Accra Technical University. Developed for Graduate Evaluation and Quality Assurance. The ATP seeks to learn about the extent to which the educational experience at Accra Technical University (ATU) has contributed to the career developments of its alumni. In particular, studies conducted through the ATP aim at determining the impact of training received at ATU on work placement and career progression of graduates. Your feedback, processed confidentially, will inform institutional policy on improving academic programmes and practical training, for quality service delivery to current students, prospective admissions, and industry.">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Analytics | Alumni Tracer Portal (ATP) | Accra Technical University (ATU)</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <link rel="stylesheet" href="{{ asset('font/iconsmind-s/css/iconsminds.css') }}">
     <link rel="stylesheet" href="{{ asset('font/simple-line-icons/css/simple-line-icons.css') }}">
@@ -30,7 +35,6 @@
         .theme-colors {
             display: none;
         }
-
     </style>
 </head>
 
@@ -43,9 +47,9 @@
     @include('inc.dashboard.side-bar', ['surveys' => $allSurveys])
 
 
-    
+
     @extends('inc.dashboard.analytics.analytics-content')
-    
+
 
     <script src="{{ asset('js/vendor/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('js/vendor/bootstrap.bundle.min.js') }}"></script>
@@ -151,7 +155,7 @@
     </script>
 
     <script>
-        $(function () {
+        $(function() {
             $('#dashboard-section').addClass('active');
         })
     </script>

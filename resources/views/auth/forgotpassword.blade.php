@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 @endsection
 
-@section('body-class') class="background show-spinner no-footer" @endsection
+@section('body-class')
+    class="background show-spinner no-footer"
+@endsection
 
 @section('body')
     <div class="fixed-background"></div>
@@ -22,24 +24,31 @@
                 <div class="col-12 col-md-10 mx-auto my-auto">
                     <div class="card auth-card mt-3 mb-3">
                         <div class="position-relative image-side">
-                            <p class="text-white h2">WELCOME TO ATU TRACER</p>
-                            <p class="white mb-0">Dear Alumnus:</p>
+                            <p class="text-white h2">ALUMNI TRACER PORTAL</p>
+                            <p class="white mb-0">Dear Alumnus:</p><br>
 
-                            <p class="white">Thank you for the intended participation.</p>
+                            <p class="white">Welcome to the Alumni Tracer Portal (ATP).</p>
 
                             <p class="text-wrap white">
-                                The Tracer Study seeks to learn about the extent to which the educational experience at Accra Technical University (ATU) has contributed to the career developments of its alumni.
+                                The ATP seeks to learn about the extent to which the educational experience at Accra
+                                Technical University (ATU) has contributed to the career developments of its alumni.
                             </p>
 
                             <p class="text-wrap white">
-                                In particular, the study aims at determining, from your perspective, the impact of the training received on work placement and career progression.
+                                In particular, studies conducted through the ATP aim at determining the impact of training
+                                received at ATU on work placement and career progression of graduates.
                             </p>
 
                             <p class="text-wrap white">
-                                Your feedback, processed confidentially, will inform institutional policy on improving academic programmes and practical training, for quality service delivery to current students, prospective admissions, and industry.
+                                Your feedback, processed confidentially, will inform institutional policy on improving
+                                academic programmes and practical training, for quality service delivery to current
+                                students, prospective admissions, and industry.
                             </p>
 
-                            <p class="white">We look forward to receiving your responses.</p>
+                            <p class="white">We look forward to your insights to facilitate broader stakeholder engagement.
+                            </p>
+
+                            <p class="white">ATU TRACER TEAM.</p>
                             <a href="{{ route('login') }}" class="white btn btn-primary font-weight-bold h5">Login</a>.</p>
                         </div>
                         <div class="form-side position-relative">
@@ -95,8 +104,8 @@
 @endsection
 
 @section('script')
-    <script src="{{asset('js/vendor/jquery-3.3.1.min.js')}}"></script>
-    <script src="{{asset('js/vendor/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{asset('js/dore.script.js')}}"></script>
-    <script src="{{asset('js/scripts.js')}}"></script>
+    <script src="{{ asset('js/vendor/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('js/vendor/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('js/dore.script.js') }}"></script>
+    <script src="{{ asset('js/scripts.js') }}"></script>
 @endsection

@@ -3,7 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Survey Analytics - Responses | ATU Tracer</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="An Alumni Tracer Portal (ATP) Designed For Engaging in Surveys at Accra Technical University. Developed for Graduate Evaluation and Quality Assurance. The ATP seeks to learn about the extent to which the educational experience at Accra Technical University (ATU) has contributed to the career developments of its alumni. In particular, studies conducted through the ATP aim at determining the impact of training received at ATU on work placement and career progression of graduates. Your feedback, processed confidentially, will inform institutional policy on improving academic programmes and practical training, for quality service delivery to current students, prospective admissions, and industry.">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Response Analytics | Alumni Tracer Portal (ATP) | Accra Technical University (ATU)</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <link rel="stylesheet" href="{{ asset('font/iconsmind-s/css/iconsminds.css') }}">
     <link rel="stylesheet" href="{{ asset('font/simple-line-icons/css/simple-line-icons.css') }}">
@@ -43,7 +48,6 @@
         .dropdown-item:hover {
             cursor: pointer;
         }
-
     </style>
     <style>
         /* .alumnus-hover:hover a{
@@ -53,7 +57,6 @@
             background: whitesmoke;
             cursor: pointer;
         }
-
     </style>
 </head>
 
@@ -78,15 +81,15 @@
     @endsection
 
     @section('stat')
-        <li class="active"><a href="#"> All Surveys <span
-                    class="float-right">{{ $allSurveys->count() }}</span></a></li>
+        <li class="active"><a href="#"> All Surveys <span class="float-right">{{ $allSurveys->count() }}</span></a>
+        </li>
         <li><a href="#"> Deployed Surveys <span
                     class="float-right">{{ $allSurveys->where('status_id', '2')->count() }}</span></a></li>
         <li><a href="#"> Drafted Surveys <span
                     class="float-right">{{ $allSurveys->where('status_id', '1')->count() }}</span></a></li>
         <li><a href="#"> Archived Surveys <span
                     class="float-right">{{ $allSurveys->where('status_id', '3')->count() }}</span></a></li>
-        <li><a href="#"> Submitted Surveys <span class="float-right">{{$submissions->count()}}</span></a></li>
+        <li><a href="#"> Submitted Surveys <span class="float-right">{{ $submissions->count() }}</span></a></li>
     @endsection
 
     @section('survey-form')
@@ -197,8 +200,8 @@
     {{-- toggle chart & table --}}
     <script>
         $(function() {
-            $('.table-chart-btn').click(function () {
-                
+            $('.table-chart-btn').click(function() {
+
                 $('#chart-' + $(this).attr('id')).toggleClass('active')
                 $('#table-' + $(this).attr('id')).toggleClass('active')
 
@@ -262,7 +265,7 @@
         })
     </script>
 
-    <script src="{{asset('js/jquery.table2excel.js')}}"></script>
+    <script src="{{ asset('js/jquery.table2excel.js') }}"></script>
     <script>
         $(function() {
             $(".export-btn").click(function() {

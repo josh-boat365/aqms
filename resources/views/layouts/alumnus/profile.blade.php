@@ -1,15 +1,20 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Alumnus Profile | ATU Tracer</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="An Alumni Tracer Portal (ATP) Designed For Engaging in Surveys at Accra Technical University. Developed for Graduate Evaluation and Quality Assurance. The ATP seeks to learn about the extent to which the educational experience at Accra Technical University (ATU) has contributed to the career developments of its alumni. In particular, studies conducted through the ATP aim at determining the impact of training received at ATU on work placement and career progression of graduates. Your feedback, processed confidentially, will inform institutional policy on improving academic programmes and practical training, for quality service delivery to current students, prospective admissions, and industry.">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Alumnus Profile | Alumni Tracer Portal (ATP) | Accra Technical University (ATU)</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <link rel="stylesheet" href="{{ asset('font/iconsmind-s/css/iconsminds.css') }}">
     <link rel="stylesheet" href="{{ asset('font/simple-line-icons/css/simple-line-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor/bootstrap.rtl.only.min.css') }}">
-    <link rel="stylesheet" href="{{asset('css/vendor/bootstrap-float-label.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/vendor/bootstrap-float-label.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor/perfect-scrollbar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendor/select2-bootstrap.min.css') }}">
@@ -24,7 +29,6 @@
         .theme-colors {
             display: none;
         }
-
     </style>
 </head>
 
@@ -177,4 +181,5 @@
 
 
 </body>
+
 </html>
